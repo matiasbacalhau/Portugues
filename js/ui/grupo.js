@@ -1,0 +1,479 @@
+// Runner de un grupo (un escalón de un tema): arma o retoma el grupo, corre cada ejercicio, corrige, autoguarda,
+// muestra el feedback (§5.6), el ⚑ y la escritura con LanguageTool; al terminar va a #/fin.
+import { h, rich } from './dom.js';
+import { answerInput, listenButton } from './inputs.js';
+import { renderFicha } from './ficha.js';
+import { wordPicture } from './imagen.js';
+import { renderGlossary } from './glosario.js';
+import { render as renderExercise } from '../exercises/index.js';
+import { checkExercise } from '../core/checks/index.js';
+import { EVALUATED_OK } from '../core/checks/common.js';
+import { gradeWriting, countSentences, isAcceptedWord, buildAcceptedWordsSet } from '../core/checks/writing.js';
+import { buildGroup, commitNext, activeTagsFor } from '../core/progress.js';
+import { pickGlossary } from '../core/glossary.js';
+import { reviewCandidates, itemInfo, exampleFor, curiosityFor, correctSentence, needsFicha, applyCommit, closeSaved, recordAnswer, carryResolved, segments, stopwatch, skipExercise, applyRewrite } from '../core/runner.js';
+import { marked, markList, verdict, extras } from './escritura.js';
+import { addWords } from '../core/srs.js';
+import { withoutAudio, cardReveal } from '../core/cards.js';
+import { skipEntry } from '../core/log.js';
+import { buildExtras } from '../core/extras.js';
+import { dictationPool } from '../core/dictation.js';
+import * as tts from '../services/tts.js';
+import * as lt from '../services/languagetool.js';
+import { withGrammar } from '../services/grammar.js';
+
+const WRITING = new Set(['writing-guided', 'writing-free']);
+const EMPTY_MASTERY = { tags: {}, pairs: {} };
+
+// Frases para dictar: se arman una vez por contenido cargado.
+const pools = new WeakMap();
+const poolOf = C => {
+  if (!pools.has(C)) pools.set(C, dictationPool(C.units, C.templates, C.lexicon, C.curriculum));
+  return pools.get(C);
+};
+
+export default async function grupo(el, { store, content, params }) {
+  const C = await content();
+  const topicId = params[0];
+  const n = Number(params[1]);
+  const unit = Object.values(C.units).find(u => u.topics.some(t => t.topic === topicId));
+  const topic = unit?.topics.find(t => t.topic === topicId);
+  const stepDef = topic?.steps?.find(s => s.n === n);
+  if (!topic || topic.draft || !stepDef) {
+    el.append(h('p', {}, 'Diese Stufe hat noch keinen Inhalt.'), h('a', { class: 'button secondary', href: '#/' }, 'Start'));
+    return;
+  }
+  const titleOf = id => C.curriculum.topics.find(t => t.id === id)?.title ?? id;
+  const defOf = id => Object.values(C.units).flatMap(u => u.topics).find(t => t.topic === id);
+
+  let audioHintSeen = !!(await store.get('meta'))?.audioHintSeen;
+  const settings = (await store.get('settings')) ?? {};
+  let acceptedWords = [settings.name, ...(settings.customWords ?? [])].filter(Boolean);
+  let group = await store.get('group');
+  if (!group || group.topic !== topicId || group.step !== n) {
+    const now = Date.now();
+    const candidates = reviewCandidates(C.units, topicId);
+    // En una transacción: la cola de LanguageTool no puede resolver nada en el grupo guardado mientras se cierra.
+    ({ group } = await store.update(['group', 'progress', 'mastery', 'words', 'log', 'quarantine', 'srs'], v => {
+      let state = { progress: v.progress ?? { steps: {} }, mastery: v.mastery ?? EMPTY_MASTERY, words: v.words ?? {}, log: v.log ?? [], srs: v.srs ?? {} };
+      // El grupo guardado de otro escalón no se pierde: se aplica lo respondido y se cierra (terminado o abandonado).
+      if (v.group) state = closeSaved({ saved: v.group, state, quarantine: v.quarantine ?? [], now });
+      const { progress, mastery, words } = state;
+      // Los generadores eligen primero palabras en aprendizaje (spec §5.3).
+      const preferLemmas = new Set(Object.keys(state.srs).filter(l => [1, 2].includes(state.srs[l].rung)));
+      let fresh = buildGroup(unit, topicId, n, progress, mastery, {
+        now, rng: Math.random, templates: C.templates, lexicon: C.lexicon, otherExercises: candidates, curriculum: C.curriculum, preferLemmas,
+      });
+      if (stepDef.field) {
+        fresh.glossary = pickGlossary(C.lexicon, words, { field: stepDef.field, level: 'A1', hide: topic.hides ?? [], rng: Math.random });
+      }
+      // Las palabras del glosario entran a la SRS en nivel 1 (spec §5.1); las que ya están no se tocan.
+      const srs = fresh.glossary ? addWords(state.srs, fresh.glossary.map(w => w.lemma), now) : undefined;
+      // Tarjetas y lugar de escucha después del glosario: sus palabras no salen en las tarjetas ni en el dictado de este
+      // grupo (el glosario las muestra; regla 1) y vuelven desde el siguiente.
+      fresh = buildExtras(fresh, {
+        srs: srs ?? state.srs, now, rng: Math.random, unit, units: C.units, progress, lexicon: C.lexicon, templates: C.templates,
+        mastery, curriculum: C.curriculum, pool: poolOf(C), audio: tts.supported(), glossary: (fresh.glossary ?? []).map(w => w.lemma),
+      });
+      return { ...(v.group ? state : {}), group: fresh, ...(srs && { srs }) };
+    }));
+  }
+
+  // Todo guardado del grupo conserva las escrituras que la cola resolvió en el store mientras tanto (carryResolved).
+  const save = async () => {
+    ({ group } = await store.update(['group'], v => ({ group: carryResolved(group, v.group) })));
+  };
+
+  // Barra del grupo: ✕ (vuelve al inicio sin confirmar; el grupo queda guardado), título y, en el escalón 3, "Glosario".
+  const glossaryBox = h('div', { class: 'card', hidden: true });
+  if (group.glossary) renderGlossary(glossaryBox, group.glossary);
+  const counter = h('span', { class: 'muted' });
+  const bar = h('div', { class: 'group-bar' },
+    h('a', { class: 'close', href: '#/', 'aria-label': 'Salir al inicio' }, '✕'),
+    h('div', { class: 'group-title' }, h('strong', {}, `Stufe ${n} · ${stepDef.name}`), counter),
+    group.glossary && h('button', { type: 'button', class: 'secondary small', onclick: () => { glossaryBox.hidden = !glossaryBox.hidden; } }, 'Wortschatz'),
+  );
+  const screen = h('div', { class: 'screen' });
+  // Región viva: el resultado de cada ejercicio se anuncia sin releer toda la pantalla.
+  const announcer = h('div', { class: 'sr-only', role: 'status' });
+  el.append(bar, glossaryBox, screen, announcer);
+
+  const show = (...nodes) => {
+    screen.replaceChildren(...nodes.flat(Infinity).filter(Boolean));
+    window.scrollTo(0, 0);
+  };
+  // LanguageTool más el corrector de gramática, los dos con timeout: sin respuesta, la escritura queda pendiente.
+  const correct = withGrammar(text => lt.check(text), undefined, { token: settings.grammarToken });
+  const ltClient = { check: correct };
+  const progressState = (await store.get('progress')) ?? { steps: {} };
+  const activeTags = activeTagsFor(C.units, progressState, topicId);
+  const checkCtxFor = () => ({ curriculum: C.curriculum, ltMap: C.ltMap, lexicon: C.lexicon, lt: ltClient, acceptedWords, activeTags, topicTags: topic.tags });
+
+  async function commit() {
+    const { group: g, toApply } = commitNext(group);
+    const now = Date.now();
+    // El grupo en memoria avanza solo si el guardado salió bien: si falla, reintentar Siguiente vuelve a aplicar este commit.
+    ({ group } = await store.update(['mastery', 'log', 'words', 'progress', 'quarantine', 'group', 'srs'], v => ({
+      ...applyCommit({
+        group, toApply, now, quarantine: v.quarantine ?? [],
+        state: { mastery: v.mastery ?? EMPTY_MASTERY, log: v.log ?? [], words: v.words ?? {}, progress: v.progress ?? { steps: {} }, srs: v.srs ?? {} },
+      }),
+      group: carryResolved(g, v.group),
+    })));
+  }
+
+  async function next() {
+    if (group.index > group.committed) await commit();
+    if (group.index >= group.exercises.length) {
+      location.hash = '#/fin';
+      return;
+    }
+    if (group.glossary && !group.glossaryShown && group.index === 0) {
+      const box = h('div', { class: 'card' }, h('h2', {}, 'Wortschatz'), h('p', { class: 'muted' }, 'Palabras para usar en este grupo. Después quedan en el botón "Wortschatz".'));
+      renderGlossary(box, group.glossary);
+      show(h('p', { class: 'scene' }, rich(stepDef.scene.context)), box, h('button', { type: 'button', onclick: async () => {
+        group = { ...group, glossaryShown: true };
+        await save();
+        next();
+      } }, 'Start'));
+      return;
+    }
+    if (needsFicha(group, topic)) {
+      show(h('div', { class: 'card' }, renderFicha(topic, titleOf(topicId))), h('button', { type: 'button', onclick: async () => {
+        group = { ...group, fichaShown: true };
+        await save();
+        next();
+      } }, 'Weiter'));
+      return;
+    }
+    let ex = group.exercises[group.index];
+    // Sin audio (spec §6.3): lo que sigue en el grupo sale sin él; el dictado se saltea.
+    if (group.audioOff) {
+      const plain = withoutAudio(ex, { lexicon: C.lexicon, rng: Math.random });
+      if (plain === null) {
+        const { group: skipped, entry } = skipExercise(group, { now: Date.now() });
+        group = skipped;
+        await store.update(['group', 'log'], v => ({ group: carryResolved(skipped, v.group), log: [...(v.log ?? []), entry] }));
+        return next();
+      }
+      if (plain !== ex) {
+        ex = plain;
+        group = { ...group, exercises: group.exercises.map((e, i) => (i === group.index ? plain : e)) };
+        await save();
+      }
+    }
+    // Escritura enviada que no llegó a corregirse (se cerró la app durante "Corrigiendo…"): se reenvía.
+    if (group.draft?.id === ex.id && group.draft.text != null) {
+      counter.textContent = `${group.index + 1} de ${group.exercises.length}`;
+      show(h('p', {}, 'Corrigiendo tu texto…'));
+      grade(ex, { text: group.draft.text }, group.draft.ms);
+      return;
+    }
+    runExercise(ex);
+  }
+
+  // Corrige, guarda la respuesta (y la escritura pendiente en la cola) en una sola transacción y muestra el feedback.
+  async function grade(ex, answer, ms) {
+    const now = Date.now();
+    const results = (await checkExercise(ex, answer, checkCtxFor(ex))).map(r => ({ ...r, ms, at: now }));
+    const answered = recordAnswer(group, results);
+    ({ group } = await store.update(['group', 'ltQueue'], v => {
+      // Una vista vieja (✕ durante "Corrigiendo…" y Seguir) ya respondió este ejercicio: no se responde dos veces.
+      if (v.group?.id === answered.id && v.group.results.some(r => String(r.key).split('#')[0] === ex.id)) return { group: v.group };
+      const entries = { group: carryResolved(answered, v.group) };
+      if (results.some(r => r.pending)) {
+        entries.ltQueue = [...(v.ltQueue ?? []), {
+          key: ex.id, group: answered.id, type: ex.type, ms, topic: topicId, step: n, scene: stepDef.scene.title, text: answer.text, at: now,
+        }];
+      }
+      return entries;
+    }));
+    feedback(ex, answer, results);
+  }
+
+  function runExercise(ex) {
+    const watch = stopwatch(Date.now());
+    const onVisibility = () => (document.hidden ? watch.pause(Date.now()) : watch.resume(Date.now()));
+    document.addEventListener('visibilitychange', onVisibility);
+    counter.textContent = `${group.index + 1} de ${group.exercises.length}`;
+    const body = h('div', { class: 'exercise' });
+    const ctx = {
+      curriculum: C.curriculum,
+      // detective: la regla elegida se guarda antes de seguir (al retomar no se puede volver a elegir: nunca un reintento).
+      rule: group.draft?.id === ex.id ? group.draft.rule : undefined,
+      // Con la regla elegida mal, la ficha aparece antes de aplicar (§5.5).
+      beforeApply: async rule => {
+        const [first] = await checkExercise(ex, { rule, apply: [] }, checkCtxFor(ex));
+        group = { ...group, draft: { id: ex.id, rule }, ...(first.showFicha ? { fichaShown: true } : {}) };
+        await save();
+        if (!first.showFicha) return;
+        await new Promise(resolve => {
+          const box = h('div', { class: 'card' }, renderFicha(topic, titleOf(topicId)),
+            h('button', { type: 'button', onclick: () => { box.remove(); resolve(); } }, 'Weiter'));
+          body.append(box);
+          box.scrollIntoView({ block: 'start' });
+        });
+      },
+    };
+    const head = [
+      ex.review && h('span', { class: 'pill small' }, 'Repaso'),
+      group.index === 0 && n !== 3 && h('p', { class: 'scene' }, h('strong', {}, stepDef.scene.title), ' · ', rich(stepDef.scene.context)),
+    ];
+    // Una sola vez: con el iPhone en silencio el TTS no suena y no hay forma de detectarlo.
+    const hasAudio = !group.audioOff && (ex.type === 'dictation' || (ex.type === 'card' && ex.mode === 'listen') || (ex.type === 'situation' && ex.listen));
+    if (hasAudio && tts.supported() && !audioHintSeen) {
+      audioHintSeen = true;
+      head.push(h('p', { class: 'muted' }, 'Si no suena, sacá el modo silencio del iPhone.'));
+      store.update(['meta'], v => ({ meta: { ...v.meta, audioHintSeen: true } })).catch(() => {});
+    }
+    show(head, body);
+    let noAudio = false;
+    renderExercise(ex, body, {
+      ctx,
+      // "Ahora no puedo escuchar": sin audio por el resto del grupo; este ejercicio sale en su variante sin audio.
+      onNoAudio: async () => {
+        if (noAudio) return; // doble toque: una sola vez
+        noAudio = true;
+        document.removeEventListener('visibilitychange', onVisibility);
+        group = { ...group, audioOff: true };
+        // La tarjeta pasa a lectura: el log lo anota acá. El dictado y la situación se saltean: lo anota skipExercise.
+        if (ex.type === 'card') {
+          const entry = skipEntry({ item: ex.id, at: Date.now() });
+          await store.update(['log'], v => ({ log: [...(v.log ?? []), entry] }));
+        }
+        await save();
+        next();
+      },
+      submit: async answer => {
+        const ms = watch.elapsed(Date.now());
+        document.removeEventListener('visibilitychange', onVisibility);
+        // El texto de una escritura se guarda antes de mandarlo a LanguageTool: si se cierra la app, se reenvía al volver.
+        if (WRITING.has(ex.type)) {
+          group = { ...group, draft: { id: ex.id, text: answer.text, ms } };
+          await save();
+        }
+        await grade(ex, answer, ms);
+      },
+    });
+  }
+
+  function feedback(ex, answer, results) {
+    announcer.textContent = WRITING.has(ex.type)
+      ? (results[0].pending ? 'Sin conexión: se corrige después.' : results[0].ok ? 'Fehlerfrei' : 'Mit Fehlern')
+      : (results.every(r => r.ok) ? 'Richtig' : 'Falsch');
+    const nodes = WRITING.has(ex.type) ? writingFeedback(ex, answer, results[0]) : closedFeedback(ex, answer, results);
+    const anyBad = results.some(r => !r.ok && !r.pending);
+    const fichaDef = defOf(ex.topic ?? topicId);
+    const fichaBox = h('div');
+    const fichaBtn = anyBad && fichaDef?.ficha && h('button', { type: 'button', class: 'secondary', onclick: () => {
+      if (fichaBox.firstChild) fichaBox.replaceChildren();
+      else fichaBox.append(h('div', { class: 'card' }, renderFicha(fichaDef, titleOf(ex.topic ?? topicId))));
+    } }, 'Theoriekarte');
+    const report = reportBox(ex, answer);
+    // Siguiente se usa una vez y espera a que el ⚑ termine de guardar la cuarentena antes del commit (regla 4).
+    const nextBtn = h('button', { type: 'button', onclick: async () => {
+      if (nextBtn.disabled) return;
+      nextBtn.disabled = true;
+      try {
+        await report.saving;
+        await next();
+      } catch {
+        // Si el reporte o el commit fallan, Siguiente queda disponible para reintentar.
+        nextBtn.disabled = false;
+        announcer.textContent = 'No se pudo guardar. Probá de nuevo.';
+      }
+    } }, 'Weiter');
+    show(nodes, fichaBtn, fichaBox, report, nextBtn);
+  }
+
+  function closedFeedback(ex, answer, results) {
+    const rng = Math.random;
+    const allOk = results.every(r => r.ok);
+    const multi = results.length > 1;
+    const items = results.map(r => {
+      const info = itemInfo(ex, r.key);
+      const example = exampleFor(ex, r, { results, answer, curriculum: C.curriculum, rng });
+      return h('div', { class: 'item' },
+        multi && info.label && h('p', { class: 'item-label', lang: 'de' }, rich(info.label)),
+        r.ok ? h('span', { class: 'tag-ok' }, 'Richtig') : h('span', { class: 'tag-bad' }, 'Falsch'),
+        // Lo que escribió el usuario: la frase con lo que difiere subrayado, o la palabra suelta (la situación ya la muestra).
+        r.wrong ? underlined(r.given, r.wrong, r.rule !== EVALUATED_OK)
+          : !r.ok && r.given && ex.type !== 'situation' && h('p', { class: 'muted' }, 'Escribiste: ', h('em', { lang: 'de' }, r.given)),
+        // El dictado es una tarea abierta: después de responder se muestra la frase original (regla 2).
+        ex.type === 'dictation' && h('p', {}, 'La frase: ', h('em', { lang: 'de' }, ex.text)),
+        !r.ok && (r.rule || r.rule_de) && (
+          (r.rule_de && r.rule && r.rule_de !== r.rule)
+            ? [
+                h('p', { class: 'rule-primary', lang: 'de' }, rich(r.rule_de)),
+                h('details', { class: 'rule-accordion' },
+                  h('summary', { lang: 'de' }, 'Erklärung auf Spanisch anzeigen'),
+                  h('p', { class: 'rule-detailed', lang: 'es' }, rich(r.rule)),
+                ),
+              ]
+            : h('p', { class: 'rule-primary', lang: 'es' }, rich(r.rule || r.rule_de))
+        ),
+        example && h('p', { class: 'example' }, 'Por ejemplo: ', h('em', { lang: 'de' }, example.de), ` (${example.es}) `, listenButton(example.de)),
+        r.notice && h('p', { class: 'muted' }, r.notice),
+      );
+    });
+    const curiosity = curiosityFor(ex, results, C.curriculum, rng);
+    const sentence = correctSentence(ex, answer, results);
+    const listen = sentence && listenButton(sentence);
+    // Tarjeta: imagen y "der Schlüssel · llave" con 🔊 solo tras acertar (antes del acierto revelarían la respuesta).
+    const reveal = ex.type === 'card' && cardReveal(ex, results);
+    return [
+      reveal?.picture && wordPicture(ex.word, 'card'),
+      reveal?.label && h('p', { class: 'sentence' }, reveal.label, ' ', listenButton(reveal.de)),
+      ex.type === 'situation' && situationReplay(ex, answer, results),
+      allOk && multi ? [h('span', { class: 'tag-ok' }, 'Richtig'), listen, results.filter(r => r.notice).map(r => h('p', { class: 'muted' }, r.notice))] : items,
+      !(allOk && multi) && listen,
+      curiosity && h('p', { class: 'curiosity' }, rich(curiosity)),
+    ];
+  }
+
+  // La frase del usuario con las palabras que no coinciden con ninguna respuesta válida, subrayadas sin corregirlas.
+  // hint: false cuando la regla ya habla de lo subrayado.
+  function underlined(text, wrong, hint) {
+    return [
+      h('p', { class: 'written', lang: 'de' }, segments(text, wrong).map(x => (x.mark === null ? x.text : h('span', { class: 'mark error' }, x.text)))),
+      hint && h('p', { class: 'muted' }, wrong.length > 1 ? 'Revisá las palabras subrayadas.' : 'Revisá la palabra subrayada.'),
+    ];
+  }
+
+  // La situación con lo que escribió el usuario; los huecos fallados en rojo.
+  function situationReplay(ex, answer, results) {
+    let k = 0;
+    return h('div', { class: 'chat' }, ex.bubbles.map(b => h('div', { class: `bubble ${b.who}`, lang: 'de' },
+      String(b.text).split('___').flatMap((part, i) => {
+        if (i === 0) return [part];
+        const r = results[k];
+        const text = answer[k++] || '…';
+        return [h('span', { class: r?.ok ? 'gap' : 'gap bad' }, text), part];
+      }))));
+  }
+
+  function writingFeedback(ex, answer, r) {
+    if (r.pending) {
+      return [h('p', { class: 'notice' }, 'Sin conexión: la corregimos cuando vuelva la red.'), h('p', { class: 'muted' }, 'Tu texto quedó guardado. El grupo sigue.')];
+    }
+    const verdictBox = h('div', {}, verdict(r.ok));
+    const markedBox = h('div', {}, marked(answer.text, r.marks));
+    const listBox = h('div', {}, markList(r.marks));
+    const rewrite = h('div');
+    const onUpdateResult = updated => {
+      verdictBox.replaceChildren(verdict(updated.ok));
+      announcer.textContent = updated.ok ? 'Fehlerfrei' : 'Mit Fehlern';
+    };
+    return [
+      verdictBox,
+      markedBox,
+      listBox,
+      spellerWordActions(ex, answer.text, r, { markedBox, listBox, onUpdateResult }),
+      extras(ex),
+      h('button', { type: 'button', class: 'secondary', onclick: e => { e.currentTarget.remove(); rewriteForm(ex, rewrite, answer.text, onUpdateResult); } }, 'Reescribir'),
+      rewrite,
+    ];
+  }
+
+  function spellerWordActions(ex, text, r, { markedBox, listBox, onUpdateResult }) {
+    if (!r.marks?.length) return null;
+    const spellerEs = C.ltMap?.rules?.GERMAN_SPELLER_RULE?.es;
+    const spellingMarks = r.marks.filter(m => m.kind === 'error' && spellerEs && m.text === spellerEs);
+    if (!spellingMarks.length) return null;
+    const words = [...new Set(spellingMarks.map(m => text.slice(m.offset, m.offset + m.length).trim()).filter(Boolean))];
+    if (!words.length) return null;
+    let currentMarks = r.marks;
+    const container = h('div', { class: 'accepted-actions' });
+    for (const w of words) {
+      const btn = h('button', {
+        type: 'button',
+        class: 'secondary small',
+        onclick: async () => {
+          btn.disabled = true;
+          const s = (await store.get('settings')) ?? {};
+          const current = s.customWords ?? [];
+          if (!current.includes(w)) {
+            await store.set('settings', { ...s, customWords: [...current, w] });
+            acceptedWords = [...acceptedWords, w];
+          }
+          const acceptedSet = buildAcceptedWordsSet(acceptedWords, C.ltMap?.accepted_words ?? []);
+          currentMarks = currentMarks.filter(m => {
+            if (m.kind === 'error' && spellerEs && m.text === spellerEs) {
+              const token = text.slice(m.offset, m.offset + m.length);
+              if (isAcceptedWord(token, acceptedSet)) return false;
+            }
+            return true;
+          });
+          const sentences = countSentences(text);
+          const errorCount = currentMarks.filter(m => m.kind === 'error').length;
+          const score = sentences > 0 ? Math.max(0, (sentences - errorCount) / sentences) : (errorCount === 0 ? 1 : 0);
+          const ok = errorCount === 0 || (sentences > 0 && score >= 0.8);
+          group = applyRewrite(group, ex.id, { ok, score, marks: currentMarks, penalties: r.penalties ?? [], fullCredit: true });
+          await save();
+          markedBox.replaceChildren(marked(text, currentMarks));
+          listBox.replaceChildren(markList(currentMarks));
+          onUpdateResult({ ok, score });
+          btn.textContent = `✓ «${w}» aceptada`;
+        },
+      }, `Aceptar «${w}» en la app`);
+      container.append(btn);
+    }
+    return container;
+  }
+
+  // Reescribir: vuelve a corregir, muestra las marcas y actualiza el resultado si mejora el puntaje.
+  function rewriteForm(ex, box, text, onUpdateResult) {
+    const input = answerInput({ multiline: true, label: 'Tu reescritura' });
+    input.lang = 'de';
+    input.querySelector('textarea').value = text;
+    const out = h('div');
+    const btn = h('button', { type: 'button', class: 'secondary', onclick: async () => {
+      btn.disabled = true;
+      try {
+        const t = input.value();
+        const rwGrade = gradeWriting(await correct(t), C.ltMap, { text: t, acceptedWords, activeTags });
+        group = applyRewrite(group, ex.id, rwGrade);
+        await save();
+        const updated = group.results.find(res => res.key === ex.id);
+        if (updated) onUpdateResult(updated);
+        out.replaceChildren(verdict(rwGrade.ok), marked(t, rwGrade.marks), markList(rwGrade.marks));
+      } catch {
+        out.replaceChildren(h('p', { class: 'muted' }, 'Sin conexión: no se pudo corregir la reescritura.'));
+      }
+      btn.disabled = false;
+    } }, 'Corregir de nuevo');
+    box.replaceChildren(input, btn, out);
+  }
+
+  // ⚑: nota opcional; guarda el reporte y pone el ejercicio en cuarentena antes del commit (regla 4).
+  function reportBox(ex, answer) {
+    const box = h('div', { class: 'report' });
+    box.saving = Promise.resolve();
+    const open = h('button', { type: 'button', class: 'secondary small', onclick: () => {
+      const note = h('textarea', { 'aria-label': 'Nota (opcional)', placeholder: 'Nota (opcional)', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false' });
+      const send = h('button', { type: 'button', class: 'secondary', onclick: () => {
+        if (send.disabled) return;
+        send.disabled = true;
+        box.saving = (async () => {
+          const [reports, quarantine] = await Promise.all([store.get('reports'), store.get('quarantine')]);
+          const q = quarantine ?? [];
+          await store.setMany({
+            reports: [...(reports ?? []), { exerciseId: ex.id, answer, note: note.value.trim(), at: Date.now() }],
+            quarantine: q.includes(ex.id) ? q : [...q, ex.id],
+          });
+          box.replaceChildren(h('p', { class: 'muted' }, 'Gracias: quedó reportado y este ejercicio no cuenta para tu mastery hasta revisarlo.'));
+        })();
+        box.saving.catch(() => {
+          send.disabled = false;
+          announcer.textContent = 'No se pudo guardar el reporte. Tocá Enviar reporte de nuevo.';
+        });
+      } }, 'Enviar reporte');
+      box.replaceChildren(h('div', { class: 'answer' }, note), send);
+      note.focus();
+    } }, '⚑ Creo que esto está mal');
+    box.append(open);
+    return box;
+  }
+
+  next();
+}

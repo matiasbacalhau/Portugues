@@ -1,0 +1,21 @@
+# Sitio armado por la CI
+_site/
+
+# Backups y reportes exportados desde la app: nunca al repo público
+aleman-backup-*.json
+aleman-reportes-*.json
+reports/
+
+__pycache__/
+node_modules/
+privado/
+.superpowers/
+.taste-skill/
+.agent/
+
+# Material de estudio con copyright y sus conversiones (markitdown): solo local
+fuentes/
+portugues-backup-*.json
+portugues-reportes-*.json
+.DS_Store
+.venv/
