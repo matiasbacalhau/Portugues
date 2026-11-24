@@ -15,8 +15,8 @@ export function render(ex, el, { submit, onNoAudio }) {
   el.append(
     h('p', { class: 'muted' }, 'Höre zu und schreibe den Satz.'),
     h('p', { class: 'listen-row' },
-      h('button', { type: 'button', class: 'listen', 'aria-label': 'Langsamer anhören', lang: 'de', onclick: play(0.8) }, '🔊'),
-      h('button', { type: 'button', class: 'secondary small', 'aria-label': 'Normale Geschwindigkeit', lang: 'de', onclick: play(1) }, '1×'),
+      h('button', { type: 'button', class: 'listen', 'aria-label': 'Langsamer anhören', lang: 'pt-BR', onclick: play(0.8) }, '🔊'),
+      h('button', { type: 'button', class: 'secondary small', 'aria-label': 'Normale Geschwindigkeit', lang: 'pt-BR', onclick: play(1) }, '1×'),
     ),
     input, btn,
     h('button', { type: 'button', class: 'secondary no-audio', onclick: () => onNoAudio?.() }, 'Gerade kein Audio'),

@@ -4,11 +4,11 @@ import { h, rich } from '../ui/dom.js';
 import { answerInput } from '../ui/inputs.js';
 import { onceButton, shuffledIndexes, withGaps } from './common.js';
 
-function highlighted({ de, highlight }) {
-  const m = new RegExp(`(^|[^\\p{L}])(${highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?![\\p{L}])`, 'u').exec(de);
-  if (!m) return h('li', { lang: 'de' }, de);
+function highlighted({ pt, highlight }) {
+  const m = new RegExp(`(^|[^\\p{L}])(${highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?![\\p{L}])`, 'u').exec(pt);
+  if (!m) return h('li', { lang: 'pt-BR' }, pt);
   const at = m.index + m[1].length;
-  return h('li', { lang: 'de' }, de.slice(0, at), h('mark', {}, m[2]), de.slice(at + m[2].length));
+  return h('li', { lang: 'pt-BR' }, pt.slice(0, at), h('mark', {}, m[2]), pt.slice(at + m[2].length));
 }
 
 export function render(ex, el, { submit, ctx }) {
@@ -31,7 +31,7 @@ export function render(ex, el, { submit, ctx }) {
       const input = answerInput({ label: hasGap ? `Satz ${n + 1}` : `Satz ${n + 1}: schreibe ihn vollständig` });
       const line = hasGap ? withGaps(a.text) : null;
       if (line) input.addEventListener('input', () => { line.gaps[0].textContent = input.value() || '(1)'; });
-      return { input, node: h('div', { class: 'apply' }, h('p', { lang: hasGap ? 'de' : null }, line ? line.nodes : rich(a.text)), input) };
+      return { input, node: h('div', { class: 'apply' }, h('p', { lang: hasGap ? 'pt-BR' : null }, line ? line.nodes : rich(a.text)), input) };
     });
     const btn = onceButton('Prüfen', () => submit({ rule, apply: inputs.map(x => x.input.value()) }),
       () => inputs.every(x => x.input.value().trim() !== ''));

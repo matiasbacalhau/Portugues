@@ -6,7 +6,7 @@ import { listenButton } from './inputs.js';
 import { segments } from '../core/runner.js';
 
 export function marked(text, marks) {
-  return h('p', { class: 'written', lang: 'de' }, segments(text, marks).map(s => (s.mark === null
+  return h('p', { class: 'written', lang: 'pt-BR' }, segments(text, marks).map(s => (s.mark === null
     ? s.text
     : [h('span', { class: `mark ${marks[s.mark].kind}` }, s.text), h('sup', {}, String(s.mark + 1))])).flat());
 }
@@ -20,7 +20,7 @@ export const verdict = ok => (ok ? h('span', { class: 'tag-ok' }, 'Fehlerfrei') 
 // Checklist ("lo que LanguageTool no ve") y modelo del ejercicio, si los tiene.
 export const extras = ex => [
   ex?.checklist?.length && [h('h2', {}, 'Lo que LanguageTool no ve'), h('ul', { class: 'checklist' }, ex.checklist.map(c => h('li', {}, h('label', {}, h('input', { type: 'checkbox' }), h('span', {}, rich(c))))))],
-  ex?.model && [h('h2', {}, 'Un modelo', ' ', listenButton(ex.model)), h('p', { class: 'model', lang: 'de' }, ex.model)],
+  ex?.model && [h('h2', {}, 'Un modelo', ' ', listenButton(ex.model)), h('p', { class: 'model', lang: 'pt-BR' }, ex.model)],
 ];
 
 export default async function escritura(el, { store, content, params }) {

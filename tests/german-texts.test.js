@@ -14,13 +14,13 @@ const exercises = [
   {id: 'c1', type: 'choice', prompt: 'Elegí', options: [{text: 'Ich habe einen Hund.', correct: true}, {text: 'Ich habe ein Hund.'}]},
   {id: 'e1', type: 'spot-error', tokens: ['Ich', 'habe', 'ein', 'Hund'], wrong: 2, corrections: ['einen'], rule: 'x'},
   {id: 'r1', type: 'reading', title: 'T', text: 'Das ist ein Text.', questions: [{prompt: 'Wo wohnt Ana?', answers: ['In Berlin', 'Berlin'], options: [{text: 'Falsche Option'}, {text: 'Richtige Option', correct: true}]}]},
-  {id: 'd1', type: 'detective', sentences: [{de: 'Ich sehe den Hund.'}], rules: [{text: 'regla'}], apply: [{text: 'Ich sehe ___ Mann.', answers: ['den', 'einen']}]},
+  {id: 'd1', type: 'detective', sentences: [{pt: 'Ich sehe den Hund.'}], rules: [{text: 'regla'}], apply: [{text: 'Ich sehe ___ Mann.', answers: ['den', 'einen']}]},
   {id: 'w1', type: 'writing-guided', prompt: 'Escribí', tips: ['t'], checklist: ['c'], model: 'Ich heiße Ana.'},
   {id: 'w2', type: 'writing-free', prompt: 'Escribí', model: 'Ich wohne hier.'},
 ];
 
 const out = germanTexts({
-  curriculum: {tags: {'a1.x': {examples: [{de: 'Ich bin müde.', es: 'x'}]}}},
+  curriculum: {tags: {'a1.x': {examples: [{pt: 'Ich bin müde.', es: 'x'}]}}},
   lexicon: [{lemma: 'Hund', pos: 'noun', article: 'der', plural: 'Hunde', field: 'x'}],
   templates: [{id: 'tpl', tag_prefix: 'a1.akk', det: 'indef', kase: 'akk', verb: 'haben', context: 'c',
     text: 'Ich habe ___ {noun}.', slot: {pos: 'noun', fields: ['x'], countable: true}}],

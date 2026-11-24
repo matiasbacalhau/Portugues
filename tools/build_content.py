@@ -10,7 +10,7 @@ SRC = os.path.join(ROOT, 'content-src')
 OUT = os.path.join(ROOT, 'data')
 
 # Claves de un ejercicio cuyo valor es alemán (para calcular `words`).
-CLAVES_DE = {'text', 'de', 'answers', 'chunks', 'tokens', 'corrections', 'options', 'bubbles', 'gaps',
+CLAVES_DE = {'text', 'pt', 'answers', 'chunks', 'tokens', 'corrections', 'options', 'bubbles', 'gaps',
              'questions', 'sentences', 'apply', 'source', 'context'}
 # Claves que son español o explicación: no se recorren.
 CLAVES_ES = {'rule', 'rules', 'errors', 'es', 'prompt', 'instruction', 'scene', 'title', 'dims', 'tag', 'tags'}

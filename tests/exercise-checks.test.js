@@ -9,19 +9,19 @@ const RULE = 'Regla del tag.';
 const RULE_DE = 'Regel des Tags.';
 const ctx = {
   curriculum: {tags: {
-    t: {rule: RULE, rule_de: RULE_DE, orthographic: false},
-    o: {rule: RULE, rule_de: RULE_DE, orthographic: true},
-    'a1.akk.mask': {rule: 'Regla akk.', rule_de: 'Regel für Akkusativ maskulin.', orthographic: false},
-    'a1.sein.praesens': {rule: 'Regla sein.', rule_de: 'Regel für sein im Präsens.', orthographic: false},
-    'a1.pron.personal': {rule: 'Regla pronombres.', rule_de: 'Regel für Personalpronomen.', orthographic: false},
+    t: {rule: RULE, rule_pt: RULE_DE, orthographic: false},
+    o: {rule: RULE, rule_pt: RULE_DE, orthographic: true},
+    'a1.akk.mask': {rule: 'Regla akk.', rule_pt: 'Regel für Akkusativ maskulin.', orthographic: false},
+    'a1.sein.praesens': {rule: 'Regla sein.', rule_pt: 'Regel für sein im Präsens.', orthographic: false},
+    'a1.pron.personal': {rule: 'Regla pronombres.', rule_pt: 'Regel für Personalpronomen.', orthographic: false},
   }},
 };
 const run = (ex, answer) => checkExercise(ex, answer, ctx);
 const noLeak = (rs, accepted) => rs.forEach((r) => accepted.forEach((a) => {
   assert.ok(!r.rule?.includes(a), `${r.key} filtra ${a}`);
   if (!r.ok) {
-    assert.ok(r.rule_de, `${r.key} debe tener rule_de`);
-    assert.ok(!r.rule_de.includes(a), `${r.key} filtra ${a} en rule_de`);
+    assert.ok(r.rule_pt, `${r.key} debe tener rule_pt`);
+    assert.ok(!r.rule_pt.includes(a), `${r.key} filtra ${a} en rule_pt`);
   }
 }));
 
@@ -108,7 +108,7 @@ test('order: acepta cualquier orden válido, compara por texto', async () => {
   const bad = (await run(ex, ['Die', 'Maus', 'sieht', 'die', 'Katze']))[0];
   assert.equal(bad.ok, false);
   assert.equal(bad.rule, RULE);
-  assert.equal(bad.rule_de, RULE_DE);
+  assert.equal(bad.rule_pt, RULE_DE);
   const two = {...ex, answers: [ex.answers[0], ['Die', 'Maus', 'sieht', 'die', 'Katze']]};
   assert.equal((await run(two, ['Die', 'Maus', 'sieht', 'die', 'Katze']))[0].ok, true);
 });
@@ -150,12 +150,12 @@ test('spot-error: palabra correcta tocada, corrección mal escrita, ok', async (
   assert.equal(touched[0].ok, false);
   // Tocar una palabra correcta muestra la regla del ítem (la pista que hace falta), no el título del tema.
   assert.equal(touched[0].rule, 'Esa palabra está bien. Akkusativ.');
-  assert.equal(touched[0].rule_de, `Dieses Wort ist richtig. ${RULE_DE}`);
+  assert.equal(touched[0].rule_pt, `Dieses Wort ist richtig. ${RULE_DE}`);
   assert.equal((await run({...ex, rule: undefined}, {index: 1, text: 'x'}))[0].rule, 'Esa palabra está bien. ' + RULE);
-  assert.equal((await run({...ex, rule: undefined}, {index: 1, text: 'x'}))[0].rule_de, `Dieses Wort ist richtig. ${RULE_DE}`);
+  assert.equal((await run({...ex, rule: undefined}, {index: 1, text: 'x'}))[0].rule_pt, `Dieses Wort ist richtig. ${RULE_DE}`);
   const wrongCorr = await run(ex, {index: 2, text: 'eine'});
   assert.equal(wrongCorr[0].ok, false);
-  assert.equal(wrongCorr[0].rule_de, RULE_DE);
+  assert.equal(wrongCorr[0].rule_pt, RULE_DE);
   noLeak(wrongCorr, ex.corrections);
   assert.equal((await run(ex, {index: 2, text: 'einen'}))[0].ok, true);
 });
@@ -175,8 +175,8 @@ test('detective: regla incorrecta lleva showFicha; apply se evalúa', async () =
   assert.deepEqual(rs.map((r) => r.key), ['d#0', 'd#1', 'd#2']);
   assert.deepEqual(rs.map((r) => r.ok), [false, true, false]);
   assert.equal(rs[0].showFicha, true);
-  assert.equal(rs[0].rule_de, RULE_DE);
-  assert.equal(rs[2].rule_de, RULE_DE);
+  assert.equal(rs[0].rule_pt, RULE_DE);
+  assert.equal(rs[2].rule_pt, RULE_DE);
   noLeak(rs, ['einen', 'eine']);
   const good = await run(ex, {rule: 1, apply: ['einen', 'eine']});
   assert.ok(good.every((r) => r.ok && !r.showFicha));
@@ -220,13 +220,13 @@ test('ninguna regla contiene una respuesta aceptada (todos los tipos)', async ()
     assert.ok(rs.some((r) => !r.ok), `${ex.id}: la respuesta mala debe fallar`);
     for (const r of rs) {
       if (!r.ok) {
-        assert.ok(r.rule_de, `${ex.id}/${r.key} debe tener rule_de`);
-        assert.equal(typeof r.rule_de, 'string');
-        assert.ok(r.rule_de.length > 0, `${ex.id}/${r.key} rule_de no debe estar vacío`);
+        assert.ok(r.rule_pt, `${ex.id}/${r.key} debe tener rule_pt`);
+        assert.equal(typeof r.rule_pt, 'string');
+        assert.ok(r.rule_pt.length > 0, `${ex.id}/${r.key} rule_pt no debe estar vacío`);
       }
       for (const a of accepted) {
         assert.ok(!r.rule?.includes(a), `${ex.id}/${r.key} filtra "${a}": ${r.rule}`);
-        assert.ok(!r.rule_de?.includes(a), `${ex.id}/${r.key} filtra "${a}" en rule_de: ${r.rule_de}`);
+        assert.ok(!r.rule_pt?.includes(a), `${ex.id}/${r.key} filtra "${a}" en rule_pt: ${r.rule_pt}`);
       }
     }
   }

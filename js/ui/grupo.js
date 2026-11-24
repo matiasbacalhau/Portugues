@@ -294,25 +294,25 @@ export default async function grupo(el, { store, content, params }) {
       const info = itemInfo(ex, r.key);
       const example = exampleFor(ex, r, { results, answer, curriculum: C.curriculum, rng });
       return h('div', { class: 'item' },
-        multi && info.label && h('p', { class: 'item-label', lang: 'de' }, rich(info.label)),
+        multi && info.label && h('p', { class: 'item-label', lang: 'pt-BR' }, rich(info.label)),
         r.ok ? h('span', { class: 'tag-ok' }, 'Richtig') : h('span', { class: 'tag-bad' }, 'Falsch'),
         // Lo que escribió el usuario: la frase con lo que difiere subrayado, o la palabra suelta (la situación ya la muestra).
         r.wrong ? underlined(r.given, r.wrong, r.rule !== EVALUATED_OK)
-          : !r.ok && r.given && ex.type !== 'situation' && h('p', { class: 'muted' }, 'Escribiste: ', h('em', { lang: 'de' }, r.given)),
+          : !r.ok && r.given && ex.type !== 'situation' && h('p', { class: 'muted' }, 'Escribiste: ', h('em', { lang: 'pt-BR' }, r.given)),
         // El dictado es una tarea abierta: después de responder se muestra la frase original (regla 2).
-        ex.type === 'dictation' && h('p', {}, 'La frase: ', h('em', { lang: 'de' }, ex.text)),
-        !r.ok && (r.rule || r.rule_de) && (
-          (r.rule_de && r.rule && r.rule_de !== r.rule)
+        ex.type === 'dictation' && h('p', {}, 'La frase: ', h('em', { lang: 'pt-BR' }, ex.text)),
+        !r.ok && (r.rule || r.rule_pt) && (
+          (r.rule_pt && r.rule && r.rule_pt !== r.rule)
             ? [
-                h('p', { class: 'rule-primary', lang: 'de' }, rich(r.rule_de)),
+                h('p', { class: 'rule-primary', lang: 'pt-BR' }, rich(r.rule_pt)),
                 h('details', { class: 'rule-accordion' },
-                  h('summary', { lang: 'de' }, 'Erklärung auf Spanisch anzeigen'),
+                  h('summary', { lang: 'pt-BR' }, 'Erklärung auf Spanisch anzeigen'),
                   h('p', { class: 'rule-detailed', lang: 'es' }, rich(r.rule)),
                 ),
               ]
-            : h('p', { class: 'rule-primary', lang: 'es' }, rich(r.rule || r.rule_de))
+            : h('p', { class: 'rule-primary', lang: 'es' }, rich(r.rule || r.rule_pt))
         ),
-        example && h('p', { class: 'example' }, 'Por ejemplo: ', h('em', { lang: 'de' }, example.de), ` (${example.es}) `, listenButton(example.de)),
+        example && h('p', { class: 'example' }, 'Por ejemplo: ', h('em', { lang: 'pt-BR' }, example.pt), ` (${example.es}) `, listenButton(example.pt)),
         r.notice && h('p', { class: 'muted' }, r.notice),
       );
     });
@@ -323,7 +323,7 @@ export default async function grupo(el, { store, content, params }) {
     const reveal = ex.type === 'card' && cardReveal(ex, results);
     return [
       reveal?.picture && wordPicture(ex.word, 'card'),
-      reveal?.label && h('p', { class: 'sentence' }, reveal.label, ' ', listenButton(reveal.de)),
+      reveal?.label && h('p', { class: 'sentence' }, reveal.label, ' ', listenButton(reveal.pt)),
       ex.type === 'situation' && situationReplay(ex, answer, results),
       allOk && multi ? [h('span', { class: 'tag-ok' }, 'Richtig'), listen, results.filter(r => r.notice).map(r => h('p', { class: 'muted' }, r.notice))] : items,
       !(allOk && multi) && listen,
@@ -335,7 +335,7 @@ export default async function grupo(el, { store, content, params }) {
   // hint: false cuando la regla ya habla de lo subrayado.
   function underlined(text, wrong, hint) {
     return [
-      h('p', { class: 'written', lang: 'de' }, segments(text, wrong).map(x => (x.mark === null ? x.text : h('span', { class: 'mark error' }, x.text)))),
+      h('p', { class: 'written', lang: 'pt-BR' }, segments(text, wrong).map(x => (x.mark === null ? x.text : h('span', { class: 'mark error' }, x.text)))),
       hint && h('p', { class: 'muted' }, wrong.length > 1 ? 'Revisá las palabras subrayadas.' : 'Revisá la palabra subrayada.'),
     ];
   }
@@ -343,7 +343,7 @@ export default async function grupo(el, { store, content, params }) {
   // La situación con lo que escribió el usuario; los huecos fallados en rojo.
   function situationReplay(ex, answer, results) {
     let k = 0;
-    return h('div', { class: 'chat' }, ex.bubbles.map(b => h('div', { class: `bubble ${b.who}`, lang: 'de' },
+    return h('div', { class: 'chat' }, ex.bubbles.map(b => h('div', { class: `bubble ${b.who}`, lang: 'pt-BR' },
       String(b.text).split('___').flatMap((part, i) => {
         if (i === 0) return [part];
         const r = results[k];
@@ -424,7 +424,7 @@ export default async function grupo(el, { store, content, params }) {
   // Reescribir: vuelve a corregir, muestra las marcas y actualiza el resultado si mejora el puntaje.
   function rewriteForm(ex, box, text, onUpdateResult) {
     const input = answerInput({ multiline: true, label: 'Tu reescritura' });
-    input.lang = 'de';
+    input.lang = 'pt-BR';
     input.querySelector('textarea').value = text;
     const out = h('div');
     const btn = h('button', { type: 'button', class: 'secondary', onclick: async () => {

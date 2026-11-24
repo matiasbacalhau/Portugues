@@ -2,8 +2,8 @@
 // comienzo de la frase, que serían ambiguos (ella, ellos o usted: dos respuestas posibles).
 export const SEIN = {ich: 'bin', du: 'bist', er: 'ist', wir: 'sind', ihr: 'seid', sie: 'sind'};
 const SUBJECTS = [
-  {de: 'Ich', person: 'ich'}, {de: 'Du', person: 'du'}, {de: 'Tom', person: 'er'},
-  {de: 'Wir', person: 'wir'}, {de: 'Ihr', person: 'ihr'}, {de: 'Tom und Lea', person: 'sie'},
+  {pt: 'Ich', person: 'ich'}, {pt: 'Du', person: 'du'}, {pt: 'Tom', person: 'er'},
+  {pt: 'Wir', person: 'wir'}, {pt: 'Ihr', person: 'ihr'}, {pt: 'Tom und Lea', person: 'sie'},
 ];
 
 export function instances(template) {
@@ -12,7 +12,7 @@ export function instances(template) {
     type: 'gap',
     tag: template.tag_prefix,
     context: template.context,
-    text: template.text.replace('{subject}', s.de),
+    text: template.text.replace('{subject}', s.pt),
     answers: [SEIN[s.person]],
     dims: {person: s.person},
     generated: true,

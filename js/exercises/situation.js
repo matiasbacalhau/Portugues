@@ -9,10 +9,10 @@ export function render(ex, el, { submit, onNoAudio }) {
   // Sin síntesis de voz, o si la burbuja tiene un hueco, se ve con texto.
   const bubbles = ex.bubbles.map(b => {
     const speaker = ex.listen && b.who === 'them' && !String(b.text).includes('___') ? listenButton(b.text) : null;
-    if (speaker) return h('div', { class: `bubble ${b.who}`, lang: 'de' }, speaker);
+    if (speaker) return h('div', { class: `bubble ${b.who}`, lang: 'pt-BR' }, speaker);
     const { nodes, gaps } = withGaps(b.text, gapSpans.length);
     gapSpans.push(...gaps);
-    return h('div', { class: `bubble ${b.who}`, lang: 'de' }, nodes);
+    return h('div', { class: `bubble ${b.who}`, lang: 'pt-BR' }, nodes);
   });
   const inputs = gapSpans.map((_, i) => answerInput({ label: `Lücke ${i + 1}` }));
   const filled = () => inputs.every(x => x.value().trim() !== '');

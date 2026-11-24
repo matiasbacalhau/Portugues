@@ -141,8 +141,8 @@ export function withoutAudio(ex, {lexicon, rng}) {
 // Después de responder una tarjeta (reglas 2 y 3): imagen y "der Schlüssel · llave" (con 🔊 de `de`) solo si acertó. Tras
 // un error, nada: en el nivel 1 la imagen es el significado; en el nivel 2, la palabra es la respuesta.
 export function cardReveal(ex, results) {
-  if (!results.length || !results.every((r) => r.ok)) return {picture: false, de: null, label: null};
+  if (!results.length || !results.every((r) => r.ok)) return {picture: false, pt: null, label: null};
   const {word} = ex;
-  const de = word.article ? `${word.article} ${word.lemma}` : word.lemma;
-  return {picture: true, de, label: `${de} · ${word.es}`};
+  const pt = word.article ? `${word.article} ${word.lemma}` : word.lemma;
+  return {picture: true, pt, label: `${pt} · ${word.es}`};
 }

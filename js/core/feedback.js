@@ -12,8 +12,8 @@ export function pickExample(tag, dims, curriculum, rng) {
     return shared.length > 0 && shared.every((k) => e.dims[k] !== dims[k]);
   });
   if (!options.length) return null;
-  const {de, es} = pick(options, rng);
-  return {de, es};
+  const {pt, es} = pick(options, rng);
+  return {pt, es};
 }
 
 // Primero las curiosidades del ejercicio, después las del tag; solo con probabilidad 0.25.

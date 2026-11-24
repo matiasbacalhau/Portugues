@@ -47,12 +47,12 @@ steps:
         type: detective
         tag: a1.sein.praesens
         sentences:
-          - {de: "Ich bin Leo.", highlight: "bin"}
-          - {de: "Du bist ganz nass!", highlight: "bist"}
-          - {de: "Der Rucksack ist sehr schwer.", highlight: "ist"}
-          - {de: "Ich bin total müde.", highlight: "bin"}
-          - {de: "Wir sind endlich da.", highlight: "sind"}
-          - {de: "Ihr seid auch neu hier, oder?", highlight: "seid"}
+          - {pt: "Ich bin Leo.", highlight: "bin"}
+          - {pt: "Du bist ganz nass!", highlight: "bist"}
+          - {pt: "Der Rucksack ist sehr schwer.", highlight: "ist"}
+          - {pt: "Ich bin total müde.", highlight: "bin"}
+          - {pt: "Wir sind endlich da.", highlight: "sind"}
+          - {pt: "Ihr seid auch neu hier, oder?", highlight: "seid"}
         rules:
           - {text: "La forma cambia según quién es el sujeto.", correct: true}
           - {text: "La forma cambia según si significa *ser* o *estar*."}
@@ -69,11 +69,11 @@ steps:
         type: detective
         tag: a1.wfragen
         sentences:
-          - {de: "Wo ist die Rezeption?", highlight: "ist"}
-          - {de: "Wer ist das?", highlight: "ist"}
-          - {de: "Woher kommst du?", highlight: "kommst"}
-          - {de: "Wie heißt du?", highlight: "heißt"}
-          - {de: "Wann ist das Frühstück?", highlight: "ist"}
+          - {pt: "Wo ist die Rezeption?", highlight: "ist"}
+          - {pt: "Wer ist das?", highlight: "ist"}
+          - {pt: "Woher kommst du?", highlight: "kommst"}
+          - {pt: "Wie heißt du?", highlight: "heißt"}
+          - {pt: "Wann ist das Frühstück?", highlight: "ist"}
         rules:
           - {text: "La palabra interrogativa va primero y el verbo conjugado va enseguida, en segundo lugar.", correct: true}
           - {text: "El verbo conjugado va siempre al final de la pregunta."}
@@ -128,12 +128,12 @@ steps:
         tag: a1.sein.praesens
         reserve: true
         sentences:
-          - {de: "Ich bin Mia.", highlight: "bin"}
-          - {de: "Du bist Tom, oder?", highlight: "bist"}
-          - {de: "Das Hostel ist klein.", highlight: "ist"}
-          - {de: "Die Küche ist hier.", highlight: "ist"}
-          - {de: "Wir sind aus Chile.", highlight: "sind"}
-          - {de: "Ihr seid zu laut!", highlight: "seid"}
+          - {pt: "Ich bin Mia.", highlight: "bin"}
+          - {pt: "Du bist Tom, oder?", highlight: "bist"}
+          - {pt: "Das Hostel ist klein.", highlight: "ist"}
+          - {pt: "Die Küche ist hier.", highlight: "ist"}
+          - {pt: "Wir sind aus Chile.", highlight: "sind"}
+          - {pt: "Ihr seid zu laut!", highlight: "seid"}
         rules:
           - {text: "La forma depende del sujeto: *ich*, *du*, *wir* e *ihr* tienen cada uno la suya, y *er/sie/es* comparten una.", correct: true}
           - {text: "La forma depende del género del sustantivo que viene después."}

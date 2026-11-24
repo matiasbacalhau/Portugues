@@ -157,10 +157,10 @@ test('cardReveal: imagen y etiqueta solo tras acertar, en los dos niveles', () =
   const verb = {lemma: 'wohnen', es: 'vivir', pos: 'verb'};
   const ok = [{ok: true}];
   const bad = [{ok: false}];
-  assert.deepEqual(cardReveal({type: 'card', rung: 1, word: noun}, ok), {picture: true, de: 'der Schlüssel', label: 'der Schlüssel · llave'});
-  assert.deepEqual(cardReveal({type: 'card', rung: 2, word: noun}, ok), {picture: true, de: 'der Schlüssel', label: 'der Schlüssel · llave'});
-  assert.deepEqual(cardReveal({type: 'card', rung: 1, word: verb}, ok), {picture: true, de: 'wohnen', label: 'wohnen · vivir'});
-  for (const rung of [1, 2]) assert.deepEqual(cardReveal({type: 'card', rung, word: noun}, bad), {picture: false, de: null, label: null});
+  assert.deepEqual(cardReveal({type: 'card', rung: 1, word: noun}, ok), {picture: true, pt: 'der Schlüssel', label: 'der Schlüssel · llave'});
+  assert.deepEqual(cardReveal({type: 'card', rung: 2, word: noun}, ok), {picture: true, pt: 'der Schlüssel', label: 'der Schlüssel · llave'});
+  assert.deepEqual(cardReveal({type: 'card', rung: 1, word: verb}, ok), {picture: true, pt: 'wohnen', label: 'wohnen · vivir'});
+  for (const rung of [1, 2]) assert.deepEqual(cardReveal({type: 'card', rung, word: noun}, bad), {picture: false, pt: null, label: null});
 });
 
 test('withoutAudio: la situación de escucha se saltea (null), como el dictado', () => {

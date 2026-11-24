@@ -55,7 +55,7 @@ function exerciseTexts(ex) {
       });
       break;
     case 'detective':
-      ex.sentences.forEach((s, n) => add(`sentences[${n}]`, s.de));
+      ex.sentences.forEach((s, n) => add(`sentences[${n}]`, s.pt));
       ex.apply.forEach((a, i) => a.answers.forEach((ans, n) =>
         add(`apply[${i}].answers[${n}]`, a.text.includes('___') ? fill(a.text, ans) : ans)));
       break;
@@ -71,7 +71,7 @@ function exerciseTexts(ex) {
 export function germanTexts({curriculum, lexicon, templates, units}) {
   const out = [];
   for (const [tag, t] of Object.entries(curriculum.tags ?? {}))
-    (t.examples ?? []).forEach((e, n) => out.push({where: `curriculum ${tag}: examples[${n}]`, text: e.de}));
+    (t.examples ?? []).forEach((e, n) => out.push({where: `curriculum ${tag}: examples[${n}]`, text: e.pt}));
   for (const tpl of templates)
     for (const ex of instancesOf(tpl, lexicon)) out.push({where: `${ex.id}: text`, text: fill(ex.text, ex.answers[0])});
   for (const u of units)

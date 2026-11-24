@@ -5,16 +5,16 @@ import { pickExample, pickCuriosity } from '../js/core/feedback.js';
 
 const real = JSON.parse(readFileSync(new URL('../data/curriculum.json', import.meta.url)));
 const cur = {tags: {
-  t: {examples: [{de: 'A', es: 'a', dims: {gender: 'm'}}, {de: 'B', es: 'b', dims: {gender: 'f'}}, {de: 'C', es: 'c', dims: {gender: 'n'}}],
+  t: {examples: [{pt: 'A', es: 'a', dims: {gender: 'm'}}, {pt: 'B', es: 'b', dims: {gender: 'f'}}, {pt: 'C', es: 'c', dims: {gender: 'n'}}],
       curiosities: ['del tag']},
-  solo: {examples: [{de: 'A', es: 'a', dims: {gender: 'm'}}]},
+  solo: {examples: [{pt: 'A', es: 'a', dims: {gender: 'm'}}]},
 }};
 
 test('pickExample nunca devuelve un ejemplo con la dimensión evaluada', () => {
-  for (const r of [0, 0.4, 0.99]) assert.notEqual(pickExample('t', {gender: 'm'}, cur, () => r).de, 'A');
+  for (const r of [0, 0.4, 0.99]) assert.notEqual(pickExample('t', {gender: 'm'}, cur, () => r).pt, 'A');
   for (let i = 0; i < 20; i++) {
     const ex = pickExample('a1.akk.mask', {gender: 'm'}, real, Math.random);
-    const src = real.tags['a1.akk.mask'].examples.find((e) => e.de === ex.de);
+    const src = real.tags['a1.akk.mask'].examples.find((e) => e.pt === ex.pt);
     assert.notEqual(src.dims.gender, 'm');
   }
 });
@@ -32,12 +32,12 @@ test('pickCuriosity: null con rng alto; ejercicio antes que tag', () => {
 });
 
 test('pickExample sin dims del ítem: no falla y vale cualquier ejemplo', () => {
-  for (const d of [undefined, {}]) assert.deepEqual(pickExample('t', d, cur, () => 0), {de: 'A', es: 'a'});
+  for (const d of [undefined, {}]) assert.deepEqual(pickExample('t', d, cur, () => 0), {pt: 'A', es: 'a'});
 });
 
 test('pickExample con dims: excluye ejemplos que no tienen esas claves', () => {
-  const c = {tags: {x: {examples: [{de: 'sin', es: 's'}, {de: 'otro', es: 'o', dims: {kase: 'nom'}}, {de: 'ok', es: 'k', dims: {gender: 'f'}}]}}};
-  for (const r of [0, 0.5, 0.99]) assert.equal(pickExample('x', {gender: 'm'}, c, () => r).de, 'ok');
+  const c = {tags: {x: {examples: [{pt: 'sin', es: 's'}, {pt: 'otro', es: 'o', dims: {kase: 'nom'}}, {pt: 'ok', es: 'k', dims: {gender: 'f'}}]}}};
+  for (const r of [0, 0.5, 0.99]) assert.equal(pickExample('x', {gender: 'm'}, c, () => r).pt, 'ok');
 });
 
 test('pickExample compara solo las claves compartidas (gap generado con kase y det)', () => {
@@ -45,12 +45,12 @@ test('pickExample compara solo las claves compartidas (gap generado con kase y d
   for (let i = 0; i < 20; i++) {
     const ex = pickExample('a1.akk.mask', dims, real, Math.random);
     assert.ok(ex, 'hay ejemplo');
-    const src = real.tags['a1.akk.mask'].examples.find((e) => e.de === ex.de);
+    const src = real.tags['a1.akk.mask'].examples.find((e) => e.pt === ex.pt);
     assert.notEqual(src.dims.gender, 'm');
   }
-  const c = {tags: {x: {examples: [{de: 'ajeno', es: 'a', dims: {person: 'ich'}}, {de: 'igual', es: 'i', dims: {gender: 'm', kase: 'nom'}},
-    {de: 'ok', es: 'k', dims: {gender: 'f'}}]}}};
-  for (const r of [0, 0.5, 0.99]) assert.equal(pickExample('x', dims, c, () => r).de, 'ok');
-  const sinCompartidas = {tags: {x: {examples: [{de: 'ajeno', es: 'a', dims: {person: 'ich'}}]}}};
+  const c = {tags: {x: {examples: [{pt: 'ajeno', es: 'a', dims: {person: 'ich'}}, {pt: 'igual', es: 'i', dims: {gender: 'm', kase: 'nom'}},
+    {pt: 'ok', es: 'k', dims: {gender: 'f'}}]}}};
+  for (const r of [0, 0.5, 0.99]) assert.equal(pickExample('x', dims, c, () => r).pt, 'ok');
+  const sinCompartidas = {tags: {x: {examples: [{pt: 'ajeno', es: 'a', dims: {person: 'ich'}}]}}};
   assert.equal(pickExample('x', dims, sinCompartidas, () => 0), null);
 });

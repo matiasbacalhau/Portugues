@@ -11,9 +11,9 @@ const curriculum = {
     'a1.sein.praesens': {
       rule: 'regla sein',
       examples: [
-        {de: 'Ich bin neu hier.', es: 'Soy nuevo acá.', dims: {person: 'ich'}},
-        {de: 'Du bist im Hostel.', es: 'Estás en el hostel.', dims: {person: 'du'}},
-        {de: 'Wir sind in der Küche.', es: 'Estamos en la cocina.', dims: {person: 'wir'}},
+        {pt: 'Ich bin neu hier.', es: 'Soy nuevo acá.', dims: {person: 'ich'}},
+        {pt: 'Du bist im Hostel.', es: 'Estás en el hostel.', dims: {person: 'du'}},
+        {pt: 'Wir sind in der Küche.', es: 'Estamos en la cocina.', dims: {person: 'wir'}},
       ],
       curiosities: ['dato del tag'],
     },
@@ -75,7 +75,7 @@ test('exampleFor: nunca contiene la respuesta de un ítem fallado del ejercicio'
   for (let s = 1; s < 60; s++) {
     const ex = exampleFor(det, results[1], {results, answer: {rule: 0, apply: ['x', 'y']}, curriculum, rng: lcg(s)});
     assert.ok(ex, 'hay ejemplos válidos');
-    assert.ok(!/\bbist\b|\bist\b/.test(ex.de), ex.de);
+    assert.ok(!/\bbist\b|\bist\b/.test(ex.pt), ex.pt);
   }
 });
 

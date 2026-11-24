@@ -58,12 +58,12 @@ steps:
         type: detective
         tag: a1.nom.fem
         sentences:
-          - {de: "Die Wohnung ist hell und ruhig.", highlight: "Die"}
-          - {de: "Der Balkon ist klein, aber schön.", highlight: "Der"}
-          - {de: "Die Heizung ist ziemlich alt.", highlight: "Die"}
-          - {de: "Das Bad ist ganz neu.", highlight: "Das"}
-          - {de: "Die Rechnung vom Vermieter ist schon da.", highlight: "Die"}
-          - {de: "Die Sauberkeit ist für Herrn Krause sehr wichtig.", highlight: "Die"}
+          - {pt: "Die Wohnung ist hell und ruhig.", highlight: "Die"}
+          - {pt: "Der Balkon ist klein, aber schön.", highlight: "Der"}
+          - {pt: "Die Heizung ist ziemlich alt.", highlight: "Die"}
+          - {pt: "Das Bad ist ganz neu.", highlight: "Das"}
+          - {pt: "Die Rechnung vom Vermieter ist schon da.", highlight: "Die"}
+          - {pt: "Die Sauberkeit ist für Herrn Krause sehr wichtig.", highlight: "Die"}
         rules:
           - {text: "El artículo depende del sustantivo, y las palabras en *-ung* y *-keit* llevan siempre el mismo.", correct: true}
           - {text: "El artículo depende del adjetivo que viene después."}
@@ -91,12 +91,12 @@ steps:
         type: detective
         tag: a1.nom.mask
         sentences:
-          - {de: "Der Schrank ist aus Holz.", highlight: "Der"}
-          - {de: "Der Kühlschrank ist leer.", highlight: "Der"}
-          - {de: "Das Zimmer von Jana ist groß.", highlight: "Das"}
-          - {de: "Das Schlafzimmer von Leo ist klein.", highlight: "Das"}
-          - {de: "Die Waschmaschine ist im Keller.", highlight: "Die"}
-          - {de: "Die Kaffeemaschine ist kaputt.", highlight: "Die"}
+          - {pt: "Der Schrank ist aus Holz.", highlight: "Der"}
+          - {pt: "Der Kühlschrank ist leer.", highlight: "Der"}
+          - {pt: "Das Zimmer von Jana ist groß.", highlight: "Das"}
+          - {pt: "Das Schlafzimmer von Leo ist klein.", highlight: "Das"}
+          - {pt: "Die Waschmaschine ist im Keller.", highlight: "Die"}
+          - {pt: "Die Kaffeemaschine ist kaputt.", highlight: "Die"}
         rules:
           - {text: "En una palabra compuesta, el artículo lo pone la última parte.", correct: true}
           - {text: "En una palabra compuesta, el artículo lo pone la primera parte."}
@@ -122,12 +122,12 @@ steps:
         type: detective
         tag: a1.nom.neut
         sentences:
-          - {de: "Der Vermieter heißt Herr Krause.", highlight: "Der"}
-          - {de: "Die Frau im Erdgeschoss ist sehr nett.", highlight: "Die"}
-          - {de: "Das Mädchen im Erdgeschoss heißt Lina.", highlight: "Das"}
-          - {de: "Die Katze von Lina ist dick.", highlight: "Die"}
-          - {de: "Das Kätzchen ist noch winzig.", highlight: "Das"}
-          - {de: "Das Brötchen vom Bäcker ist noch warm.", highlight: "Das"}
+          - {pt: "Der Vermieter heißt Herr Krause.", highlight: "Der"}
+          - {pt: "Die Frau im Erdgeschoss ist sehr nett.", highlight: "Die"}
+          - {pt: "Das Mädchen im Erdgeschoss heißt Lina.", highlight: "Das"}
+          - {pt: "Die Katze von Lina ist dick.", highlight: "Die"}
+          - {pt: "Das Kätzchen ist noch winzig.", highlight: "Das"}
+          - {pt: "Das Brötchen vom Bäcker ist noch warm.", highlight: "Das"}
         rules:
           - {text: "Las palabras en *-chen* llevan siempre el mismo artículo, aunque nombren a una persona o a un animal.", correct: true}
           - {text: "El artículo depende del sexo de la persona o del animal."}
@@ -155,12 +155,12 @@ steps:
         tag: a1.nom.plural
         reserve: true
         sentences:
-          - {de: "Der Tisch ist neu.", highlight: "Der"}
-          - {de: "Die Tische sind alt.", highlight: "Die"}
-          - {de: "Das Bett ist bequem.", highlight: "Das"}
-          - {de: "Die Betten sind zu kurz.", highlight: "Die"}
-          - {de: "Die Lampe ist schön.", highlight: "Die"}
-          - {de: "Die Lampen sind kaputt.", highlight: "Die"}
+          - {pt: "Der Tisch ist neu.", highlight: "Der"}
+          - {pt: "Die Tische sind alt.", highlight: "Die"}
+          - {pt: "Das Bett ist bequem.", highlight: "Das"}
+          - {pt: "Die Betten sind zu kurz.", highlight: "Die"}
+          - {pt: "Die Lampe ist schön.", highlight: "Die"}
+          - {pt: "Die Lampen sind kaputt.", highlight: "Die"}
         rules:
           - {text: "En plural el artículo es siempre el mismo, sea cual sea el género del singular.", correct: true}
           - {text: "En plural cada sustantivo conserva el artículo del singular."}

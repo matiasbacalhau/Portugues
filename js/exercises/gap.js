@@ -10,5 +10,5 @@ export function render(ex, el, { submit }) {
   const btn = onceButton('Prüfen', () => submit(input.value()), () => input.value().trim() !== '');
   input.addEventListener('input', btn.refresh);
   onEnter(input, () => btn.click());
-  el.append(ex.context && h('p', { class: 'muted' }, rich(ex.context)), h('p', { class: 'sentence', lang: 'de' }, nodes), input, btn);
+  el.append(ex.context && h('p', { class: 'muted' }, rich(ex.context)), h('p', { class: 'sentence', lang: 'pt-BR' }, nodes), input, btn);
 }

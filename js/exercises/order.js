@@ -4,8 +4,8 @@ import { onceButton } from './common.js';
 
 export function render(ex, el, { submit }) {
   const picked = [];
-  const line = h('div', { class: 'built', lang: 'de', 'aria-live': 'polite' });
-  const pool = h('div', { class: 'pool', lang: 'de' });
+  const line = h('div', { class: 'built', lang: 'pt-BR', 'aria-live': 'polite' });
+  const pool = h('div', { class: 'pool', lang: 'pt-BR' });
   const btn = onceButton('Prüfen', () => submit(picked.map(i => ex.chunks[i])), () => picked.length === ex.chunks.length);
   const toggle = i => {
     const at = picked.indexOf(i);

@@ -55,12 +55,12 @@ steps:
         type: detective
         tag: a1.akk.mask
         sentences:
-          - {de: "Ein Kuchen kostet heute nur zwei Euro.", highlight: "Ein"}
-          - {de: "Dann möchte ich einen Kuchen, bitte.", highlight: "einen"}
-          - {de: "Heute ist ein Kaffee gratis.", highlight: "ein"}
-          - {de: "Super, ich habe sogar einen Becher dabei!", highlight: "einen"}
-          - {de: "Hinter mir steht ein Mann im Schlafanzug.", highlight: "ein"}
-          - {de: "Der Mann braucht dringend einen Kaffee.", highlight: "einen"}
+          - {pt: "Ein Kuchen kostet heute nur zwei Euro.", highlight: "Ein"}
+          - {pt: "Dann möchte ich einen Kuchen, bitte.", highlight: "einen"}
+          - {pt: "Heute ist ein Kaffee gratis.", highlight: "ein"}
+          - {pt: "Super, ich habe sogar einen Becher dabei!", highlight: "einen"}
+          - {pt: "Hinter mir steht ein Mann im Schlafanzug.", highlight: "ein"}
+          - {pt: "Der Mann braucht dringend einen Kaffee.", highlight: "einen"}
         rules:
           - {text: "Cambia cuando el sustantivo es lo que alguien tiene, quiere o necesita (el objeto directo); cuando es el sujeto, no cambia.", correct: true}
           - {text: "Cambia cuando el sustantivo va después del verbo."}
@@ -89,12 +89,12 @@ steps:
         type: detective
         tag: a1.akk.mask
         sentences:
-          - {de: "Der Apfelkuchen ist noch warm.", highlight: "Der"}
-          - {de: "Ich möchte den Apfelkuchen, bitte.", highlight: "den"}
-          - {de: "Die Torte sieht fantastisch aus.", highlight: "Die"}
-          - {de: "Paul möchte die Torte mit Erdbeeren.", highlight: "die"}
-          - {de: "Das Brot ist von heute Morgen.", highlight: "Das"}
-          - {de: "Jana braucht das Brot für morgen.", highlight: "das"}
+          - {pt: "Der Apfelkuchen ist noch warm.", highlight: "Der"}
+          - {pt: "Ich möchte den Apfelkuchen, bitte.", highlight: "den"}
+          - {pt: "Die Torte sieht fantastisch aus.", highlight: "Die"}
+          - {pt: "Paul möchte die Torte mit Erdbeeren.", highlight: "die"}
+          - {pt: "Das Brot ist von heute Morgen.", highlight: "Das"}
+          - {pt: "Jana braucht das Brot für morgen.", highlight: "das"}
         rules:
           - {text: "Cuando el sustantivo es el objeto, cambia un solo género; los otros dos quedan igual que como sujeto.", correct: true}
           - {text: "Cuando el sustantivo es el objeto, cambian los tres géneros."}
@@ -135,12 +135,12 @@ steps:
         tag: a1.akk.mask
         reserve: true
         sentences:
-          - {de: "Frau Becker hat heute keinen Apfelkuchen.", highlight: "keinen"}
-          - {de: "Kein Kuchen ist so gut wie ihr Apfelkuchen.", highlight: "Kein"}
-          - {de: "Ich brauche keinen Zucker im Kaffee.", highlight: "keinen"}
-          - {de: "Paul möchte keine Milch.", highlight: "keine"}
-          - {de: "Jana möchte heute kein Brötchen.", highlight: "kein"}
-          - {de: "Das ist kein Problem.", highlight: "kein"}
+          - {pt: "Frau Becker hat heute keinen Apfelkuchen.", highlight: "keinen"}
+          - {pt: "Kein Kuchen ist so gut wie ihr Apfelkuchen.", highlight: "Kein"}
+          - {pt: "Ich brauche keinen Zucker im Kaffee.", highlight: "keinen"}
+          - {pt: "Paul möchte keine Milch.", highlight: "keine"}
+          - {pt: "Jana möchte heute kein Brötchen.", highlight: "kein"}
+          - {pt: "Das ist kein Problem.", highlight: "kein"}
         rules:
           - {text: "*kein* cambia igual que *ein*: en un solo género, y solo cuando el sustantivo es el objeto.", correct: true}
           - {text: "*kein* cambia en los tres géneros cuando el sustantivo es el objeto."}

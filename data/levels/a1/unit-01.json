@@ -92,27 +92,27 @@
        "tag": "a1.sein.praesens",
        "sentences": [
         {
-         "de": "Ich bin Leo.",
+         "pt": "Ich bin Leo.",
          "highlight": "bin"
         },
         {
-         "de": "Du bist ganz nass!",
+         "pt": "Du bist ganz nass!",
          "highlight": "bist"
         },
         {
-         "de": "Der Rucksack ist sehr schwer.",
+         "pt": "Der Rucksack ist sehr schwer.",
          "highlight": "ist"
         },
         {
-         "de": "Ich bin total müde.",
+         "pt": "Ich bin total müde.",
          "highlight": "bin"
         },
         {
-         "de": "Wir sind endlich da.",
+         "pt": "Wir sind endlich da.",
          "highlight": "sind"
         },
         {
-         "de": "Ihr seid auch neu hier, oder?",
+         "pt": "Ihr seid auch neu hier, oder?",
          "highlight": "seid"
         }
        ],
@@ -176,23 +176,23 @@
        "tag": "a1.wfragen",
        "sentences": [
         {
-         "de": "Wo ist die Rezeption?",
+         "pt": "Wo ist die Rezeption?",
          "highlight": "ist"
         },
         {
-         "de": "Wer ist das?",
+         "pt": "Wer ist das?",
          "highlight": "ist"
         },
         {
-         "de": "Woher kommst du?",
+         "pt": "Woher kommst du?",
          "highlight": "kommst"
         },
         {
-         "de": "Wie heißt du?",
+         "pt": "Wie heißt du?",
          "highlight": "heißt"
         },
         {
-         "de": "Wann ist das Frühstück?",
+         "pt": "Wann ist das Frühstück?",
          "highlight": "ist"
         }
        ],
@@ -340,27 +340,27 @@
        "reserve": true,
        "sentences": [
         {
-         "de": "Ich bin Mia.",
+         "pt": "Ich bin Mia.",
          "highlight": "bin"
         },
         {
-         "de": "Du bist Tom, oder?",
+         "pt": "Du bist Tom, oder?",
          "highlight": "bist"
         },
         {
-         "de": "Das Hostel ist klein.",
+         "pt": "Das Hostel ist klein.",
          "highlight": "ist"
         },
         {
-         "de": "Die Küche ist hier.",
+         "pt": "Die Küche ist hier.",
          "highlight": "ist"
         },
         {
-         "de": "Wir sind aus Chile.",
+         "pt": "Wir sind aus Chile.",
          "highlight": "sind"
         },
         {
-         "de": "Ihr seid zu laut!",
+         "pt": "Ihr seid zu laut!",
          "highlight": "seid"
         }
        ],
@@ -2286,27 +2286,27 @@
        "tag": "a1.nom.fem",
        "sentences": [
         {
-         "de": "Die Wohnung ist hell und ruhig.",
+         "pt": "Die Wohnung ist hell und ruhig.",
          "highlight": "Die"
         },
         {
-         "de": "Der Balkon ist klein, aber schön.",
+         "pt": "Der Balkon ist klein, aber schön.",
          "highlight": "Der"
         },
         {
-         "de": "Die Heizung ist ziemlich alt.",
+         "pt": "Die Heizung ist ziemlich alt.",
          "highlight": "Die"
         },
         {
-         "de": "Das Bad ist ganz neu.",
+         "pt": "Das Bad ist ganz neu.",
          "highlight": "Das"
         },
         {
-         "de": "Die Rechnung vom Vermieter ist schon da.",
+         "pt": "Die Rechnung vom Vermieter ist schon da.",
          "highlight": "Die"
         },
         {
-         "de": "Die Sauberkeit ist für Herrn Krause sehr wichtig.",
+         "pt": "Die Sauberkeit ist für Herrn Krause sehr wichtig.",
          "highlight": "Die"
         }
        ],
@@ -2409,27 +2409,27 @@
        "tag": "a1.nom.mask",
        "sentences": [
         {
-         "de": "Der Schrank ist aus Holz.",
+         "pt": "Der Schrank ist aus Holz.",
          "highlight": "Der"
         },
         {
-         "de": "Der Kühlschrank ist leer.",
+         "pt": "Der Kühlschrank ist leer.",
          "highlight": "Der"
         },
         {
-         "de": "Das Zimmer von Jana ist groß.",
+         "pt": "Das Zimmer von Jana ist groß.",
          "highlight": "Das"
         },
         {
-         "de": "Das Schlafzimmer von Leo ist klein.",
+         "pt": "Das Schlafzimmer von Leo ist klein.",
          "highlight": "Das"
         },
         {
-         "de": "Die Waschmaschine ist im Keller.",
+         "pt": "Die Waschmaschine ist im Keller.",
          "highlight": "Die"
         },
         {
-         "de": "Die Kaffeemaschine ist kaputt.",
+         "pt": "Die Kaffeemaschine ist kaputt.",
          "highlight": "Die"
         }
        ],
@@ -2517,27 +2517,27 @@
        "tag": "a1.nom.neut",
        "sentences": [
         {
-         "de": "Der Vermieter heißt Herr Krause.",
+         "pt": "Der Vermieter heißt Herr Krause.",
          "highlight": "Der"
         },
         {
-         "de": "Die Frau im Erdgeschoss ist sehr nett.",
+         "pt": "Die Frau im Erdgeschoss ist sehr nett.",
          "highlight": "Die"
         },
         {
-         "de": "Das Mädchen im Erdgeschoss heißt Lina.",
+         "pt": "Das Mädchen im Erdgeschoss heißt Lina.",
          "highlight": "Das"
         },
         {
-         "de": "Die Katze von Lina ist dick.",
+         "pt": "Die Katze von Lina ist dick.",
          "highlight": "Die"
         },
         {
-         "de": "Das Kätzchen ist noch winzig.",
+         "pt": "Das Kätzchen ist noch winzig.",
          "highlight": "Das"
         },
         {
-         "de": "Das Brötchen vom Bäcker ist noch warm.",
+         "pt": "Das Brötchen vom Bäcker ist noch warm.",
          "highlight": "Das"
         }
        ],
@@ -2627,27 +2627,27 @@
        "reserve": true,
        "sentences": [
         {
-         "de": "Der Tisch ist neu.",
+         "pt": "Der Tisch ist neu.",
          "highlight": "Der"
         },
         {
-         "de": "Die Tische sind alt.",
+         "pt": "Die Tische sind alt.",
          "highlight": "Die"
         },
         {
-         "de": "Das Bett ist bequem.",
+         "pt": "Das Bett ist bequem.",
          "highlight": "Das"
         },
         {
-         "de": "Die Betten sind zu kurz.",
+         "pt": "Die Betten sind zu kurz.",
          "highlight": "Die"
         },
         {
-         "de": "Die Lampe ist schön.",
+         "pt": "Die Lampe ist schön.",
          "highlight": "Die"
         },
         {
-         "de": "Die Lampen sind kaputt.",
+         "pt": "Die Lampen sind kaputt.",
          "highlight": "Die"
         }
        ],
@@ -4893,27 +4893,27 @@
        "tag": "a1.akk.mask",
        "sentences": [
         {
-         "de": "Ein Kuchen kostet heute nur zwei Euro.",
+         "pt": "Ein Kuchen kostet heute nur zwei Euro.",
          "highlight": "Ein"
         },
         {
-         "de": "Dann möchte ich einen Kuchen, bitte.",
+         "pt": "Dann möchte ich einen Kuchen, bitte.",
          "highlight": "einen"
         },
         {
-         "de": "Heute ist ein Kaffee gratis.",
+         "pt": "Heute ist ein Kaffee gratis.",
          "highlight": "ein"
         },
         {
-         "de": "Super, ich habe sogar einen Becher dabei!",
+         "pt": "Super, ich habe sogar einen Becher dabei!",
          "highlight": "einen"
         },
         {
-         "de": "Hinter mir steht ein Mann im Schlafanzug.",
+         "pt": "Hinter mir steht ein Mann im Schlafanzug.",
          "highlight": "ein"
         },
         {
-         "de": "Der Mann braucht dringend einen Kaffee.",
+         "pt": "Der Mann braucht dringend einen Kaffee.",
          "highlight": "einen"
         }
        ],
@@ -5014,27 +5014,27 @@
        "tag": "a1.akk.mask",
        "sentences": [
         {
-         "de": "Der Apfelkuchen ist noch warm.",
+         "pt": "Der Apfelkuchen ist noch warm.",
          "highlight": "Der"
         },
         {
-         "de": "Ich möchte den Apfelkuchen, bitte.",
+         "pt": "Ich möchte den Apfelkuchen, bitte.",
          "highlight": "den"
         },
         {
-         "de": "Die Torte sieht fantastisch aus.",
+         "pt": "Die Torte sieht fantastisch aus.",
          "highlight": "Die"
         },
         {
-         "de": "Paul möchte die Torte mit Erdbeeren.",
+         "pt": "Paul möchte die Torte mit Erdbeeren.",
          "highlight": "die"
         },
         {
-         "de": "Das Brot ist von heute Morgen.",
+         "pt": "Das Brot ist von heute Morgen.",
          "highlight": "Das"
         },
         {
-         "de": "Jana braucht das Brot für morgen.",
+         "pt": "Jana braucht das Brot für morgen.",
          "highlight": "das"
         }
        ],
@@ -5158,27 +5158,27 @@
        "reserve": true,
        "sentences": [
         {
-         "de": "Frau Becker hat heute keinen Apfelkuchen.",
+         "pt": "Frau Becker hat heute keinen Apfelkuchen.",
          "highlight": "keinen"
         },
         {
-         "de": "Kein Kuchen ist so gut wie ihr Apfelkuchen.",
+         "pt": "Kein Kuchen ist so gut wie ihr Apfelkuchen.",
          "highlight": "Kein"
         },
         {
-         "de": "Ich brauche keinen Zucker im Kaffee.",
+         "pt": "Ich brauche keinen Zucker im Kaffee.",
          "highlight": "keinen"
         },
         {
-         "de": "Paul möchte keine Milch.",
+         "pt": "Paul möchte keine Milch.",
          "highlight": "keine"
         },
         {
-         "de": "Jana möchte heute kein Brötchen.",
+         "pt": "Jana möchte heute kein Brötchen.",
          "highlight": "kein"
         },
         {
-         "de": "Das ist kein Problem.",
+         "pt": "Das ist kein Problem.",
          "highlight": "kein"
         }
        ],

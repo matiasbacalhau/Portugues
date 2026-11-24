@@ -10,7 +10,7 @@ export function render(ex, el, { submit }) {
   const questions = ex.questions.map((q, n) => {
     if (!q.options) {
       const input = answerInput({ label: q.prompt });
-      input.lang = 'de';
+      input.lang = 'pt-BR';
       answers[n] = () => input.value();
       input.addEventListener('input', btn.refresh);
       return input;
@@ -23,10 +23,10 @@ export function render(ex, el, { submit }) {
         btn.refresh();
       },
     }, rich(q.options[i].text)));
-    return h('fieldset', { class: 'question' }, h('legend', { lang: 'de' }, q.prompt), opts);
+    return h('fieldset', { class: 'question' }, h('legend', { lang: 'pt-BR' }, q.prompt), opts);
   });
   el.append(
-    h('div', { class: 'card reading', lang: 'de' }, h('h2', {}, ex.title), ...ex.text.trim().split('\n').map(p => h('p', {}, p))),
+    h('div', { class: 'card reading', lang: 'pt-BR' }, h('h2', {}, ex.title), ...ex.text.trim().split('\n').map(p => h('p', {}, p))),
     ...questions, btn,
   );
 }

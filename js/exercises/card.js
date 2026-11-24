@@ -13,7 +13,7 @@ export function render(ex, el, { submit, onNoAudio }) {
   const prompt = listen
     ? [h('p', { class: 'muted' }, ex.rung === 1 ? 'Höre zu und wähle die Bedeutung.' : 'Höre zu und schreibe mit Artikel.'), speaker]
     : ex.rung === 1
-      ? [h('p', { class: 'muted' }, 'Was bedeutet das?'), h('p', { class: 'sentence', lang: 'de' }, word.pos === 'noun' ? `${word.article} ${word.lemma}` : word.lemma)]
+      ? [h('p', { class: 'muted' }, 'Was bedeutet das?'), h('p', { class: 'sentence', lang: 'pt-BR' }, word.pos === 'noun' ? `${word.article} ${word.lemma}` : word.lemma)]
       : [h('p', { class: 'muted' }, 'Schreibe auf Deutsch, bei Nomen mit Artikel.'), wordPicture(word, 'card'), h('p', { class: 'sentence', lang: 'es' }, word.es)];
   // listenButton() es null sin síntesis de voz: no se agrega.
   el.append(...prompt.filter(Boolean));

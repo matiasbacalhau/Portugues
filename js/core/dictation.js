@@ -19,8 +19,8 @@ export const wordForms = (w) => (w.pos === 'verb' && w.lemma !== 'sein'
 function sentencesOf(ex) {
   switch (ex.type) {
     case 'transform': return ex.answers;
-    case 'translate': return ex.from === 'de' ? [] : ex.answers; // desde el alemán, la respuesta no es alemán
-    case 'detective': return ex.sentences.map((s) => s.de);
+    case 'translate': return ex.from === 'pt' ? [] : ex.answers; // desde el alemán, la respuesta no es alemán
+    case 'detective': return ex.sentences.map((s) => s.pt);
     case 'situation': return ex.bubbles.map((b) => b.text);
     default: return [];
   }
@@ -47,7 +47,7 @@ export function dictationPool(units, templates, lexicon, curriculum) {
       for (const s of t.steps ?? []) for (const ex of s.exercises) texts.push(...sentencesOf(ex));
     }
   }
-  for (const tag of Object.values(curriculum?.tags ?? {})) texts.push(...(tag.examples ?? []).map((e) => e.de));
+  for (const tag of Object.values(curriculum?.tags ?? {})) texts.push(...(tag.examples ?? []).map((e) => e.pt));
   for (const tpl of templates.filter((t) => !t.card_only)) texts.push(...instancesOf(tpl, lexicon).map(filled));
   const cardOnly = templates.filter((t) => t.card_only).flatMap((tpl) => instancesOf(tpl, lexicon).map(filled));
   const out = [];

@@ -8,5 +8,5 @@ export function render(ex, el, { submit }) {
   const btn = onceButton('Prüfen', () => submit(input.value()), () => input.value().trim() !== '');
   input.addEventListener('input', btn.refresh);
   onEnter(input, () => btn.click());
-  el.append(h('p', { class: 'sentence', lang: 'de' }, rich(ex.source)), h('p', {}, rich(ex.instruction)), input, btn);
+  el.append(h('p', { class: 'sentence', lang: 'pt-BR' }, rich(ex.source)), h('p', {}, rich(ex.instruction)), input, btn);
 }

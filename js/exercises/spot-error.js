@@ -21,7 +21,7 @@ export function render(ex, el, { submit }) {
   };
   el.append(
     h('p', {}, rich(ex.prompt ?? 'Dieser Satz enthält einen Fehler. Tippe auf das falsche Wort.')),
-    h('div', { class: 'tokens', lang: 'de' }, words),
+    h('div', { class: 'tokens', lang: 'pt-BR' }, words),
     slot, btn,
   );
 }

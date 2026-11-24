@@ -95,7 +95,7 @@ export function exampleFor(ex, result, {results, answer, curriculum, rng}) {
   for (let i = 0; i < TRIES; i++) {
     const e = pickExample(tag, dims, curriculum, rng);
     if (!e) return null;
-    if (!forbidden.some(a => containsAnswer(e.de, a))) return e;
+    if (!forbidden.some(a => containsAnswer(e.pt, a))) return e;
   }
   return null;
 }
