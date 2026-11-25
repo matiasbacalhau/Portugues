@@ -1,4 +1,4 @@
-import { h } from './dom.js';
+import { h, applyTheme } from './dom.js';
 
 // En iOS el menú Compartir es la forma fiable de guardar un archivo; en otros navegadores, descarga directa.
 async function saveFile(name, text) {
@@ -55,6 +55,16 @@ export default async function ajustes(el, { store }) {
   const name = h('input', { id: 'name', type: 'text', value: settings.name ?? '', autocomplete: 'off', autocapitalize: 'words', spellcheck: 'false',
     onchange: async e => store.set('settings', { ...((await store.get('settings')) ?? {}), name: e.target.value.trim() }) });
 
+  const theme = h('select', {
+    id: 'theme',
+    onchange: async e => {
+      applyTheme(e.target.value);
+      await store.set('settings', { ...((await store.get('settings')) ?? {}), theme: e.target.value });
+    },
+  },
+  h('option', { value: 'light', selected: settings.theme !== 'dark' }, 'Claro'),
+  h('option', { value: 'dark', selected: settings.theme === 'dark' }, 'Oscuro'));
+
   const grammarToken = h('input', {
     id: 'grammar-token',
     type: 'password',
@@ -101,6 +111,10 @@ export default async function ajustes(el, { store }) {
     h('div', { class: 'card' },
       h('label', { for: 'name' }, 'Tu nombre'),
       name,
+    ),
+    h('div', { class: 'card' },
+      h('label', { for: 'theme' }, 'Modo'),
+      theme,
     ),
     h('div', { class: 'card' },
       h('h2', {}, 'Palabras aceptadas'),

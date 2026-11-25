@@ -15,6 +15,7 @@ import { applyResolved } from './core/inicio.js';
 import { activeTagsFor } from './core/progress.js';
 import { loadContent } from './core/content.js';
 import { seedSrs } from './core/srs.js';
+import { applyTheme } from './ui/dom.js';
 
 const views = { home, ajustes, pruebas, grupo, fin, ficha, mapa, tema, escritura };
 let contentPromise;
@@ -90,6 +91,7 @@ async function processLtQueue() {
 }
 
 await store.init();
+applyTheme((await store.get('settings'))?.theme);
 // Carga inicial de la SRS, una sola vez: el glosario viejo no dejó registro de qué palabras se vieron (spec §5.1).
 try {
   const { lexicon, units } = await content();

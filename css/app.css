@@ -40,30 +40,28 @@
   color-scheme: light;
 }
 
-/* Noite: la variante oscura (Sticker "vinyl"). Amarillo para lo que actúa, verde para lo que marca, azul para el tema en curso; los bordes de troquel siguen blancos. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ground: oklch(21% 0.011 81);
-    --ground-2: oklch(25.5% 0.013 72);
-    --surface: oklch(27% 0.013 72);
-    --text: oklch(95.7% 0.013 82);
-    --muted: oklch(76% 0.017 70);
-    --accent: #ffdf00;
-    --accent-deep: #f2c800;
-    --accent-ink: oklch(20% 0.012 81);
-    --accent-tint: oklch(31% 0.06 150);
-    --accent-text: #3ccb6e;
-    --mark: #2dbe60;
-    --mark-ink: oklch(16% 0.01 140);
-    --mark-tint: oklch(31% 0.05 150);
-    --strong: #1e4fc2;
-    --negative: oklch(76% 0.13 28);
-    --negative-bg: oklch(30% 0.06 28);
-    --hair: oklch(40% 0.016 75);
-    --focus: #ffdf00;
-    --shadow-color: oklch(9% 0.006 81);
-    color-scheme: dark;
-  }
+/* Noite: la variante oscura (Sticker "vinyl"), se elige en Ajustes. Amarillo para lo que actúa, verde para lo que marca, azul para el tema en curso; los bordes de troquel siguen blancos. */
+:root[data-theme="dark"] {
+  --ground: oklch(21% 0.011 81);
+  --ground-2: oklch(25.5% 0.013 72);
+  --surface: oklch(27% 0.013 72);
+  --text: oklch(95.7% 0.013 82);
+  --muted: oklch(76% 0.017 70);
+  --accent: #ffdf00;
+  --accent-deep: #f2c800;
+  --accent-ink: oklch(20% 0.012 81);
+  --accent-tint: oklch(31% 0.06 150);
+  --accent-text: #3ccb6e;
+  --mark: #2dbe60;
+  --mark-ink: oklch(16% 0.01 140);
+  --mark-tint: oklch(31% 0.05 150);
+  --strong: #1e4fc2;
+  --negative: oklch(76% 0.13 28);
+  --negative-bg: oklch(30% 0.06 28);
+  --hair: oklch(40% 0.016 75);
+  --focus: #ffdf00;
+  --shadow-color: oklch(9% 0.006 81);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }

@@ -15,3 +15,10 @@ export const isStandalone = () =>
 
 // Texto del contenido con *énfasis* → nodos (texto y <em>).
 export const rich = text => String(text ?? '').split(/\*([^*]+)\*/).map((part, i) => (i % 2 ? h('em', {}, part) : part));
+
+// Modo claro (por defecto) u oscuro, elegido en Ajustes.
+export function applyTheme(theme) {
+  const dark = theme === 'dark';
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#1e1b17' : '#f4f0e9');
+}
