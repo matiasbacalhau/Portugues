@@ -45,9 +45,11 @@ async function registerSW() {
       if (worker.state === 'installed' && navigator.serviceWorker.controller) show(worker);
     });
   });
+  // En la primera visita el SW toma control sin versión vieja que reemplazar: recargar ahí solo cortaría lo que se está haciendo.
+  const hadController = !!navigator.serviceWorker.controller;
   let reloading = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (reloading) return;
+    if (reloading || !hadController) return;
     reloading = true;
     location.reload();
   });
