@@ -23,9 +23,12 @@
   --negative: oklch(48% 0.19 28);
   --negative-bg: oklch(94% 0.03 28);
   --hair: oklch(84% 0.02 80);
-  --shadow-card: 5px 6px 0 var(--text);
-  --shadow-small: 3px 3px 0 var(--text);
-  --shadow-press: 1px 1px 0 var(--text);
+  --mark-ink: var(--text);
+  --focus: var(--strong);
+  --shadow-color: var(--text);
+  --shadow-card: 5px 6px 0 var(--shadow-color);
+  --shadow-small: 3px 3px 0 var(--shadow-color);
+  --shadow-press: 1px 1px 0 var(--shadow-color);
   --radius: 18px;
   --radius-sm: 12px;
   --pill: 999px;
@@ -35,6 +38,32 @@
   --ease-snap: cubic-bezier(0.22, 1, 0.36, 1);
   --dur-micro: 120ms;
   color-scheme: light;
+}
+
+/* Noite: la variante oscura (Sticker "vinyl"). Amarillo para lo que actúa, verde para lo que marca, azul para el tema en curso; los bordes de troquel siguen blancos. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: oklch(21% 0.011 81);
+    --ground-2: oklch(25.5% 0.013 72);
+    --surface: oklch(27% 0.013 72);
+    --text: oklch(95.7% 0.013 82);
+    --muted: oklch(76% 0.017 70);
+    --accent: #ffdf00;
+    --accent-deep: #f2c800;
+    --accent-ink: oklch(20% 0.012 81);
+    --accent-tint: oklch(31% 0.06 150);
+    --accent-text: #3ccb6e;
+    --mark: #2dbe60;
+    --mark-ink: oklch(16% 0.01 140);
+    --mark-tint: oklch(31% 0.05 150);
+    --strong: #1e4fc2;
+    --negative: oklch(76% 0.13 28);
+    --negative-bg: oklch(30% 0.06 28);
+    --hair: oklch(40% 0.016 75);
+    --focus: #ffdf00;
+    --shadow-color: oklch(9% 0.006 81);
+    color-scheme: dark;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -51,7 +80,7 @@ body {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-::selection { background: var(--mark); color: var(--text); }
+::selection { background: var(--mark); color: var(--mark-ink); }
 
 .brand {
   color: var(--text);
@@ -143,7 +172,7 @@ button.secondary:not(:disabled):active, .button.secondary:active { translate: 0 
   button:not(:disabled):hover, .button:hover, button:not(:disabled):active, .button:active, .chunk:hover, .chunk:active { translate: none; }
 }
 
-:focus-visible { outline: 3px solid var(--strong); outline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 
 .status { font-weight: 600; }
 .status.ok { color: var(--accent-text); }
@@ -167,7 +196,7 @@ button.secondary:not(:disabled):active, .button.secondary:active { translate: 0 
   width: auto;
   white-space: nowrap;
   background: var(--mark);
-  color: var(--text);
+  color: var(--mark-ink);
 }
 
 .banner[hidden] { display: none; }
@@ -224,7 +253,7 @@ button.secondary:not(:disabled):active, .button.secondary:active { translate: 0 
 .map-topic::after { font-weight: 700; }
 .map-topic[data-status="nuevo"]::after { content: "novo"; }
 .map-topic[data-status="en-curso"]::after { content: "em andamento"; background: var(--accent); color: var(--accent-ink); }
-.map-topic[data-status="dominado"]::after { content: "dominado"; background: var(--mark); color: var(--text); }
+.map-topic[data-status="dominado"]::after { content: "dominado"; background: var(--mark); color: var(--mark-ink); }
 .map-topic[data-status="reforzar"]::after { content: "repetir"; background: var(--negative-bg); color: var(--negative); }
 .map-topic[data-status="proximamente"]::after { content: "em breve"; }
 .map-topic[data-status="proximamente"] { color: var(--muted); }
@@ -244,7 +273,7 @@ button.secondary:not(:disabled):active, .button.secondary:active { translate: 0 
   border-radius: var(--radius-sm);
 }
 .answer textarea { min-height: 120px; resize: vertical; }
-.answer input:focus, .answer textarea:focus { outline: 3px solid var(--strong); outline-offset: 2px; }
+.answer input:focus, .answer textarea:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
 .umlauts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 8px; }
 /* Dictado: 🔊 y 1× en una línea */
 .listen-row { display: flex; align-items: center; gap: 8px; }
@@ -274,10 +303,10 @@ button.option[aria-pressed="true"], button.option[aria-pressed="true"]:not(:disa
 .chat { margin: 12px 0 16px; display: flex; flex-direction: column; }
 .built { min-height: 52px; padding: 4px 0 8px; border-bottom: 1.5px solid var(--hair); margin-bottom: 12px; }
 .pool, .tokens { margin: 8px 0; }
-.chunk.picked { background: var(--mark); }
+.chunk.picked { background: var(--mark); color: var(--mark-ink); }
 .sentences { list-style: none; padding: 16px; }
 .sentences li { padding: 4px 0; }
-mark { background: var(--mark); color: var(--text); font-weight: 600; border-radius: 4px; padding: 0 2px; }
+mark { background: var(--mark); color: var(--mark-ink); font-weight: 600; border-radius: 4px; padding: 0 2px; }
 .apply { margin-top: 12px; }
 fieldset.question { border: 0; padding: 0; margin: 16px 0 0; }
 fieldset.question legend { font-weight: 500; margin-bottom: 4px; }

@@ -42,7 +42,9 @@ function startServer() {
 }
 
 function launchBrowser(userDataDir) {
-  const bin = process.env.CHROME_BIN ?? '/snap/bin/chromium';
+  const bin = process.env.CHROME_BIN ?? (process.platform === 'darwin'
+    ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+    : '/snap/bin/chromium');
   const proc = spawn(bin, [
     '--headless',
     '--no-sandbox',
@@ -164,8 +166,14 @@ async function main() {
   } finally {
     proc?.kill('SIGKILL');
     server.close();
-    rmSync(userDataDir, { recursive: true, force: true });
+    // Chrome puede seguir escribiendo en su perfil un instante después del kill: un fallo al borrar no debe tapar el resultado.
+    try { rmSync(userDataDir, { recursive: true, force: true }); } catch {}
   }
+}
+
+if (typeof WebSocket === 'undefined') {
+  console.error('e2e_smoke necesita WebSocket global: Node 22 o más, o Node 20 con --experimental-websocket.');
+  process.exit(1);
 }
 
 main().catch((e) => {

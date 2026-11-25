@@ -1,5 +1,5 @@
-Copyright 2022 The Instrument Sans Project Authors (https://github.com/Instrument/instrument-sans)
-Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)
+Copyright (c) 2011 by Vernon Adams (Bowlby One SC)
+Copyright 2019 The Sofia Sans Project Authors (https://github.com/lettersoup/Sofia-Sans)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
