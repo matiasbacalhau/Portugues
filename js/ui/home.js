@@ -23,7 +23,7 @@ export default async function home(el, { store, content }) {
       h('p', { class: 'muted' }, `Etapa ${g.step} · ${s.name}`),
       h('p', {}, rich(s.scene.title)),
       !primary && h('p', { class: 'muted' }, 'Empezarlo cierra el grupo a medias (lo que respondiste queda guardado).'),
-      h('a', { class: primary ? 'button' : 'button secondary', href: `#/grupo/${encodeURIComponent(g.topic)}/${g.step}` }, open && primary ? 'Continuar' : 'Início'),
+      h('a', { class: primary ? 'button' : 'button secondary', href: `#/grupo/${encodeURIComponent(g.topic)}/${g.step}` }, open && primary ? 'Continuar' : 'Começar'),
     );
   };
 

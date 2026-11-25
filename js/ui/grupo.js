@@ -135,7 +135,7 @@ export default async function grupo(el, { store, content, params }) {
         group = { ...group, glossaryShown: true };
         await save();
         next();
-      } }, 'Início'));
+      } }, 'Começar'));
       return;
     }
     if (needsFicha(group, topic)) {

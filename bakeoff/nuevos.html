@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diseños nuevos de Brasil</title>
+<style>
+:root { --bg: #f4f4f2; --card: #ffffff; --ink: #1a1a1a; --muted: #5f5f5c; --line: #e2e2de; }
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.5 system-ui, -apple-system, sans-serif; padding: 32px 24px 48px; }
+header { max-width: 1680px; margin: 0 auto 24px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+header p { margin: 0; color: var(--muted); max-width: 80ch; }
+.grid { max-width: 1680px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.frame { aspect-ratio: 1280 / 800; width: 100%; border: 0; display: block; background: var(--bg); }
+.body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+h2 { font-size: 18px; margin: 0; }
+h2 span { color: var(--muted); font-weight: 400; }
+.sw { display: flex; gap: 6px; }
+.sw i { width: 64px; height: 36px; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); position: relative; }
+.sw i::after { content: attr(data-c); position: absolute; top: 40px; left: 0; font: 400 10px system-ui; color: var(--muted); font-style: normal; white-space: nowrap; }
+.sw { margin-bottom: 14px; }
+dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+.why { margin: 4px 0 0; font-weight: 500; }
+a { color: var(--ink); }
+@media (max-width: 1100px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Tres diseños nuevos con Hallmark, en verde, azul y amarillo</h1>
+  <p>Ninguno parte de C. Hallmark repartió temas nuevos y en cada uno reemplacé sus colores por los de Brasil. Bandeira (C1) sigue siendo tu favorita hasta ahora: está en brasil.html.</p>
+</header>
+<div class="grid">
+  <article class="card">
+    <iframe class="frame" title="D1 · Mata" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;D1 · Mata&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Propuesta D1 del concurso: tema Squeeze de Hallmark en verde, amarillo y azul de Brasil.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Gabarito:wght@800&amp;family=Manrope:wght@500;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+--color-paper: oklch(48% 0.135 152); --color-paper-2: oklch(54% 0.135 152); --color-paper-3: oklch(33% 0.13 262);
+--color-ink: oklch(99% 0.005 90); --color-ink-2: oklch(95% 0.02 120); --color-muted: oklch(92% 0.035 150); --color-rule: oklch(62% 0.11 152);
+--color-accent: oklch(90% 0.18 98); --color-accent-2: oklch(84% 0.17 92); --color-accent-ink: oklch(26% 0.08 150); --color-focus: oklch(90% 0.18 98);
+--color-card: oklch(97% 0.012 85); --color-card-ink: oklch(24% 0.05 160);
+--color-desk: oklch(30% 0.08 152); --color-frame: oklch(18% 0.03 160);
+--font-display: &quot;Gabarito&quot;, ui-sans-serif, system-ui, sans-serif; --font-body: &quot;Manrope&quot;, ui-sans-serif, system-ui, sans-serif;
+--radius-card: 24px; --radius-control: 16px; --radius-pill: 999px; --rule-hair: 1px; --rule-bar: 2px;
+--shadow-card: 0 14px 32px -16px oklch(18% 0.05 160 / 0.55);
+--tracking-display: -0.025em; --display-weight: 800;
+--dur-micro: 120ms; --dur-short: 200ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-accent) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 500 16px/1.55 var(--font-body); display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); line-height: 1; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 4rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-muted); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 12px; }
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-frame); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 700; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-weight: 800; font-size: 19px; letter-spacing: var(--tracking-display); }
+.bar a { color: var(--color-ink); font-weight: 700; font-size: 15px; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bar a:hover { text-decoration-color: var(--color-accent); }
+.content { padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 1.5rem; margin: 4px 0 0; color: var(--color-ink-2); }
+.hero { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 12px; }
+.figure small { font-variant-numeric: lining-nums tabular-nums; }
+.figure { font-family: var(--font-display); font-weight: 800; font-size: 9.5rem; line-height: .78; letter-spacing: -0.05em; font-variant-numeric: lining-nums tabular-nums; }
+.figure small { font-size: 3rem; letter-spacing: -0.03em; color: var(--color-muted); }
+.hero p { margin: 0; padding-bottom: 8px; font-weight: 700; line-height: 1.25; }
+.hero p span { display: block; color: var(--color-muted); font-weight: 500; font-size: 14px; }
+.card { background: var(--color-card); color: var(--color-card-ink); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 20px; }
+.card .meta { font-weight: 700; font-size: 14px; margin: 0 0 4px; opacity: .75; }
+.card h3 { font-size: 1.55rem; margin: 0 0 16px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-bar) solid var(--color-ink); border-radius: var(--radius-control); font: 700 17px/1.25 var(--font-body); color: var(--color-ink); background: transparent; cursor: pointer; transition: translate var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out); }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); border-color: var(--color-accent); }
+.btn--primary:hover { background: var(--color-accent-2); border-color: var(--color-accent-2); }
+.btn:active { translate: 0 1px; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible, .tile:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; transition: none; }
+.card .btn:focus-visible { outline-color: var(--color-card-ink); }
+.block { width: 100%; }
+.pill { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-paper-3); color: var(--color-ink); font-weight: 700; font-size: 14px; }
+.map h2 { font-size: 1.35rem; margin: 4px 0 12px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 700 14px var(--font-body); color: var(--color-muted); }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.tile { background: var(--color-paper-2); border-radius: 20px; padding: 12px 16px; min-height: 76px; display: flex; flex-direction: column; justify-content: space-between; font-weight: 700; font-size: 14px; line-height: 1.25; transition: background-color var(--dur-short) var(--ease-out); }
+.tile b { font-family: var(--font-display); font-size: 1.4rem; line-height: 1; }
+.tile.on { background: var(--color-paper-3); box-shadow: inset 0 0 0 3px var(--color-accent); }
+.tile.soon { background: transparent; box-shadow: inset 0 0 0 var(--rule-bar) var(--color-rule); color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn, .tile { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+&lt;section class=&quot;side&quot;&gt;
+&lt;h1 class=&quot;display&quot;&gt;Todo verde, como la mata&lt;/h1&gt;
+&lt;p&gt;El fondo entero es verde. El amarillo queda para los botones y el azul para el tema en el que estás.&lt;/p&gt;
+&lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+&lt;span class=&quot;pill&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+&lt;div class=&quot;status&quot;&gt;21:40&lt;/div&gt;
+&lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+&lt;div class=&quot;hero&quot;&gt;
+&lt;span class=&quot;figure&quot; aria-hidden=&quot;true&quot;&gt;2&lt;small&gt;/5&lt;/small&gt;&lt;/span&gt;
+&lt;p&gt;&lt;span&gt;Etapa 2 de 5&lt;/span&gt;Reconhecer&lt;/p&gt;
+&lt;/div&gt;
+&lt;section class=&quot;card&quot;&gt;
+&lt;p class=&quot;meta&quot;&gt;A1, Unidade 1 Chegando, Tema 1&lt;/p&gt;
+&lt;h3 class=&quot;display&quot;&gt;Pronomes, ser e estar&lt;/h3&gt;
+&lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+&lt;div class=&quot;tiles&quot;&gt;
+&lt;div class=&quot;tile on&quot;&gt;&lt;b&gt;1&lt;/b&gt;Pronomes + ser/estar&lt;/div&gt;
+&lt;div class=&quot;tile&quot;&gt;&lt;b&gt;2&lt;/b&gt;Artigos e contrações&lt;/div&gt;
+&lt;div class=&quot;tile&quot;&gt;&lt;b&gt;3&lt;/b&gt;Presente regular&lt;/div&gt;
+&lt;div class=&quot;tile soon&quot;&gt;&lt;b&gt;+&lt;/b&gt;Outros temas: em breve&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>D1 · Mata <span>tema Squeeze</span></h2>
+      <div class="sw"><i style="background:oklch(48% 0.135 152)" data-c="verde"></i><i style="background:oklch(54% 0.135 152)" data-c="verde claro"></i><i style="background:oklch(90% 0.18 98)" data-c="amarillo"></i><i style="background:oklch(33% 0.13 262)" data-c="azul"></i><i style="background:oklch(97% 0.012 85)" data-c="blanco"></i></div>
+      <dl><dt>Tipografía</dt><dd>Gabarito 800 para títulos y cifras, Manrope para el texto</dd></dl>
+      <p class="why">Todo el fondo es verde y la etapa aparece como un número gigante. El amarillo es solo para los botones y el azul marca el tema en curso.</p>
+      <a href="d1-mata.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+  <article class="card">
+    <iframe class="frame" title="D2 · Escola" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;D2 · Escola&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Propuesta D2 del concurso: tema Werkstatt de Hallmark con azul, verde y amarillo como primarios.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Jost:wght@700&amp;family=Karla:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+--color-paper: oklch(88% 0.022 85); --color-paper-2: oklch(83% 0.026 82); --color-paper-3: oklch(93% 0.016 86);
+--color-ink: oklch(18% 0.008 60); --color-ink-2: oklch(27% 0.01 60); --color-muted: oklch(39% 0.014 62);
+--color-rule: oklch(62% 0.022 72);
+--color-blue: oklch(40% 0.17 262); --color-green: oklch(50% 0.15 150); --color-yellow: oklch(89% 0.17 98);
+--color-accent-ink: oklch(97% 0.012 85); --color-focus: oklch(40% 0.17 262);
+--color-desk: oklch(80% 0.026 82);
+--font-display: &quot;Jost&quot;, &quot;Futura&quot;, sans-serif; --font-body: &quot;Karla&quot;, ui-sans-serif, system-ui, sans-serif;
+--rule-hair: 1px; --rule-bar: 2px; --rule-box: 3px;
+--tracking-display: -0.005em; --display-weight: 700;
+--dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-yellow); color: var(--color-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); line-height: 1.02; text-transform: uppercase; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 3.5rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-ink-2); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 12px; }
+.tag { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; background: var(--color-blue); color: var(--color-accent-ink); font-weight: 600; font-size: 14px; }
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 600; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: var(--rule-bar) solid var(--color-ink); }
+.word { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 18px; }
+.bar a { color: var(--color-ink); font-weight: 600; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bar a:hover { text-decoration-thickness: 3px; }
+.content { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 2.1rem; margin: 0; }
+.sheet { border: var(--rule-box) solid var(--color-ink); }
+.cells { display: grid; grid-template-columns: 64px minmax(0, 1fr); border-bottom: var(--rule-box) solid var(--color-ink); }
+.cells &gt; div { padding: 8px 12px; }
+.cells &gt; div + div { border-left: var(--rule-box) solid var(--color-ink); }
+.cells small { display: block; color: var(--color-muted); font-weight: 600; font-size: 13px; }
+.cells .lvl { font-family: var(--font-display); font-size: 1.9rem; line-height: 1.1; display: flex; align-items: center; justify-content: center; padding: 0; }
+.topic { padding: 12px; border-bottom: var(--rule-box) solid var(--color-ink); }
+.topic h3 { font-size: 1.35rem; margin: 0; }
+.topic small { display: block; color: var(--color-muted); font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+.ladder { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-bottom: var(--rule-box) solid var(--color-ink); }
+.ladder span { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; height: 52px; display: flex; align-items: center; justify-content: center; }
+.ladder span + span { border-left: var(--rule-bar) solid var(--color-ink); }
+.ladder .done { background: var(--color-paper-2); }
+.ladder .now { background: var(--color-blue); color: var(--color-accent-ink); }
+.stage { padding: 8px 12px; display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; }
+.stage b { font-family: var(--font-display); text-transform: uppercase; font-size: 1.2rem; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-bar) solid var(--color-ink); font: 600 16px/1 var(--font-body); text-transform: uppercase; color: var(--color-ink); background: transparent; cursor: pointer; transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out); }
+.btn:hover { background: var(--color-paper-3); }
+.btn--primary { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
+.btn--primary:hover { background: var(--color-ink-2); }
+.btn:active { background: var(--color-paper-2); }
+.btn--primary:active { background: var(--color-ink); color: var(--color-yellow); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; transition: none; }
+.block { width: 100%; border-width: 0; border-top: var(--rule-box) solid var(--color-ink); }
+.map h2 { font-size: 1.2rem; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 600 14px var(--font-body); color: var(--color-muted); text-transform: none; }
+.rows { border-top: var(--rule-bar) solid var(--color-ink); }
+.r { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; min-height: 46px; border-bottom: var(--rule-hair) solid var(--color-rule); font-weight: 600; }
+.r i { width: 28px; height: 28px; font-style: normal; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; }
+.r .b { background: var(--color-blue); color: var(--color-accent-ink); }
+.r .g { background: var(--color-green); color: var(--color-accent-ink); }
+.r .y { background: var(--color-yellow); color: var(--color-ink); }
+.r small { color: var(--color-muted); font-weight: 600; font-size: 13px; }
+.r.soon { color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+&lt;section class=&quot;side&quot;&gt;
+&lt;h1 class=&quot;display&quot;&gt;Un programa de escuela&lt;/h1&gt;
+&lt;p&gt;Celdas con borde negro y tres primarios de Brasil. Cada tema tiene su color: azul, verde o amarillo, y lo mantiene en toda la app.&lt;/p&gt;
+&lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+&lt;span class=&quot;tag&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+&lt;div class=&quot;status&quot;&gt;21:40&lt;/div&gt;
+&lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+&lt;section class=&quot;sheet&quot;&gt;
+&lt;div class=&quot;cells&quot;&gt;
+&lt;div class=&quot;lvl&quot;&gt;A1&lt;/div&gt;
+&lt;div&gt;&lt;small&gt;Unidade 1&lt;/small&gt;Chegando&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;topic&quot;&gt;&lt;small&gt;Tema 1&lt;/small&gt;&lt;h3 class=&quot;display&quot;&gt;Pronomes, ser e estar&lt;/h3&gt;&lt;/div&gt;
+&lt;div class=&quot;ladder&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;done&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;now&quot;&gt;2&lt;/span&gt;&lt;span&gt;3&lt;/span&gt;&lt;span&gt;4&lt;/span&gt;&lt;span&gt;5&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;stage&quot;&gt;&lt;span&gt;Etapa 2 de 5&lt;/span&gt;&lt;b&gt;Reconhecer&lt;/b&gt;&lt;/div&gt;
+&lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+&lt;div class=&quot;rows&quot;&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;i class=&quot;b&quot;&gt;1&lt;/i&gt;Pronomes + ser/estar&lt;small&gt;Etapa 2 de 5&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;i class=&quot;g&quot;&gt;2&lt;/i&gt;Artigos e contrações&lt;small&gt;&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;i class=&quot;y&quot;&gt;3&lt;/i&gt;Presente regular&lt;small&gt;&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r soon&quot;&gt;&lt;i&gt;&lt;/i&gt;Outros temas&lt;small&gt;em breve&lt;/small&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>D2 · Escola <span>tema Werkstatt</span></h2>
+      <div class="sw"><i style="background:oklch(88% 0.022 85)" data-c="masilla"></i><i style="background:oklch(18% 0.008 60)" data-c="tinta"></i><i style="background:oklch(40% 0.17 262)" data-c="azul"></i><i style="background:oklch(50% 0.15 150)" data-c="verde"></i><i style="background:oklch(89% 0.17 98)" data-c="amarillo"></i></div>
+      <dl><dt>Tipografía</dt><dd>Jost 700 en mayúsculas para títulos, Karla para el texto</dd></dl>
+      <p class="why">Un programa de escuela con celdas de borde negro. Las 5 etapas son una fila de casillas y cada tema tiene su color (azul, verde o amarillo) en toda la app.</p>
+      <a href="d2-escola.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+  <article class="card">
+    <iframe class="frame" title="D3 · Gráfica" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;D3 · Gráfica&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Propuesta D3 del concurso: tema Riso de Hallmark impreso con un tambor azul y uno amarillo, que se cruzan en verde.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+--color-paper: oklch(97.5% 0.012 95); --color-paper-2: oklch(96% 0.06 100); --color-paper-3: oklch(92.5% 0.13 100);
+--color-ink: oklch(38% 0.15 262); --color-ink-2: oklch(43% 0.14 262); --color-muted: oklch(48% 0.11 262);
+--color-rule: oklch(84% 0.045 262);
+--color-accent: oklch(90% 0.185 100); --color-accent-ink: oklch(28% 0.12 262); --color-focus: oklch(40% 0.18 262);
+--color-desk: oklch(92% 0.02 95); --color-frame: oklch(28% 0.12 262);
+--font-display: &quot;Cabinet Grotesk&quot;, ui-sans-serif, sans-serif; --font-body: &quot;Literata&quot;, ui-serif, Georgia, serif;
+--radius-card: 2px; --rule-hair: 1px; --rule-frame: 1.5px;
+--texture-opacity: 0.09;
+--tracking-display: -0.025em; --display-weight: 800;
+--dur-micro: 120ms; --dur-short: 200ms; --dur-long: 600ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 4rem; line-height: .92; margin: 0 0 20px; }
+.side p { font-size: 18px; margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 12px; }
+.tag { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-card); background: var(--color-paper-3); font-weight: 500; font-size: 14px; }
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-frame); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 500; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-weight: 800; font-size: 19px; }
+.bar a { color: var(--color-ink); font-weight: 500; text-decoration-color: var(--color-accent); text-decoration-thickness: 3px; text-underline-offset: 3px; }
+.bar a:hover { text-decoration-thickness: 5px; }
+.content { padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 2.5rem; line-height: .95; margin: 8px 0 0; }
+.misreg { position: relative; display: inline-block; isolation: isolate; }
+.misreg::after { content: attr(data-text); position: absolute; inset: 0; z-index: -1; white-space: nowrap; pointer-events: none; color: var(--color-accent); transform: translate(3px, 3px); }
+.next { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 16px; align-items: center; }
+.plate { position: relative; height: 150px; isolation: isolate; }
+.plate .num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 11rem; line-height: 1; letter-spacing: -0.05em; color: var(--color-ink); }
+.plate .drum { position: absolute; left: 6px; top: 38px; width: 112px; height: 92px; border-radius: 50%; background: var(--color-accent); mix-blend-mode: multiply; }
+.grained { position: relative; isolation: isolate; }
+.grained::after { content: &quot;&quot;; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: var(--texture-opacity); background-size: 200px 200px;
+background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;200&#x27; height=&#x27;200&#x27;%3E%3Cfilter id=&#x27;g&#x27;%3E%3CfeTurbulence type=&#x27;fractalNoise&#x27; baseFrequency=&#x27;0.85&#x27; numOctaves=&#x27;2&#x27; stitchTiles=&#x27;stitch&#x27;/%3E%3CfeColorMatrix values=&#x27;0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 9 -4&#x27;/%3E%3C/filter%3E%3Crect width=&#x27;100%25&#x27; height=&#x27;100%25&#x27; filter=&#x27;url(%23g)&#x27;/%3E%3C/svg%3E&quot;); }
+.next .meta { margin: 0 0 4px; font-size: 14px; color: var(--color-muted); }
+.next h3 { font-size: 1.45rem; line-height: .98; margin: 0 0 8px; }
+.next .st { margin: 0; font-weight: 500; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-frame) solid transparent; border-radius: var(--radius-card); font: 800 16px/1 var(--font-display); color: var(--color-ink); background: transparent; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.btn:active { transform: translate(1px, 1px); }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); }
+.btn--primary:hover { background: var(--color-paper-3); }
+.btn--secondary { border-color: var(--color-ink); }
+.btn--secondary:hover { background: var(--color-paper-2); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; transition: none; }
+.block { width: 100%; }
+.map { background: var(--color-paper-2); padding: 16px 16px 8px; border-radius: var(--radius-card); }
+.map h2 { font-size: 1.35rem; line-height: .98; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 500 14px var(--font-body); color: var(--color-muted); }
+.r { display: flex; justify-content: space-between; align-items: center; min-height: 46px; border-top: var(--rule-hair) solid var(--color-rule); }
+.r.on { background: var(--color-paper-3); margin: 0 -16px; padding: 0 16px; border-top-color: transparent; }
+.r small { font-size: 13px; color: var(--color-muted); }
+.r.soon { color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+&lt;section class=&quot;side&quot;&gt;
+&lt;h1 class=&quot;display&quot;&gt;Dos tintas, un verde&lt;/h1&gt;
+&lt;p&gt;Impresión a dos tintas: azul para las palabras, amarillo para los rellenos. El verde aparece solo donde se cruzan, nadie lo mezcla.&lt;/p&gt;
+&lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+&lt;span class=&quot;tag&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn btn--secondary&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+&lt;div class=&quot;status&quot;&gt;21:40&lt;/div&gt;
+&lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;h2 class=&quot;display greet&quot;&gt;Boa noite, &lt;span class=&quot;misreg&quot; data-text=&quot;Matías&quot;&gt;Matías&lt;/span&gt;&lt;/h2&gt;
+&lt;section class=&quot;next&quot;&gt;
+&lt;div class=&quot;plate grained&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;drum&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;
+&lt;p class=&quot;meta&quot;&gt;A1, Unidade 1 Chegando, Tema 1&lt;/p&gt;
+&lt;h3 class=&quot;display&quot;&gt;Pronomes, ser e estar&lt;/h3&gt;
+&lt;p class=&quot;st&quot;&gt;Etapa 2 de 5: Reconhecer&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+&lt;section class=&quot;map grained&quot;&gt;
+&lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+&lt;div class=&quot;r on&quot;&gt;&lt;span&gt;Pronomes + ser/estar&lt;/span&gt;&lt;small&gt;Etapa 2 de 5&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;span&gt;Artigos e contrações&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;span&gt;Presente regular&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r soon&quot;&gt;&lt;span&gt;Outros temas&lt;/span&gt;&lt;small&gt;em breve&lt;/small&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>D3 · Gráfica <span>tema Riso</span></h2>
+      <div class="sw"><i style="background:oklch(97.5% 0.012 95)" data-c="papel"></i><i style="background:oklch(38% 0.15 262)" data-c="tinta azul"></i><i style="background:oklch(90% 0.185 100)" data-c="tinta amarilla"></i><i style="background:oklch(96% 0.06 100)" data-c="amarillo claro"></i><i style="background:oklch(30% 0.09 140)" data-c="verde del cruce"></i></div>
+      <dl><dt>Tipografía</dt><dd>Cabinet Grotesk 800 para títulos, Literata (serif) para el texto</dd></dl>
+      <p class="why">Impreso a dos tintas: azul para las palabras y amarillo para los rellenos. Donde se cruzan aparece verde. Tiene grano de papel y "Matías" impreso un poco corrido.</p>
+      <a href="d3-grafica.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+</div>
+</body>
+</html>
