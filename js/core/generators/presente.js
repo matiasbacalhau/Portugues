@@ -16,6 +16,7 @@ export function instances(template, lexicon = []) {
     type: 'gap',
     tag: template.tag_prefix,
     context: `${template.context} Verbo: *${verb.lemma}*.`,
+    context_es: template.context_es && `${template.context_es} Verbo: *${verb.lemma}*.`,
     text: template.text.replace('{subject}', s.pt),
     answers: present(verb, s.person),
     dims: {person: s.person},

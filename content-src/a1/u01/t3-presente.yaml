@@ -35,7 +35,7 @@ steps:
   # ───────────────────────────── Etapa 1 ─────────────────────────────
   - n: 1
     name: "Descobrir"
-    scene: {title: "Aula de português na varanda", context: "Martes · 18:00 · el Rafa reparte fotocopias y Caju duerme debajo de la mesa"}
+    scene: {title: "Aula de português na varanda", context: "Terça · 18:00 · o Rafa distribui as fotocópias e o Caju dorme embaixo da mesa", context_es: "Martes · 18:00 · el Rafa reparte fotocopias y Caju duerme debajo de la mesa"}
     exercises:
       - id: t3-1-det-ar
         type: detective
@@ -98,7 +98,8 @@ steps:
       - id: t3-1-ch-voce-fala
         type: choice
         tag: a1.presente.regular
-        prompt: "El Rafa le pregunta a la Lea si habla inglés. ¿Qué le dice?"
+        prompt: "O Rafa quer saber se a Lea sabe inglês. O que ele pergunta?"
+        prompt_es: "El Rafa le pregunta a la Lea si habla inglés. ¿Qué le dice?"
         options:
           - {text: "Você fala inglês?", correct: true}
           - {text: "Você falas inglês?", rule: "*você* conjuga en tercera persona, como *usted*: la *-s* del *vos* no va."}
@@ -138,7 +139,7 @@ steps:
   # ───────────────────────────── Etapa 2 ─────────────────────────────
   - n: 2
     name: "Reconhecer"
-    scene: {title: "A rotina da pousada", context: "Miércoles · 8:00 · el pizarrón de la cocina tiene los turnos de la semana"}
+    scene: {title: "A rotina da pousada", context: "Quarta · 8:00 · o quadro da cozinha mostra os turnos da semana", context_es: "Miércoles · 8:00 · el pizarrón de la cocina tiene los turnos de la semana"}
     exercises:
       - id: t3-2-pr-avo
         type: pares
@@ -152,7 +153,8 @@ steps:
       - id: t3-2-se-falan
         type: spot-error
         tag: a1.presente.regular
-        prompt: "Mensaje del Tom en el grupo. Tiene un error."
+        prompt: "Mensagem do Tom no grupo. Tem um erro."
+        prompt_es: "Mensaje del Tom en el grupo. Tiene un error."
         tokens: ["A", "Ana", "e", "o", "Rafa", "falan", "muito", "rápido!"]
         wrong: 5
         corrections: ["falam"]
@@ -163,7 +165,8 @@ steps:
       - id: t3-2-ord-gosto
         type: order
         tag: a1.presente.regular
-        prompt: "Contale al Rafa que te gusta el café de la pousada."
+        prompt: "Diga para o Rafa que o café da pousada é o seu favorito."
+        prompt_es: "Contale al Rafa que te gusta el café de la pousada."
         chunks: ["gosto", "eu", "do café", "da pousada"]
         answers: [["eu", "gosto", "do café", "da pousada"]]
         dims: {person: eu}
@@ -172,7 +175,8 @@ steps:
       - id: t3-2-se-voce-moras
         type: spot-error
         tag: a1.presente.regular
-        prompt: "Mensaje de la Mia a un chico que conoció en la playa. Tiene un error."
+        prompt: "Mensagem da Mia para um menino que ela conheceu na praia. Tem um erro."
+        prompt_es: "Mensaje de la Mia a un chico que conoció en la playa. Tiene un error."
         tokens: ["E", "você?", "Você", "moras", "aqui", "no", "Rio?"]
         wrong: 3
         corrections: ["mora"]
@@ -191,7 +195,8 @@ steps:
       - id: t3-2-ord-a-gente
         type: order
         tag: a1.presente.regular
-        prompt: "Contás a qué hora cenan en la pousada."
+        prompt: "Conte o horário do jantar na pousada."
+        prompt_es: "Contás a qué hora cenan en la pousada."
         chunks: ["às oito", "a gente", "janta"]
         answers: [["a gente", "janta", "às oito"], ["às oito", "a gente", "janta"]]
         dims: {person: ele}
@@ -200,7 +205,8 @@ steps:
       - id: t3-2-se-a-gente-comemos
         type: spot-error
         tag: a1.presente.regular
-        prompt: "Cartelito del pizarrón de la cocina. Tiene un error."
+        prompt: "Aviso do quadro da cozinha. Tem um erro."
+        prompt_es: "Cartelito del pizarrón de la cocina. Tiene un error."
         tokens: ["Quarta:", "a", "gente", "comemos", "na", "varanda."]
         wrong: 3
         corrections: ["come"]
@@ -220,7 +226,8 @@ steps:
       - id: t3-2-ord-abrimos
         type: order
         tag: a1.presente.regular
-        prompt: "La Ana explica a qué hora abren la recepción."
+        prompt: "A Ana explica o horário da recepção."
+        prompt_es: "La Ana explica a qué hora abren la recepción."
         chunks: ["a recepção", "nós", "abrimos", "às sete"]
         answers: [["nós", "abrimos", "a recepção", "às sete"], ["às sete", "nós", "abrimos", "a recepção"]]
         dims: {person: nos}
@@ -230,7 +237,8 @@ steps:
       - id: t3-2-se-eu-vivo
         type: spot-error
         tag: a1.presente.regular
-        prompt: "Tu presentación en la clase del Rafa. Tiene un error."
+        prompt: "A sua apresentação na aula do Rafa. Tem um erro."
+        prompt_es: "Tu presentación en la clase del Rafa. Tiene un error."
         tokens: ["Eu", "sou", "o", "Leo", "e", "vivo", "em", "Rosario."]
         wrong: 5
         corrections: ["moro"]
@@ -242,7 +250,8 @@ steps:
       - id: t3-2-ch-gostar
         type: choice
         tag: a1.presente.regular
-        prompt: "Dona Célia cuenta qué le gusta de Rio. ¿Qué frase está bien?"
+        prompt: "A Dona Célia conta o que ela ama no Rio. Qual frase está certa?"
+        prompt_es: "Dona Célia cuenta qué le gusta de Rio. ¿Qué frase está bien?"
         options:
           - {text: "Eu gosto muito da praia.", correct: true}
           - {text: "Me gusta muito a praia.", rule: "Esa construcción es del español: en portugués la persona es el sujeto y *gostar* pide una preposición."}
@@ -254,7 +263,8 @@ steps:
       - id: t3-2-se-comen
         type: spot-error
         tag: a1.presente.regular
-        prompt: "Mensaje de la Lea sobre los turnos de la cocina. Tiene un error."
+        prompt: "Mensagem da Lea sobre os turnos da cozinha. Tem um erro."
+        prompt_es: "Mensaje de la Lea sobre los turnos de la cocina. Tiene un error."
         tokens: ["O", "Tom", "e", "o", "Martín", "comen", "muito", "tarde."]
         wrong: 5
         corrections: ["comem"]
@@ -265,7 +275,8 @@ steps:
       - id: t3-2-ord-estuda
         type: order
         tag: a1.presente.regular
-        prompt: "Contás qué hace la Mia por las tardes."
+        prompt: "Conte a rotina da Mia à tarde."
+        prompt_es: "Contás qué hace la Mia por las tardes."
         chunks: ["português", "a Mia", "estuda", "de tarde"]
         answers: [["a Mia", "estuda", "português", "de tarde"], ["de tarde", "a Mia", "estuda", "português"]]
         dims: {person: ele}
@@ -295,7 +306,8 @@ steps:
         type: spot-error
         tag: a1.presente.regular
         reserve: true
-        prompt: "Pregunta de un huésped en el libro de la recepción. Tiene un error."
+        prompt: "Pergunta de um hóspede no livro da recepção. Tem um erro."
+        prompt_es: "Pregunta de un huésped en el libro de la recepción. Tiene un error."
         tokens: ["Vocês", "trabalhan", "no", "domingo?"]
         wrong: 1
         corrections: ["trabalham"]
@@ -306,7 +318,8 @@ steps:
       - id: t3-2-ord-bebe
         type: order
         tag: a1.presente.regular
-        prompt: "Contás qué toma el Tom en el desayuno."
+        prompt: "Conte o que o Tom toma no café da manhã."
+        prompt_es: "Contás qué toma el Tom en el desayuno."
         chunks: ["o Tom", "bebe", "suco de laranja"]
         answers: [["o Tom", "bebe", "suco de laranja"]]
         dims: {person: ele}
@@ -315,7 +328,7 @@ steps:
   # ───────────────────────────── Etapa 3 ─────────────────────────────
   - n: 3
     name: "Aplicar no contexto"
-    scene: {title: "O blog da pousada", context: "Jueves · el Rafa escribe en el blog de la pousada sobre la gente que pasa por ahí"}
+    scene: {title: "O blog da pousada", context: "Quinta · o Rafa escreve no blog da pousada sobre as pessoas que passam por lá", context_es: "Jueves · el Rafa escribe en el blog de la pousada sobre la gente que pasa por ahí"}
     generated: 3
     exercises:
       - id: t3-3-read-blog
@@ -367,7 +380,8 @@ steps:
       - id: t3-3-se-elas-estudan
         type: spot-error
         tag: a1.presente.regular
-        prompt: "Comentario en el blog. Tiene un error."
+        prompt: "Comentário no blog. Tem um erro."
+        prompt_es: "Comentario en el blog. Tiene un error."
         tokens: ["Minhas", "filhas", "também", "estudan", "português!"]
         wrong: 3
         corrections: ["estudam"]
@@ -390,7 +404,8 @@ steps:
       - id: t3-3-se-nos-abremos
         type: spot-error
         tag: a1.presente.regular
-        prompt: "Correo de la Ana a un proveedor. Tiene un error."
+        prompt: "E-mail da Ana para um fornecedor. Tem um erro."
+        prompt_es: "Correo de la Ana a un proveedor. Tiene un error."
         tokens: ["Nós", "abremos", "a", "pousada", "às", "sete", "horas."]
         wrong: 1
         corrections: ["abrimos"]
@@ -414,7 +429,8 @@ steps:
       - id: t3-3-se-voce-come
         type: spot-error
         tag: a1.presente.regular
-        prompt: "Pregunta del Tom a la Mia, por chat. Tiene un error."
+        prompt: "Pergunta do Tom para a Mia, pelo chat. Tem um erro."
+        prompt_es: "Pregunta del Tom a la Mia, por chat. Tiene un error."
         tokens: ["Você", "comes", "carne?", "Hoje", "tem", "churrasco!"]
         wrong: 1
         corrections: ["come"]
@@ -440,7 +456,8 @@ steps:
         type: spot-error
         tag: a1.presente.regular
         reserve: true
-        prompt: "Tu respuesta en el blog. Tiene un error."
+        prompt: "A sua resposta no blog. Tem um erro."
+        prompt_es: "Tu respuesta en el blog. Tiene un error."
         tokens: ["Eu", "bebe", "café", "na", "varanda", "todo", "dia."]
         wrong: 1
         corrections: ["bebo"]
@@ -451,13 +468,13 @@ steps:
   # ───────────────────────────── Etapa 4 ─────────────────────────────
   - n: 4
     name: "Produzir com apoio"
-    scene: {title: "Conversa na varanda", context: "Viernes · 22:00 · todos en la varanda, con vista a la bahía"}
+    scene: {title: "Conversa na varanda", context: "Sexta · 22:00 · todo mundo na varanda, com vista para a baía", context_es: "Viernes · 22:00 · todos en la varanda, con vista a la bahía"}
     field: verbos
     generated: 3
     exercises:
       - id: t3-4-sit-trabalho
         type: situation
-        scene: {title: "Na varanda", context: "22:00 · el Martín, el uruguayo, te pregunta por tu vida"}
+        scene: {title: "Na varanda", context: "22:00 · o Martín, o uruguaio, pergunta sobre a sua vida", context_es: "22:00 · el Martín, el uruguayo, te pregunta por tu vida"}
         bubbles:
           - {who: them, text: "E aí, Leo, o que você faz na Argentina?"}
           - {who: me, text: "Eu ___ numa escola. Sou professor de música."}
@@ -488,7 +505,7 @@ steps:
 
       - id: t3-4-sit-rotina
         type: situation
-        scene: {title: "Na varanda", context: "22:15 · la Lea cuenta su rutina en Madrid"}
+        scene: {title: "Na varanda", context: "22:15 · a Lea conta a rotina dela em Madri", context_es: "22:15 · la Lea cuenta su rutina en Madrid"}
         bubbles:
           - {who: them, text: "Em Madri, eu e o meu namorado ___ muito tarde, às dez da noite!"}
           - {who: me, text: "Na Argentina também! E vocês ___ o quê, normalmente?"}
@@ -520,7 +537,8 @@ steps:
       - id: t3-4-gap-gostar
         type: gap
         tag: a1.presente.regular
-        context: "La Ana le pregunta al Martín qué le gusta hacer en Rio."
+        context: "A Ana pergunta para o Martín o que ele curte fazer no Rio."
+        context_es: "La Ana le pregunta al Martín qué le gusta hacer en Rio."
         text: "Eu ___ muito de correr na praia."
         answers: ["gosto"]
         dims: {person: eu}
@@ -531,7 +549,7 @@ steps:
 
       - id: t3-4-sit-domingo
         type: situation
-        scene: {title: "Na varanda", context: "22:40 · planes para el domingo"}
+        scene: {title: "Na varanda", context: "22:40 · planos para o domingo", context_es: "22:40 · planes para el domingo"}
         bubbles:
           - {who: them, text: "Domingo vocês ___ o café da manhã às nove?"}
           - {who: me, text: "Não, domingo a gente ___ mais tarde, às dez."}
@@ -562,7 +580,8 @@ steps:
       - id: t3-4-gap-abrir
         type: gap
         tag: a1.presente.regular
-        context: "Hace calor. Le pedís permiso al Tom para abrir la ventana."
+        context: "Faz calor. Você pede licença ao Tom para abrir a janela."
+        context_es: "Hace calor. Le pedís permiso al Tom para abrir la ventana."
         text: "Tom, eu ___ a janela? Está muito quente."
         answers: ["abro"]
         dims: {person: eu}
@@ -575,7 +594,7 @@ steps:
       - id: t3-4-sit-aula
         type: situation
         reserve: true
-        scene: {title: "Aula de português", context: "Martes · 18:30 · el Rafa pregunta qué hacen todos"}
+        scene: {title: "Aula de português", context: "Terça · 18:30 · o Rafa pergunta o que todo mundo faz", context_es: "Martes · 18:30 · el Rafa pregunta qué hacen todos"}
         bubbles:
           - {who: them, text: "Mia, você ___ muito no café?"}
           - {who: me, text: "Ela trabalha muito! E nós ___ português todo dia."}
@@ -606,7 +625,8 @@ steps:
         type: gap
         tag: a1.presente.regular
         reserve: true
-        context: "En la feria le preguntás a dos señoras si tienen tapioca."
+        context: "Na feira, você procura tapioca e pergunta para duas senhoras."
+        context_es: "En la feria le preguntás a dos señoras si tienen tapioca."
         text: "As senhoras ___ tapioca aqui?"
         answers: ["vendem", "têm", "fazem"]
         dims: {person: eles}
@@ -618,12 +638,13 @@ steps:
   # ───────────────────────────── Etapa 5 ─────────────────────────────
   - n: 5
     name: "Escrever livremente"
-    scene: {title: "Blog da Pousada Maré", context: "Sábado · el Rafa te pide un texto para el blog"}
+    scene: {title: "Blog da Pousada Maré", context: "Sábado · o Rafa pede um texto para o blog", context_es: "Sábado · el Rafa te pide un texto para el blog"}
     exercises:
       - id: t3-5-wg-rotina
         type: writing-guided
         topic: a1.u1.t3
-        prompt: "Contá tu rutina en la pousada: a qué hora te levantás, qué desayunás, qué hacés a la tarde y a la noche."
+        prompt: "Conte a sua rotina na pousada: a que horas você acorda, o que você come no café da manhã, o que você faz à tarde e à noite."
+        prompt_es: "Contá tu rutina en la pousada: a qué hora te levantás, qué desayunás, qué hacés a la tarde y a la noche."
         constraints:
           - "Al menos 4 verbos distintos en presente."
           - "Entre 4 y 6 oraciones."
@@ -641,7 +662,8 @@ steps:
       - id: t3-5-wg-pessoas
         type: writing-guided
         topic: a1.u1.t3
-        prompt: "Escribí para el blog sobre dos personas de la pousada: qué hacen, dónde viven, qué idiomas hablan."
+        prompt: "Escreva para o blog sobre duas pessoas da pousada: o que fazem, onde moram, que línguas falam."
+        prompt_es: "Escribí para el blog sobre dos personas de la pousada: qué hacen, dónde viven, qué idiomas hablan."
         constraints:
           - "Una persona con *ele* o *ela* y dos personas juntas con *eles* o *elas*."
           - "Al menos 3 verbos distintos en presente."
@@ -658,7 +680,8 @@ steps:
       - id: t3-5-wf-convite
         type: writing-free
         topic: a1.u1.t3
-        prompt: "Escribile a la gente de la pousada para invitarlos a un asado argentino: qué día, a qué hora, qué comen y qué toman."
+        prompt: "Escreva para o pessoal da pousada e convide todo mundo para um churrasco argentino: que dia, a que horas, o que vocês vão comer e beber."
+        prompt_es: "Escribile a la gente de la pousada para invitarlos a un asado argentino: qué día, a qué hora, qué comen y qué toman."
         tips:
           - "Podés hablarles con *vocês* y contar lo que van a hacer con *a gente* o *nós*."
           - "*a gente* conjuga como *ele*; *nós*, con *-mos*."

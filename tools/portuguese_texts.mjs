@@ -13,6 +13,10 @@ const fill = (text, answer) => text.replace('___', answer);
 function exerciseTexts(ex) {
   const out = [];
   const add = (field, text, multi) => out.push({where: `${ex.id}: ${field}`, text, ...(multi && {multi: true})});
+  // Consignas y contextos en portugués (los que tienen su versión `_es`).
+  if (ex.prompt_es) add('prompt', ex.prompt);
+  if (ex.context_es) add('context', ex.context);
+  if (ex.scene?.context_es) add('scene.context', ex.scene.context);
   switch (ex.type) {
     case 'gap':
       add('text', fill(ex.text, ex.answers[0]));
@@ -75,12 +79,16 @@ export function portugueseTexts({curriculum, lexicon, templates, units}) {
   const out = [];
   for (const [tag, t] of Object.entries(curriculum.tags ?? {}))
     (t.examples ?? []).forEach((e, n) => out.push({where: `curriculum ${tag}: examples[${n}]`, text: e.pt}));
-  for (const tpl of templates)
+  for (const tpl of templates) {
+    if (tpl.context_es) out.push({where: `${tpl.id}: context`, text: tpl.context});
     for (const ex of instancesOf(tpl, lexicon)) out.push({where: `${ex.id}: text`, text: fill(ex.text, ex.answers[0])});
+  }
   for (const u of units)
     for (const topic of u.topics)
-      for (const step of topic.steps ?? [])
+      for (const [i, step] of (topic.steps ?? []).entries()) {
+        if (step.scene?.context_es) out.push({where: `${topic.topic} step ${i + 1}: scene`, text: step.scene.context});
         for (const ex of step.exercises ?? []) out.push(...exerciseTexts(ex));
+      }
   return out;
 }
 

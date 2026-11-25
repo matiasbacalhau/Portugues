@@ -161,8 +161,8 @@ button.secondary, .button.secondary {
 }
 
 button:disabled { background: var(--ground-2); color: var(--muted); box-shadow: inset 0 0 0 2px var(--hair); cursor: not-allowed; }
-button:not(:disabled):hover, .button:hover { background: var(--accent-deep); translate: 0 -1px; }
-button.secondary:not(:disabled):hover, .button.secondary:hover { background: var(--ground-2); }
+@media (hover: hover) { button:not(:disabled):hover, .button:hover { background: var(--accent-deep); translate: 0 -1px; } }
+@media (hover: hover) { button.secondary:not(:disabled):hover, .button.secondary:hover { background: var(--ground-2); } }
 button:not(:disabled):active, .button:active { translate: 4px 5px; box-shadow: 0 0 0 5px var(--white), var(--shadow-press); }
 button.secondary:not(:disabled):active, .button.secondary:active { translate: 0 1px; box-shadow: inset 0 0 0 2px var(--text); }
 @media (prefers-reduced-motion: reduce) {
@@ -229,7 +229,7 @@ button.secondary:not(:disabled):active, .button.secondary:active { translate: 0 
   box-shadow: inset 0 0 0 2px var(--text), var(--shadow-small);
   transition: translate 180ms var(--ease-snap), box-shadow 180ms var(--ease-snap);
 }
-.chunk:not(:disabled):hover { background: var(--ground-2); translate: 0 -1px; }
+@media (hover: hover) { .chunk:not(:disabled):hover { background: var(--ground-2); translate: 0 -1px; } }
 .chunk:not(:disabled):active { translate: 2px 2px; box-shadow: inset 0 0 0 2px var(--text), var(--shadow-press); }
 .chunk.used { opacity: 0.5; box-shadow: none; translate: 0 2px; text-decoration: line-through; }
 
@@ -276,7 +276,7 @@ button.secondary:not(:disabled):active, .button.secondary:active { translate: 0 
 /* Dictado: 🔊 y 1× en una línea */
 .listen-row { display: flex; align-items: center; gap: 8px; }
 .umlauts button { flex: 1; width: auto; min-width: 44px; margin: 0; padding: 0; background: var(--surface); color: var(--text); font-weight: 600; border-radius: var(--radius-sm); box-shadow: inset 0 0 0 2px var(--text); }
-.umlauts button:not(:disabled):hover { background: var(--ground-2); }
+@media (hover: hover) { .umlauts button:not(:disabled):hover { background: var(--ground-2); } }
 .umlauts button:not(:disabled):active { translate: 0 1px; box-shadow: inset 0 0 0 2px var(--text); }
 
 input[type="file"] { width: 100%; font: inherit; margin: 8px 0; }
@@ -297,7 +297,8 @@ button.small, .button.small { width: auto; min-height: 44px; padding: 8px 16px; 
 .scene { color: var(--muted); font-size: 0.95rem; }
 .sentence { font-size: 1.15rem; }
 button.option { text-align: left; font-weight: 500; }
-button.option[aria-pressed="true"], button.option[aria-pressed="true"]:not(:disabled):hover { background: var(--strong); color: var(--strong-ink); box-shadow: inset 0 0 0 2px var(--strong); }
+button.option[aria-pressed="true"] { background: var(--strong); color: var(--strong-ink); box-shadow: inset 0 0 0 2px var(--strong); }
+@media (hover: hover) { button.option[aria-pressed="true"]:not(:disabled):hover { background: var(--strong); color: var(--strong-ink); box-shadow: inset 0 0 0 2px var(--strong); } }
 .chat { margin: 12px 0 16px; display: flex; flex-direction: column; }
 .built { min-height: 52px; padding: 4px 0 8px; border-bottom: 1.5px solid var(--hair); margin-bottom: 12px; }
 .pool, .tokens { margin: 8px 0; }

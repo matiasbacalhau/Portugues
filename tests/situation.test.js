@@ -10,7 +10,7 @@ const sit = {
 test('UI situación: sin listen ni con listen sin onNoAudio no se agregan hijos undefined/false/null', async () => {
   // DOM mínimo: alcanza para que h() arme elementos y registre los hijos que recibe append.
   const mk = (tag) => ({tag, children: [], value: '', textContent: '', append(...c) { this.children.push(...c); }, setAttribute() {}, addEventListener() {}, querySelector: () => mk('x'), querySelectorAll: () => []});
-  globalThis.document = {createElement: mk, createTextNode: (t) => ({text: t})};
+  globalThis.document = {createElement: mk, createTextNode: (t) => ({text: t}), createDocumentFragment: () => mk('#fragment')};
   globalThis.window = {};
   try {
     const {render} = await import('../js/exercises/situation.js');

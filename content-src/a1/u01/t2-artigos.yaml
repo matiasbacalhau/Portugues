@@ -33,7 +33,7 @@ steps:
   # ───────────────────────────── Etapa 1 ─────────────────────────────
   - n: 1
     name: "Descobrir"
-    scene: {title: "A cozinha compartilhada", context: "Pousada Maré · 20:00 · todos cocinan a la vez y nadie encuentra nada"}
+    scene: {title: "A cozinha compartilhada", context: "Pousada Maré · 20:00 · todo mundo cozinha junto e ninguém acha nada", context_es: "Pousada Maré · 20:00 · todos cocinan a la vez y nadie encuentra nada"}
     exercises:
       - id: t2-1-det-em
         type: detective
@@ -77,7 +77,8 @@ steps:
       - id: t2-1-ch-leite
         type: choice
         tag: a1.genero.masc
-        prompt: "La Lea busca algo para el café. ¿Qué pregunta?"
+        prompt: "A Lea procura alguma coisa para o café. O que ela pergunta?"
+        prompt_es: "La Lea busca algo para el café. ¿Qué pregunta?"
         options:
           - {text: "Onde está o leite?", correct: true}
           - {text: "Onde está a leite?", rule: "Esta palabra cambia de género respecto del español: en portugués no es femenina."}
@@ -89,7 +90,8 @@ steps:
       - id: t2-1-ch-viagem
         type: choice
         tag: a1.genero.fem
-        prompt: "La Ana le pregunta a Dona Célia, que llegó de Lisboa, cómo le fue. Dona Célia contesta:"
+        prompt: "A Ana pergunta para a Dona Célia, que chegou de Lisboa, como foi tudo. A Dona Célia responde:"
+        prompt_es: "La Ana le pregunta a Dona Célia, que llegó de Lisboa, cómo le fue. Dona Célia contesta:"
         options:
           - {text: "A viagem foi ótima, obrigada.", correct: true}
           - {text: "O viagem foi ótimo, obrigada.", rule: "Las palabras en *-agem* (el *-aje* del español) tienen el otro género en portugués."}
@@ -100,7 +102,8 @@ steps:
       - id: t2-1-ch-portugal
         type: choice
         tag: a1.contr.de
-        prompt: "Dona Célia se presenta en la cocina. ¿Qué dice?"
+        prompt: "A Dona Célia se apresenta na cozinha. O que ela diz?"
+        prompt_es: "Dona Célia se presenta en la cocina. ¿Qué dice?"
         options:
           - {text: "Eu sou de Portugal.", correct: true}
           - {text: "Eu sou do Portugal.", rule: "*Portugal* es uno de los pocos países que no llevan artículo: no hay con qué contraer."}
@@ -131,12 +134,13 @@ steps:
   # ───────────────────────────── Etapa 2 ─────────────────────────────
   - n: 2
     name: "Reconhecer"
-    scene: {title: "Lista do mercado", context: "21:00 · la heladera compartida está casi vacía y arman la lista entre todos"}
+    scene: {title: "Lista do mercado", context: "21:00 · a geladeira compartilhada quase vazia, e todo mundo ajuda a fazer a lista", context_es: "21:00 · la heladera compartida está casi vacía y arman la lista entre todos"}
     exercises:
       - id: t2-2-ord-sal
         type: order
         tag: a1.contr.em
-        prompt: "La Mia busca la sal. Le contestás dónde está."
+        prompt: "A Mia procura o sal. Responda."
+        prompt_es: "La Mia busca la sal. Le contestás dónde está."
         chunks: ["no armário", "o sal", "está"]
         answers: [["o sal", "está", "no armário"], ["no armário", "está", "o sal"]]
         dims: {gender: m}
@@ -145,7 +149,8 @@ steps:
       - id: t2-2-se-a-leite
         type: spot-error
         tag: a1.genero.masc
-        prompt: "Lista del mercado escrita por el Tom en la puerta de la heladera. Tiene un error."
+        prompt: "Lista do mercado que o Tom escreveu na porta da geladeira. Tem um erro."
+        prompt_es: "Lista del mercado escrita por el Tom en la puerta de la heladera. Tiene un error."
         tokens: ["Comprar:", "a", "leite,", "o", "pão", "e", "as", "bananas."]
         wrong: 1
         corrections: ["o"]
@@ -156,7 +161,8 @@ steps:
       - id: t2-2-se-em-a
         type: spot-error
         tag: a1.contr.em
-        prompt: "Mensaje de la Lea al grupo. Tiene un error."
+        prompt: "Mensagem da Lea para o grupo. Tem um erro."
+        prompt_es: "Mensaje de la Lea al grupo. Tiene un error."
         tokens: ["Gente,", "o", "bolo", "está", "em a", "mesa!"]
         wrong: 4
         corrections: ["na"]
@@ -167,7 +173,8 @@ steps:
       - id: t2-2-ord-mochila
         type: order
         tag: a1.contr.de
-        prompt: "La Ana encuentra una mochila en la cocina. ¿De quién es?"
+        prompt: "A Ana acha uma mochila na cozinha. De quem é?"
+        prompt_es: "La Ana encuentra una mochila en la cocina. ¿De quién es?"
         chunks: ["da Mia", "é", "a mochila"]
         answers: [["a mochila", "é", "da Mia"]]
         dims: {gender: f}
@@ -176,7 +183,8 @@ steps:
       - id: t2-2-se-o-mensagem
         type: spot-error
         tag: a1.genero.fem
-        prompt: "Mensaje del Rafa. Tiene un error."
+        prompt: "Mensagem do Rafa. Tem um erro."
+        prompt_es: "Mensaje del Rafa. Tiene un error."
         tokens: ["Leo,", "o", "mensagem", "da", "Ana", "é", "urgente."]
         wrong: 1
         corrections: ["a"]
@@ -187,7 +195,8 @@ steps:
       - id: t2-2-ord-geladeira
         type: order
         tag: a1.contr.em
-        prompt: "El Tom pregunta por las cervezas."
+        prompt: "O Tom pergunta pelas cervejas."
+        prompt_es: "El Tom pregunta por las cervezas."
         chunks: ["estão", "as cervejas", "na geladeira"]
         answers: [["as cervejas", "estão", "na geladeira"], ["na geladeira", "estão", "as cervejas"]]
         dims: {gender: f}
@@ -196,7 +205,8 @@ steps:
       - id: t2-2-ch-cor
         type: choice
         tag: a1.genero.fem
-        prompt: "La Mia muestra la remera que compró en la feria. ¿Qué dice la Lea?"
+        prompt: "A Mia mostra a camiseta que comprou na feira. O que a Lea diz?"
+        prompt_es: "La Mia muestra la remera que compró en la feria. ¿Qué dice la Lea?"
         options:
           - {text: "Que linda a cor!", correct: true}
           - {text: "Que lindo o cor!", rule: "Esta palabra tiene en portugués el otro género que en español."}
@@ -208,7 +218,8 @@ steps:
       - id: t2-2-se-do-portugal
         type: spot-error
         tag: a1.contr.de
-        prompt: "Ficha de registro de Dona Célia. Tiene un error."
+        prompt: "Ficha de registro da Dona Célia. Tem um erro."
+        prompt_es: "Ficha de registro de Dona Célia. Tiene un error."
         tokens: ["Nome:", "Célia", "Ramos.", "Origem:", "do", "Portugal."]
         wrong: 4
         corrections: ["de"]
@@ -219,7 +230,8 @@ steps:
       - id: t2-2-ord-chave
         type: order
         tag: a1.contr.de
-        prompt: "La Ana te da una llave y te dice cuál es."
+        prompt: "A Ana entrega uma chave e explica qual é."
+        prompt_es: "La Ana te da una llave y te dice cuál es."
         chunks: ["a chave", "é", "do quarto 12", "essa"]
         answers: [["essa", "é", "a chave", "do quarto 12"]]
         dims: {gender: m}
@@ -228,7 +240,8 @@ steps:
       - id: t2-2-se-o-sal
         type: spot-error
         tag: a1.genero.masc
-        prompt: "Mensaje de la Mia, que cocina por primera vez. Tiene un error."
+        prompt: "Mensagem da Mia, que cozinha pela primeira vez. Tem um erro."
+        prompt_es: "Mensaje de la Mia, que cocina por primera vez. Tiene un error."
         tokens: ["Alguém", "viu", "a", "sal?", "Não", "acho!"]
         wrong: 2
         corrections: ["o"]
@@ -239,7 +252,8 @@ steps:
       - id: t2-2-ord-praia
         type: order
         tag: a1.contr.em
-        prompt: "Contás dónde está todo el mundo un sábado a la tarde."
+        prompt: "Sábado à tarde, a pousada vazia. Conte onde todo mundo está."
+        prompt_es: "Contás dónde está todo el mundo un sábado a la tarde."
         chunks: ["na praia", "a gente", "está"]
         answers: [["a gente", "está", "na praia"]]
         dims: {gender: f}
@@ -248,7 +262,8 @@ steps:
       - id: t2-2-se-de-o
         type: spot-error
         tag: a1.contr.de
-        prompt: "Tu mensaje a la Ana. Tiene un error."
+        prompt: "A sua mensagem para a Ana. Tem um erro."
+        prompt_es: "Tu mensaje a la Ana. Tiene un error."
         tokens: ["A", "senha", "de o", "wi-fi", "não", "funciona."]
         wrong: 2
         corrections: ["do"]
@@ -259,7 +274,8 @@ steps:
       - id: t2-2-ch-no-brasil
         type: choice
         tag: a1.contr.em
-        prompt: "En la cena, alguien pregunta hace cuánto vive la Ana en Rio. Ella contesta:"
+        prompt: "No jantar, alguém pergunta há quanto tempo a Ana mora no Rio. Ela responde:"
+        prompt_es: "En la cena, alguien pregunta hace cuánto vive la Ana en Rio. Ella contesta:"
         options:
           - {text: "Eu moro no Brasil desde criança.", correct: true}
           - {text: "Eu moro em Brasil desde criança.", rule: "*Brasil* lleva artículo en portugués: la preposición se junta con él."}
@@ -270,7 +286,8 @@ steps:
       - id: t2-2-se-garagem
         type: spot-error
         tag: a1.genero.fem
-        prompt: "Cartel en la entrada de la pousada. Tiene un error."
+        prompt: "Aviso da entrada da pousada. Tem um erro."
+        prompt_es: "Cartel en la entrada de la pousada. Tiene un error."
         tokens: ["As", "bicicletas", "ficam", "no", "garagem."]
         wrong: 3
         corrections: ["na"]
@@ -283,7 +300,8 @@ steps:
         type: order
         tag: a1.genero.masc
         reserve: true
-        prompt: "El Tom quiere miel para el té."
+        prompt: "O Tom quer mel para o chá."
+        prompt_es: "El Tom quiere miel para el té."
         chunks: ["o mel", "onde", "está"]
         answers: [["onde", "está", "o mel"]]
         dims: {gender: m}
@@ -293,7 +311,8 @@ steps:
         type: spot-error
         tag: a1.contr.de
         reserve: true
-        prompt: "La Mia escribe su presentación para el grupo. Tiene un error."
+        prompt: "A Mia escreve a apresentação dela para o grupo. Tem um erro."
+        prompt_es: "La Mia escribe su presentación para el grupo. Tiene un error."
         tokens: ["Oi!", "Eu", "sou", "a", "Mia,", "da", "Chile."]
         wrong: 5
         corrections: ["do"]
@@ -305,7 +324,8 @@ steps:
         type: order
         tag: a1.genero.fem
         reserve: true
-        prompt: "La Ana pregunta por el equipaje de Dona Célia."
+        prompt: "A Ana pergunta pela bagagem da Dona Célia."
+        prompt_es: "La Ana pregunta por el equipaje de Dona Célia."
         chunks: ["a bagagem", "está", "da senhora", "onde"]
         answers: [["onde", "está", "a bagagem", "da senhora"]]
         dims: {gender: f}
@@ -315,7 +335,8 @@ steps:
         type: spot-error
         tag: a1.contr.em
         reserve: true
-        prompt: "Nota pegada en la heladera. Tiene un error."
+        prompt: "Bilhete colado na geladeira. Tem um erro."
+        prompt_es: "Nota pegada en la heladera. Tiene un error."
         tokens: ["Os", "ovos", "estão", "em os", "potes", "azuis."]
         wrong: 3
         corrections: ["nos"]
@@ -326,7 +347,7 @@ steps:
   # ───────────────────────────── Etapa 3 ─────────────────────────────
   - n: 3
     name: "Aplicar no contexto"
-    scene: {title: "A feira de sábado", context: "Sábado · 9:00 · la feria de la Rua Almirante Alexandrino, con la lista en el celular"}
+    scene: {title: "A feira de sábado", context: "Sábado · 9:00 · a feira da Rua Almirante Alexandrino, com a lista pronta", context_es: "Sábado · 9:00 · la feria de la Rua Almirante Alexandrino, con la lista en el celular"}
     generated: 3
     exercises:
       - id: t2-3-read-lista
@@ -380,7 +401,8 @@ steps:
       - id: t2-3-se-num
         type: spot-error
         tag: a1.contr.em
-        prompt: "Reseña de un huésped. Tiene un error."
+        prompt: "Avaliação de um hóspede. Tem um erro."
+        prompt_es: "Reseña de un huésped. Tiene un error."
         tokens: ["A", "pousada", "fica", "em o", "bairro", "mais", "bonito", "do", "Rio."]
         wrong: 3
         corrections: ["no"]
@@ -404,7 +426,8 @@ steps:
       - id: t2-3-se-o-cor
         type: spot-error
         tag: a1.genero.fem
-        prompt: "Mensaje del Tom desde la feria. Tiene un error."
+        prompt: "Mensagem do Tom, direto da feira. Tem um erro."
+        prompt_es: "Mensaje del Tom desde la feria. Tiene un error."
         tokens: ["Comprei", "uma", "camiseta.", "O", "cor", "é", "verde", "e", "amarelo!"]
         wrong: 3
         corrections: ["A"]
@@ -427,7 +450,8 @@ steps:
       - id: t2-3-se-no-portugal
         type: spot-error
         tag: a1.contr.em
-        prompt: "Dona Célia cuenta dónde vive su hija. Tiene un error."
+        prompt: "A Dona Célia conta onde a filha dela mora. Tem um erro."
+        prompt_es: "Dona Célia cuenta dónde vive su hija. Tiene un error."
         tokens: ["Minha", "filha", "mora", "no", "Portugal,", "em", "Lisboa."]
         wrong: 3
         corrections: ["em"]
@@ -452,7 +476,8 @@ steps:
         type: spot-error
         tag: a1.genero.masc
         reserve: true
-        prompt: "Cartel de la verdulería de la feria. Tiene un error."
+        prompt: "Placa da barraca de verduras da feira. Tem um erro."
+        prompt_es: "Cartel de la verdulería de la feria. Tiene un error."
         tokens: ["Hoje", "a", "legume", "da", "semana", "é", "a", "abóbora!"]
         wrong: 1
         corrections: ["o"]
@@ -489,13 +514,13 @@ steps:
   # ───────────────────────────── Etapa 4 ─────────────────────────────
   - n: 4
     name: "Produzir com apoio"
-    scene: {title: "O jantar de sábado", context: "Sábado · 20:30 · ocho personas, una mesa, y todos piden algo a la vez"}
+    scene: {title: "O jantar de sábado", context: "Sábado · 20:30 · oito pessoas, uma mesa, e todo mundo pede alguma coisa ao mesmo tempo", context_es: "Sábado · 20:30 · ocho personas, una mesa, y todos piden algo a la vez"}
     field: comida
     generated: 3
     exercises:
       - id: t2-4-sit-mesa
         type: situation
-        scene: {title: "Na mesa", context: "20:30 · la Ana sirve el feijão"}
+        scene: {title: "Na mesa", context: "20:30 · a Ana serve o feijão", context_es: "20:30 · la Ana sirve el feijão"}
         bubbles:
           - {who: them, text: "Leo, você quer ___ sal?"}
           - {who: me, text: "Quero, sim. E onde está o arroz?"}
@@ -526,7 +551,7 @@ steps:
 
       - id: t2-4-sit-origem
         type: situation
-        scene: {title: "Na mesa", context: "20:45 · llegó un huésped nuevo y se presenta"}
+        scene: {title: "Na mesa", context: "20:45 · chegou um hóspede novo e ele se apresenta", context_es: "20:45 · llegó un huésped nuevo y se presenta"}
         bubbles:
           - {who: them, text: "Oi, gente! Eu sou o Martín. Sou ___ Uruguai."}
           - {who: me, text: "Que legal! Eu sou ___ Argentina. Somos vizinhos!"}
@@ -557,7 +582,8 @@ steps:
       - id: t2-4-gap-mel
         type: gap
         tag: a1.genero.masc
-        context: "El Tom pide algo para el té de la Lea, que está resfriada."
+        context: "O Tom pede alguma coisa para o chá da Lea, que está resfriada."
+        context_es: "El Tom pide algo para el té de la Lea, que está resfriada."
         text: "Ana, você me passa ___ mel, por favor?"
         answers: ["o"]
         dims: {gender: m}
@@ -568,7 +594,7 @@ steps:
 
       - id: t2-4-sit-chave
         type: situation
-        scene: {title: "Depois do jantar", context: "23:00 · la Ana cierra la cocina"}
+        scene: {title: "Depois do jantar", context: "23:00 · a Ana fecha a cozinha", context_es: "23:00 · la Ana cierra la cocina"}
         bubbles:
           - {who: them, text: "Leo, a chave ___ cozinha está com você?"}
           - {who: me, text: "Não, está ___ recepção, com o Rafa."}
@@ -599,7 +625,8 @@ steps:
       - id: t2-4-gap-brasil
         type: gap
         tag: a1.contr.em
-        context: "El Martín le pregunta a la Ana desde cuándo trabaja en la pousada."
+        context: "O Martín pergunta para a Ana desde quando ela trabalha na pousada."
+        context_es: "El Martín le pregunta a la Ana desde cuándo trabaja en la pousada."
         text: "Você mora ___ Brasil há muito tempo?"
         answers: ["no"]
         dims: {gender: m}
@@ -612,7 +639,7 @@ steps:
       - id: t2-4-sit-feira
         type: situation
         reserve: true
-        scene: {title: "Na feira", context: "Sábado · 9:20 · en el puesto de frutas"}
+        scene: {title: "Na feira", context: "Sábado · 9:20 · na barraca de frutas", context_es: "Sábado · 9:20 · en el puesto de frutas"}
         bubbles:
           - {who: them, text: "Bom dia! O que vai ser hoje?"}
           - {who: me, text: "Bom dia! Eu quero ___ abacaxi e duas mangas, por favor."}
@@ -645,7 +672,8 @@ steps:
         type: gap
         tag: a1.contr.de
         reserve: true
-        context: "La Ana le presenta a Dona Célia a un huésped nuevo."
+        context: "A Ana apresenta a Dona Célia para um hóspede novo."
+        context_es: "La Ana le presenta a Dona Célia a un huésped nuevo."
         text: "Esta é a Dona Célia. Ela é ___ Portugal."
         answers: ["de"]
         dims: {gender: m}
@@ -657,12 +685,13 @@ steps:
   # ───────────────────────────── Etapa 5 ─────────────────────────────
   - n: 5
     name: "Escrever livremente"
-    scene: {title: "Grupo da Pousada Maré", context: "Domingo · la heladera compartida es un caos y alguien tiene que poner orden"}
+    scene: {title: "Grupo da Pousada Maré", context: "Domingo · a geladeira compartilhada virou um caos e alguém precisa organizar", context_es: "Domingo · la heladera compartida es un caos y alguien tiene que poner orden"}
     exercises:
       - id: t2-5-wg-geladeira
         type: writing-guided
         topic: a1.u1.t2
-        prompt: "Escribí en el grupo dónde está cada cosa en la cocina, para que nadie más pregunte."
+        prompt: "Escreva no grupo onde fica cada coisa na cozinha, para ninguém mais perguntar."
+        prompt_es: "Escribí en el grupo dónde está cada cosa en la cocina, para que nadie más pregunte."
         constraints:
           - "Al menos 4 cosas, cada una con su lugar."
           - "Usá *no*, *na*, *nos* o *nas* al menos 3 veces."
@@ -680,7 +709,8 @@ steps:
       - id: t2-5-wg-apresentacao
         type: writing-guided
         topic: a1.u1.t2
-        prompt: "Presentá a tres personas de la pousada: de dónde es cada una y dónde vive ahora."
+        prompt: "Apresente três pessoas da pousada: de onde cada uma é e onde mora agora."
+        prompt_es: "Presentá a tres personas de la pousada: de dónde es cada una y dónde vive ahora."
         constraints:
           - "Tres personas, cada una con su país."
           - "Al menos un país sin artículo (*Portugal*, *Cuba*…)."
@@ -698,7 +728,8 @@ steps:
       - id: t2-5-wf-viagem
         type: writing-free
         topic: a1.u1.t2
-        prompt: "Contale a un amigo por mensaje cómo es la pousada: el cuarto, la cocina, la varanda y la gente. Contale también algo de tu viaje."
+        prompt: "Conte para um amigo, por mensagem, como é a pousada: o quarto, a cozinha, a varanda e as pessoas. Conte também alguma coisa da sua viagem."
+        prompt_es: "Contale a un amigo por mensaje cómo es la pousada: el cuarto, la cocina, la varanda y la gente. Contale también algo de tu viaje."
         tips:
           - "Usá las palabras de la cocina y de la casa que viste en esta unidad."
           - "*a viagem*, *a mensagem* y *a cor* son femeninas."

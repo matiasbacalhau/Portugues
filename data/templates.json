@@ -3,7 +3,8 @@
   "id": "tpl-art-def-cozinha",
   "tag_prefix": "a1.genero",
   "det": "def",
-  "context": "Primer día en la cocina de la pousada: le preguntás a la Ana dónde está cada cosa (con artículo definido).",
+  "context": "Primeiro dia na cozinha da pousada: você pergunta para a Ana onde fica cada coisa (com artigo definido).",
+  "context_es": "Primer día en la cocina de la pousada: le preguntás a la Ana dónde está cada cosa (con artículo definido).",
   "text": "Ana, onde está ___ {noun}?",
   "slot": {
    "pos": "noun",
@@ -16,7 +17,8 @@
   "id": "tpl-art-def-mesa",
   "tag_prefix": "a1.genero",
   "det": "def",
-  "context": "En la cena de la pousada: pedís que te pasen algo que está en la mesa (con artículo definido).",
+  "context": "No jantar da pousada: você pede uma coisa que fica na mesa (com artigo definido).",
+  "context_es": "En la cena de la pousada: pedís que te pasen algo que está en la mesa (con artículo definido).",
   "text": "Me passa ___ {noun}, por favor?",
   "slot": {
    "pos": "noun",
@@ -29,7 +31,8 @@
   "id": "tpl-art-indef-feira",
   "tag_prefix": "a1.genero",
   "det": "indef",
-  "context": "En la feria: la Mia quiere solo una unidad de cada cosa para probar.",
+  "context": "Na feira: a Mia quer comprar cada coisa só para provar.",
+  "context_es": "En la feria: la Mia quiere solo una unidad de cada cosa para probar.",
   "text": "Moço, só ___ {noun}, por favor.",
   "slot": {
    "pos": "noun",
@@ -43,7 +46,8 @@
   "id": "tpl-art-indef-quarto",
   "tag_prefix": "a1.genero",
   "det": "indef",
-  "context": "En la recepción: en tu cuarto falta una cosa y la pedís.",
+  "context": "Na recepção: falta alguma coisa no seu quarto e você pede.",
+  "context_es": "En la recepción: en tu cuarto falta una cosa y la pedís.",
   "text": "Oi, no meu quarto falta ___ {noun}.",
   "slot": {
    "pos": "noun",
@@ -59,7 +63,8 @@
   "tag_prefix": "a1.genero",
   "det": "def",
   "card_only": true,
-  "context": "Mostrándole a un nene un libro de dibujos, le señalás cada cosa (con artículo definido).",
+  "context": "Você mostra um livro de desenhos para uma criança e aponta cada coisa (com artigo definido).",
+  "context_es": "Mostrándole a un nene un libro de dibujos, le señalás cada cosa (con artículo definido).",
   "text": "Olha só: aqui está ___ {noun}!",
   "slot": {
    "pos": "noun",
@@ -82,7 +87,8 @@
   "tag_prefix": "a1.contr",
   "prep": "em",
   "det": "def",
-  "context": "Buscás el celular por toda la pousada. Por fin aparece.",
+  "context": "Você procura o celular pela pousada toda. Até que enfim ele aparece.",
+  "context_es": "Buscás el celular por toda la pousada. Por fin aparece.",
   "text": "Achei! O celular estava ___ {noun}.",
   "slot": {
    "pos": "noun",
@@ -97,7 +103,8 @@
   "tag_prefix": "a1.contr",
   "prep": "em",
   "det": "def",
-  "context": "Ronda de presentaciones: cada uno cuenta en qué país vive ahora.",
+  "context": "Apresentações: cada pessoa diz em que país mora agora.",
+  "context_es": "Ronda de presentaciones: cada uno cuenta en qué país vive ahora.",
   "text": "Agora eu moro ___ {noun}.",
   "slot": {
    "pos": "noun",
@@ -111,7 +118,8 @@
   "tag_prefix": "a1.contr",
   "prep": "de",
   "det": "def",
-  "context": "Ronda de presentaciones en la cocina: cada uno dice de dónde es.",
+  "context": "Rodada de apresentações na cozinha: cada um conta a sua origem.",
+  "context_es": "Ronda de presentaciones en la cocina: cada uno dice de dónde es.",
   "text": "Oi, gente! Eu sou ___ {noun}.",
   "slot": {
    "pos": "noun",
@@ -125,7 +133,8 @@
   "tag_prefix": "a1.contr",
   "prep": "de",
   "det": "def",
-  "context": "Medianoche: alguien dejó una luz prendida y la Ana te pide que la apagues.",
+  "context": "Meia-noite: alguém deixou uma luz acesa e a Ana pede para você apagar.",
+  "context_es": "Medianoche: alguien dejó una luz prendida y la Ana te pide que la apagues.",
   "text": "Você pode apagar a luz ___ {noun}?",
   "slot": {
    "pos": "noun",
@@ -139,7 +148,8 @@
   "kind": "presente",
   "verb": "ser",
   "tag_prefix": "a1.ser.presente",
-  "context": "La Ana repasa la lista de quién duerme en cada cuarto.",
+  "context": "A Ana confere a lista de quem dorme em cada quarto.",
+  "context_es": "La Ana repasa la lista de quién duerme en cada cuarto.",
   "text": "{subject} ___ do quarto 12."
  },
  {
@@ -147,7 +157,8 @@
   "kind": "presente",
   "verb": "ser",
   "tag_prefix": "a1.ser.presente",
-  "context": "La Ana arma la lista de quién está en la clase de portugués de la pousada.",
+  "context": "A Ana faz a lista da turma de português da pousada.",
+  "context_es": "La Ana arma la lista de quién está en la clase de portugués de la pousada.",
   "text": "{subject} ___ do grupo de português."
  },
  {
@@ -155,7 +166,8 @@
   "kind": "presente",
   "verb": "estar",
   "tag_prefix": "a1.estar.presente",
-  "context": "Mensajes de la tarde: nadie está en la pousada.",
+  "context": "Mensagens da tarde: ninguém na pousada.",
+  "context_es": "Mensajes de la tarde: nadie está en la pousada.",
   "text": "{subject} ___ na praia agora."
  },
  {
@@ -163,7 +175,8 @@
   "kind": "presente",
   "verb": "estar",
   "tag_prefix": "a1.estar.presente",
-  "context": "Las 21:00 y la cena todavía no está lista.",
+  "context": "21:00 e o jantar ainda não ficou pronto.",
+  "context_es": "Las 21:00 y la cena todavía no está lista.",
   "text": "{subject} ___ com muita fome."
  },
  {
@@ -171,7 +184,8 @@
   "kind": "presente",
   "verb": "morar",
   "tag_prefix": "a1.presente.regular",
-  "context": "Charla en la varanda: dónde vive cada uno.",
+  "context": "Conversa na varanda: onde é a casa de cada um.",
+  "context_es": "Charla en la varanda: dónde vive cada uno.",
   "text": "{subject} ___ perto da praia."
  },
  {
@@ -179,7 +193,8 @@
   "kind": "presente",
   "verb": "falar",
   "tag_prefix": "a1.presente.regular",
-  "context": "La Ana pregunta qué idioma se habla en cada casa.",
+  "context": "A Ana pergunta que língua cada um usa em casa.",
+  "context_es": "La Ana pregunta qué idioma se habla en cada casa.",
   "text": "{subject} ___ espanhol em casa."
  },
  {
@@ -187,7 +202,8 @@
   "kind": "presente",
   "verb": "beber",
   "tag_prefix": "a1.presente.regular",
-  "context": "Desayuno: cada uno toma el café a su manera.",
+  "context": "Café da manhã: cada um toma o café de uma forma diferente.",
+  "context_es": "Desayuno: cada uno toma el café a su manera.",
   "text": "{subject} ___ café sem açúcar."
  },
  {
@@ -195,7 +211,8 @@
   "kind": "presente",
   "verb": "comer",
   "tag_prefix": "a1.presente.regular",
-  "context": "La Ana cuenta los hábitos del grupo en el desayuno.",
+  "context": "A Ana conta os hábitos do grupo no café da manhã.",
+  "context_es": "La Ana cuenta los hábitos del grupo en el desayuno.",
   "text": "{subject} ___ pão de queijo todo dia."
  },
  {
@@ -203,7 +220,8 @@
   "kind": "presente",
   "verb": "abrir",
   "tag_prefix": "a1.presente.regular",
-  "context": "Hace calor en el cuarto y alguien siempre se encarga.",
+  "context": "Faz calor no quarto e sempre tem alguém que resolve.",
+  "context_es": "Hace calor en el cuarto y alguien siempre se encarga.",
   "text": "{subject} ___ a janela de manhã."
  },
  {
@@ -211,7 +229,8 @@
   "kind": "presente",
   "verb": "dividir",
   "tag_prefix": "a1.presente.regular",
-  "context": "La Ana reparte los cuartos: hay pocos y todos comparten.",
+  "context": "A Ana distribui os quartos: são poucos e todo mundo compartilha.",
+  "context_es": "La Ana reparte los cuartos: hay pocos y todos comparten.",
   "text": "{subject} ___ o quarto com uma amiga."
  }
 ]

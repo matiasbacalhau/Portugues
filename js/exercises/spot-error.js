@@ -1,5 +1,5 @@
 // spot-error: se toca la palabra equivocada y se escribe su corrección. answer = {index, text}.
-import { h, rich } from '../ui/dom.js';
+import { h, rich, inSpanish } from '../ui/dom.js';
 import { answerInput } from '../ui/inputs.js';
 import { onceButton, onEnter } from './common.js';
 
@@ -20,7 +20,8 @@ export function render(ex, el, { submit }) {
     input.focus();
   };
   el.append(
-    h('p', {}, rich(ex.prompt ?? 'Esta frase tem um erro. Toque na palavra errada.')),
+    h('p', { lang: 'pt-BR' }, rich(ex.prompt ?? 'Esta frase tem um erro. Toque na palavra errada.')),
+    inSpanish(ex.prompt_es),
     h('div', { class: 'tokens', lang: 'pt-BR' }, words),
     slot, btn,
   );

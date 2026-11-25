@@ -22,6 +22,7 @@ function build(template, w) {
     type: 'gap',
     tag: `${template.tag_prefix}.${template.prep ?? SUFFIX[gender]}`,
     context: template.context,
+    context_es: template.context_es,
     text: template.text.replace('{noun}', noun),
     answers: article(template.det, gender, number, template.prep ?? null),
     dims: {gender, number, det: template.det, ...(template.prep ? {prep: template.prep} : {})},

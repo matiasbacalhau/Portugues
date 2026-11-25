@@ -1,6 +1,6 @@
 // Runner de un grupo (un escalón de un tema): arma o retoma el grupo, corre cada ejercicio, corrige, autoguarda,
 // muestra el feedback (§5.6), el ⚑ y la escritura con LanguageTool; al terminar va a #/fin.
-import { h, rich } from './dom.js';
+import { h, rich, inSpanish } from './dom.js';
 import { answerInput, listenButton } from './inputs.js';
 import { renderFicha } from './ficha.js';
 import { wordPicture } from './imagen.js';
@@ -131,7 +131,7 @@ export default async function grupo(el, { store, content, params }) {
     if (group.glossary && !group.glossaryShown && group.index === 0) {
       const box = h('div', { class: 'card' }, h('h2', {}, 'Vocabulário'), h('p', { class: 'muted' }, 'Palabras para usar en este grupo. Después quedan en el botón "Vocabulário".'));
       renderGlossary(box, group.glossary);
-      show(h('p', { class: 'scene' }, rich(stepDef.scene.context)), box, h('button', { type: 'button', onclick: async () => {
+      show(h('p', { class: 'scene', lang: 'pt-BR' }, rich(stepDef.scene.context)), inSpanish(stepDef.scene.context_es), box, h('button', { type: 'button', onclick: async () => {
         group = { ...group, glossaryShown: true };
         await save();
         next();
@@ -217,7 +217,8 @@ export default async function grupo(el, { store, content, params }) {
     };
     const head = [
       ex.review && h('span', { class: 'pill small' }, 'Repaso'),
-      group.index === 0 && n !== 3 && h('p', { class: 'scene' }, h('strong', {}, stepDef.scene.title), ' · ', rich(stepDef.scene.context)),
+      group.index === 0 && n !== 3 && h('p', { class: 'scene', lang: 'pt-BR' }, h('strong', {}, stepDef.scene.title), ' · ', rich(stepDef.scene.context)),
+      group.index === 0 && n !== 3 && inSpanish(stepDef.scene.context_es),
     ];
     // Una sola vez: con el iPhone en silencio el TTS no suena y no hay forma de detectarlo.
     const hasAudio = !group.audioOff && (ex.type === 'dictation' || ex.type === 'pares' || (ex.type === 'card' && ex.mode === 'listen') || (ex.type === 'situation' && ex.listen));

@@ -1,5 +1,5 @@
 // situation: escena, chat y un campo por hueco. answer = string[] (uno por hueco, en orden).
-import { h, rich } from '../ui/dom.js';
+import { h, rich, inSpanish } from '../ui/dom.js';
 import { answerInput, listenButton } from '../ui/inputs.js';
 import { onceButton, withGaps } from './common.js';
 
@@ -19,8 +19,10 @@ export function render(ex, el, { submit, onNoAudio }) {
   const btn = onceButton('Verificar', () => submit(inputs.map(x => x.value())), filled);
   inputs.forEach((x, i) => x.addEventListener('input', () => { gapSpans[i].textContent = x.value() || `(${i + 1})`; btn.refresh(); }));
   el.append(
-    h('p', { class: 'scene' }, h('strong', {}, ex.scene.title), ' · ', rich(ex.scene.context)),
-    h('p', { class: 'muted' }, rich(ex.prompt ?? 'Escolha a resposta certa.')),
+    h('p', { class: 'scene', lang: 'pt-BR' }, h('strong', {}, ex.scene.title), ' · ', rich(ex.scene.context)),
+    inSpanish(ex.scene.context_es),
+    h('p', { class: 'muted', lang: 'pt-BR' }, rich(ex.prompt ?? 'Escolha a resposta certa.')),
+    inSpanish(ex.prompt_es),
     h('div', { class: 'chat' }, bubbles),
     ...inputs, btn,
     ...(ex.listen && onNoAudio ? [h('button', { type: 'button', class: 'secondary no-audio', onclick: () => onNoAudio() }, 'Sem áudio agora')] : []),

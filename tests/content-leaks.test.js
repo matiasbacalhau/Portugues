@@ -52,3 +52,20 @@ test('ninguna regla del contenido contiene una respuesta aceptada de su ítem', 
   }
   assert.deepEqual(found, []);
 });
+
+// Lo mismo con lo que el usuario ve antes de responder: la consigna, el contexto y la escena (en portugués).
+test('ninguna consigna ni contexto en portugués contiene una respuesta aceptada de su ítem', () => {
+  const found = [];
+  for (const u of units) for (const topic of u.topics) for (const step of topic.steps ?? []) for (const ex of step.exercises ?? []) {
+    if (ex.type === 'writing-guided' || ex.type === 'writing-free' || ex.type === 'pares') continue;
+    const shown = [ex.prompt, ex.context, ex.scene?.context, step.scene?.context].filter(Boolean);
+    for (let n = 0; n < countItems(ex); n++) {
+      if (ex.type === 'detective' && n === 0) continue;
+      const {answers} = itemInfo(ex, `${ex.id}#${n}`);
+      for (const text of shown) for (const a of answers ?? []) {
+        if (typeof a === 'string' && leaks(text, a, 'pt')) found.push(`${ex.id}#${n}: «${a}» en «${text}»`);
+      }
+    }
+  }
+  assert.deepEqual(found, []);
+});

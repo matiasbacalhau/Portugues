@@ -13,7 +13,7 @@ OUT = os.path.join(ROOT, 'data')
 CLAVES_DE = {'text', 'pt', 'answers', 'chunks', 'tokens', 'corrections', 'options', 'bubbles', 'gaps',
              'questions', 'sentences', 'apply', 'source', 'context', 'pair'}
 # Claves que son español o explicación: no se recorren.
-CLAVES_ES = {'rule', 'rules', 'errors', 'es', 'prompt', 'instruction', 'scene', 'title', 'dims', 'tag', 'tags'}
+CLAVES_ES = {'rule', 'rules', 'errors', 'es', 'prompt', 'prompt_es', 'context_es', 'instruction', 'scene', 'title', 'dims', 'tag', 'tags'}
 
 
 def leer(path, vacio):

@@ -1,5 +1,5 @@
 // order: se tocan los chunks para armar la frase; tocar uno ya usado lo devuelve. answer = textos en orden.
-import { h, rich } from '../ui/dom.js';
+import { h, rich, inSpanish } from '../ui/dom.js';
 import { onceButton } from './common.js';
 
 export function render(ex, el, { submit }) {
@@ -22,5 +22,5 @@ export function render(ex, el, { submit }) {
     btn.refresh();
   };
   draw();
-  el.append(ex.prompt && h('p', {}, rich(ex.prompt)), line, pool, btn);
+  el.append(ex.prompt && h('p', { lang: 'pt-BR' }, rich(ex.prompt)), inSpanish(ex.prompt_es), line, pool, btn);
 }

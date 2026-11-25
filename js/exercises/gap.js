@@ -1,5 +1,5 @@
 // gap: micro-contexto, frase con hueco y un campo. answer = string.
-import { h, rich } from '../ui/dom.js';
+import { h, rich, inSpanish } from '../ui/dom.js';
 import { answerInput } from '../ui/inputs.js';
 import { onceButton, withGaps, onEnter } from './common.js';
 
@@ -10,5 +10,5 @@ export function render(ex, el, { submit }) {
   const btn = onceButton('Verificar', () => submit(input.value()), () => input.value().trim() !== '');
   input.addEventListener('input', btn.refresh);
   onEnter(input, () => btn.click());
-  el.append(ex.context && h('p', { class: 'muted' }, rich(ex.context)), h('p', { class: 'sentence', lang: 'pt-BR' }, nodes), input, btn);
+  el.append(ex.context && h('p', { class: 'muted', lang: 'pt-BR' }, rich(ex.context)), inSpanish(ex.context_es), h('p', { class: 'sentence', lang: 'pt-BR' }, nodes), input, btn);
 }

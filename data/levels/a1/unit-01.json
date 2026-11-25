@@ -78,7 +78,8 @@
      "name": "Descobrir",
      "scene": {
       "title": "Chegada na pousada",
-      "context": "Pousada Maré, Santa Teresa · 22:15 · el bondinho ya no anda y subiste la ladera a pie con la mochila"
+      "context": "Pousada Maré, Santa Teresa · 22:15 · o bondinho já não funciona e você subiu o morro a pé, com a mochila",
+      "context_es": "Pousada Maré, Santa Teresa · 22:15 · el bondinho ya no anda y subiste la ladera a pie con la mochila"
      },
      "exercises": [
       {
@@ -238,7 +239,8 @@
        "id": "t1-1-ch-voce",
        "type": "choice",
        "tag": "a1.pron.sujeito",
-       "prompt": "La recepcionista te sonríe y te pregunta si sos el de la reserva de las diez. ¿Qué te dice?",
+       "prompt": "A recepcionista sorri e quer confirmar se a reserva das dez é sua. O que ela diz?",
+       "prompt_es": "La recepcionista te sonríe y te pregunta si sos el de la reserva de las diez. ¿Qué te dice?",
        "options": [
         {
          "text": "Você é o Leo?",
@@ -270,7 +272,8 @@
        "id": "t1-1-ch-com-fome",
        "type": "choice",
        "tag": "a1.ser.estar",
-       "prompt": "Son las 22:30 y no comés desde el aeropuerto. Le decís a la Ana:",
+       "prompt": "São 22:30 e você não come nada desde o aeroporto. Você diz para a Ana:",
+       "prompt_es": "Son las 22:30 y no comés desde el aeropuerto. Le decís a la Ana:",
        "options": [
         {
          "text": "Estou com muita fome.",
@@ -302,7 +305,8 @@
        "id": "t1-1-ch-senhora",
        "type": "choice",
        "tag": "a1.estar.presente",
-       "prompt": "Llega Dona Célia, una señora de setenta años con dos valijas. La Ana la trata de usted y le dice en qué cuarto está:",
+       "prompt": "Chega a Dona Célia, uma senhora de setenta anos com duas malas. A Ana usa o tratamento formal e diz o número do quarto dela:",
+       "prompt_es": "Llega Dona Célia, una señora de setenta años con dos valijas. La Ana la trata de usted y le dice en qué cuarto está:",
        "options": [
         {
          "text": "A senhora está no quarto 3.",
@@ -403,14 +407,16 @@
      "name": "Reconhecer",
      "scene": {
       "title": "Na recepção",
-      "context": "22:20 · la Ana habla rapidísimo y Caju, el perro, te huele la mochila"
+      "context": "22:20 · a Ana fala muito rápido e o Caju, o cachorro, cheira a sua mochila",
+      "context_es": "22:20 · la Ana habla rapidísimo y Caju, el perro, te huele la mochila"
      },
      "exercises": [
       {
        "id": "t1-2-ord-banheiro",
        "type": "order",
        "tag": "a1.ser.estar",
-       "prompt": "Preguntale a la Ana por el baño, como lo diría un brasileño.",
+       "prompt": "Pergunte à Ana pelo banheiro, como um brasileiro.",
+       "prompt_es": "Preguntale a la Ana por el baño, como lo diría un brasileño.",
        "chunks": [
         "fica",
         "onde",
@@ -435,7 +441,8 @@
        "id": "t1-2-ch-cansado",
        "type": "choice",
        "tag": "a1.ser.estar",
-       "prompt": "La Ana te ve la cara y te pregunta si estás bien. ¿Qué le contestás?",
+       "prompt": "A Ana vê a sua cara e pergunta se tudo bem. O que você responde?",
+       "prompt_es": "La Ana te ve la cara y te pregunta si estás bien. ¿Qué le contestás?",
        "options": [
         {
          "text": "Estou muito cansado.",
@@ -460,7 +467,8 @@
        "id": "t1-2-se-toalhas",
        "type": "spot-error",
        "tag": "a1.estar.presente",
-       "prompt": "La Ana te pasa un papelito con la info del cuarto. Tiene un error.",
+       "prompt": "A Ana entrega um papelzinho com as informações do quarto. Tem um erro.",
+       "prompt_es": "La Ana te pasa un papelito con la info del cuarto. Tiene un error.",
        "tokens": [
         "As",
         "toalhas",
@@ -486,7 +494,8 @@
        "id": "t1-2-ord-de-onde",
        "type": "order",
        "tag": "a1.ser.presente",
-       "prompt": "La Ana quiere saber de dónde sos.",
+       "prompt": "A Ana quer saber a sua origem.",
+       "prompt_es": "La Ana quiere saber de dónde sos.",
        "chunks": [
         "é",
         "você",
@@ -514,7 +523,8 @@
        "id": "t1-2-se-voce-esta",
        "type": "spot-error",
        "tag": "a1.pron.sujeito",
-       "prompt": "Mensaje de Rafa, el otro recepcionista. Tiene un error.",
+       "prompt": "Mensagem do Rafa, o outro recepcionista. Tem um erro.",
+       "prompt_es": "Mensaje de Rafa, el otro recepcionista. Tiene un error.",
        "tokens": [
         "Oi,",
         "Leo!",
@@ -541,7 +551,8 @@
        "id": "t1-2-ord-senha",
        "type": "order",
        "tag": "a1.ser.presente",
-       "prompt": "Lo más importante: el wifi.",
+       "prompt": "O mais importante: o wi-fi.",
+       "prompt_es": "Lo más importante: el wifi.",
        "chunks": [
         "a senha",
         "qual",
@@ -568,7 +579,8 @@
        "id": "t1-2-se-a-gente",
        "type": "spot-error",
        "tag": "a1.pron.sujeito",
-       "prompt": "Mensaje de la Mia al grupo. Tiene un error.",
+       "prompt": "Mensagem da Mia para o grupo. Tem um erro.",
+       "prompt_es": "Mensaje de la Mia al grupo. Tiene un error.",
        "tokens": [
         "A",
         "gente",
@@ -594,7 +606,8 @@
        "id": "t1-2-ord-cafe",
        "type": "order",
        "tag": "a1.ser.presente",
-       "prompt": "Tenés hambre desde el avión. Preguntá a qué hora es el desayuno.",
+       "prompt": "Você não come desde o avião. Pergunte o horário do café da manhã.",
+       "prompt_es": "Tenés hambre desde el avión. Preguntá a qué hora es el desayuno.",
        "chunks": [
         "que horas",
         "o café da manhã",
@@ -621,7 +634,8 @@
        "id": "t1-2-se-ser-cansada",
        "type": "spot-error",
        "tag": "a1.ser.estar",
-       "prompt": "Mensaje de la Lea, que llegó hace cinco minutos. Tiene un error.",
+       "prompt": "Mensagem da Lea, que acabou de chegar. Tem um erro.",
+       "prompt_es": "Mensaje de la Lea, que llegó hace cinco minutos. Tiene un error.",
        "tokens": [
         "Gente,",
         "eu",
@@ -646,7 +660,8 @@
        "id": "t1-2-ord-tom",
        "type": "order",
        "tag": "a1.estar.presente",
-       "prompt": "Contale a la Ana dónde está tu compañero de cuarto.",
+       "prompt": "A Ana procura o Tom, o seu colega de quarto. Responda.",
+       "prompt_es": "Contale a la Ana dónde está tu compañero de cuarto.",
        "chunks": [
         "no quarto",
         "o Tom",
@@ -676,7 +691,8 @@
        "id": "t1-2-se-somos-sao",
        "type": "spot-error",
        "tag": "a1.ser.presente",
-       "prompt": "La Ana te cuenta de tus compañeros de cuarto. Tiene un error.",
+       "prompt": "A Ana fala dos seus colegas de quarto. Tem um erro.",
+       "prompt_es": "La Ana te cuenta de tus compañeros de cuarto. Tiene un error.",
        "tokens": [
         "O",
         "Tom",
@@ -702,7 +718,8 @@
        "id": "t1-2-ord-praia",
        "type": "order",
        "tag": "a1.ser.estar",
-       "prompt": "Querés saber si la playa queda cerca.",
+       "prompt": "Você quer saber a distância até a praia.",
+       "prompt_es": "Querés saber si la playa queda cerca.",
        "chunks": [
         "perto",
         "a praia",
@@ -727,7 +744,8 @@
        "id": "t1-2-ch-ser-origem",
        "type": "choice",
        "tag": "a1.ser.estar",
-       "prompt": "Rafa le pregunta a la Mia de dónde es. ¿Qué contesta?",
+       "prompt": "O Rafa pergunta a origem da Mia. O que ela responde?",
+       "prompt_es": "Rafa le pregunta a la Mia de dónde es. ¿Qué contesta?",
        "options": [
         {
          "text": "Eu sou do Chile.",
@@ -754,7 +772,8 @@
        "id": "t1-2-se-voces-esta",
        "type": "spot-error",
        "tag": "a1.estar.presente",
-       "prompt": "Cartelito en la puerta de la cocina. Tiene un error.",
+       "prompt": "Aviso pendurado na porta da cozinha. Tem um erro.",
+       "prompt_es": "Cartelito en la puerta de la cocina. Tiene un error.",
        "tokens": [
         "Pessoal,",
         "vocês",
@@ -782,7 +801,8 @@
        "type": "order",
        "tag": "a1.ser.estar",
        "reserve": true,
-       "prompt": "Volviste a perderte en el pasillo.",
+       "prompt": "Você se perdeu de novo no corredor.",
+       "prompt_es": "Volviste a perderte en el pasillo.",
        "chunks": [
         "a recepção",
         "onde",
@@ -808,7 +828,8 @@
        "type": "spot-error",
        "tag": "a1.estar.presente",
        "reserve": true,
-       "prompt": "Tu mensaje al grupo, escrito con sueño. Tiene un error.",
+       "prompt": "A sua mensagem para o grupo, escrita com sono. Tem um erro.",
+       "prompt_es": "Tu mensaje al grupo, escrito con sueño. Tiene un error.",
        "tokens": [
         "Eu",
         "está",
@@ -837,7 +858,8 @@
        "type": "order",
        "tag": "a1.ser.presente",
        "reserve": true,
-       "prompt": "Les preguntás a dos chicas nuevas cómo se llaman (con *ser*).",
+       "prompt": "Duas meninas novas chegam. Você quer conhecer as duas (use *ser*).",
+       "prompt_es": "Les preguntás a dos chicas nuevas cómo se llaman (con *ser*).",
        "chunks": [
         "vocês",
         "quem",
@@ -861,7 +883,8 @@
        "type": "spot-error",
        "tag": "a1.ser.presente",
        "reserve": true,
-       "prompt": "Cartel de la recepción. Tiene un error.",
+       "prompt": "Aviso da recepção. Tem um erro.",
+       "prompt_es": "Cartel de la recepción. Tiene un error.",
        "tokens": [
         "O",
         "Caju",
@@ -892,7 +915,8 @@
      "name": "Aplicar no contexto",
      "scene": {
       "title": "Um e-mail da pousada",
-      "context": "Al día siguiente · 9:30 · llegó un mail con las reglas de la casa"
+      "context": "No dia seguinte · 9:30 · chegou um e-mail com as regras da casa",
+      "context_es": "Al día siguiente · 9:30 · llegó un mail con las reglas de la casa"
      },
      "generated": 3,
      "exercises": [
@@ -1001,7 +1025,8 @@
        "id": "t1-3-se-senhora",
        "type": "spot-error",
        "tag": "a1.estar.presente",
-       "prompt": "Respuesta de la pousada a Dona Célia, que escribió muy formal. Tiene un error.",
+       "prompt": "Resposta da pousada para a Dona Célia, que escreveu de um jeito muito formal. Tem um erro.",
+       "prompt_es": "Respuesta de la pousada a Dona Célia, que escribió muy formal. Tiene un error.",
        "tokens": [
         "Prezada",
         "Dona",
@@ -1067,7 +1092,8 @@
        "id": "t1-3-se-a-gente-somos",
        "type": "spot-error",
        "tag": "a1.pron.sujeito",
-       "prompt": "Reseña de un huésped en la web de la pousada. Tiene un error.",
+       "prompt": "Avaliação de um hóspede no site da pousada. Tem um erro.",
+       "prompt_es": "Reseña de un huésped en la web de la pousada. Tiene un error.",
        "tokens": [
         "A",
         "gente",
@@ -1126,7 +1152,8 @@
        "id": "t1-3-se-onde-esta-ficar",
        "type": "spot-error",
        "tag": "a1.ser.estar",
-       "prompt": "Mensaje de un huésped a la recepción, a las 7:01. Tiene un error.",
+       "prompt": "Mensagem de um hóspede para a recepção, às 7:01. Tem um erro.",
+       "prompt_es": "Mensaje de un huésped a la recepción, a las 7:01. Tiene un error.",
        "tokens": [
         "Bom",
         "dia!",
@@ -1190,7 +1217,8 @@
        "id": "t1-3-se-tom-esta-canada",
        "type": "spot-error",
        "tag": "a1.ser.estar",
-       "prompt": "Presentación de Tom en el grupo de la pousada. Tiene un error.",
+       "prompt": "Apresentação do Tom no grupo da pousada. Tem um erro.",
+       "prompt_es": "Presentación de Tom en el grupo de la pousada. Tiene un error.",
        "tokens": [
         "Oi!",
         "Eu",
@@ -1253,7 +1281,8 @@
        "type": "spot-error",
        "tag": "a1.estar.presente",
        "reserve": true,
-       "prompt": "Queja anónima en el libro de la recepción. Tiene un error.",
+       "prompt": "Reclamação anônima no livro da recepção. Tem um erro.",
+       "prompt_es": "Queja anónima en el libro de la recepción. Tiene un error.",
        "tokens": [
         "Os",
         "hóspedes",
@@ -1353,7 +1382,8 @@
      "name": "Produzir com apoio",
      "scene": {
       "title": "Quarto 12",
-      "context": "23:40 · luz apagada, Tom ronca como un tractor y nadie duerme"
+      "context": "23:40 · luz apagada, alguém ronca como um trator e ninguém dorme",
+      "context_es": "23:40 · luz apagada, alguien ronca como un tractor y nadie duerme"
      },
      "field": "pousada",
      "generated": 3,
@@ -1363,7 +1393,8 @@
        "type": "situation",
        "scene": {
         "title": "Quarto 12",
-        "context": "23:40 · alguien ronca en la oscuridad"
+        "context": "23:40 · alguém ronca no escuro",
+        "context_es": "23:40 · alguien ronca en la oscuridad"
        },
        "bubbles": [
         {
@@ -1456,7 +1487,8 @@
        "type": "situation",
        "scene": {
         "title": "Quarto 12",
-        "context": "23:45 · entra una chica con la linterna del celular buscando su cama"
+        "context": "23:45 · entra uma menina com a lanterna do celular, procurando a cama",
+        "context_es": "23:45 · entra una chica con la linterna del celular buscando su cama"
        },
        "bubbles": [
         {
@@ -1543,7 +1575,8 @@
        "id": "t1-4-gap-voces",
        "type": "gap",
        "tag": "a1.estar.presente",
-       "context": "1:00 · Tom y Mia vuelven del bar cantando por el pasillo.",
+       "context": "1:00 · o Tom e a Mia voltam do bar cantando pelo corredor.",
+       "context_es": "1:00 · Tom y Mia vuelven del bar cantando por el pasillo.",
        "text": "Silêncio! Vocês ___ muito barulhentos!",
        "answers": [
         "estão",
@@ -1571,7 +1604,8 @@
        "type": "situation",
        "scene": {
         "title": "No corredor",
-        "context": "0:10 · volviste del baño y la llave no abre"
+        "context": "0:10 · você voltou do banheiro e a chave não abre",
+        "context_es": "0:10 · volviste del baño y la llave no abre"
        },
        "bubbles": [
         {
@@ -1660,7 +1694,8 @@
        "type": "situation",
        "scene": {
         "title": "Quarto 12",
-        "context": "0:30 · inventario de lo que falta, con linterna"
+        "context": "0:30 · a lista do que falta, com lanterna",
+        "context_es": "0:30 · inventario de lo que falta, con linterna"
        },
        "bubbles": [
         {
@@ -1749,7 +1784,8 @@
        "id": "t1-4-gap-ficar",
        "type": "gap",
        "tag": "a1.ser.estar",
-       "context": "La Lea busca el baño en plena noche y te manda un audio susurrando.",
+       "context": "A Lea procura o banheiro no meio da noite e manda um áudio sussurrando.",
+       "context_es": "La Lea busca el baño en plena noche y te manda un audio susurrando.",
        "text": "Leo, onde ___ o banheiro? Não acho!",
        "answers": [
         "fica",
@@ -1774,7 +1810,8 @@
        ],
        "reviewed": true,
        "words": [
-        "banheiro"
+        "banheiro",
+        "noite"
        ]
       },
       {
@@ -1803,7 +1840,8 @@
        "reserve": true,
        "scene": {
         "title": "Na varanda",
-        "context": "7:05 · nadie durmió y Tom está fresquísimo"
+        "context": "7:05 · ninguém dormiu, menos o Tom",
+        "context_es": "7:05 · nadie durmió y Tom está fresquísimo"
        },
        "bubbles": [
         {
@@ -1870,7 +1908,8 @@
        "reserve": true,
        "scene": {
         "title": "No portão",
-        "context": "22:16 · tocás el portero eléctrico, empapado"
+        "context": "22:16 · você toca o interfone, encharcado",
+        "context_es": "22:16 · tocás el portero eléctrico, empapado"
        },
        "bubbles": [
         {
@@ -1962,7 +2001,8 @@
        "type": "gap",
        "tag": "a1.pron.sujeito",
        "reserve": true,
-       "context": "La Ana te señala a dos chicas que entran al cuarto de al lado con una mala cada una.",
+       "context": "A Ana aponta para duas meninas que entram no quarto ao lado, cada uma com uma mala.",
+       "context_es": "La Ana te señala a dos chicas que entran al cuarto de al lado con una mala cada una.",
        "text": "Essas são a Júlia e a Bia. ___ são de Minas Gerais.",
        "answers": [
         "Elas",
@@ -1983,7 +2023,9 @@
        ],
        "reviewed": true,
        "words": [
-        "mala"
+        "quarto",
+        "mala",
+        "menina"
        ]
       }
      ]
@@ -1993,14 +2035,16 @@
      "name": "Escrever livremente",
      "scene": {
       "title": "Grupo da Pousada Maré",
-      "context": "Mediodía · 47 mensajes sin leer, la mitad sobre los ronquidos de Tom"
+      "context": "Meio-dia · 47 mensagens não lidas, metade sobre o ronco do Tom",
+      "context_es": "Mediodía · 47 mensajes sin leer, la mitad sobre los ronquidos de Tom"
      },
      "exercises": [
       {
        "id": "t1-5-wg-apresentar",
        "type": "writing-guided",
        "topic": "a1.u1.t1",
-       "prompt": "Presentate en el grupo de WhatsApp de la pousada: quién sos, de dónde sos, en qué cuarto estás y cómo estás hoy.",
+       "prompt": "Apresente-se no grupo de WhatsApp da pousada: quem você é, de onde você é, em que quarto você está e como você está hoje.",
+       "prompt_es": "Presentate en el grupo de WhatsApp de la pousada: quién sos, de dónde sos, en qué cuarto estás y cómo estás hoy.",
        "constraints": [
         "Usá *ser* y *estar* al menos una vez cada uno.",
         "Entre 3 y 5 oraciones."
@@ -2023,7 +2067,8 @@
        "id": "t1-5-wg-perguntas",
        "type": "writing-guided",
        "topic": "a1.u1.t1",
-       "prompt": "Dos chicas nuevas entran al grupo. Escribiles un mensaje de bienvenida con preguntas para conocerlas.",
+       "prompt": "Duas meninas novas entram no grupo. Escreva uma mensagem de boas-vindas com perguntas para conhecer as duas.",
+       "prompt_es": "Dos chicas nuevas entran al grupo. Escribiles un mensaje de bienvenida con preguntas para conocerlas.",
        "constraints": [
         "3 preguntas distintas (de dónde son, cómo están, dónde está su cuarto…).",
         "Hablales en plural, con *vocês*.",
@@ -2047,7 +2092,8 @@
        "id": "t1-5-wf-quarto",
        "type": "writing-free",
        "topic": "a1.u1.t1",
-       "prompt": "Contá en el grupo quiénes duermen en tu cuarto, de dónde son, cómo son y cómo están hoy. Si alguien ronca, es el momento de decirlo (con cariño).",
+       "prompt": "Conte no grupo quem dorme no seu quarto, de onde são, como são e como estão hoje. Se alguém ronca, é a hora de dizer (com carinho).",
+       "prompt_es": "Contá en el grupo quiénes duermen en tu cuarto, de dónde son, cómo son y cómo están hoy. Si alguien ronca, es el momento de decirlo (con cariño).",
        "tips": [
         "Para cada persona: el nombre, de dónde es, cómo es (*ser*) y cómo está hoy (*estar*).",
         "Cuando ya nombraste a alguien, seguí con *ele* o *ela*."
@@ -2132,7 +2178,8 @@
      "name": "Descobrir",
      "scene": {
       "title": "A cozinha compartilhada",
-      "context": "Pousada Maré · 20:00 · todos cocinan a la vez y nadie encuentra nada"
+      "context": "Pousada Maré · 20:00 · todo mundo cozinha junto e ninguém acha nada",
+      "context_es": "Pousada Maré · 20:00 · todos cocinan a la vez y nadie encuentra nada"
      },
      "exercises": [
       {
@@ -2299,7 +2346,8 @@
        "id": "t2-1-ch-leite",
        "type": "choice",
        "tag": "a1.genero.masc",
-       "prompt": "La Lea busca algo para el café. ¿Qué pregunta?",
+       "prompt": "A Lea procura alguma coisa para o café. O que ela pergunta?",
+       "prompt_es": "La Lea busca algo para el café. ¿Qué pregunta?",
        "options": [
         {
          "text": "Onde está o leite?",
@@ -2329,7 +2377,8 @@
        "id": "t2-1-ch-viagem",
        "type": "choice",
        "tag": "a1.genero.fem",
-       "prompt": "La Ana le pregunta a Dona Célia, que llegó de Lisboa, cómo le fue. Dona Célia contesta:",
+       "prompt": "A Ana pergunta para a Dona Célia, que chegou de Lisboa, como foi tudo. A Dona Célia responde:",
+       "prompt_es": "La Ana le pregunta a Dona Célia, que llegó de Lisboa, cómo le fue. Dona Célia contesta:",
        "options": [
         {
          "text": "A viagem foi ótima, obrigada.",
@@ -2356,7 +2405,8 @@
        "id": "t2-1-ch-portugal",
        "type": "choice",
        "tag": "a1.contr.de",
-       "prompt": "Dona Célia se presenta en la cocina. ¿Qué dice?",
+       "prompt": "A Dona Célia se apresenta na cozinha. O que ela diz?",
+       "prompt_es": "Dona Célia se presenta en la cocina. ¿Qué dice?",
        "options": [
         {
          "text": "Eu sou de Portugal.",
@@ -2454,14 +2504,16 @@
      "name": "Reconhecer",
      "scene": {
       "title": "Lista do mercado",
-      "context": "21:00 · la heladera compartida está casi vacía y arman la lista entre todos"
+      "context": "21:00 · a geladeira compartilhada quase vazia, e todo mundo ajuda a fazer a lista",
+      "context_es": "21:00 · la heladera compartida está casi vacía y arman la lista entre todos"
      },
      "exercises": [
       {
        "id": "t2-2-ord-sal",
        "type": "order",
        "tag": "a1.contr.em",
-       "prompt": "La Mia busca la sal. Le contestás dónde está.",
+       "prompt": "A Mia procura o sal. Responda.",
+       "prompt_es": "La Mia busca la sal. Le contestás dónde está.",
        "chunks": [
         "no armário",
         "o sal",
@@ -2492,7 +2544,8 @@
        "id": "t2-2-se-a-leite",
        "type": "spot-error",
        "tag": "a1.genero.masc",
-       "prompt": "Lista del mercado escrita por el Tom en la puerta de la heladera. Tiene un error.",
+       "prompt": "Lista do mercado que o Tom escreveu na porta da geladeira. Tem um erro.",
+       "prompt_es": "Lista del mercado escrita por el Tom en la puerta de la heladera. Tiene un error.",
        "tokens": [
         "Comprar:",
         "a",
@@ -2523,7 +2576,8 @@
        "id": "t2-2-se-em-a",
        "type": "spot-error",
        "tag": "a1.contr.em",
-       "prompt": "Mensaje de la Lea al grupo. Tiene un error.",
+       "prompt": "Mensagem da Lea para o grupo. Tem um erro.",
+       "prompt_es": "Mensaje de la Lea al grupo. Tiene un error.",
        "tokens": [
         "Gente,",
         "o",
@@ -2550,7 +2604,8 @@
        "id": "t2-2-ord-mochila",
        "type": "order",
        "tag": "a1.contr.de",
-       "prompt": "La Ana encuentra una mochila en la cocina. ¿De quién es?",
+       "prompt": "A Ana acha uma mochila na cozinha. De quem é?",
+       "prompt_es": "La Ana encuentra una mochila en la cocina. ¿De quién es?",
        "chunks": [
         "da Mia",
         "é",
@@ -2575,7 +2630,8 @@
        "id": "t2-2-se-o-mensagem",
        "type": "spot-error",
        "tag": "a1.genero.fem",
-       "prompt": "Mensaje del Rafa. Tiene un error.",
+       "prompt": "Mensagem do Rafa. Tem um erro.",
+       "prompt_es": "Mensaje del Rafa. Tiene un error.",
        "tokens": [
         "Leo,",
         "o",
@@ -2602,7 +2658,8 @@
        "id": "t2-2-ord-geladeira",
        "type": "order",
        "tag": "a1.contr.em",
-       "prompt": "El Tom pregunta por las cervezas.",
+       "prompt": "O Tom pergunta pelas cervejas.",
+       "prompt_es": "El Tom pregunta por las cervezas.",
        "chunks": [
         "estão",
         "as cervejas",
@@ -2633,7 +2690,8 @@
        "id": "t2-2-ch-cor",
        "type": "choice",
        "tag": "a1.genero.fem",
-       "prompt": "La Mia muestra la remera que compró en la feria. ¿Qué dice la Lea?",
+       "prompt": "A Mia mostra a camiseta que comprou na feira. O que a Lea diz?",
+       "prompt_es": "La Mia muestra la remera que compró en la feria. ¿Qué dice la Lea?",
        "options": [
         {
          "text": "Que linda a cor!",
@@ -2663,7 +2721,8 @@
        "id": "t2-2-se-do-portugal",
        "type": "spot-error",
        "tag": "a1.contr.de",
-       "prompt": "Ficha de registro de Dona Célia. Tiene un error.",
+       "prompt": "Ficha de registro da Dona Célia. Tem um erro.",
+       "prompt_es": "Ficha de registro de Dona Célia. Tiene un error.",
        "tokens": [
         "Nome:",
         "Célia",
@@ -2689,7 +2748,8 @@
        "id": "t2-2-ord-chave",
        "type": "order",
        "tag": "a1.contr.de",
-       "prompt": "La Ana te da una llave y te dice cuál es.",
+       "prompt": "A Ana entrega uma chave e explica qual é.",
+       "prompt_es": "La Ana te da una llave y te dice cuál es.",
        "chunks": [
         "a chave",
         "é",
@@ -2717,7 +2777,8 @@
        "id": "t2-2-se-o-sal",
        "type": "spot-error",
        "tag": "a1.genero.masc",
-       "prompt": "Mensaje de la Mia, que cocina por primera vez. Tiene un error.",
+       "prompt": "Mensagem da Mia, que cozinha pela primeira vez. Tem um erro.",
+       "prompt_es": "Mensaje de la Mia, que cocina por primera vez. Tiene un error.",
        "tokens": [
         "Alguém",
         "viu",
@@ -2743,7 +2804,8 @@
        "id": "t2-2-ord-praia",
        "type": "order",
        "tag": "a1.contr.em",
-       "prompt": "Contás dónde está todo el mundo un sábado a la tarde.",
+       "prompt": "Sábado à tarde, a pousada vazia. Conte onde todo mundo está.",
+       "prompt_es": "Contás dónde está todo el mundo un sábado a la tarde.",
        "chunks": [
         "na praia",
         "a gente",
@@ -2768,7 +2830,8 @@
        "id": "t2-2-se-de-o",
        "type": "spot-error",
        "tag": "a1.contr.de",
-       "prompt": "Tu mensaje a la Ana. Tiene un error.",
+       "prompt": "A sua mensagem para a Ana. Tem um erro.",
+       "prompt_es": "Tu mensaje a la Ana. Tiene un error.",
        "tokens": [
         "A",
         "senha",
@@ -2794,7 +2857,8 @@
        "id": "t2-2-ch-no-brasil",
        "type": "choice",
        "tag": "a1.contr.em",
-       "prompt": "En la cena, alguien pregunta hace cuánto vive la Ana en Rio. Ella contesta:",
+       "prompt": "No jantar, alguém pergunta há quanto tempo a Ana mora no Rio. Ela responde:",
+       "prompt_es": "En la cena, alguien pregunta hace cuánto vive la Ana en Rio. Ella contesta:",
        "options": [
         {
          "text": "Eu moro no Brasil desde criança.",
@@ -2822,7 +2886,8 @@
        "id": "t2-2-se-garagem",
        "type": "spot-error",
        "tag": "a1.genero.fem",
-       "prompt": "Cartel en la entrada de la pousada. Tiene un error.",
+       "prompt": "Aviso da entrada da pousada. Tem um erro.",
+       "prompt_es": "Cartel en la entrada de la pousada. Tiene un error.",
        "tokens": [
         "As",
         "bicicletas",
@@ -2849,7 +2914,8 @@
        "type": "order",
        "tag": "a1.genero.masc",
        "reserve": true,
-       "prompt": "El Tom quiere miel para el té.",
+       "prompt": "O Tom quer mel para o chá.",
+       "prompt_es": "El Tom quiere miel para el té.",
        "chunks": [
         "o mel",
         "onde",
@@ -2875,7 +2941,8 @@
        "type": "spot-error",
        "tag": "a1.contr.de",
        "reserve": true,
-       "prompt": "La Mia escribe su presentación para el grupo. Tiene un error.",
+       "prompt": "A Mia escreve a apresentação dela para o grupo. Tem um erro.",
+       "prompt_es": "La Mia escribe su presentación para el grupo. Tiene un error.",
        "tokens": [
         "Oi!",
         "Eu",
@@ -2903,7 +2970,8 @@
        "type": "order",
        "tag": "a1.genero.fem",
        "reserve": true,
-       "prompt": "La Ana pregunta por el equipaje de Dona Célia.",
+       "prompt": "A Ana pergunta pela bagagem da Dona Célia.",
+       "prompt_es": "La Ana pregunta por el equipaje de Dona Célia.",
        "chunks": [
         "a bagagem",
         "está",
@@ -2931,7 +2999,8 @@
        "type": "spot-error",
        "tag": "a1.contr.em",
        "reserve": true,
-       "prompt": "Nota pegada en la heladera. Tiene un error.",
+       "prompt": "Bilhete colado na geladeira. Tem um erro.",
+       "prompt_es": "Nota pegada en la heladera. Tiene un error.",
        "tokens": [
         "Os",
         "ovos",
@@ -2961,7 +3030,8 @@
      "name": "Aplicar no contexto",
      "scene": {
       "title": "A feira de sábado",
-      "context": "Sábado · 9:00 · la feria de la Rua Almirante Alexandrino, con la lista en el celular"
+      "context": "Sábado · 9:00 · a feira da Rua Almirante Alexandrino, com a lista pronta",
+      "context_es": "Sábado · 9:00 · la feria de la Rua Almirante Alexandrino, con la lista en el celular"
      },
      "generated": 3,
      "exercises": [
@@ -3103,7 +3173,8 @@
        "id": "t2-3-se-num",
        "type": "spot-error",
        "tag": "a1.contr.em",
-       "prompt": "Reseña de un huésped. Tiene un error.",
+       "prompt": "Avaliação de um hóspede. Tem um erro.",
+       "prompt_es": "Reseña de un huésped. Tiene un error.",
        "tokens": [
         "A",
         "pousada",
@@ -3168,7 +3239,8 @@
        "id": "t2-3-se-o-cor",
        "type": "spot-error",
        "tag": "a1.genero.fem",
-       "prompt": "Mensaje del Tom desde la feria. Tiene un error.",
+       "prompt": "Mensagem do Tom, direto da feira. Tem um erro.",
+       "prompt_es": "Mensaje del Tom desde la feria. Tiene un error.",
        "tokens": [
         "Comprei",
         "uma",
@@ -3227,7 +3299,8 @@
        "id": "t2-3-se-no-portugal",
        "type": "spot-error",
        "tag": "a1.contr.em",
-       "prompt": "Dona Célia cuenta dónde vive su hija. Tiene un error.",
+       "prompt": "A Dona Célia conta onde a filha dela mora. Tem um erro.",
+       "prompt_es": "Dona Célia cuenta dónde vive su hija. Tiene un error.",
        "tokens": [
         "Minha",
         "filha",
@@ -3292,7 +3365,8 @@
        "type": "spot-error",
        "tag": "a1.genero.masc",
        "reserve": true,
-       "prompt": "Cartel de la verdulería de la feria. Tiene un error.",
+       "prompt": "Placa da barraca de verduras da feira. Tem um erro.",
+       "prompt_es": "Cartel de la verdulería de la feria. Tiene un error.",
        "tokens": [
         "Hoje",
         "a",
@@ -3383,7 +3457,8 @@
      "name": "Produzir com apoio",
      "scene": {
       "title": "O jantar de sábado",
-      "context": "Sábado · 20:30 · ocho personas, una mesa, y todos piden algo a la vez"
+      "context": "Sábado · 20:30 · oito pessoas, uma mesa, e todo mundo pede alguma coisa ao mesmo tempo",
+      "context_es": "Sábado · 20:30 · ocho personas, una mesa, y todos piden algo a la vez"
      },
      "field": "comida",
      "generated": 3,
@@ -3393,7 +3468,8 @@
        "type": "situation",
        "scene": {
         "title": "Na mesa",
-        "context": "20:30 · la Ana sirve el feijão"
+        "context": "20:30 · a Ana serve o feijão",
+        "context_es": "20:30 · la Ana sirve el feijão"
        },
        "bubbles": [
         {
@@ -3483,7 +3559,8 @@
        "type": "situation",
        "scene": {
         "title": "Na mesa",
-        "context": "20:45 · llegó un huésped nuevo y se presenta"
+        "context": "20:45 · chegou um hóspede novo e ele se apresenta",
+        "context_es": "20:45 · llegó un huésped nuevo y se presenta"
        },
        "bubbles": [
         {
@@ -3563,7 +3640,8 @@
        "id": "t2-4-gap-mel",
        "type": "gap",
        "tag": "a1.genero.masc",
-       "context": "El Tom pide algo para el té de la Lea, que está resfriada.",
+       "context": "O Tom pede alguma coisa para o chá da Lea, que está resfriada.",
+       "context_es": "El Tom pide algo para el té de la Lea, que está resfriada.",
        "text": "Ana, você me passa ___ mel, por favor?",
        "answers": [
         "o"
@@ -3582,7 +3660,8 @@
        ],
        "reviewed": true,
        "words": [
-        "mel"
+        "mel",
+        "chá"
        ]
       },
       {
@@ -3590,7 +3669,8 @@
        "type": "situation",
        "scene": {
         "title": "Depois do jantar",
-        "context": "23:00 · la Ana cierra la cocina"
+        "context": "23:00 · a Ana fecha a cozinha",
+        "context_es": "23:00 · la Ana cierra la cocina"
        },
        "bubbles": [
         {
@@ -3670,7 +3750,8 @@
        "id": "t2-4-gap-brasil",
        "type": "gap",
        "tag": "a1.contr.em",
-       "context": "El Martín le pregunta a la Ana desde cuándo trabaja en la pousada.",
+       "context": "O Martín pergunta para a Ana desde quando ela trabalha na pousada.",
+       "context_es": "El Martín le pregunta a la Ana desde cuándo trabaja en la pousada.",
        "text": "Você mora ___ Brasil há muito tempo?",
        "answers": [
         "no"
@@ -3700,7 +3781,8 @@
        "reserve": true,
        "scene": {
         "title": "Na feira",
-        "context": "Sábado · 9:20 · en el puesto de frutas"
+        "context": "Sábado · 9:20 · na barraca de frutas",
+        "context_es": "Sábado · 9:20 · en el puesto de frutas"
        },
        "bubbles": [
         {
@@ -3782,7 +3864,8 @@
        "type": "gap",
        "tag": "a1.contr.de",
        "reserve": true,
-       "context": "La Ana le presenta a Dona Célia a un huésped nuevo.",
+       "context": "A Ana apresenta a Dona Célia para um hóspede novo.",
+       "context_es": "La Ana le presenta a Dona Célia a un huésped nuevo.",
        "text": "Esta é a Dona Célia. Ela é ___ Portugal.",
        "answers": [
         "de"
@@ -3802,6 +3885,7 @@
        ],
        "reviewed": true,
        "words": [
+        "hóspede",
         "Portugal"
        ]
       }
@@ -3812,14 +3896,16 @@
      "name": "Escrever livremente",
      "scene": {
       "title": "Grupo da Pousada Maré",
-      "context": "Domingo · la heladera compartida es un caos y alguien tiene que poner orden"
+      "context": "Domingo · a geladeira compartilhada virou um caos e alguém precisa organizar",
+      "context_es": "Domingo · la heladera compartida es un caos y alguien tiene que poner orden"
      },
      "exercises": [
       {
        "id": "t2-5-wg-geladeira",
        "type": "writing-guided",
        "topic": "a1.u1.t2",
-       "prompt": "Escribí en el grupo dónde está cada cosa en la cocina, para que nadie más pregunte.",
+       "prompt": "Escreva no grupo onde fica cada coisa na cozinha, para ninguém mais perguntar.",
+       "prompt_es": "Escribí en el grupo dónde está cada cosa en la cocina, para que nadie más pregunte.",
        "constraints": [
         "Al menos 4 cosas, cada una con su lugar.",
         "Usá *no*, *na*, *nos* o *nas* al menos 3 veces.",
@@ -3842,7 +3928,8 @@
        "id": "t2-5-wg-apresentacao",
        "type": "writing-guided",
        "topic": "a1.u1.t2",
-       "prompt": "Presentá a tres personas de la pousada: de dónde es cada una y dónde vive ahora.",
+       "prompt": "Apresente três pessoas da pousada: de onde cada uma é e onde mora agora.",
+       "prompt_es": "Presentá a tres personas de la pousada: de dónde es cada una y dónde vive ahora.",
        "constraints": [
         "Tres personas, cada una con su país.",
         "Al menos un país sin artículo (*Portugal*, *Cuba*…).",
@@ -3865,7 +3952,8 @@
        "id": "t2-5-wf-viagem",
        "type": "writing-free",
        "topic": "a1.u1.t2",
-       "prompt": "Contale a un amigo por mensaje cómo es la pousada: el cuarto, la cocina, la varanda y la gente. Contale también algo de tu viaje.",
+       "prompt": "Conte para um amigo, por mensagem, como é a pousada: o quarto, a cozinha, a varanda e as pessoas. Conte também alguma coisa da sua viagem.",
+       "prompt_es": "Contale a un amigo por mensaje cómo es la pousada: el cuarto, la cocina, la varanda y la gente. Contale también algo de tu viaje.",
        "tips": [
         "Usá las palabras de la cocina y de la casa que viste en esta unidad.",
         "*a viagem*, *a mensagem* y *a cor* son femeninas."
@@ -3950,7 +4038,8 @@
      "name": "Descobrir",
      "scene": {
       "title": "Aula de português na varanda",
-      "context": "Martes · 18:00 · el Rafa reparte fotocopias y Caju duerme debajo de la mesa"
+      "context": "Terça · 18:00 · o Rafa distribui as fotocópias e o Caju dorme embaixo da mesa",
+      "context_es": "Martes · 18:00 · el Rafa reparte fotocopias y Caju duerme debajo de la mesa"
      },
      "exercises": [
       {
@@ -4154,7 +4243,8 @@
        "id": "t3-1-ch-voce-fala",
        "type": "choice",
        "tag": "a1.presente.regular",
-       "prompt": "El Rafa le pregunta a la Lea si habla inglés. ¿Qué le dice?",
+       "prompt": "O Rafa quer saber se a Lea sabe inglês. O que ele pergunta?",
+       "prompt_es": "El Rafa le pregunta a la Lea si habla inglés. ¿Qué le dice?",
        "options": [
         {
          "text": "Você fala inglês?",
@@ -4271,7 +4361,8 @@
      "name": "Reconhecer",
      "scene": {
       "title": "A rotina da pousada",
-      "context": "Miércoles · 8:00 · el pizarrón de la cocina tiene los turnos de la semana"
+      "context": "Quarta · 8:00 · o quadro da cozinha mostra os turnos da semana",
+      "context_es": "Miércoles · 8:00 · el pizarrón de la cocina tiene los turnos de la semana"
      },
      "exercises": [
       {
@@ -4301,7 +4392,8 @@
        "id": "t3-2-se-falan",
        "type": "spot-error",
        "tag": "a1.presente.regular",
-       "prompt": "Mensaje del Tom en el grupo. Tiene un error.",
+       "prompt": "Mensagem do Tom no grupo. Tem um erro.",
+       "prompt_es": "Mensaje del Tom en el grupo. Tiene un error.",
        "tokens": [
         "A",
         "Ana",
@@ -4327,7 +4419,8 @@
        "id": "t3-2-ord-gosto",
        "type": "order",
        "tag": "a1.presente.regular",
-       "prompt": "Contale al Rafa que te gusta el café de la pousada.",
+       "prompt": "Diga para o Rafa que o café da pousada é o seu favorito.",
+       "prompt_es": "Contale al Rafa que te gusta el café de la pousada.",
        "chunks": [
         "gosto",
         "eu",
@@ -4355,7 +4448,8 @@
        "id": "t3-2-se-voce-moras",
        "type": "spot-error",
        "tag": "a1.presente.regular",
-       "prompt": "Mensaje de la Mia a un chico que conoció en la playa. Tiene un error.",
+       "prompt": "Mensagem da Mia para um menino que ela conheceu na praia. Tem um erro.",
+       "prompt_es": "Mensaje de la Mia a un chico que conoció en la playa. Tiene un error.",
        "tokens": [
         "E",
         "você?",
@@ -4399,7 +4493,8 @@
        "id": "t3-2-ord-a-gente",
        "type": "order",
        "tag": "a1.presente.regular",
-       "prompt": "Contás a qué hora cenan en la pousada.",
+       "prompt": "Conte o horário do jantar na pousada.",
+       "prompt_es": "Contás a qué hora cenan en la pousada.",
        "chunks": [
         "às oito",
         "a gente",
@@ -4427,7 +4522,8 @@
        "id": "t3-2-se-a-gente-comemos",
        "type": "spot-error",
        "tag": "a1.presente.regular",
-       "prompt": "Cartelito del pizarrón de la cocina. Tiene un error.",
+       "prompt": "Aviso do quadro da cozinha. Tem um erro.",
+       "prompt_es": "Cartelito del pizarrón de la cocina. Tiene un error.",
        "tokens": [
         "Quarta:",
         "a",
@@ -4473,7 +4569,8 @@
        "id": "t3-2-ord-abrimos",
        "type": "order",
        "tag": "a1.presente.regular",
-       "prompt": "La Ana explica a qué hora abren la recepción.",
+       "prompt": "A Ana explica o horário da recepção.",
+       "prompt_es": "La Ana explica a qué hora abren la recepción.",
        "chunks": [
         "a recepção",
         "nós",
@@ -4507,7 +4604,8 @@
        "id": "t3-2-se-eu-vivo",
        "type": "spot-error",
        "tag": "a1.presente.regular",
-       "prompt": "Tu presentación en la clase del Rafa. Tiene un error.",
+       "prompt": "A sua apresentação na aula do Rafa. Tem um erro.",
+       "prompt_es": "Tu presentación en la clase del Rafa. Tiene un error.",
        "tokens": [
         "Eu",
         "sou",
@@ -4536,7 +4634,8 @@
        "id": "t3-2-ch-gostar",
        "type": "choice",
        "tag": "a1.presente.regular",
-       "prompt": "Dona Célia cuenta qué le gusta de Rio. ¿Qué frase está bien?",
+       "prompt": "A Dona Célia conta o que ela ama no Rio. Qual frase está certa?",
+       "prompt_es": "Dona Célia cuenta qué le gusta de Rio. ¿Qué frase está bien?",
        "options": [
         {
          "text": "Eu gosto muito da praia.",
@@ -4566,7 +4665,8 @@
        "id": "t3-2-se-comen",
        "type": "spot-error",
        "tag": "a1.presente.regular",
-       "prompt": "Mensaje de la Lea sobre los turnos de la cocina. Tiene un error.",
+       "prompt": "Mensagem da Lea sobre os turnos da cozinha. Tem um erro.",
+       "prompt_es": "Mensaje de la Lea sobre los turnos de la cocina. Tiene un error.",
        "tokens": [
         "O",
         "Tom",
@@ -4592,7 +4692,8 @@
        "id": "t3-2-ord-estuda",
        "type": "order",
        "tag": "a1.presente.regular",
-       "prompt": "Contás qué hace la Mia por las tardes.",
+       "prompt": "Conte a rotina da Mia à tarde.",
+       "prompt_es": "Contás qué hace la Mia por las tardes.",
        "chunks": [
         "português",
         "a Mia",
@@ -4665,7 +4766,8 @@
        "type": "spot-error",
        "tag": "a1.presente.regular",
        "reserve": true,
-       "prompt": "Pregunta de un huésped en el libro de la recepción. Tiene un error.",
+       "prompt": "Pergunta de um hóspede no livro da recepção. Tem um erro.",
+       "prompt_es": "Pregunta de un huésped en el libro de la recepción. Tiene un error.",
        "tokens": [
         "Vocês",
         "trabalhan",
@@ -4687,7 +4789,8 @@
        "id": "t3-2-ord-bebe",
        "type": "order",
        "tag": "a1.presente.regular",
-       "prompt": "Contás qué toma el Tom en el desayuno.",
+       "prompt": "Conte o que o Tom toma no café da manhã.",
+       "prompt_es": "Contás qué toma el Tom en el desayuno.",
        "chunks": [
         "o Tom",
         "bebe",
@@ -4716,7 +4819,8 @@
      "name": "Aplicar no contexto",
      "scene": {
       "title": "O blog da pousada",
-      "context": "Jueves · el Rafa escribe en el blog de la pousada sobre la gente que pasa por ahí"
+      "context": "Quinta · o Rafa escreve no blog da pousada sobre as pessoas que passam por lá",
+      "context_es": "Jueves · el Rafa escribe en el blog de la pousada sobre la gente que pasa por ahí"
      },
      "generated": 3,
      "exercises": [
@@ -4848,7 +4952,8 @@
        "id": "t3-3-se-elas-estudan",
        "type": "spot-error",
        "tag": "a1.presente.regular",
-       "prompt": "Comentario en el blog. Tiene un error.",
+       "prompt": "Comentário no blog. Tem um erro.",
+       "prompt_es": "Comentario en el blog. Tiene un error.",
        "tokens": [
         "Minhas",
         "filhas",
@@ -4900,7 +5005,8 @@
        "id": "t3-3-se-nos-abremos",
        "type": "spot-error",
        "tag": "a1.presente.regular",
-       "prompt": "Correo de la Ana a un proveedor. Tiene un error.",
+       "prompt": "E-mail da Ana para um fornecedor. Tem um erro.",
+       "prompt_es": "Correo de la Ana a un proveedor. Tiene un error.",
        "tokens": [
         "Nós",
         "abremos",
@@ -4960,7 +5066,8 @@
        "id": "t3-3-se-voce-come",
        "type": "spot-error",
        "tag": "a1.presente.regular",
-       "prompt": "Pregunta del Tom a la Mia, por chat. Tiene un error.",
+       "prompt": "Pergunta do Tom para a Mia, pelo chat. Tem um erro.",
+       "prompt_es": "Pregunta del Tom a la Mia, por chat. Tiene un error.",
        "tokens": [
         "Você",
         "comes",
@@ -5015,7 +5122,8 @@
        "type": "spot-error",
        "tag": "a1.presente.regular",
        "reserve": true,
-       "prompt": "Tu respuesta en el blog. Tiene un error.",
+       "prompt": "A sua resposta no blog. Tem um erro.",
+       "prompt_es": "Tu respuesta en el blog. Tiene un error.",
        "tokens": [
         "Eu",
         "bebe",
@@ -5046,7 +5154,8 @@
      "name": "Produzir com apoio",
      "scene": {
       "title": "Conversa na varanda",
-      "context": "Viernes · 22:00 · todos en la varanda, con vista a la bahía"
+      "context": "Sexta · 22:00 · todo mundo na varanda, com vista para a baía",
+      "context_es": "Viernes · 22:00 · todos en la varanda, con vista a la bahía"
      },
      "field": "verbos",
      "generated": 3,
@@ -5056,7 +5165,8 @@
        "type": "situation",
        "scene": {
         "title": "Na varanda",
-        "context": "22:00 · el Martín, el uruguayo, te pregunta por tu vida"
+        "context": "22:00 · o Martín, o uruguaio, pergunta sobre a sua vida",
+        "context_es": "22:00 · el Martín, el uruguayo, te pregunta por tu vida"
        },
        "bubbles": [
         {
@@ -5141,7 +5251,8 @@
        "type": "situation",
        "scene": {
         "title": "Na varanda",
-        "context": "22:15 · la Lea cuenta su rutina en Madrid"
+        "context": "22:15 · a Lea conta a rotina dela em Madri",
+        "context_es": "22:15 · la Lea cuenta su rutina en Madrid"
        },
        "bubbles": [
         {
@@ -5226,7 +5337,8 @@
        "id": "t3-4-gap-gostar",
        "type": "gap",
        "tag": "a1.presente.regular",
-       "context": "La Ana le pregunta al Martín qué le gusta hacer en Rio.",
+       "context": "A Ana pergunta para o Martín o que ele curte fazer no Rio.",
+       "context_es": "La Ana le pregunta al Martín qué le gusta hacer en Rio.",
        "text": "Eu ___ muito de correr na praia.",
        "answers": [
         "gosto"
@@ -5246,7 +5358,8 @@
        ],
        "reviewed": true,
        "words": [
-        "praia"
+        "praia",
+        "fazer"
        ]
       },
       {
@@ -5254,7 +5367,8 @@
        "type": "situation",
        "scene": {
         "title": "Na varanda",
-        "context": "22:40 · planes para el domingo"
+        "context": "22:40 · planos para o domingo",
+        "context_es": "22:40 · planes para el domingo"
        },
        "bubbles": [
         {
@@ -5338,7 +5452,8 @@
        "id": "t3-4-gap-abrir",
        "type": "gap",
        "tag": "a1.presente.regular",
-       "context": "Hace calor. Le pedís permiso al Tom para abrir la ventana.",
+       "context": "Faz calor. Você pede licença ao Tom para abrir a janela.",
+       "context_es": "Hace calor. Le pedís permiso al Tom para abrir la ventana.",
        "text": "Tom, eu ___ a janela? Está muito quente.",
        "answers": [
         "abro"
@@ -5368,7 +5483,8 @@
        "reserve": true,
        "scene": {
         "title": "Aula de português",
-        "context": "Martes · 18:30 · el Rafa pregunta qué hacen todos"
+        "context": "Terça · 18:30 · o Rafa pergunta o que todo mundo faz",
+        "context_es": "Martes · 18:30 · el Rafa pregunta qué hacen todos"
        },
        "bubbles": [
         {
@@ -5445,7 +5561,8 @@
        "type": "gap",
        "tag": "a1.presente.regular",
        "reserve": true,
-       "context": "En la feria le preguntás a dos señoras si tienen tapioca.",
+       "context": "Na feira, você procura tapioca e pergunta para duas senhoras.",
+       "context_es": "En la feria le preguntás a dos señoras si tienen tapioca.",
        "text": "As senhoras ___ tapioca aqui?",
        "answers": [
         "vendem",
@@ -5466,7 +5583,9 @@
         }
        ],
        "reviewed": true,
-       "words": []
+       "words": [
+        "feira"
+       ]
       }
      ]
     },
@@ -5475,14 +5594,16 @@
      "name": "Escrever livremente",
      "scene": {
       "title": "Blog da Pousada Maré",
-      "context": "Sábado · el Rafa te pide un texto para el blog"
+      "context": "Sábado · o Rafa pede um texto para o blog",
+      "context_es": "Sábado · el Rafa te pide un texto para el blog"
      },
      "exercises": [
       {
        "id": "t3-5-wg-rotina",
        "type": "writing-guided",
        "topic": "a1.u1.t3",
-       "prompt": "Contá tu rutina en la pousada: a qué hora te levantás, qué desayunás, qué hacés a la tarde y a la noche.",
+       "prompt": "Conte a sua rotina na pousada: a que horas você acorda, o que você come no café da manhã, o que você faz à tarde e à noite.",
+       "prompt_es": "Contá tu rutina en la pousada: a qué hora te levantás, qué desayunás, qué hacés a la tarde y a la noche.",
        "constraints": [
         "Al menos 4 verbos distintos en presente.",
         "Entre 4 y 6 oraciones."
@@ -5505,7 +5626,8 @@
        "id": "t3-5-wg-pessoas",
        "type": "writing-guided",
        "topic": "a1.u1.t3",
-       "prompt": "Escribí para el blog sobre dos personas de la pousada: qué hacen, dónde viven, qué idiomas hablan.",
+       "prompt": "Escreva para o blog sobre duas pessoas da pousada: o que fazem, onde moram, que línguas falam.",
+       "prompt_es": "Escribí para el blog sobre dos personas de la pousada: qué hacen, dónde viven, qué idiomas hablan.",
        "constraints": [
         "Una persona con *ele* o *ela* y dos personas juntas con *eles* o *elas*.",
         "Al menos 3 verbos distintos en presente."
@@ -5527,7 +5649,8 @@
        "id": "t3-5-wf-convite",
        "type": "writing-free",
        "topic": "a1.u1.t3",
-       "prompt": "Escribile a la gente de la pousada para invitarlos a un asado argentino: qué día, a qué hora, qué comen y qué toman.",
+       "prompt": "Escreva para o pessoal da pousada e convide todo mundo para um churrasco argentino: que dia, a que horas, o que vocês vão comer e beber.",
+       "prompt_es": "Escribile a la gente de la pousada para invitarlos a un asado argentino: qué día, a qué hora, qué comen y qué toman.",
        "tips": [
         "Podés hablarles con *vocês* y contar lo que van a hacer con *a gente* o *nós*.",
         "*a gente* conjuga como *ele*; *nós*, con *-mos*."

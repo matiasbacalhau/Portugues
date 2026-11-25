@@ -14,6 +14,13 @@ export const isStandalone = () =>
   window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 
 // Texto del contenido con *énfasis* → nodos (texto y <em>).
+// Consigna en portugués con el original en español a un toque (inmersión, nivel 2).
+// Sin texto devuelve un fragmento vacío: los ejercicios usan el.append, que escribiría "undefined".
+export const inSpanish = text => (text
+  ? h('details', { class: 'rule-accordion es-hint' },
+    h('summary', { lang: 'pt-BR' }, 'Em espanhol'), h('p', { class: 'muted', lang: 'es' }, rich(text)))
+  : document.createDocumentFragment());
+
 export const rich = text => String(text ?? '').split(/\*([^*]+)\*/).map((part, i) => (i % 2 ? h('em', {}, part) : part));
 
 // Modo claro (por defecto) u oscuro, elegido en Ajustes.
