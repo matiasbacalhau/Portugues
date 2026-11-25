@@ -1,5 +1,95 @@
 [
  {
+  "file": "1F1E6-1F1F7.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1E6-1F1F7/"
+ },
+ {
+  "file": "1F1E7-1F1F7.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1E7-1F1F7/"
+ },
+ {
+  "file": "1F1E8-1F1E6.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1E8-1F1E6/"
+ },
+ {
+  "file": "1F1E8-1F1F1.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1E8-1F1F1/"
+ },
+ {
+  "file": "1F1E8-1F1F4.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1E8-1F1F4/"
+ },
+ {
+  "file": "1F1E8-1F1FA.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1E8-1F1FA/"
+ },
+ {
+  "file": "1F1E9-1F1EA.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1E9-1F1EA/"
+ },
+ {
+  "file": "1F1EA-1F1F8.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1EA-1F1F8/"
+ },
+ {
+  "file": "1F1EE-1F1F9.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1EE-1F1F9/"
+ },
+ {
+  "file": "1F1F2-1F1FD.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1F2-1F1FD/"
+ },
+ {
+  "file": "1F1F5-1F1EA.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1F5-1F1EA/"
+ },
+ {
+  "file": "1F1F5-1F1F9.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1F5-1F1F9/"
+ },
+ {
+  "file": "1F1F5-1F1FE.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1F5-1F1FE/"
+ },
+ {
+  "file": "1F1FA-1F1FE.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F1FA-1F1FE/"
+ },
+ {
+  "file": "1F303.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F303/"
+ },
+ {
   "file": "1F345.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
@@ -24,6 +114,12 @@
   "url": "https://openmoji.org/library/emoji-1F34E/"
  },
  {
+  "file": "1F35A.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F35A/"
+ },
+ {
   "file": "1F35E.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
@@ -36,16 +132,46 @@
   "url": "https://openmoji.org/library/emoji-1F36B/"
  },
  {
+  "file": "1F36F.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F36F/"
+ },
+ {
+  "file": "1F373.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F373/"
+ },
+ {
+  "file": "1F374.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F374/"
+ },
+ {
   "file": "1F377.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F377/"
  },
  {
+  "file": "1F379.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F379/"
+ },
+ {
   "file": "1F37A.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F37A/"
+ },
+ {
+  "file": "1F37D.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F37D/"
  },
  {
   "file": "1F382.svg",
@@ -60,10 +186,58 @@
   "url": "https://openmoji.org/library/emoji-1F392/"
  },
  {
+  "file": "1F3A8.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F3A8/"
+ },
+ {
+  "file": "1F3D6.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F3D6/"
+ },
+ {
+  "file": "1F3E0.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F3E0/"
+ },
+ {
+  "file": "1F3E1.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F3E1/"
+ },
+ {
+  "file": "1F3E2.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F3E2/"
+ },
+ {
+  "file": "1F3E8.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F3E8/"
+ },
+ {
+  "file": "1F3F7.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F3F7/"
+ },
+ {
   "file": "1F408.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F408/"
+ },
+ {
+  "file": "1F415.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F415/"
  },
  {
   "file": "1F41F.svg",
@@ -76,6 +250,12 @@
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F45C/"
+ },
+ {
+  "file": "1F466.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F466/"
  },
  {
   "file": "1F467.svg",
@@ -102,6 +282,66 @@
   "url": "https://openmoji.org/library/emoji-1F46A/"
  },
  {
+  "file": "1F474.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F474/"
+ },
+ {
+  "file": "1F475.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F475/"
+ },
+ {
+  "file": "1F48A.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F48A/"
+ },
+ {
+  "file": "1F4A1.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F4A1/"
+ },
+ {
+  "file": "1F4A7.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F4A7/"
+ },
+ {
+  "file": "1F4AC.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F4AC/"
+ },
+ {
+  "file": "1F4B0.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F4B0/"
+ },
+ {
+  "file": "1F4B3.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F4B3/"
+ },
+ {
+  "file": "1F4BB.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F4BB/"
+ },
+ {
+  "file": "1F4DD.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F4DD/"
+ },
+ {
   "file": "1F4E6.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
@@ -112,6 +352,18 @@
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F4F0/"
+ },
+ {
+  "file": "1F4F1.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F4F1/"
+ },
+ {
+  "file": "1F510.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F510/"
  },
  {
   "file": "1F511.svg",
@@ -132,10 +384,28 @@
   "url": "https://openmoji.org/library/emoji-1F570/"
  },
  {
+  "file": "1F5D1.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F5D1/"
+ },
+ {
+  "file": "1F68C.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F68C/"
+ },
+ {
   "file": "1F6AA.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F6AA/"
+ },
+ {
+  "file": "1F6B0.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F6B0/"
  },
  {
   "file": "1F6B2.svg",
@@ -144,16 +414,40 @@
   "url": "https://openmoji.org/library/emoji-1F6B2/"
  },
  {
+  "file": "1F6BD.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F6BD/"
+ },
+ {
   "file": "1F6BF.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F6BF/"
  },
  {
+  "file": "1F6CB.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F6CB/"
+ },
+ {
+  "file": "1F6CE.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F6CE/"
+ },
+ {
   "file": "1F6CF.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F6CF/"
+ },
+ {
+  "file": "1F6D2.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F6D2/"
  },
  {
   "file": "1F6D7.svg",
@@ -180,10 +474,22 @@
   "url": "https://openmoji.org/library/emoji-1F954/"
  },
  {
+  "file": "1F956.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F956/"
+ },
+ {
   "file": "1F957.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F957/"
+ },
+ {
+  "file": "1F958.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F958/"
  },
  {
   "file": "1F95A.svg",
@@ -196,6 +502,24 @@
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F95B/"
+ },
+ {
+  "file": "1F964.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F964/"
+ },
+ {
+  "file": "1F965.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F965/"
+ },
+ {
+  "file": "1F966.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F966/"
  },
  {
   "file": "1F969.svg",
@@ -216,6 +540,12 @@
   "url": "https://openmoji.org/library/emoji-1F9C2/"
  },
  {
+  "file": "1F9C3.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F9C3/"
+ },
+ {
   "file": "1F9C5.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
@@ -226,6 +556,12 @@
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-1F9C8/"
+ },
+ {
+  "file": "1F9D1-200D-1F373.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1F9D1-200D-1F373/"
  },
  {
   "file": "1F9D1-200D-1F393.svg",
@@ -300,6 +636,30 @@
   "url": "https://openmoji.org/library/emoji-1FAB4/"
  },
  {
+  "file": "1FAD6.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1FAD6/"
+ },
+ {
+  "file": "1FAD8.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-1FAD8/"
+ },
+ {
+  "file": "2615.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-2615/"
+ },
+ {
+  "file": "2708.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-2708/"
+ },
+ {
   "file": "E144.svg",
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
@@ -316,6 +676,12 @@
   "source": "OpenMoji",
   "license": "CC BY-SA 4.0",
   "url": "https://openmoji.org/library/emoji-E202/"
+ },
+ {
+  "file": "E206.svg",
+  "source": "OpenMoji",
+  "license": "CC BY-SA 4.0",
+  "url": "https://openmoji.org/library/emoji-E206/"
  },
  {
   "file": "E254.svg",

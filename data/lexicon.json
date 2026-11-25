@@ -7,7 +7,8 @@
   "es": "posada, hostel",
   "field": "pousada",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F3E8"
  },
  {
   "lemma": "quarto",
@@ -59,7 +60,8 @@
   "es": "recepción",
   "field": "pousada",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F6CE"
  },
  {
   "lemma": "hóspede",
@@ -133,7 +135,8 @@
   "es": "baño",
   "field": "comodos",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F6BD"
  },
  {
   "lemma": "armário",
@@ -195,7 +198,8 @@
   "es": "noche",
   "field": "ideias",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F303"
  },
  {
   "lemma": "café da manhã",
@@ -205,7 +209,8 @@
   "es": "desayuno",
   "field": "pousada",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F373"
  },
  {
   "lemma": "senha",
@@ -215,7 +220,8 @@
   "es": "contraseña",
   "field": "ideias",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F510"
  },
  {
   "lemma": "wi-fi",
@@ -268,7 +274,8 @@
   "field": "ideias",
   "freq": 1,
   "level": "A1",
-  "trap": "genero"
+  "trap": "genero",
+  "image": "1F4AC"
  },
  {
   "lemma": "viagem",
@@ -279,7 +286,8 @@
   "field": "ideias",
   "freq": 1,
   "level": "A1",
-  "trap": "genero"
+  "trap": "genero",
+  "image": "2708"
  },
  {
   "lemma": "praia",
@@ -289,7 +297,8 @@
   "es": "playa",
   "field": "pousada",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F3D6"
  },
  {
   "lemma": "ônibus",
@@ -299,7 +308,8 @@
   "es": "colectivo",
   "field": "pousada",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F68C"
  },
  {
   "lemma": "casa",
@@ -309,7 +319,8 @@
   "es": "casa",
   "field": "casa",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F3E0"
  },
  {
   "lemma": "apartamento",
@@ -319,7 +330,8 @@
   "es": "departamento",
   "field": "casa",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F3E2"
  },
  {
   "lemma": "porta",
@@ -372,7 +384,8 @@
   "es": "sillón",
   "field": "moveis",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F6CB"
  },
  {
   "lemma": "espelho",
@@ -436,7 +449,8 @@
   "es": "cocina",
   "field": "comodos",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F9D1-200D-1F373"
  },
  {
   "lemma": "varanda",
@@ -456,7 +470,8 @@
   "es": "jardín",
   "field": "comodos",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F3E1"
  },
  {
   "lemma": "garagem",
@@ -467,7 +482,8 @@
   "field": "comodos",
   "freq": 2,
   "level": "A1",
-  "trap": "genero"
+  "trap": "genero",
+  "image": "E206"
  },
  {
   "lemma": "luz",
@@ -477,7 +493,8 @@
   "es": "luz",
   "field": "casa",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F4A1"
  },
  {
   "lemma": "cor",
@@ -488,7 +505,8 @@
   "field": "casa",
   "freq": 1,
   "level": "A1",
-  "trap": "genero"
+  "trap": "genero",
+  "image": "1F3A8"
  },
  {
   "lemma": "planta",
@@ -542,7 +560,8 @@
   "es": "computadora",
   "field": "casa",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F4BB"
  },
  {
   "lemma": "celular",
@@ -552,7 +571,8 @@
   "es": "celular",
   "field": "casa",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F4F1"
  },
  {
   "lemma": "geladeira",
@@ -593,7 +613,8 @@
   "es": "tenedor",
   "field": "cozinha",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F374"
  },
  {
   "lemma": "faca",
@@ -614,7 +635,8 @@
   "es": "plato",
   "field": "cozinha",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F37D"
  },
  {
   "lemma": "copo",
@@ -645,7 +667,8 @@
   "es": "olla",
   "field": "cozinha",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F958"
  },
  {
   "lemma": "cafeteira",
@@ -666,7 +689,8 @@
   "es": "pileta, bacha",
   "field": "cozinha",
   "freq": 3,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F6B0"
  },
  {
   "lemma": "lixo",
@@ -676,7 +700,8 @@
   "es": "basura",
   "field": "cozinha",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F5D1"
  },
  {
   "lemma": "pão",
@@ -818,7 +843,8 @@
   "es": "arroz",
   "field": "comida",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F35A"
  },
  {
   "lemma": "feijão",
@@ -828,7 +854,8 @@
   "es": "poroto",
   "field": "comida",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1FAD8"
  },
  {
   "lemma": "salada",
@@ -883,7 +910,8 @@
   "field": "comida",
   "freq": 3,
   "level": "A1",
-  "trap": "genero"
+  "trap": "genero",
+  "image": "1F36F"
  },
  {
   "lemma": "chocolate",
@@ -905,7 +933,8 @@
   "field": "comida",
   "freq": 3,
   "level": "A1",
-  "trap": "genero"
+  "trap": "genero",
+  "image": "1F966"
  },
  {
   "lemma": "fruta",
@@ -925,7 +954,8 @@
   "es": "café",
   "field": "bebidas",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "2615"
  },
  {
   "lemma": "leite",
@@ -947,7 +977,8 @@
   "es": "agua",
   "field": "bebidas",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F4A7"
  },
  {
   "lemma": "suco",
@@ -957,7 +988,8 @@
   "es": "jugo",
   "field": "bebidas",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F9C3"
  },
  {
   "lemma": "cerveja",
@@ -989,7 +1021,8 @@
   "es": "té",
   "field": "bebidas",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1FAD6"
  },
  {
   "lemma": "refrigerante",
@@ -999,7 +1032,8 @@
   "es": "gaseosa",
   "field": "bebidas",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F964"
  },
  {
   "lemma": "caipirinha",
@@ -1009,7 +1043,8 @@
   "es": "caipiriña",
   "field": "bebidas",
   "freq": 3,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F379"
  },
  {
   "lemma": "água de coco",
@@ -1019,7 +1054,8 @@
   "es": "agua de coco",
   "field": "bebidas",
   "freq": 3,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F965"
  },
  {
   "lemma": "mercado",
@@ -1029,7 +1065,8 @@
   "es": "supermercado, mercado",
   "field": "compras",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F6D2"
  },
  {
   "lemma": "real",
@@ -1049,7 +1086,8 @@
   "es": "precio",
   "field": "compras",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F3F7"
  },
  {
   "lemma": "cesta",
@@ -1070,7 +1108,8 @@
   "es": "lista",
   "field": "compras",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F4DD"
  },
  {
   "lemma": "nota fiscal",
@@ -1091,7 +1130,8 @@
   "es": "plata, dinero",
   "field": "compras",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F4B0"
  },
  {
   "lemma": "cartão",
@@ -1101,7 +1141,8 @@
   "es": "tarjeta",
   "field": "compras",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F4B3"
  },
  {
   "lemma": "farmácia",
@@ -1111,7 +1152,8 @@
   "es": "farmacia",
   "field": "compras",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F48A"
  },
  {
   "lemma": "padaria",
@@ -1121,7 +1163,8 @@
   "es": "panadería",
   "field": "compras",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F956"
  },
  {
   "lemma": "feira",
@@ -1185,7 +1228,8 @@
   "es": "chico, nene (varón)",
   "field": "pessoas",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F466"
  },
  {
   "lemma": "professor",
@@ -1269,7 +1313,8 @@
   "es": "abuela",
   "field": "pessoas",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F475"
  },
  {
   "lemma": "avô",
@@ -1279,7 +1324,8 @@
   "es": "abuelo",
   "field": "pessoas",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F474"
  },
  {
   "lemma": "irmão",
@@ -1309,7 +1355,8 @@
   "es": "perro",
   "field": "pessoas",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F415"
  },
  {
   "lemma": "gato",
@@ -1330,7 +1377,8 @@
   "es": "Brasil",
   "field": "paises",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1E7-1F1F7"
  },
  {
   "lemma": "Argentina",
@@ -1340,7 +1388,8 @@
   "es": "Argentina",
   "field": "paises",
   "freq": 1,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1E6-1F1F7"
  },
  {
   "lemma": "Chile",
@@ -1350,7 +1399,8 @@
   "es": "Chile",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1E8-1F1F1"
  },
  {
   "lemma": "Uruguai",
@@ -1360,7 +1410,8 @@
   "es": "Uruguay",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1FA-1F1FE"
  },
  {
   "lemma": "Paraguai",
@@ -1370,7 +1421,8 @@
   "es": "Paraguay",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1F5-1F1FE"
  },
  {
   "lemma": "Peru",
@@ -1380,7 +1432,8 @@
   "es": "Perú",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1F5-1F1EA"
  },
  {
   "lemma": "Colômbia",
@@ -1390,7 +1443,8 @@
   "es": "Colombia",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1E8-1F1F4"
  },
  {
   "lemma": "Espanha",
@@ -1400,7 +1454,8 @@
   "es": "España",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1EA-1F1F8"
  },
  {
   "lemma": "Itália",
@@ -1410,7 +1465,8 @@
   "es": "Italia",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1EE-1F1F9"
  },
  {
   "lemma": "Alemanha",
@@ -1420,7 +1476,8 @@
   "es": "Alemania",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1E9-1F1EA"
  },
  {
   "lemma": "Canadá",
@@ -1430,7 +1487,8 @@
   "es": "Canadá",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1E8-1F1E6"
  },
  {
   "lemma": "México",
@@ -1440,7 +1498,8 @@
   "es": "México",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1F2-1F1FD"
  },
  {
   "lemma": "Portugal",
@@ -1450,7 +1509,8 @@
   "es": "Portugal",
   "field": "paises",
   "freq": 2,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1F5-1F1F9"
  },
  {
   "lemma": "Cuba",
@@ -1460,7 +1520,8 @@
   "es": "Cuba",
   "field": "paises",
   "freq": 3,
-  "level": "A1"
+  "level": "A1",
+  "image": "1F1E8-1F1FA"
  },
  {
   "lemma": "ser",

@@ -6,75 +6,75 @@
 # siguen la terminación regular; `tag` cuando el verbo tiene tema propio (ser, estar).
 
 # ── pousada (llegada, recepción, cuarto) ──
-- {lemma: pousada, pos: noun, article: a, plural: pousadas, es: "posada, hostel", field: pousada, freq: 2, level: A1}
+- {lemma: pousada, pos: noun, article: a, plural: pousadas, es: "posada, hostel", field: pousada, freq: 2, level: A1, image: 1F3E8}
 - {lemma: quarto, pos: noun, article: o, plural: quartos, es: "cuarto, habitación", field: comodos, freq: 1, level: A1}
 - {lemma: cama, pos: noun, article: a, plural: camas, es: "cama", field: moveis, freq: 1, level: A1, image: 1F6CF}
 - {lemma: beliche, pos: noun, article: o, plural: beliches, es: "cucheta", field: pousada, freq: 3, level: A1}
 - {lemma: chave, pos: noun, article: a, plural: chaves, es: "llave", field: objetos, freq: 1, level: A1, image: 1F511}
-- {lemma: recepção, pos: noun, article: a, plural: recepções, es: "recepción", field: pousada, freq: 2, level: A1}
+- {lemma: recepção, pos: noun, article: a, plural: recepções, es: "recepción", field: pousada, freq: 2, level: A1, image: 1F6CE}
 - {lemma: hóspede, pos: noun, article: o, plural: hóspedes, es: "huésped", field: pousada, freq: 2, level: A1}
 - {lemma: mochila, pos: noun, article: a, plural: mochilas, es: "mochila", field: pousada, freq: 1, level: A1, image: 1F392}
 - {lemma: mala, pos: noun, article: a, plural: malas, es: "valija", field: pousada, freq: 2, level: A1, image: 1F9F3}
 - {lemma: bagagem, pos: noun, article: a, plural: bagagens, es: "equipaje", field: pousada, freq: 2, level: A1, trap: genero}
 - {lemma: toalha, pos: noun, article: a, plural: toalhas, es: "toalla", field: objetos, freq: 2, level: A1}
 - {lemma: chuveiro, pos: noun, article: o, plural: chuveiros, es: "ducha", field: pousada, freq: 2, level: A1, image: 1F6BF}
-- {lemma: banheiro, pos: noun, article: o, plural: banheiros, es: "baño", field: comodos, freq: 1, level: A1}
+- {lemma: banheiro, pos: noun, article: o, plural: banheiros, es: "baño", field: comodos, freq: 1, level: A1, image: 1F6BD}
 - {lemma: armário, pos: noun, article: o, plural: armários, es: "armario, placard", field: moveis, freq: 2, level: A1}
 - {lemma: bolsa, pos: noun, article: a, plural: bolsas, es: "bolso, cartera", field: pousada, freq: 1, level: A1, image: 1F45C}
 - {lemma: passaporte, pos: noun, article: o, plural: passaportes, es: "pasaporte", field: pousada, freq: 2, level: A1}
 - {lemma: documento, pos: noun, article: o, plural: documentos, es: "documento", field: pousada, freq: 1, level: A1, image: 1FAAA}
 - {lemma: reserva, pos: noun, article: a, plural: reservas, es: "reserva", field: ideias, freq: 2, level: A1}
-- {lemma: noite, pos: noun, article: a, plural: noites, es: "noche", field: ideias, freq: 1, level: A1}
-- {lemma: café da manhã, pos: noun, article: o, plural: null, es: "desayuno", field: pousada, freq: 1, level: A1}
-- {lemma: senha, pos: noun, article: a, plural: senhas, es: "contraseña", field: ideias, freq: 2, level: A1}
+- {lemma: noite, pos: noun, article: a, plural: noites, es: "noche", field: ideias, freq: 1, level: A1, image: 1F303}
+- {lemma: café da manhã, pos: noun, article: o, plural: null, es: "desayuno", field: pousada, freq: 1, level: A1, image: 1F373}
+- {lemma: senha, pos: noun, article: a, plural: senhas, es: "contraseña", field: ideias, freq: 2, level: A1, image: 1F510}
 - {lemma: wi-fi, pos: noun, article: o, plural: null, es: "wifi", field: pousada, freq: 1, level: A1, image: E254}
 - {lemma: tomada, pos: noun, article: a, plural: tomadas, es: "enchufe", field: pousada, freq: 3, level: A1, image: E144}
 - {lemma: cobertor, pos: noun, article: o, plural: cobertores, es: "frazada", field: objetos, freq: 3, level: A1}
 - {lemma: travesseiro, pos: noun, article: o, plural: travesseiros, es: "almohada", field: objetos, freq: 3, level: A1}
-- {lemma: mensagem, pos: noun, article: a, plural: mensagens, es: "mensaje", field: ideias, freq: 1, level: A1, trap: genero}
-- {lemma: viagem, pos: noun, article: a, plural: viagens, es: "viaje", field: ideias, freq: 1, level: A1, trap: genero}
-- {lemma: praia, pos: noun, article: a, plural: praias, es: "playa", field: pousada, freq: 1, level: A1}
-- {lemma: ônibus, pos: noun, article: o, plural: ônibus, es: "colectivo", field: pousada, freq: 1, level: A1}
+- {lemma: mensagem, pos: noun, article: a, plural: mensagens, es: "mensaje", field: ideias, freq: 1, level: A1, trap: genero, image: 1F4AC}
+- {lemma: viagem, pos: noun, article: a, plural: viagens, es: "viaje", field: ideias, freq: 1, level: A1, trap: genero, image: "2708"}
+- {lemma: praia, pos: noun, article: a, plural: praias, es: "playa", field: pousada, freq: 1, level: A1, image: 1F3D6}
+- {lemma: ônibus, pos: noun, article: o, plural: ônibus, es: "colectivo", field: pousada, freq: 1, level: A1, image: 1F68C}
 
 # ── casa (cuartos, muebles) ──
-- {lemma: casa, pos: noun, article: a, plural: casas, es: "casa", field: casa, freq: 1, level: A1}
-- {lemma: apartamento, pos: noun, article: o, plural: apartamentos, es: "departamento", field: casa, freq: 1, level: A1}
+- {lemma: casa, pos: noun, article: a, plural: casas, es: "casa", field: casa, freq: 1, level: A1, image: 1F3E0}
+- {lemma: apartamento, pos: noun, article: o, plural: apartamentos, es: "departamento", field: casa, freq: 1, level: A1, image: 1F3E2}
 - {lemma: porta, pos: noun, article: a, plural: portas, es: "puerta", field: casa, freq: 1, level: A1, image: 1F6AA}
 - {lemma: janela, pos: noun, article: a, plural: janelas, es: "ventana", field: casa, freq: 1, level: A1, image: 1FA9F}
 - {lemma: mesa, pos: noun, article: a, plural: mesas, es: "mesa", field: moveis, freq: 1, level: A1}
 - {lemma: cadeira, pos: noun, article: a, plural: cadeiras, es: "silla", field: moveis, freq: 1, level: A1, image: 1FA91}
-- {lemma: sofá, pos: noun, article: o, plural: sofás, es: "sillón", field: moveis, freq: 2, level: A1}
+- {lemma: sofá, pos: noun, article: o, plural: sofás, es: "sillón", field: moveis, freq: 2, level: A1, image: 1F6CB}
 - {lemma: espelho, pos: noun, article: o, plural: espelhos, es: "espejo", field: casa, freq: 2, level: A1, image: 1FA9E}
 - {lemma: relógio, pos: noun, article: o, plural: relógios, es: "reloj", field: casa, freq: 2, level: A1, image: 1F570}
 - {lemma: escada, pos: noun, article: a, plural: escadas, es: "escalera", field: casa, freq: 2, level: A1, image: E202}
 - {lemma: elevador, pos: noun, article: o, plural: elevadores, es: "ascensor", field: casa, freq: 2, level: A1, image: 1F6D7}
 - {lemma: sala, pos: noun, article: a, plural: salas, es: "living, sala", field: comodos, freq: 1, level: A1}
-- {lemma: cozinha, pos: noun, article: a, plural: cozinhas, es: "cocina", field: comodos, freq: 1, level: A1}
+- {lemma: cozinha, pos: noun, article: a, plural: cozinhas, es: "cocina", field: comodos, freq: 1, level: A1, image: 1F9D1-200D-1F373}
 - {lemma: varanda, pos: noun, article: a, plural: varandas, es: "balcón", field: comodos, freq: 2, level: A1}
-- {lemma: jardim, pos: noun, article: o, plural: jardins, es: "jardín", field: comodos, freq: 2, level: A1}
-- {lemma: garagem, pos: noun, article: a, plural: garagens, es: "garaje", field: comodos, freq: 2, level: A1, trap: genero}
-- {lemma: luz, pos: noun, article: a, plural: luzes, es: "luz", field: casa, freq: 1, level: A1}
-- {lemma: cor, pos: noun, article: a, plural: cores, es: "color", field: casa, freq: 1, level: A1, trap: genero}
+- {lemma: jardim, pos: noun, article: o, plural: jardins, es: "jardín", field: comodos, freq: 2, level: A1, image: 1F3E1}
+- {lemma: garagem, pos: noun, article: a, plural: garagens, es: "garaje", field: comodos, freq: 2, level: A1, trap: genero, image: E206}
+- {lemma: luz, pos: noun, article: a, plural: luzes, es: "luz", field: casa, freq: 1, level: A1, image: 1F4A1}
+- {lemma: cor, pos: noun, article: a, plural: cores, es: "color", field: casa, freq: 1, level: A1, trap: genero, image: 1F3A8}
 - {lemma: planta, pos: noun, article: a, plural: plantas, es: "planta", field: casa, freq: 2, level: A1, image: 1FAB4}
 - {lemma: bicicleta, pos: noun, article: a, plural: bicicletas, es: "bicicleta", field: casa, freq: 2, level: A1, image: 1F6B2}
 - {lemma: caixa, pos: noun, article: a, plural: caixas, es: "caja", field: casa, freq: 2, level: A1, image: 1F4E6}
 - {lemma: jornal, pos: noun, article: o, plural: jornais, es: "diario", field: casa, freq: 2, level: A1, image: 1F4F0}
-- {lemma: computador, pos: noun, article: o, plural: computadores, es: "computadora", field: casa, freq: 1, level: A1}
-- {lemma: celular, pos: noun, article: o, plural: celulares, es: "celular", field: casa, freq: 1, level: A1}
+- {lemma: computador, pos: noun, article: o, plural: computadores, es: "computadora", field: casa, freq: 1, level: A1, image: 1F4BB}
+- {lemma: celular, pos: noun, article: o, plural: celulares, es: "celular", field: casa, freq: 1, level: A1, image: 1F4F1}
 
 # ── cozinha (utensilios) ──
 - {lemma: geladeira, pos: noun, article: a, plural: geladeiras, es: "heladera", field: cozinha, freq: 2, level: A1}
 - {lemma: fogão, pos: noun, article: o, plural: fogões, es: "cocina (el aparato)", field: cozinha, freq: 2, level: A1}
 - {lemma: colher, pos: noun, article: a, plural: colheres, es: "cuchara", field: cozinha, freq: 2, level: A1, image: 1F944}
-- {lemma: garfo, pos: noun, article: o, plural: garfos, es: "tenedor", field: cozinha, freq: 2, level: A1}
+- {lemma: garfo, pos: noun, article: o, plural: garfos, es: "tenedor", field: cozinha, freq: 2, level: A1, image: 1F374}
 - {lemma: faca, pos: noun, article: a, plural: facas, es: "cuchillo", field: cozinha, freq: 2, level: A1, image: 1F52A}
-- {lemma: prato, pos: noun, article: o, plural: pratos, es: "plato", field: cozinha, freq: 1, level: A1}
+- {lemma: prato, pos: noun, article: o, plural: pratos, es: "plato", field: cozinha, freq: 1, level: A1, image: 1F37D}
 - {lemma: copo, pos: noun, article: o, plural: copos, es: "vaso", field: cozinha, freq: 1, level: A1, image: 1F943}
 - {lemma: xícara, pos: noun, article: a, plural: xícaras, es: "taza", field: cozinha, freq: 2, level: A1}
-- {lemma: panela, pos: noun, article: a, plural: panelas, es: "olla", field: cozinha, freq: 2, level: A1}
+- {lemma: panela, pos: noun, article: a, plural: panelas, es: "olla", field: cozinha, freq: 2, level: A1, image: 1F958}
 - {lemma: cafeteira, pos: noun, article: a, plural: cafeteiras, es: "cafetera", field: cozinha, freq: 3, level: A1, image: E155}
-- {lemma: pia, pos: noun, article: a, plural: pias, es: "pileta, bacha", field: cozinha, freq: 3, level: A1}
-- {lemma: lixo, pos: noun, article: o, plural: null, es: "basura", field: cozinha, freq: 2, level: A1}
+- {lemma: pia, pos: noun, article: a, plural: pias, es: "pileta, bacha", field: cozinha, freq: 3, level: A1, image: 1F6B0}
+- {lemma: lixo, pos: noun, article: o, plural: null, es: "basura", field: cozinha, freq: 2, level: A1, image: 1F5D1}
 
 # ── comida ──
 - {lemma: pão, pos: noun, article: o, plural: pães, es: "pan", field: comida, freq: 1, level: A1, image: 1F35E}
@@ -89,40 +89,40 @@
 - {lemma: ovo, pos: noun, article: o, plural: ovos, es: "huevo", field: comida, freq: 2, level: A1, image: 1F95A}
 - {lemma: carne, pos: noun, article: a, plural: null, es: "carne", field: comida, freq: 1, level: A1, image: 1F969}
 - {lemma: peixe, pos: noun, article: o, plural: peixes, es: "pescado", field: comida, freq: 2, level: A1, image: 1F41F}
-- {lemma: arroz, pos: noun, article: o, plural: null, es: "arroz", field: comida, freq: 1, level: A1}
-- {lemma: feijão, pos: noun, article: o, plural: null, es: "poroto", field: comida, freq: 1, level: A1}
+- {lemma: arroz, pos: noun, article: o, plural: null, es: "arroz", field: comida, freq: 1, level: A1, image: 1F35A}
+- {lemma: feijão, pos: noun, article: o, plural: null, es: "poroto", field: comida, freq: 1, level: A1, image: 1FAD8}
 - {lemma: salada, pos: noun, article: a, plural: saladas, es: "ensalada", field: comida, freq: 2, level: A1, image: 1F957}
 - {lemma: bolo, pos: noun, article: o, plural: bolos, es: "torta", field: comida, freq: 2, level: A1, image: 1F382}
 - {lemma: sal, pos: noun, article: o, plural: null, es: "sal", field: comida, freq: 2, level: A1, image: 1F9C2, trap: genero}
 - {lemma: açúcar, pos: noun, article: o, plural: null, es: "azúcar", field: comida, freq: 2, level: A1}
-- {lemma: mel, pos: noun, article: o, plural: null, es: "miel", field: comida, freq: 3, level: A1, trap: genero}
+- {lemma: mel, pos: noun, article: o, plural: null, es: "miel", field: comida, freq: 3, level: A1, trap: genero, image: 1F36F}
 - {lemma: chocolate, pos: noun, article: o, plural: chocolates, es: "chocolate", field: comida, freq: 2, level: A1, image: 1F36B}
-- {lemma: legume, pos: noun, article: o, plural: legumes, es: "verdura", field: comida, freq: 3, level: A1, trap: genero}
+- {lemma: legume, pos: noun, article: o, plural: legumes, es: "verdura", field: comida, freq: 3, level: A1, trap: genero, image: 1F966}
 - {lemma: fruta, pos: noun, article: a, plural: frutas, es: "fruta", field: comida, freq: 2, level: A1}
 
 # ── bebidas ──
-- {lemma: café, pos: noun, article: o, plural: cafés, es: "café", field: bebidas, freq: 1, level: A1}
+- {lemma: café, pos: noun, article: o, plural: cafés, es: "café", field: bebidas, freq: 1, level: A1, image: "2615"}
 - {lemma: leite, pos: noun, article: o, plural: null, es: "leche", field: bebidas, freq: 1, level: A1, image: 1F95B, trap: genero}
-- {lemma: água, pos: noun, article: a, plural: águas, es: "agua", field: bebidas, freq: 1, level: A1}
-- {lemma: suco, pos: noun, article: o, plural: sucos, es: "jugo", field: bebidas, freq: 2, level: A1}
+- {lemma: água, pos: noun, article: a, plural: águas, es: "agua", field: bebidas, freq: 1, level: A1, image: 1F4A7}
+- {lemma: suco, pos: noun, article: o, plural: sucos, es: "jugo", field: bebidas, freq: 2, level: A1, image: 1F9C3}
 - {lemma: cerveja, pos: noun, article: a, plural: cervejas, es: "cerveza", field: bebidas, freq: 2, level: A1, image: 1F37A}
 - {lemma: vinho, pos: noun, article: o, plural: vinhos, es: "vino", field: bebidas, freq: 2, level: A1, image: 1F377}
-- {lemma: chá, pos: noun, article: o, plural: chás, es: "té", field: bebidas, freq: 2, level: A1}
-- {lemma: refrigerante, pos: noun, article: o, plural: refrigerantes, es: "gaseosa", field: bebidas, freq: 2, level: A1}
-- {lemma: caipirinha, pos: noun, article: a, plural: caipirinhas, es: "caipiriña", field: bebidas, freq: 3, level: A1}
-- {lemma: água de coco, pos: noun, article: a, plural: null, es: "agua de coco", field: bebidas, freq: 3, level: A1}
+- {lemma: chá, pos: noun, article: o, plural: chás, es: "té", field: bebidas, freq: 2, level: A1, image: 1FAD6}
+- {lemma: refrigerante, pos: noun, article: o, plural: refrigerantes, es: "gaseosa", field: bebidas, freq: 2, level: A1, image: 1F964}
+- {lemma: caipirinha, pos: noun, article: a, plural: caipirinhas, es: "caipiriña", field: bebidas, freq: 3, level: A1, image: 1F379}
+- {lemma: água de coco, pos: noun, article: a, plural: null, es: "agua de coco", field: bebidas, freq: 3, level: A1, image: 1F965}
 
 # ── compras ──
-- {lemma: mercado, pos: noun, article: o, plural: mercados, es: "supermercado, mercado", field: compras, freq: 1, level: A1}
+- {lemma: mercado, pos: noun, article: o, plural: mercados, es: "supermercado, mercado", field: compras, freq: 1, level: A1, image: 1F6D2}
 - {lemma: real, pos: noun, article: o, plural: reais, es: "real (la moneda)", field: compras, freq: 1, level: A1}
-- {lemma: preço, pos: noun, article: o, plural: preços, es: "precio", field: compras, freq: 1, level: A1}
+- {lemma: preço, pos: noun, article: o, plural: preços, es: "precio", field: compras, freq: 1, level: A1, image: 1F3F7}
 - {lemma: cesta, pos: noun, article: a, plural: cestas, es: "canasto", field: compras, freq: 3, level: A1, image: 1F9FA}
-- {lemma: lista, pos: noun, article: a, plural: listas, es: "lista", field: compras, freq: 2, level: A1}
+- {lemma: lista, pos: noun, article: a, plural: listas, es: "lista", field: compras, freq: 2, level: A1, image: 1F4DD}
 - {lemma: nota fiscal, pos: noun, article: a, plural: null, es: "ticket, factura", field: compras, freq: 3, level: A1, image: 1F9FE}
-- {lemma: dinheiro, pos: noun, article: o, plural: null, es: "plata, dinero", field: compras, freq: 1, level: A1}
-- {lemma: cartão, pos: noun, article: o, plural: cartões, es: "tarjeta", field: compras, freq: 1, level: A1}
-- {lemma: farmácia, pos: noun, article: a, plural: farmácias, es: "farmacia", field: compras, freq: 2, level: A1}
-- {lemma: padaria, pos: noun, article: a, plural: padarias, es: "panadería", field: compras, freq: 2, level: A1}
+- {lemma: dinheiro, pos: noun, article: o, plural: null, es: "plata, dinero", field: compras, freq: 1, level: A1, image: 1F4B0}
+- {lemma: cartão, pos: noun, article: o, plural: cartões, es: "tarjeta", field: compras, freq: 1, level: A1, image: 1F4B3}
+- {lemma: farmácia, pos: noun, article: a, plural: farmácias, es: "farmacia", field: compras, freq: 2, level: A1, image: 1F48A}
+- {lemma: padaria, pos: noun, article: a, plural: padarias, es: "panadería", field: compras, freq: 2, level: A1, image: 1F956}
 - {lemma: feira, pos: noun, article: a, plural: feiras, es: "feria", field: compras, freq: 2, level: A1}
 
 # ── pessoas ──
@@ -130,7 +130,7 @@
 - {lemma: mulher, pos: noun, article: a, plural: mulheres, es: "mujer", field: pessoas, freq: 1, level: A1, image: 1F469}
 - {lemma: criança, pos: noun, article: a, plural: crianças, es: "chico, nene", field: pessoas, freq: 1, level: A1, image: 1F9D2}
 - {lemma: menina, pos: noun, article: a, plural: meninas, es: "chica, nena", field: pessoas, freq: 2, level: A1, image: 1F467}
-- {lemma: menino, pos: noun, article: o, plural: meninos, es: "chico, nene (varón)", field: pessoas, freq: 2, level: A1}
+- {lemma: menino, pos: noun, article: o, plural: meninos, es: "chico, nene (varón)", field: pessoas, freq: 2, level: A1, image: 1F466}
 - {lemma: professor, pos: noun, article: o, plural: professores, es: "profesor", field: pessoas, freq: 1, level: A1, image: 1F9D1-200D-1F3EB}
 - {lemma: família, pos: noun, article: a, plural: famílias, es: "familia", field: pessoas, freq: 1, level: A1, image: 1F46A}
 - {lemma: amigo, pos: noun, article: o, plural: amigos, es: "amigo", field: pessoas, freq: 1, level: A1}
@@ -138,28 +138,28 @@
 - {lemma: médico, pos: noun, article: o, plural: médicos, es: "médico", field: pessoas, freq: 2, level: A1, image: 1F9D1-200D-2695-FE0F}
 - {lemma: estudante, pos: noun, article: o, plural: estudantes, es: "estudiante", field: pessoas, freq: 2, level: A1, image: 1F9D1-200D-1F393}
 - {lemma: vizinho, pos: noun, article: o, plural: vizinhos, es: "vecino", field: pessoas, freq: 2, level: A1}
-- {lemma: avó, pos: noun, article: a, plural: avós, es: "abuela", field: pessoas, freq: 2, level: A1}
-- {lemma: avô, pos: noun, article: o, plural: avôs, es: "abuelo", field: pessoas, freq: 2, level: A1}
+- {lemma: avó, pos: noun, article: a, plural: avós, es: "abuela", field: pessoas, freq: 2, level: A1, image: 1F475}
+- {lemma: avô, pos: noun, article: o, plural: avôs, es: "abuelo", field: pessoas, freq: 2, level: A1, image: 1F474}
 - {lemma: irmão, pos: noun, article: o, plural: irmãos, es: "hermano", field: pessoas, freq: 1, level: A1}
 - {lemma: irmã, pos: noun, article: a, plural: irmãs, es: "hermana", field: pessoas, freq: 1, level: A1}
-- {lemma: cachorro, pos: noun, article: o, plural: cachorros, es: "perro", field: pessoas, freq: 1, level: A1}
+- {lemma: cachorro, pos: noun, article: o, plural: cachorros, es: "perro", field: pessoas, freq: 1, level: A1, image: 1F415}
 - {lemma: gato, pos: noun, article: o, plural: gatos, es: "gato", field: pessoas, freq: 2, level: A1, image: 1F408}
 
 # ── países (con artículo en portugués, salvo los que van sin) ──
-- {lemma: Brasil, pos: noun, article: o, plural: null, es: "Brasil", field: paises, freq: 1, level: A1}
-- {lemma: Argentina, pos: noun, article: a, plural: null, es: "Argentina", field: paises, freq: 1, level: A1}
-- {lemma: Chile, pos: noun, article: o, plural: null, es: "Chile", field: paises, freq: 2, level: A1}
-- {lemma: Uruguai, pos: noun, article: o, plural: null, es: "Uruguay", field: paises, freq: 2, level: A1}
-- {lemma: Paraguai, pos: noun, article: o, plural: null, es: "Paraguay", field: paises, freq: 2, level: A1}
-- {lemma: Peru, pos: noun, article: o, plural: null, es: "Perú", field: paises, freq: 2, level: A1}
-- {lemma: Colômbia, pos: noun, article: a, plural: null, es: "Colombia", field: paises, freq: 2, level: A1}
-- {lemma: Espanha, pos: noun, article: a, plural: null, es: "España", field: paises, freq: 2, level: A1}
-- {lemma: Itália, pos: noun, article: a, plural: null, es: "Italia", field: paises, freq: 2, level: A1}
-- {lemma: Alemanha, pos: noun, article: a, plural: null, es: "Alemania", field: paises, freq: 2, level: A1}
-- {lemma: Canadá, pos: noun, article: o, plural: null, es: "Canadá", field: paises, freq: 2, level: A1}
-- {lemma: México, pos: noun, article: o, plural: null, es: "México", field: paises, freq: 2, level: A1}
-- {lemma: Portugal, pos: noun, article: null, plural: null, es: "Portugal", field: paises, freq: 2, level: A1}
-- {lemma: Cuba, pos: noun, article: null, plural: null, es: "Cuba", field: paises, freq: 3, level: A1}
+- {lemma: Brasil, pos: noun, article: o, plural: null, es: "Brasil", field: paises, freq: 1, level: A1, image: 1F1E7-1F1F7}
+- {lemma: Argentina, pos: noun, article: a, plural: null, es: "Argentina", field: paises, freq: 1, level: A1, image: 1F1E6-1F1F7}
+- {lemma: Chile, pos: noun, article: o, plural: null, es: "Chile", field: paises, freq: 2, level: A1, image: 1F1E8-1F1F1}
+- {lemma: Uruguai, pos: noun, article: o, plural: null, es: "Uruguay", field: paises, freq: 2, level: A1, image: 1F1FA-1F1FE}
+- {lemma: Paraguai, pos: noun, article: o, plural: null, es: "Paraguay", field: paises, freq: 2, level: A1, image: 1F1F5-1F1FE}
+- {lemma: Peru, pos: noun, article: o, plural: null, es: "Perú", field: paises, freq: 2, level: A1, image: 1F1F5-1F1EA}
+- {lemma: Colômbia, pos: noun, article: a, plural: null, es: "Colombia", field: paises, freq: 2, level: A1, image: 1F1E8-1F1F4}
+- {lemma: Espanha, pos: noun, article: a, plural: null, es: "España", field: paises, freq: 2, level: A1, image: 1F1EA-1F1F8}
+- {lemma: Itália, pos: noun, article: a, plural: null, es: "Italia", field: paises, freq: 2, level: A1, image: 1F1EE-1F1F9}
+- {lemma: Alemanha, pos: noun, article: a, plural: null, es: "Alemania", field: paises, freq: 2, level: A1, image: 1F1E9-1F1EA}
+- {lemma: Canadá, pos: noun, article: o, plural: null, es: "Canadá", field: paises, freq: 2, level: A1, image: 1F1E8-1F1E6}
+- {lemma: México, pos: noun, article: o, plural: null, es: "México", field: paises, freq: 2, level: A1, image: 1F1F2-1F1FD}
+- {lemma: Portugal, pos: noun, article: null, plural: null, es: "Portugal", field: paises, freq: 2, level: A1, image: 1F1F5-1F1F9}
+- {lemma: Cuba, pos: noun, article: null, plural: null, es: "Cuba", field: paises, freq: 3, level: A1, image: 1F1E8-1F1FA}
 
 # ── verbos ──
 - {lemma: ser, pos: verb, es: "ser", field: verbos, freq: 1, level: A1, tag: a1.ser.presente, irregular: {eu: sou, ele: é, nos: somos, eles: são}}
