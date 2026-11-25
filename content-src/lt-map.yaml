@@ -17,7 +17,8 @@ categories:
   REPETITIONS_STYLE: "estilo"
   STYLE: "estilo"
   REGIONALISMS: "variante de Portugal"
-notice_categories: [STYLE, TYPOGRAPHY, REDUNDANCY, COLLOQUIALISMS, REPETITIONS_STYLE]
+  FORMAL: "registro formal"
+notice_categories: [STYLE, TYPOGRAPHY, REDUNDANCY, COLLOQUIALISMS, REPETITIONS_STYLE, FORMAL]
 # Palabras que LanguageTool no conoce y que no son errores: si el corrector ortográfico marca una, no cuenta.
 # Una palabra por entrada (LanguageTool marca de a una: "Buenos Aires" va como Buenos y Aires).
 # Sin importar mayúsculas. Solo nombres que no existen en portugués: una palabra portuguesa mal escrita nunca va acá.

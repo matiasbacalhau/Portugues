@@ -21,14 +21,16 @@
   "COLLOQUIALISMS": "lenguaje coloquial",
   "REPETITIONS_STYLE": "estilo",
   "STYLE": "estilo",
-  "REGIONALISMS": "variante de Portugal"
+  "REGIONALISMS": "variante de Portugal",
+  "FORMAL": "registro formal"
  },
  "notice_categories": [
   "STYLE",
   "TYPOGRAPHY",
   "REDUNDANCY",
   "COLLOQUIALISMS",
-  "REPETITIONS_STYLE"
+  "REPETITIONS_STYLE",
+  "FORMAL"
  ],
  "accepted_words": [
   "Matías",

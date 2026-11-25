@@ -224,6 +224,7 @@ steps:
         chunks: ["a recepção", "nós", "abrimos", "às sete"]
         answers: [["nós", "abrimos", "a recepção", "às sete"], ["às sete", "nós", "abrimos", "a recepção"]]
         dims: {person: nos}
+        lt_ignore: "falso positivo: en «Às sete nós» LanguageTool lee *nós* como plural de *nó* (masculino)."
         reviewed: true
 
       - id: t3-2-se-eu-vivo

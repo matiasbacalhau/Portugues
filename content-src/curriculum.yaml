@@ -189,7 +189,7 @@ tags:
       - {pt: "avó", es: "abuela", dims: {"sound": "aberta"}}
       - {pt: "avô", es: "abuelo", dims: {"sound": "fechada"}}
       - {pt: "é", es: "es", dims: {"sound": "aberta"}}
-      - {pt: "ê", es: "(la letra e)", dims: {"sound": "fechada"}}
+      - {pt: "você", es: "vos", dims: {"sound": "fechada"}}
 
   # ─────────────── Esqueleto (sin contenido todavía) ───────────────
   a1.interrog:

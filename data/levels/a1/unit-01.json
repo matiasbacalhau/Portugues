@@ -3875,7 +3875,7 @@
         "Usaste al menos una contracción con *em* y una con *de*.",
         "Contaste algo del viaje."
        ],
-       "model": "Oi, Santi! A viagem foi longa, mas a pousada é ótima. O meu quarto fica no segundo andar e a cama é muito boa. A cozinha é pequena e o leite sempre acaba. A varanda é o melhor lugar da casa: daqui a gente vê o mar. As pessoas da pousada são do Chile, do Canadá e da Espanha. Um abraço!",
+       "model": "Oi, Santi! A viagem foi longa, mas a pousada é ótima. O meu quarto fica no segundo andar e a cama é muito boa. A cozinha é pequena e o leite sempre acaba. A varanda é o melhor lugar da casa: de lá, a gente vê o mar. As pessoas da pousada são do Chile, do Canadá e da Espanha. Até logo!",
        "reviewed": true,
        "words": []
       }
@@ -4497,6 +4497,7 @@
        "dims": {
         "person": "nos"
        },
+       "lt_ignore": "falso positivo: en «Às sete nós» LanguageTool lee *nós* como plural de *nó* (masculino).",
        "reviewed": true,
        "words": [
         "recepção"

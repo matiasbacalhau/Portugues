@@ -62,6 +62,19 @@ def locate(batch, matches):
     return found
 
 
+def is_error(word, text, match, lt_map):
+    """Mismo criterio que la app: los avisos (notice_categories) y las palabras aceptadas no son errores.
+    Una palabra suelta (p. ej. un par mínimo) no es una oración: no pide mayúscula inicial."""
+    rule = match['rule']
+    if rule.get('category', {}).get('id') in lt_map.get('notice_categories', []):
+        return False
+    if rule['id'] == 'MORFOLOGIK_RULE_PT_BR' and word.lower() in {w.lower() for w in lt_map.get('accepted_words', [])}:
+        return False
+    if rule['id'] == 'UPPERCASE_SENTENCE_START' and ' ' not in text.strip():
+        return False
+    return True
+
+
 def content_texts():
     root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
     out = subprocess.run(['node', os.path.join(root, 'tools', 'portuguese_texts.mjs')],
@@ -76,12 +89,18 @@ def main():
     matches = check('Eu moro numa casa muito bonita.')
     if matches:
         sys.exit(f'LanguageTool marcó errores en una frase correcta: {matches}')
+    root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+    with open(os.path.join(root, 'data', 'lt-map.json'), encoding='utf-8') as f:
+        lt_map = json.load(f)
     texts = [t for t in content_texts() if 'ignore' not in t]
     multi, single = split_multi(texts)
     failures = 0
     runs = [([t], None) for t in multi] + [(b, BATCH_DISABLED) for b in batches(single)]
     for batch, disabled in runs:
-        for t, m in locate(batch, check('\n\n'.join(x['text'] for x in batch), disabled)):
+        joined = '\n\n'.join(x['text'] for x in batch)
+        for t, m in locate(batch, check(joined, disabled)):
+            if not is_error(joined[m['offset']:m['offset'] + m['length']], t['text'], m, lt_map):
+                continue
             failures += 1
             print(f"FAIL {t['where']} [{m['rule']['id']}] {m['message']} -> {t['text']}")
     if failures:
