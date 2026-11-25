@@ -125,7 +125,7 @@ async function main() {
       const deadline = Date.now() + 10000;
       while (Date.now() < deadline) {
         const text = document.getElementById('view')?.innerText ?? '';
-        if (/Guten (Morgen|Tag|Abend)/.test(text) && text.includes('Start')) break;
+        if (/(Bom dia|Boa tarde|Boa noite)/.test(text) && text.includes('Começar')) break;
         await new Promise(r => setTimeout(r, 50));
       }
       const reg = await navigator.serviceWorker.ready;
@@ -135,7 +135,7 @@ async function main() {
       return { text: document.getElementById('view')?.innerText ?? '', swActive: !!reg.active, cached };
     })()`);
 
-    if (!/Guten (Morgen|Tag|Abend)/.test(homeCheck.text) || !homeCheck.swActive || homeCheck.cached < 140) {
+    if (!/(Bom dia|Boa tarde|Boa noite)/.test(homeCheck.text) || !homeCheck.swActive || homeCheck.cached < 140) {
       throw new Error(`Fallo en inicio o SW: ${JSON.stringify(homeCheck)}`);
     }
 
