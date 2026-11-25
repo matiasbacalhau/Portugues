@@ -1,0 +1,710 @@
+# Tema 2: artículos, género y contracciones (em + artículo, de + artículo).
+# Escena: la cocina compartida de la Pousada Maré y la feria del sábado en Santa Teresa.
+# El foco está en lo que cambia respecto del español: sustantivos que cambian de género (o leite, o sal, a viagem,
+# a mensagem, a cor), las contracciones obligatorias (no, na, do, da…) y los países con artículo (do Brasil, de Portugal).
+# dims.gender: m | f (el género del sustantivo evaluado); dims.number: sg | pl cuando importa.
+# `hides: [article]`: el glosario y las tarjetas no muestran el artículo mientras se practica este tema (regla 1).
+topic: a1.u1.t2
+tags: [a1.genero.masc, a1.genero.fem, a1.contr.em, a1.contr.de]
+arbitrary: false
+hides: [article]
+ficha:
+  short:
+    - "Los artículos son casi los del español: *o*, *a*, *os*, *as* (el, la, los, las) y *um*, *uma*, *uns*, *umas* (un, una, unos, unas)."
+    - "Casi siempre el género coincide con el español. Pero hay una lista corta de palabras que cambian, y son muy usadas: *o leite*, *o sal*, *o mel*, *o nariz*, *o sangue*, *o legume* son masculinas; *a viagem*, *a mensagem*, *a garagem*, *a bagagem* y *a cor* son femeninas."
+    - "Regla de oro: las palabras en *-agem* (el *-aje* del español) son femeninas."
+    - "*em* (en) y *de* + artículo se juntan en una sola palabra, siempre: *em + o = no*, *em + a = na*, *de + o = do*, *de + a = da* (y sus plurales). Nunca se escribe *em o* ni *de a*."
+    - "Los países casi siempre llevan artículo: *o Brasil*, *a Argentina*, *o Chile*. Por eso *Sou da Argentina* y *Moro no Brasil*. Algunos no lo llevan, como *Portugal* o *Cuba*: *Sou de Portugal*."
+  table:
+    head: ["", "o", "a", "os", "as", "um", "uma"]
+    rows:
+      - ["em", "no", "na", "nos", "nas", "num / em um", "numa / em uma"]
+      - ["de", "do", "da", "dos", "das", "de um", "de uma"]
+  more:
+    - "Por qué *o leite*. En latín *lac* era neutro. Al perderse el neutro, cada idioma lo mandó a un lado distinto: el castellano a *la leche*, el portugués a *o leite*. Lo mismo pasó con *sal*, *mel* y *sangue*. No es que el portugués sea caprichoso: el español tampoco tenía cómo saberlo."
+    - "*-agem* y *-aje* vienen del francés *-age* (*voyage*, *message*), que es masculino. El castellano conservó el masculino; el portugués lo pasó al femenino. Por eso *a viagem* y *el viaje*, *a mensagem* y *el mensaje*: una regla con muy pocas excepciones."
+    - "*a cor* (el color) y *a dor* (el dolor): en el portugués antiguo, y todavía en algún dialecto del castellano, *la color* y *la dolor* eran femeninas. El portugués las dejó así."
+    - "Las contracciones no son opcionales. En español solo se juntan *a + el* y *de + el* (*al*, *del*). El portugués junta muchas más, y escribirlas separadas es tan raro como escribir *de el* en castellano."
+    - "*num* y *numa* (*em um*, *em uma*) son comunísimas en el habla: *Moro num apartamento*. Por escrito, *em um* también es correcto. Las dos valen."
+    - "Artículo con nombres de persona: en buena parte de Brasil se dice *o Tom*, *a Mia*, *a Ana*, igual que en algunos lugares de Argentina (*la Mia*). Por eso *a mochila da Mia* (de + a Mia). En el nordeste muchos lo dicen sin artículo: las dos formas son correctas."
+    - "*o Rio*, *a Bahia* y *o Rio Grande do Sul* llevan artículo; *São Paulo*, *Brasília*, *Salvador* y casi todas las ciudades, no. *Moro em São Paulo*, pero *moro no Rio*."
+
+steps:
+  # ───────────────────────────── Etapa 1 ─────────────────────────────
+  - n: 1
+    name: "Descobrir"
+    scene: {title: "A cozinha compartilhada", context: "Pousada Maré · 20:00 · todos cocinan a la vez y nadie encuentra nada"}
+    exercises:
+      - id: t2-1-det-em
+        type: detective
+        tag: a1.contr.em
+        sentences:
+          - {pt: "O sal está no armário.", highlight: "no"}
+          - {pt: "A faca está na pia.", highlight: "na"}
+          - {pt: "Os copos estão nos armários de cima.", highlight: "nos"}
+          - {pt: "As colheres estão nas gavetas.", highlight: "nas"}
+          - {pt: "O Tom está na varanda.", highlight: "na"}
+        rules:
+          - {text: "*em* y el artículo se juntan en una palabra, que sigue el género y el número del sustantivo.", correct: true}
+          - {text: "*em* se junta con el artículo solo cuando el sustantivo es masculino."}
+          - {text: "La palabra cambia según el verbo de la frase."}
+          - {text: "Juntarlos es opcional: *em o* y *no* valen igual."}
+        apply:
+          - {text: "O leite está ___ geladeira.", answers: ["na"], dims: {gender: f}}
+          - {text: "As chaves estão ___ sofá.", answers: ["no"], dims: {gender: m}}
+          - {text: "Os pratos estão ___ mesas.", answers: ["nas"], dims: {gender: f, number: pl}}
+        curiosities: ["El español junta solo *a + el* y *de + el*. El portugués junta casi todas las preposiciones cortas con el artículo."]
+        reviewed: true
+
+      - id: t2-1-det-de
+        type: detective
+        tag: a1.contr.de
+        sentences:
+          - {pt: "A Mia é do Chile.", highlight: "do"}
+          - {pt: "Eu sou da Argentina.", highlight: "da"}
+          - {pt: "A Lea é da Espanha.", highlight: "da"}
+          - {pt: "O Tom é do Canadá.", highlight: "do"}
+          - {pt: "A Dona Célia é de Portugal.", highlight: "de"}
+        rules:
+          - {text: "Los países llevan artículo y *de* se junta con él; si el país no lleva artículo, va *de* solo.", correct: true}
+          - {text: "*de* se junta con el artículo solo con los países de América."}
+          - {text: "La forma depende de si la persona es hombre o mujer."}
+        apply:
+          - {text: "O Rafa é ___ Brasil.", answers: ["do"], dims: {gender: m}}
+          - {text: "Você é ___ Colômbia?", answers: ["da"], dims: {gender: f}}
+        reviewed: true
+
+      - id: t2-1-ch-leite
+        type: choice
+        tag: a1.genero.masc
+        prompt: "La Lea busca algo para el café. ¿Qué pregunta?"
+        options:
+          - {text: "Onde está o leite?", correct: true}
+          - {text: "Onde está a leite?", rule: "Esta palabra cambia de género respecto del español: en portugués no es femenina."}
+          - {text: "Onde está la leite?", rule: "Esa forma del artículo es del español, no del portugués."}
+        dims: {gender: m}
+        curiosities: ["*o leite*, *o sal*, *o mel*: tres cosas de la cocina que en portugués son masculinas."]
+        reviewed: true
+
+      - id: t2-1-ch-viagem
+        type: choice
+        tag: a1.genero.fem
+        prompt: "La Ana le pregunta a Dona Célia, que llegó de Lisboa, cómo le fue. Dona Célia contesta:"
+        options:
+          - {text: "A viagem foi ótima, obrigada.", correct: true}
+          - {text: "O viagem foi ótimo, obrigada.", rule: "Las palabras en *-agem* (el *-aje* del español) tienen el otro género en portugués."}
+          - {text: "O viaje foi ótimo, obrigada.", rule: "Esa palabra está en español: en portugués termina en *-agem* y cambia de género."}
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-1-ch-portugal
+        type: choice
+        tag: a1.contr.de
+        prompt: "Dona Célia se presenta en la cocina. ¿Qué dice?"
+        options:
+          - {text: "Eu sou de Portugal.", correct: true}
+          - {text: "Eu sou do Portugal.", rule: "*Portugal* es uno de los pocos países que no llevan artículo: no hay con qué contraer."}
+          - {text: "Eu sou da Portugal.", rule: "*Portugal* no lleva artículo (y si lo llevara no sería femenino)."}
+        dims: {gender: m}
+        curiosities: ["*Portugal*, *Cuba*, *Angola* y *Moçambique* van sin artículo; casi todos los demás países lo llevan."]
+        reviewed: true
+
+      # Reserva
+      - id: t2-1-det-genero
+        type: detective
+        tag: a1.genero.fem
+        reserve: true
+        sentences:
+          - {pt: "A mensagem é da Mia.", highlight: "A"}
+          - {pt: "A garagem está fechada.", highlight: "A"}
+          - {pt: "A bagagem do Tom é enorme.", highlight: "A"}
+          - {pt: "A viagem foi longa.", highlight: "A"}
+        rules:
+          - {text: "Las palabras en *-agem* son femeninas, aunque en español (*-aje*) sean masculinas.", correct: true}
+          - {text: "Todas las palabras que terminan en *-m* son femeninas."}
+          - {text: "El artículo es femenino porque la frase habla de una mujer."}
+        apply:
+          - {text: "___ passagem de ônibus custa cinco reais.", answers: ["A"], dims: {gender: f}}
+          - {text: "Onde está ___ bagagem da Lea?", answers: ["a"], dims: {gender: f}}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 2 ─────────────────────────────
+  - n: 2
+    name: "Reconhecer"
+    scene: {title: "Lista do mercado", context: "21:00 · la heladera compartida está casi vacía y arman la lista entre todos"}
+    exercises:
+      - id: t2-2-ord-sal
+        type: order
+        tag: a1.contr.em
+        prompt: "La Mia busca la sal. Le contestás dónde está."
+        chunks: ["no armário", "o sal", "está"]
+        answers: [["o sal", "está", "no armário"], ["no armário", "está", "o sal"]]
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-se-a-leite
+        type: spot-error
+        tag: a1.genero.masc
+        prompt: "Lista del mercado escrita por el Tom en la puerta de la heladera. Tiene un error."
+        tokens: ["Comprar:", "a", "leite,", "o", "pão", "e", "as", "bananas."]
+        wrong: 1
+        corrections: ["o"]
+        rule: "Esta palabra cambia de género respecto del español: el artículo tiene que ser el del otro género."
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-se-em-a
+        type: spot-error
+        tag: a1.contr.em
+        prompt: "Mensaje de la Lea al grupo. Tiene un error."
+        tokens: ["Gente,", "o", "bolo", "está", "em a", "mesa!"]
+        wrong: 4
+        corrections: ["na"]
+        rule: "*em* + artículo se escribe en una sola palabra; separados no van."
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-2-ord-mochila
+        type: order
+        tag: a1.contr.de
+        prompt: "La Ana encuentra una mochila en la cocina. ¿De quién es?"
+        chunks: ["da Mia", "é", "a mochila"]
+        answers: [["a mochila", "é", "da Mia"]]
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-2-se-o-mensagem
+        type: spot-error
+        tag: a1.genero.fem
+        prompt: "Mensaje del Rafa. Tiene un error."
+        tokens: ["Leo,", "o", "mensagem", "da", "Ana", "é", "urgente."]
+        wrong: 1
+        corrections: ["a"]
+        rule: "Las palabras en *-agem* tienen en portugués el otro género que en español."
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-2-ord-geladeira
+        type: order
+        tag: a1.contr.em
+        prompt: "El Tom pregunta por las cervezas."
+        chunks: ["estão", "as cervejas", "na geladeira"]
+        answers: [["as cervejas", "estão", "na geladeira"], ["na geladeira", "estão", "as cervejas"]]
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-2-ch-cor
+        type: choice
+        tag: a1.genero.fem
+        prompt: "La Mia muestra la remera que compró en la feria. ¿Qué dice la Lea?"
+        options:
+          - {text: "Que linda a cor!", correct: true}
+          - {text: "Que lindo o cor!", rule: "Esta palabra tiene en portugués el otro género que en español."}
+          - {text: "Que lindo o color!", rule: "Esa palabra está en español; en portugués es más corta y cambia de género."}
+        dims: {gender: f}
+        curiosities: ["*a cor* y *a dor* (el dolor) son femeninas: en el castellano antiguo también se decía *la color*."]
+        reviewed: true
+
+      - id: t2-2-se-do-portugal
+        type: spot-error
+        tag: a1.contr.de
+        prompt: "Ficha de registro de Dona Célia. Tiene un error."
+        tokens: ["Nome:", "Célia", "Ramos.", "Origem:", "do", "Portugal."]
+        wrong: 4
+        corrections: ["de"]
+        rule: "*Portugal* es de los pocos países que no llevan artículo: no hay artículo con qué contraer."
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-ord-chave
+        type: order
+        tag: a1.contr.de
+        prompt: "La Ana te da una llave y te dice cuál es."
+        chunks: ["a chave", "é", "do quarto 12", "essa"]
+        answers: [["essa", "é", "a chave", "do quarto 12"]]
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-se-o-sal
+        type: spot-error
+        tag: a1.genero.masc
+        prompt: "Mensaje de la Mia, que cocina por primera vez. Tiene un error."
+        tokens: ["Alguém", "viu", "a", "sal?", "Não", "acho!"]
+        wrong: 2
+        corrections: ["o"]
+        rule: "Esta palabra cambia de género respecto del español: el artículo tiene que ser el del otro género."
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-ord-praia
+        type: order
+        tag: a1.contr.em
+        prompt: "Contás dónde está todo el mundo un sábado a la tarde."
+        chunks: ["na praia", "a gente", "está"]
+        answers: [["a gente", "está", "na praia"]]
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-2-se-de-o
+        type: spot-error
+        tag: a1.contr.de
+        prompt: "Tu mensaje a la Ana. Tiene un error."
+        tokens: ["A", "senha", "de o", "wi-fi", "não", "funciona."]
+        wrong: 2
+        corrections: ["do"]
+        rule: "*de* + artículo se escribe en una sola palabra; separados no van."
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-ch-no-brasil
+        type: choice
+        tag: a1.contr.em
+        prompt: "En la cena, alguien pregunta hace cuánto vive la Ana en Rio. Ella contesta:"
+        options:
+          - {text: "Eu moro no Brasil desde criança.", correct: true}
+          - {text: "Eu moro em Brasil desde criança.", rule: "*Brasil* lleva artículo en portugués: la preposición se junta con él."}
+          - {text: "Eu moro na Brasil desde criança.", rule: "El artículo de *Brasil* no es femenino."}
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-se-garagem
+        type: spot-error
+        tag: a1.genero.fem
+        prompt: "Cartel en la entrada de la pousada. Tiene un error."
+        tokens: ["As", "bicicletas", "ficam", "no", "garagem."]
+        wrong: 3
+        corrections: ["na"]
+        rule: "Las palabras en *-agem* tienen en portugués el otro género que en español, y la contracción lo sigue."
+        dims: {gender: f}
+        reviewed: true
+
+      # Reserva
+      - id: t2-2-ord-mel
+        type: order
+        tag: a1.genero.masc
+        reserve: true
+        prompt: "El Tom quiere miel para el té."
+        chunks: ["o mel", "onde", "está"]
+        answers: [["onde", "está", "o mel"]]
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-se-da-chile
+        type: spot-error
+        tag: a1.contr.de
+        reserve: true
+        prompt: "La Mia escribe su presentación para el grupo. Tiene un error."
+        tokens: ["Oi!", "Eu", "sou", "a", "Mia,", "da", "Chile."]
+        wrong: 5
+        corrections: ["do"]
+        rule: "El artículo de *Chile* no es femenino: la contracción tiene que seguir el género del país."
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-2-ord-bagagem
+        type: order
+        tag: a1.genero.fem
+        reserve: true
+        prompt: "La Ana pregunta por el equipaje de Dona Célia."
+        chunks: ["a bagagem", "está", "da senhora", "onde"]
+        answers: [["onde", "está", "a bagagem", "da senhora"]]
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-2-se-em-os
+        type: spot-error
+        tag: a1.contr.em
+        reserve: true
+        prompt: "Nota pegada en la heladera. Tiene un error."
+        tokens: ["Os", "ovos", "estão", "em os", "potes", "azuis."]
+        wrong: 3
+        corrections: ["nos"]
+        rule: "*em* + artículo se escribe en una sola palabra; separados no van."
+        dims: {gender: m, number: pl}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 3 ─────────────────────────────
+  - n: 3
+    name: "Aplicar no contexto"
+    scene: {title: "A feira de sábado", context: "Sábado · 9:00 · la feria de la Rua Almirante Alexandrino, con la lista en el celular"}
+    generated: 3
+    exercises:
+      - id: t2-3-read-lista
+        type: reading
+        title: "Lista da feira (grupo da pousada)"
+        text: |
+          Bom dia, pessoal! Hoje é dia de feira. Esta é a lista para o jantar de sábado:
+          Da feira: as bananas, os tomates, a cebola e o queijo minas. O peixe é do Seu Jorge, na barraca azul, no fim da rua.
+          Do mercado: o leite, o sal e o arroz. O dinheiro está na caixa da cozinha, no armário de cima.
+          A Mia faz a salada e o Tom faz o feijão. A sobremesa é da Lea: um bolo de chocolate!
+          Até mais tarde,
+          Ana
+        questions:
+          - tag: a1.contr.de
+            prompt: "De quem é o peixe?"
+            answers: ["Do Seu Jorge", "É do Seu Jorge", "O peixe é do Seu Jorge", "Seu Jorge", "Do Seu Jorge, na barraca azul"]
+            dims: {gender: m}
+          - tag: a1.contr.em
+            prompt: "Onde está o dinheiro?"
+            options:
+              - {text: "Na caixa da cozinha.", correct: true}
+              - {text: "Na barraca azul.", rule: "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*."}
+              - {text: "No fim da rua.", rule: "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*."}
+            dims: {gender: f}
+          - tag: a1.genero.masc
+            prompt: "O que eles compram no mercado?"
+            options:
+              - {text: "O leite, o sal e o arroz.", correct: true}
+              - {text: "A leite, a sal e o arroz.", rule: "Dos de esas palabras cambian de género respecto del español: el artículo tiene que seguirlas."}
+              - {text: "As bananas e os tomates.", rule: "Esas cosas son de la feria, no del mercado: buscá la línea que empieza con *Do mercado*."}
+            dims: {gender: m}
+          - tag: a1.contr.de
+            prompt: "De quem é a sobremesa?"
+            answers: ["Da Lea", "É da Lea", "A sobremesa é da Lea", "Lea", "A Lea"]
+            dims: {gender: f}
+        reviewed: true
+
+      - id: t2-3-tr-leite
+        type: translate
+        tag: a1.genero.masc
+        from: es
+        source: "La leche está en la heladera."
+        answers: ["O leite está na geladeira.", "O leite tá na geladeira.", "Na geladeira está o leite."]
+        dims: {gender: m}
+        errors:
+          - {answer: "A leite está na geladeira.", rule: "*leite* cambia de género respecto del español."}
+          - {answer: "O leite está em a geladeira.", rule: "*em* + artículo se contrae en una sola palabra."}
+        curiosities: ["*geladeira* es la heladera en Brasil; en Portugal se dice *frigorífico*."]
+        reviewed: true
+
+      - id: t2-3-se-num
+        type: spot-error
+        tag: a1.contr.em
+        prompt: "Reseña de un huésped. Tiene un error."
+        tokens: ["A", "pousada", "fica", "em o", "bairro", "mais", "bonito", "do", "Rio."]
+        wrong: 3
+        corrections: ["no"]
+        rule: "*em* + artículo se escribe en una sola palabra; separados no van."
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-3-tr-argentina
+        type: translate
+        tag: a1.contr.de
+        from: es
+        source: "Soy de Argentina, de Rosario."
+        answers: ["Sou da Argentina, de Rosario.", "Eu sou da Argentina, de Rosario.", "Sou argentino, de Rosario.", "Eu sou argentino, de Rosario.", "Sou argentina, de Rosario.", "Eu sou argentina, de Rosario."]
+        dims: {gender: f}
+        errors:
+          - {answer: "Sou de Argentina, de Rosario.", rule: "*Argentina* lleva artículo en portugués: la preposición se junta con él. *Rosario*, como casi todas las ciudades, no lo lleva."}
+          - {answer: "Eu sou de Argentina, de Rosario.", rule: "*Argentina* lleva artículo en portugués: la preposición se junta con él."}
+          - {answer: "Sou da Argentina, do Rosario.", rule: "Las ciudades casi nunca llevan artículo: la preposición va sola."}
+        reviewed: true
+
+      - id: t2-3-se-o-cor
+        type: spot-error
+        tag: a1.genero.fem
+        prompt: "Mensaje del Tom desde la feria. Tiene un error."
+        tokens: ["Comprei", "uma", "camiseta.", "O", "cor", "é", "verde", "e", "amarelo!"]
+        wrong: 3
+        corrections: ["A"]
+        rule: "Esta palabra tiene en portugués el otro género que en español."
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-3-tr-mensagem
+        type: translate
+        tag: a1.genero.fem
+        from: es
+        source: "El mensaje de Ana es para vos."
+        answers: ["A mensagem da Ana é para você.", "A mensagem da Ana é pra você.", "A mensagem de Ana é para você.", "A mensagem de Ana é pra você."]
+        dims: {gender: f}
+        errors:
+          - {answer: "O mensagem da Ana é para você.", rule: "Las palabras en *-agem* son femeninas en portugués."}
+          - {answer: "O mensaje da Ana é para você.", rule: "Esa palabra está en español: en portugués termina en *-agem* y cambia de género."}
+        reviewed: true
+
+      - id: t2-3-se-no-portugal
+        type: spot-error
+        tag: a1.contr.em
+        prompt: "Dona Célia cuenta dónde vive su hija. Tiene un error."
+        tokens: ["Minha", "filha", "mora", "no", "Portugal,", "em", "Lisboa."]
+        wrong: 3
+        corrections: ["em"]
+        rule: "*Portugal* no lleva artículo: la preposición va sola, sin contraer."
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-3-tr-praia
+        type: translate
+        tag: a1.contr.em
+        from: es
+        source: "Los chicos están en la playa."
+        answers: ["Os meninos estão na praia.", "A galera está na praia.", "O pessoal está na praia.", "Os meninos tão na praia.", "As meninas estão na praia.", "Os garotos estão na praia.", "As crianças estão na praia.", "Os rapazes estão na praia."]
+        dims: {gender: f}
+        errors:
+          - {answer: "Os meninos estão em a praia.", rule: "*em* + artículo se contrae en una sola palabra."}
+          - {answer: "Os meninos estão no praia.", rule: "La contracción sigue el género del sustantivo, y *praia* no es masculino."}
+        reviewed: true
+
+      # Reserva
+      - id: t2-3-se-a-legume
+        type: spot-error
+        tag: a1.genero.masc
+        reserve: true
+        prompt: "Cartel de la verdulería de la feria. Tiene un error."
+        tokens: ["Hoje", "a", "legume", "da", "semana", "é", "a", "abóbora!"]
+        wrong: 1
+        corrections: ["o"]
+        rule: "Esta palabra cambia de género respecto del español (*la legumbre*): el artículo es el del otro género."
+        dims: {gender: m}
+        reviewed: true
+
+      - id: t2-3-tr-canada
+        type: translate
+        tag: a1.contr.de
+        reserve: true
+        from: es
+        source: "Tom es de Canadá."
+        answers: ["O Tom é do Canadá.", "Tom é do Canadá.", "O Tom é canadense.", "Tom é canadense."]
+        dims: {gender: m}
+        errors:
+          - {answer: "O Tom é de Canadá.", rule: "*Canadá* lleva artículo en portugués: la preposición se junta con él."}
+          - {answer: "Tom é de Canadá.", rule: "*Canadá* lleva artículo en portugués: la preposición se junta con él."}
+        reviewed: true
+
+      - id: t2-3-tr-garagem
+        type: translate
+        tag: a1.genero.fem
+        reserve: true
+        from: es
+        source: "El garaje está cerrado."
+        answers: ["A garagem está fechada.", "A garagem tá fechada."]
+        dims: {gender: f}
+        errors:
+          - {answer: "O garagem está fechado.", rule: "Las palabras en *-agem* son femeninas en portugués, y el adjetivo las sigue."}
+          - {answer: "A garagem está fechado.", rule: "El adjetivo tiene que concordar con el género del sustantivo."}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 4 ─────────────────────────────
+  - n: 4
+    name: "Produzir com apoio"
+    scene: {title: "O jantar de sábado", context: "Sábado · 20:30 · ocho personas, una mesa, y todos piden algo a la vez"}
+    field: comida
+    generated: 3
+    exercises:
+      - id: t2-4-sit-mesa
+        type: situation
+        scene: {title: "Na mesa", context: "20:30 · la Ana sirve el feijão"}
+        bubbles:
+          - {who: them, text: "Leo, você quer ___ sal?"}
+          - {who: me, text: "Quero, sim. E onde está o arroz?"}
+          - {who: them, text: "Está ___ panela grande, no fogão."}
+        gaps:
+          - tag: a1.genero.masc
+            answers: ["o"]
+            dims: {gender: m}
+            errors:
+              - {answer: "a", rule: "Esta palabra cambia de género respecto del español."}
+          - tag: a1.contr.em
+            answers: ["na"]
+            dims: {gender: f}
+            errors:
+              - {answer: "no", rule: "La contracción sigue el género del sustantivo que viene después."}
+              - {answer: "em a", rule: "*em* + artículo se escribe en una sola palabra."}
+              - {answer: "em", rule: "Falta el artículo: *em* se junta con él."}
+        reviewed: true
+
+      - id: t2-4-tf-plural
+        type: transform
+        tag: a1.contr.em
+        source: "O copo está no armário."
+        instruction: "Agora no plural: *os copos* e *os armários*."
+        answers: ["Os copos estão nos armários.", "Os copos tão nos armários.", "Nos armários estão os copos."]
+        dims: {gender: m, number: pl}
+        reviewed: true
+
+      - id: t2-4-sit-origem
+        type: situation
+        scene: {title: "Na mesa", context: "20:45 · llegó un huésped nuevo y se presenta"}
+        bubbles:
+          - {who: them, text: "Oi, gente! Eu sou o Martín. Sou ___ Uruguai."}
+          - {who: me, text: "Que legal! Eu sou ___ Argentina. Somos vizinhos!"}
+        gaps:
+          - tag: a1.contr.de
+            answers: ["do"]
+            dims: {gender: m}
+            errors:
+              - {answer: "de", rule: "*Uruguai* lleva artículo en portugués: la preposición se junta con él."}
+              - {answer: "da", rule: "El artículo de *Uruguai* no es femenino."}
+          - tag: a1.contr.de
+            answers: ["da"]
+            dims: {gender: f}
+            errors:
+              - {answer: "de", rule: "*Argentina* lleva artículo en portugués: la preposición se junta con él."}
+              - {answer: "do", rule: "La contracción sigue el género del país, y *Argentina* no es masculino."}
+        reviewed: true
+
+      - id: t2-4-tf-viagem
+        type: transform
+        tag: a1.genero.fem
+        source: "O passeio foi longo."
+        instruction: "Troque *o passeio* por *viagem*."
+        answers: ["A viagem foi longa."]
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-4-gap-mel
+        type: gap
+        tag: a1.genero.masc
+        context: "El Tom pide algo para el té de la Lea, que está resfriada."
+        text: "Ana, você me passa ___ mel, por favor?"
+        answers: ["o"]
+        dims: {gender: m}
+        errors:
+          - {answer: "a", rule: "Esta palabra cambia de género respecto del español: en portugués no es femenina."}
+        curiosities: ["*o mel*, como *o leite* y *o sal*: masculinos en portugués, femeninos en español."]
+        reviewed: true
+
+      - id: t2-4-sit-chave
+        type: situation
+        scene: {title: "Depois do jantar", context: "23:00 · la Ana cierra la cocina"}
+        bubbles:
+          - {who: them, text: "Leo, a chave ___ cozinha está com você?"}
+          - {who: me, text: "Não, está ___ recepção, com o Rafa."}
+        gaps:
+          - tag: a1.contr.de
+            answers: ["da"]
+            dims: {gender: f}
+            errors:
+              - {answer: "de a", rule: "*de* + artículo se escribe en una sola palabra."}
+              - {answer: "do", rule: "La contracción sigue el género del sustantivo, y *cozinha* no es masculino."}
+          - tag: a1.contr.em
+            answers: ["na"]
+            dims: {gender: f}
+            errors:
+              - {answer: "em a", rule: "*em* + artículo se escribe en una sola palabra."}
+              - {answer: "no", rule: "La contracción sigue el género del sustantivo, y *recepção* no es masculino."}
+        reviewed: true
+
+      - id: t2-4-tf-mensagem
+        type: transform
+        tag: a1.genero.fem
+        source: "O e-mail da Ana é longo."
+        instruction: "Troque *o e-mail* por *mensagem*."
+        answers: ["A mensagem da Ana é longa."]
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-4-gap-brasil
+        type: gap
+        tag: a1.contr.em
+        context: "El Martín le pregunta a la Ana desde cuándo trabaja en la pousada."
+        text: "Você mora ___ Brasil há muito tempo?"
+        answers: ["no"]
+        dims: {gender: m}
+        errors:
+          - {answer: "em", rule: "*Brasil* lleva artículo en portugués: la preposición se junta con él."}
+          - {answer: "na", rule: "El artículo de *Brasil* no es femenino."}
+        reviewed: true
+
+      # Reserva
+      - id: t2-4-sit-feira
+        type: situation
+        reserve: true
+        scene: {title: "Na feira", context: "Sábado · 9:20 · en el puesto de frutas"}
+        bubbles:
+          - {who: them, text: "Bom dia! O que vai ser hoje?"}
+          - {who: me, text: "Bom dia! Eu quero ___ abacaxi e duas mangas, por favor."}
+          - {who: them, text: "Claro! As mangas ___ caixa azul são ótimas."}
+        gaps:
+          - tag: a1.genero.masc
+            answers: ["um"]
+            dims: {gender: m}
+            errors:
+              - {answer: "uma", rule: "El artículo sigue el género de la palabra en portugués, que acá no es femenino."}
+          - tag: a1.contr.de
+            answers: ["da"]
+            dims: {gender: f}
+            errors:
+              - {answer: "de a", rule: "*de* + artículo se escribe en una sola palabra."}
+              - {answer: "do", rule: "La contracción sigue el género del sustantivo, y *caixa* no es masculino."}
+        reviewed: true
+
+      - id: t2-4-tf-espanha
+        type: transform
+        tag: a1.contr.de
+        reserve: true
+        source: "A Lea é de Madri."
+        instruction: "Agora com o país: *Espanha*."
+        answers: ["A Lea é da Espanha.", "Lea é da Espanha."]
+        dims: {gender: f}
+        reviewed: true
+
+      - id: t2-4-gap-portugal
+        type: gap
+        tag: a1.contr.de
+        reserve: true
+        context: "La Ana le presenta a Dona Célia a un huésped nuevo."
+        text: "Esta é a Dona Célia. Ela é ___ Portugal."
+        answers: ["de"]
+        dims: {gender: m}
+        errors:
+          - {answer: "do", rule: "*Portugal* no lleva artículo: no hay con qué contraer."}
+          - {answer: "da", rule: "*Portugal* no lleva artículo: no hay con qué contraer."}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 5 ─────────────────────────────
+  - n: 5
+    name: "Escrever livremente"
+    scene: {title: "Grupo da Pousada Maré", context: "Domingo · la heladera compartida es un caos y alguien tiene que poner orden"}
+    exercises:
+      - id: t2-5-wg-geladeira
+        type: writing-guided
+        topic: a1.u1.t2
+        prompt: "Escribí en el grupo dónde está cada cosa en la cocina, para que nadie más pregunte."
+        constraints:
+          - "Al menos 4 cosas, cada una con su lugar."
+          - "Usá *no*, *na*, *nos* o *nas* al menos 3 veces."
+          - "Incluí al menos una de estas palabras: *leite*, *sal*, *mel*."
+        tips:
+          - "*em* + artículo se contrae siempre: *no armário*, *na geladeira*."
+          - "Ojo con *o leite*, *o sal* y *o mel*: en portugués son masculinos."
+        checklist:
+          - "Hay al menos 4 cosas con su lugar."
+          - "Todas las contracciones siguen el género del sustantivo."
+          - "Suena a mensaje de grupo: hay saludo."
+        model: "Oi, gente! O leite está na geladeira, na porta. O sal e o açúcar estão no armário de cima. Os copos estão na pia. E o mel da Lea está na mesa. Beijos!"
+        reviewed: true
+
+      - id: t2-5-wg-apresentacao
+        type: writing-guided
+        topic: a1.u1.t2
+        prompt: "Presentá a tres personas de la pousada: de dónde es cada una y dónde vive ahora."
+        constraints:
+          - "Tres personas, cada una con su país."
+          - "Al menos un país sin artículo (*Portugal*, *Cuba*…)."
+          - "Usá *do*, *da* o *de* según el país."
+        tips:
+          - "*ser* + *de* para el origen: *é do Chile*, *é da Espanha*, *é de Portugal*."
+          - "*morar* + *em* para dónde vive: *mora no Brasil*, *mora em Portugal*."
+        checklist:
+          - "Hay tres personas con su país de origen."
+          - "Las contracciones siguen el artículo de cada país."
+          - "Hay un país sin artículo."
+        model: "A Mia é do Chile, mas agora mora no Brasil. O Tom é do Canadá e mora na Espanha. A Dona Célia é de Portugal e mora em Lisboa."
+        reviewed: true
+
+      - id: t2-5-wf-viagem
+        type: writing-free
+        topic: a1.u1.t2
+        prompt: "Contale a un amigo por mensaje cómo es la pousada: el cuarto, la cocina, la varanda y la gente. Contale también algo de tu viaje."
+        tips:
+          - "Usá las palabras de la cocina y de la casa que viste en esta unidad."
+          - "*a viagem*, *a mensagem* y *a cor* son femeninas."
+        checklist:
+          - "Describiste al menos tres lugares de la pousada."
+          - "Usaste al menos una contracción con *em* y una con *de*."
+          - "Contaste algo del viaje."
+        model: "Oi, Santi! A viagem foi longa, mas a pousada é ótima. O meu quarto fica no segundo andar e a cama é muito boa. A cozinha é pequena e o leite sempre acaba. A varanda é o melhor lugar da casa: daqui a gente vê o mar. As pessoas da pousada são do Chile, do Canadá e da Espanha. Um abraço!"
+        reviewed: true

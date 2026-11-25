@@ -13,8 +13,8 @@ const cur = {tags: {
 test('pickExample nunca devuelve un ejemplo con la dimensión evaluada', () => {
   for (const r of [0, 0.4, 0.99]) assert.notEqual(pickExample('t', {gender: 'm'}, cur, () => r).pt, 'A');
   for (let i = 0; i < 20; i++) {
-    const ex = pickExample('a1.akk.mask', {gender: 'm'}, real, Math.random);
-    const src = real.tags['a1.akk.mask'].examples.find((e) => e.pt === ex.pt);
+    const ex = pickExample('a1.genero.masc', {gender: 'm'}, real, Math.random);
+    const src = real.tags['a1.genero.masc'].examples.find((e) => e.pt === ex.pt);
     assert.notEqual(src.dims.gender, 'm');
   }
 });
@@ -40,12 +40,12 @@ test('pickExample con dims: excluye ejemplos que no tienen esas claves', () => {
   for (const r of [0, 0.5, 0.99]) assert.equal(pickExample('x', {gender: 'm'}, c, () => r).pt, 'ok');
 });
 
-test('pickExample compara solo las claves compartidas (gap generado con kase y det)', () => {
-  const dims = {gender: 'm', kase: 'akk', det: 'indef'};
+test('pickExample compara solo las claves compartidas (gap generado con number y det)', () => {
+  const dims = {gender: 'm', number: 'sg', det: 'indef'};
   for (let i = 0; i < 20; i++) {
-    const ex = pickExample('a1.akk.mask', dims, real, Math.random);
+    const ex = pickExample('a1.genero.masc', dims, real, Math.random);
     assert.ok(ex, 'hay ejemplo');
-    const src = real.tags['a1.akk.mask'].examples.find((e) => e.pt === ex.pt);
+    const src = real.tags['a1.genero.masc'].examples.find((e) => e.pt === ex.pt);
     assert.notEqual(src.dims.gender, 'm');
   }
   const c = {tags: {x: {examples: [{pt: 'ajeno', es: 'a', dims: {person: 'ich'}}, {pt: 'igual', es: 'i', dims: {gender: 'm', kase: 'nom'}},

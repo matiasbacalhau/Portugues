@@ -1,61 +1,71 @@
-// Diagnóstico de un hueco generado (artículo o verbo en presente). El texto nombra la regla y nunca la forma esperada.
-import { findArticle, present } from './morph.js';
-import { SEIN } from './generators/sein-praesens.js';
+// Diagnóstico de un hueco generado (artículo, contracción o verbo en presente). El texto nombra la regla y nunca la
+// forma esperada.
+import { findArticle, present, PERSONS } from './morph.js';
 
-const PERSON_NAME = {ich: '*ich*', du: '*du*', er: '*er*, *sie* (ella) y *es*', wir: '*wir*', ihr: '*ihr*', sie: '*sie* (ellos) y *Sie*'};
-const PERSONS = Object.keys(PERSON_NAME);
+const PERSON_NAME = {
+  eu: '*eu*',
+  ele: '*você*, *ele*, *ela* y *a gente*',
+  nos: '*nós*',
+  eles: '*vocês*, *eles* y *elas*',
+};
+const PERSON_NAME_PT = {eu: '*eu*', ele: '*você*, *ele*, *ela* e *a gente*', nos: '*nós*', eles: '*vocês*, *eles* e *elas*'};
 
-// *sein* y verbos de nivel 3: si escribió la forma de otra persona, nombra esa persona (lo que escribió), no la forma que va.
+const fallback = (item, tags) => ({
+  rule: tags[item.tag]?.rule ?? 'Repasá la regla de este tema.',
+  rule_pt: tags[item.tag]?.rule_pt ?? 'Revise a regra deste tema.',
+  prereq: null,
+});
+
+// Si escribió la forma de otra persona, nombra esa persona (lo que escribió), no la forma que va.
 function diagnoseVerb(item, answer, tags, lexicon = []) {
   const given = String(answer).trim().toLowerCase();
   const word = item.word ?? lexicon.find(w => w.pos === 'verb' && w.lemma === item.verb);
-  const formsOf = p => (word && word.lemma !== 'sein' ? present(word, p).map(f => f.toLowerCase()) : [SEIN[p]]);
-  const persons = PERSONS.filter(p => formsOf(p).includes(given));
-  if (!persons.length) {
-    return {
-      rule: tags[item.tag]?.rule ?? 'Repasá la regla de este tema.',
-      rule_pt: tags[item.tag]?.rule_pt ?? 'Wiederhole die grammatische Regel für dieses Thema.',
-      prereq: null,
-    };
-  }
-  const names = persons.map(p => PERSON_NAME[p]);
+  if (!word) return fallback(item, tags);
+  const persons = PERSONS.filter(p => p !== item.dims.person && present(word, p).map(f => f.toLowerCase()).includes(given));
+  if (!persons.length) return fallback(item, tags);
   return {
-    rule: `Esa forma es la de ${names.join(', ')}: fijate quién es el sujeto.`,
-    rule_pt: 'Überprüfe das Subjekt: Die Verbendung muss zum Subjekt passen.',
+    rule: `Esa forma es la de ${persons.map(p => PERSON_NAME[p]).join(', ')}: fijate quién es el sujeto.`,
+    rule_pt: `Forma de ${persons.map(p => PERSON_NAME_PT[p]).join(', ')}: confira o sujeito.`,
     prereq: null,
   };
 }
 
-const GENDER_NAME = {m: 'masculino', f: 'femenino', n: 'neutro', pl: 'plural'};
-const TAG_SUFFIX = {m: 'mask', f: 'fem', n: 'neut', pl: 'plural'};
-const KASE_NAME = {nom: 'Nominativ (sujeto)', akk: 'Akkusativ (objeto directo)'};
+const GENDER_NAME = {m: 'masculino', f: 'femenino'};
+const GENDER_NAME_PT = {m: 'masculino', f: 'feminino'};
+const SUFFIX = {m: 'masc', f: 'fem'};
 
-// item: {tag, dims: {gender, kase, det}, noun, verb}; tags: curriculum.tags (para la regla del tag).
+// item: {tag, dims: {gender, number, det, prep?}, noun}; tags: curriculum.tags (para la regla del tag).
 export function diagnose(item, answer, tags = {}, lexicon = []) {
   if (item.dims?.person) return diagnoseVerb(item, answer, tags, lexicon);
-  const {gender, kase, det} = item.dims;
-  const cells = findArticle(String(answer).trim().toLowerCase()).filter(c => c.det === det);
-  if (cells.some(c => c.gender === gender && c.kase !== kase))
+  const {gender, number = 'sg', det, prep = null} = item.dims;
+  const cells = findArticle(answer).filter(c => c.det === det);
+  // Escribió la preposición y el artículo separados (*em o*, *de a*): en portugués se juntan.
+  if (prep && cells.some(c => c.split && c.prep === prep && c.gender === gender && c.number === number))
     return {
-      rule: `*${item.verb ?? 'Este verbo'}* pide ${KASE_NAME[kase]}.`,
-      rule_pt: `${item.verb ? `*${item.verb}*` : 'Dieses Verb'} verlangt ${kase === 'akk' ? 'Akkusativ' : 'Nominativ'}.`,
+      rule: `*${prep}* + artículo se contrae en una sola palabra: no se escriben separados.`,
+      rule_pt: `*${prep}* + artigo vira uma palavra só: não se escrevem separados.`,
       prereq: null,
     };
-  const wrong = cells.find(c => c.kase === kase && c.gender !== gender);
-  if (wrong) {
-    const what = wrong.gender === 'pl' ? 'plural: revisá el número' : `${GENDER_NAME[wrong.gender]}: revisá el género`;
-    const whatPt = wrong.gender === 'pl'
-      ? `Achte auf den Numerus: *${item.noun}* steht nicht im Plural.`
-      : `Achte auf das Geschlecht: *${item.noun}* hat ein anderes grammatisches Geschlecht.`;
+  // Puso el artículo solo, sin la preposición que pide la frase.
+  if (prep && cells.some(c => c.prep === null && c.gender === gender && c.number === number))
     return {
-      rule: `*${item.noun}* no es ${what}.`,
-      rule_pt: whatPt,
-      prereq: `a1.nom.${TAG_SUFFIX[gender]}`,
+      rule: `Falta la preposición *${prep}*: va unida al artículo.`,
+      rule_pt: `Falta a preposição *${prep}*: ela se junta ao artigo.`,
+      prereq: null,
+    };
+  const wrong = cells.find(c => (c.prep ?? null) === prep && !c.split && (c.gender !== gender || c.number !== number));
+  if (wrong) {
+    if (wrong.number !== number)
+      return {
+        rule: `*${item.noun}* no está en ${wrong.number === 'pl' ? 'plural' : 'singular'} acá: revisá el número.`,
+        rule_pt: `Preste atenção ao número: aqui não é ${wrong.number === 'pl' ? 'plural' : 'singular'}.`,
+        prereq: null,
+      };
+    return {
+      rule: `*${item.noun}* no es ${GENDER_NAME[wrong.gender]} en portugués: revisá el género.`,
+      rule_pt: `Preste atenção ao gênero: *${item.noun}* não é ${GENDER_NAME_PT[wrong.gender]}.`,
+      prereq: prep ? `a1.genero.${SUFFIX[gender]}` : null,
     };
   }
-  return {
-    rule: tags[item.tag]?.rule ?? 'Repasá la regla de este tema.',
-    rule_pt: tags[item.tag]?.rule_pt ?? 'Wiederhole die grammatische Regel für dieses Thema.',
-    prereq: null,
-  };
+  return fallback(item, tags);
 }

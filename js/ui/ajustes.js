@@ -23,7 +23,7 @@ export default async function ajustes(el, { store }) {
   const exportar = async () => {
     try {
       const date = new Date().toISOString().slice(0, 10);
-      await saveFile(`aleman-backup-${date}.json`, await store.exportAll());
+      await saveFile(`portugues-backup-${date}.json`, await store.exportAll());
       await store.markBackup();
       status.className = 'status ok';
       status.textContent = 'Backup exportado.';
@@ -87,7 +87,7 @@ export default async function ajustes(el, { store }) {
   const exportarReportes = async () => {
     try {
       const date = new Date().toISOString().slice(0, 10);
-      await saveFile(`aleman-reportes-${date}.json`, JSON.stringify({ reports: (await store.get('reports')) ?? [] }, null, 2));
+      await saveFile(`portugues-reportes-${date}.json`, JSON.stringify({ reports: (await store.get('reports')) ?? [] }, null, 2));
       status.className = 'status ok';
       status.textContent = 'Reportes exportados.';
     } catch (e) {

@@ -1,3 +1,5 @@
+> **Nota (Português A1→C1):** este documento viene de DeutschLernen y rige igual en esta app, con el portugués de Brasil como lengua meta. Equivalencias: *Stufe* → *Etapa*; las etapas se llaman *Descobrir*, *Reconhecer*, *Aplicar no contexto*, *Produzir com apoio* y *Escrever livremente*; `rule_de` → `rule_pt`; los ejemplos en alemán ilustran el principio, no el contenido de esta app. Lo nuevo de esta app (ejercicio `pares`, contracciones, tildes) está en el README.
+
 # Análisis Pedagógico y Fundamentación Cognitiva: Secuencia de Escalones de Aprendizaje
 
 **Documento:** `docs/PEDAGOGIA_ESCALONES.md`  

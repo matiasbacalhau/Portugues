@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concurso de identidad</title>
+<style>
+:root { --bg: #f4f4f2; --card: #ffffff; --ink: #1a1a1a; --muted: #5f5f5c; --line: #e2e2de; }
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.5 system-ui, -apple-system, sans-serif; padding: 32px 24px 48px; }
+header { max-width: 1680px; margin: 0 auto 24px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+header p { margin: 0; color: var(--muted); max-width: 80ch; }
+.grid { max-width: 1680px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.frame { aspect-ratio: 1280 / 800; width: 100%; border: 0; display: block; background: var(--bg); }
+.body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+h2 { font-size: 18px; margin: 0; }
+h2 span { color: var(--muted); font-weight: 400; }
+.sw { display: flex; gap: 6px; }
+.sw i { width: 64px; height: 36px; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); position: relative; }
+.sw i::after { content: attr(data-c); position: absolute; top: 40px; left: 0; font: 400 10px system-ui; color: var(--muted); font-style: normal; white-space: nowrap; }
+.sw { margin-bottom: 14px; }
+dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+.why { margin: 4px 0 0; font-weight: 500; }
+a { color: var(--ink); }
+@media (max-width: 1100px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Portugués: concurso de identidad visual</h1>
+  <p>Mismo contenido en las tres: la pantalla de inicio en el iPhone, con la etiqueta Etapa y los botones Verificar y Continuar al costado. Elegí una; la página completa se arma solo con la ganadora.</p>
+</header>
+<div class="grid">
+  <article class="card">
+    <iframe class="frame" src="a-taste.html" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;A · taste-skill&lt;/title&gt;
+&lt;!-- taste-skill · app sheet &quot;editorial-greeting&quot; (seed 1984920212), kind workspace, screen home.
+     Redraw: accent #1b6e66 (deep teal) replaced by azulejo cobalt #1a5bb5, because teal is the sister app&#x27;s identity.
+     Face chosen: a surface from the product&#x27;s world (azulejo white #f2f5f9 instead of #f9f9f9).
+     Signature element: the 5-step ladder of the topic, drawn as five segments. --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&amp;family=Instrument+Serif&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+  --ground: #ffffff;
+  --surface: #f2f5f9;
+  --raised: #ffffff;
+  --border: #e3e8ef;
+  --rule: #e9edf3;
+  --text: #1f201d;
+  --muted: #5d6168;
+  --accent: #1a5bb5;
+  --accent-tint: #dfe9f7;
+  --primary: #1f201d;
+  --radius-card: 22px;
+  --radius-control: 999px;
+  --font: &quot;Instrument Sans&quot;, Inter, system-ui, sans-serif;
+  --serif: &quot;Instrument Serif&quot;, Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: #e8ecf2; display: grid; place-items: center; min-height: 100vh; font: 400 14px/1.45 var(--font); color: var(--text); }
+.canvas { width: 1280px; height: 800px; margin: 0 auto; background: var(--surface); display: grid; grid-template-columns: 1fr 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 56px; }
+.side h1 { font: 400 44px/1.02 var(--serif); letter-spacing: -0.01em; margin: 0 0 12px; }
+.side p { font-size: 16px; color: var(--muted); margin: 0 0 28px; max-width: 30ch; }
+.spec { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.spec .row { display: flex; gap: 8px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); transform-origin: center; background: var(--ground); border-radius: 44px; overflow: hidden; outline: 10px solid #1f201d; justify-self: center; position: relative; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 600; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+.mark { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; }
+.mark svg { display: block; }
+.bar a { color: var(--muted); text-decoration: none; font-size: 14px; }
+.content { padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+.greet { font: 400 40px/1 var(--serif); letter-spacing: -0.01em; margin: 12px 0 0; }
+.panel { background: var(--surface); border-radius: var(--radius-card); padding: 20px; }
+.panel h2 { font-size: 14px; font-weight: 600; margin: 0 0 12px; display: flex; justify-content: space-between; }
+.panel h2 span { font-weight: 400; color: var(--muted); }
+.path { color: var(--muted); margin: 0 0 4px; }
+.topic { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 14px; line-height: 1.2; }
+.ladder { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 8px; }
+.ladder i { height: 8px; border-radius: 999px; background: var(--border); }
+.ladder i.done { background: var(--primary); }
+.ladder i.now { background: var(--accent); }
+.step { margin: 0 0 16px; }
+.step b { font-weight: 600; color: var(--accent); }
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border-radius: var(--radius-control); font: 600 16px var(--font); border: 0; cursor: pointer; transition: transform .12s cubic-bezier(.22,1,.36,1), background .15s; }
+.btn:active { transform: scale(.97); }
+.btn.primary { background: var(--primary); color: #fff; }
+.btn.primary:hover { background: #000; }
+.btn.secondary { background: #e1e6ee; color: var(--text); }
+.btn.block { width: 100%; }
+.chip { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: var(--accent-tint); color: #0f3d7a; font-weight: 500; }
+.rows { display: flex; flex-direction: column; gap: 8px; }
+.r { background: var(--raised); border: 1px solid var(--border); border-radius: 14px; min-height: 52px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.r .t { font-weight: 500; }
+.r .s { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.r.now { border-color: var(--accent); }
+.r.now .s { color: var(--accent); font-weight: 500; }
+.r.soon { background: transparent; border-style: dashed; color: var(--muted); }
+.tabs { height: 72px; display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--rule); padding-bottom: 18px; }
+.tabs a { display: flex; align-items: center; justify-content: center; color: var(--muted); text-decoration: none; font-weight: 500; }
+.tabs a.on { color: var(--text); }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+  &lt;section class=&quot;side&quot;&gt;
+    &lt;h1&gt;Una página en blanco de azulejo&lt;/h1&gt;
+    &lt;p&gt;Fondo blanco, tinta casi negra y un solo azul cobalto: marca la etapa en la que estás y nada más.&lt;/p&gt;
+    &lt;div class=&quot;spec&quot;&gt;
+      &lt;span class=&quot;chip&quot; lang=&quot;pt-BR&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+      &lt;div class=&quot;row&quot; lang=&quot;pt-BR&quot;&gt;&lt;button class=&quot;btn primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn secondary&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+    &lt;div class=&quot;status&quot;&gt;&lt;span&gt;21:40&lt;/span&gt;&lt;span&gt;●●●&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bar&quot;&gt;
+      &lt;span class=&quot;mark&quot;&gt;&lt;svg width=&quot;22&quot; height=&quot;22&quot; viewBox=&quot;0 0 22 22&quot; aria-hidden=&quot;true&quot;&gt;&lt;rect width=&quot;22&quot; height=&quot;22&quot; rx=&quot;6&quot; fill=&quot;#1a5bb5&quot;/&gt;&lt;path d=&quot;M11 3 L19 11 L11 19 L3 11 Z&quot; fill=&quot;#fff&quot;/&gt;&lt;circle cx=&quot;11&quot; cy=&quot;11&quot; r=&quot;3&quot; fill=&quot;#1a5bb5&quot;/&gt;&lt;/svg&gt;Português&lt;/span&gt;
+      &lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;h2 class=&quot;greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+      &lt;section class=&quot;panel&quot;&gt;
+        &lt;h2&gt;Próximo grupo &lt;span&gt;A1&lt;/span&gt;&lt;/h2&gt;
+        &lt;p class=&quot;path&quot;&gt;Unidade 1 · Chegando&lt;/p&gt;
+        &lt;p class=&quot;topic&quot;&gt;Tema 1 · Pronomes, ser e estar&lt;/p&gt;
+        &lt;div class=&quot;ladder&quot; aria-hidden=&quot;true&quot;&gt;&lt;i class=&quot;done&quot;&gt;&lt;/i&gt;&lt;i class=&quot;now&quot;&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;/div&gt;
+        &lt;p class=&quot;step&quot;&gt;Etapa 2 de 5: &lt;b&gt;Reconhecer&lt;/b&gt;&lt;/p&gt;
+        &lt;button class=&quot;btn primary block&quot;&gt;Começar&lt;/button&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;panel&quot;&gt;
+        &lt;h2&gt;Mapa A1 &lt;span&gt;3 temas&lt;/span&gt;&lt;/h2&gt;
+        &lt;div class=&quot;rows&quot;&gt;
+          &lt;div class=&quot;r now&quot;&gt;&lt;span class=&quot;t&quot;&gt;Pronomes + ser/estar&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Etapa 2 de 5&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;r&quot;&gt;&lt;span class=&quot;t&quot;&gt;Artigos e contrações&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;r&quot;&gt;&lt;span class=&quot;t&quot;&gt;Presente regular&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;r soon&quot;&gt;&lt;span&gt;Outros temas&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;em breve&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Propuesta A"></iframe>
+    <div class="body">
+      <h2>A · taste-skill <span>Editorial greeting</span></h2>
+      <div class="sw"><i style="background:#ffffff" data-c="#fff"></i><i style="background:#f2f5f9" data-c="#f2f5f9"></i><i style="background:#1f201d" data-c="#1f201d"></i><i style="background:#1a5bb5" data-c="#1a5bb5"></i><i style="background:#dfe9f7" data-c="#dfe9f7"></i></div>
+      <dl><dt>Tipografía</dt><dd>Instrument Serif para el saludo, Instrument Sans para todo lo demás</dd><dt>Tono</dt><dd>Claro, sereno, de cuaderno blanco</dd></dl>
+      <p class="why">Encaja porque es la más tranquila para un rato libre: blanco de azulejo y un solo azul cobalto que marca dónde estás.</p>
+      <a href="a-taste.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+  <article class="card">
+    <iframe class="frame" src="b-awesome.html" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;B · awesome-design-md&lt;/title&gt;
+&lt;!-- awesome-design-md · based on the catalog&#x27;s &quot;Wise&quot; DESIGN.md (brand removed).
+     Kept: sage canvas #e8ebe6, white cards as the only elevation, lime #9fe870 as the single CTA colour with ink text,
+     forest ink #163300 on positive surfaces, display at weight 900 (Inter 900 as the open substitute), Inter 600 for the rest,
+     24px radius on cards and buttons, 48px buttons. Runner-ups: Figma (pastel blocks), Miro (canary yellow). --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+  --primary: #9fe870;
+  --primary-active: #cdffad;
+  --primary-pale: #e2f6d5;
+  --ink: #0e0f0c;
+  --ink-deep: #163300;
+  --body: #454745;
+  --mute: #868685;
+  --canvas: #ffffff;
+  --canvas-soft: #e8ebe6;
+  --r-xl: 24px;
+  --r-pill: 9999px;
+  --font: Inter, system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: #d9ddd6; font: 400 16px/1.5 var(--font); color: var(--ink); font-feature-settings: &quot;calt&quot;; display: grid; place-items: center; min-height: 100vh; }
+.canvas { width: 1280px; height: 800px; background: var(--canvas-soft); display: grid; grid-template-columns: 1fr 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.side h1 { font: 900 64px/0.85 var(--font); letter-spacing: -0.02em; margin: 0 0 24px; color: var(--ink-deep); }
+.side p { font-size: 18px; color: var(--body); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.spec .row { display: flex; gap: 8px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--canvas-soft); border-radius: 44px; overflow: hidden; outline: 10px solid var(--ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 600; font-size: 14px; }
+.bar { height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.mark { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 17px; color: var(--ink-deep); }
+.bar a { color: var(--ink); font-weight: 600; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.content { padding: 4px 16px 16px; display: flex; flex-direction: column; gap: 12px; }
+.greet { font: 900 46px/0.9 var(--font); letter-spacing: -0.02em; margin: 8px 4px 12px; color: var(--ink-deep); }
+.card { background: var(--canvas); border-radius: var(--r-xl); padding: 24px; }
+.level { display: inline-flex; height: 28px; padding: 0 12px; align-items: center; border-radius: 8px; background: var(--primary-pale); color: var(--ink-deep); font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+.path { color: var(--body); font-size: 14px; margin: 0 0 2px; }
+.topic { font: 600 24px/1.25 var(--font); letter-spacing: -0.02em; margin: 0 0 16px; }
+.stage { display: flex; align-items: baseline; gap: 10px; margin: 0 0 20px; }
+.stage .n { font: 900 40px/0.85 var(--font); color: var(--ink-deep); }
+.stage .n small { font-size: 20px; color: var(--mute); }
+.stage .w { font-weight: 600; }
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border-radius: var(--r-xl); font: 600 16px var(--font); border: 0; cursor: pointer; transition: transform .12s ease, background .15s; }
+.btn:active { transform: scale(.97); }
+.btn.primary { background: var(--primary); color: var(--ink); }
+.btn.primary:hover { background: var(--primary-active); }
+.btn.outline { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.btn.block { width: 100%; }
+.map h2 { font: 600 16px/1 var(--font); margin: 0 0 12px; display: flex; justify-content: space-between; }
+.map h2 span { color: var(--body); font-weight: 400; }
+.t { display: flex; align-items: center; justify-content: space-between; height: 48px; font-weight: 600; font-size: 15px; }
+.t + .t { border-top: 1px solid var(--canvas-soft); }
+.t .s { font-weight: 400; font-size: 14px; color: var(--mute); }
+.t .dot { width: 24px; height: 24px; border-radius: 50%; background: var(--canvas-soft); flex: none; margin-right: 12px; }
+.t .dot.on { background: var(--primary); box-shadow: inset 0 0 0 6px var(--primary-pale); }
+.t .l { display: flex; align-items: center; }
+.t.soon { color: var(--mute); }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+  &lt;section class=&quot;side&quot;&gt;
+    &lt;h1&gt;Peso pesado, verde lima&lt;/h1&gt;
+    &lt;p&gt;Títulos negros a peso 900, fondo salvia, tarjetas blancas y un solo verde lima para la acción. Energía de cancha, no de biblioteca.&lt;/p&gt;
+    &lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+      &lt;span class=&quot;level&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+      &lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn outline&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+    &lt;div class=&quot;status&quot;&gt;&lt;span&gt;21:40&lt;/span&gt;&lt;span&gt;●●●&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bar&quot;&gt;
+      &lt;span class=&quot;mark&quot;&gt;&lt;svg width=&quot;22&quot; height=&quot;22&quot; viewBox=&quot;0 0 22 22&quot; aria-hidden=&quot;true&quot;&gt;&lt;rect width=&quot;22&quot; height=&quot;22&quot; rx=&quot;7&quot; fill=&quot;#9fe870&quot;/&gt;&lt;path d=&quot;M5 11h12M11 5l6 6-6 6&quot; stroke=&quot;#163300&quot; stroke-width=&quot;2.6&quot; fill=&quot;none&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;Português&lt;/span&gt;
+      &lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;h2 class=&quot;greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+      &lt;section class=&quot;card&quot;&gt;
+        &lt;span class=&quot;level&quot;&gt;A1 · Unidade 1 Chegando&lt;/span&gt;
+        &lt;p class=&quot;path&quot;&gt;Tema 1&lt;/p&gt;
+        &lt;p class=&quot;topic&quot;&gt;Pronomes, ser e estar&lt;/p&gt;
+        &lt;div class=&quot;stage&quot;&gt;&lt;span class=&quot;n&quot; aria-hidden=&quot;true&quot;&gt;2&lt;small&gt;/5&lt;/small&gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;Etapa 2 de 5:&lt;br&gt;Reconhecer&lt;/span&gt;&lt;/div&gt;
+        &lt;button class=&quot;btn primary block&quot;&gt;Começar&lt;/button&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;card map&quot;&gt;
+        &lt;h2&gt;Mapa A1 &lt;span&gt;3 temas&lt;/span&gt;&lt;/h2&gt;
+        &lt;div class=&quot;t&quot;&gt;&lt;span class=&quot;l&quot;&gt;&lt;i class=&quot;dot on&quot;&gt;&lt;/i&gt;Pronomes + ser/estar&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Etapa 2 de 5&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;t&quot;&gt;&lt;span class=&quot;l&quot;&gt;&lt;i class=&quot;dot&quot;&gt;&lt;/i&gt;Artigos e contrações&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;t&quot;&gt;&lt;span class=&quot;l&quot;&gt;&lt;i class=&quot;dot&quot;&gt;&lt;/i&gt;Presente regular&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;t soon&quot;&gt;&lt;span class=&quot;l&quot;&gt;&lt;i class=&quot;dot&quot; style=&quot;background:none;box-shadow:inset 0 0 0 1.5px #c9ccc6&quot;&gt;&lt;/i&gt;Outros temas&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;em breve&lt;/span&gt;&lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Propuesta B"></iframe>
+    <div class="body">
+      <h2>B · awesome-design-md <span>a partir del DESIGN.md de Wise</span></h2>
+      <div class="sw"><i style="background:#e8ebe6" data-c="#e8ebe6"></i><i style="background:#ffffff" data-c="#fff"></i><i style="background:#9fe870" data-c="#9fe870"></i><i style="background:#163300" data-c="#163300"></i><i style="background:#0e0f0c" data-c="#0e0f0c"></i></div>
+      <dl><dt>Tipografía</dt><dd>Inter 900 para títulos, Inter 600 y 400 para el resto</dd><dt>Tono</dt><dd>Enérgico, deportivo, seguro</dd></dl>
+      <p class="why">Encaja porque el verde lima sobre verde bosque suena a Brasil sin caricatura, y el título pesado te empuja a empezar.</p>
+      <a href="b-awesome.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+  <article class="card">
+    <iframe class="frame" src="c-hallmark.html" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;C · Hallmark&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Propuesta C del concurso de identidad visual: tema Sticker de Hallmark.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Bowlby+One+SC&amp;family=Sofia+Sans:wght@400;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+/* Hallmark · built: 2026-11-24 · genre: playful · scope: app · shape: app screen · theme: Sticker (sticker: sheet), dealt 1/3, seed pwa-privada-para-aprender-6220·b54229dc·2026-11-24·r0 · signature: the A1 map as a sticker album, each tema a figurinha stuck down, the ones to come as empty dashed slots */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, no photographs exist, so the fills and the album carry the screen */
+:root {
+  --color-paper: oklch(95.7% 0.013 82); --color-paper-2: oklch(92.8% 0.021 79); --color-paper-3: oklch(99.4% 0.007 89);
+  --color-ink: oklch(21% 0.011 81); --color-ink-2: oklch(30% 0.013 78); --color-muted: oklch(50% 0.017 64);
+  --color-rule: oklch(82% 0.02 80); --color-white: oklch(99.5% 0.003 82);
+  --color-accent: oklch(56% 0.225 2); --color-accent-deep: oklch(49% 0.205 2); --color-accent-2: oklch(87.6% 0.179 119); --color-slot: oklch(95% 0.021 355);
+  --color-accent-ink: oklch(99.5% 0.003 82); --color-focus: oklch(56% 0.225 2);
+  --color-desk: oklch(90% 0.02 80);
+  --font-display: &quot;Bowlby One SC&quot;, &quot;Arial Black&quot;, sans-serif; --font-body: &quot;Sofia Sans&quot;, ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 18px; --radius-pill: 999px; --rule-bar: 2px;
+  --shadow-card: 5px 6px 0 var(--color-ink); --shadow-press: 1px 1px 0 var(--color-ink);
+  --tracking-display: 0.005em;
+  --dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent-2); color: var(--color-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { text-wrap: balance; font-family: var(--font-display); font-weight: 400; letter-spacing: var(--tracking-display); line-height: 1.02; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 3.25rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-ink-2); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 16px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 700; font-size: 14px; }
+.bar { height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-size: 18px; }
+.bar a { color: var(--color-ink); font-weight: 700; font-size: 15px; }
+.content { padding: 4px 20px 16px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 2.1rem; margin: 8px 0 4px; }
+
+.diecut { border: 6px solid var(--color-white); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.next { background: var(--color-paper-3); padding: 16px 16px 20px; rotate: -1.2deg; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.tag { display: inline-flex; align-items: center; height: 26px; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-accent-2); color: var(--color-ink); font-weight: 700; font-size: 13px; }
+.tag.ink { background: var(--color-ink); color: var(--color-paper); }
+.topic { font-weight: 600; font-size: 20px; line-height: 1.2; margin: 0 0 12px; }
+.stage { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
+.stage .n { font-family: var(--font-display); font-size: 3.4rem; line-height: .9; color: var(--color-accent); }
+.stage .w { font-weight: 600; line-height: 1.25; }
+.stage .w span { display: block; color: var(--color-muted); font-weight: 700; font-size: 14px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; border-radius: var(--radius-pill); font: 700 17px var(--font-body); color: var(--color-ink); background: transparent; border: 0; box-shadow: inset 0 0 0 2px var(--color-ink); cursor: pointer; transition: translate var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out); }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); box-shadow: 0 0 0 5px var(--color-white), var(--shadow-card); }
+.btn--primary:hover { background: var(--color-accent-deep); }
+.btn--primary:active { translate: 4px 5px; box-shadow: 0 0 0 5px var(--color-white), var(--shadow-press); }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; transition: none; }
+.btn.block { width: calc(100% - 8px); }
+
+.album h2 { font-size: 1.35rem; margin: 8px 0 12px; display: flex; justify-content: space-between; align-items: baseline; }
+.album h2 small { font: 700 14px var(--font-body); color: var(--color-muted); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.fig { aspect-ratio: 3 / 4; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; font-weight: 700; font-size: 13px; line-height: 1.2; }
+.fig b { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; line-height: 1; }
+.fig.pink { background: var(--color-accent); color: var(--color-accent-ink); rotate: 2deg; }
+.fig.white { background: var(--color-paper-3); rotate: -2deg; }
+.fig.white.tilt { rotate: 1.5deg; }
+.fig .sub { display: block; margin-top: 4px; font-weight: 600; opacity: .9; }
+.slot { grid-column: 1 / -1; min-height: 52px; border: var(--rule-bar) dashed var(--color-rule); border-radius: var(--radius-card); display: flex; align-items: center; padding: 0 16px; color: var(--color-muted); font-weight: 700; font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+  &lt;section class=&quot;side&quot;&gt;
+    &lt;h1 class=&quot;display&quot;&gt;Un álbum de figurinhas&lt;/h1&gt;
+    &lt;p&gt;Papel cálido, tinta negra, rosa y lima a pleno. Cada tema que terminás queda pegado en el álbum como una figurita.&lt;/p&gt;
+    &lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+      &lt;span class=&quot;tag ink&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+      &lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+    &lt;div class=&quot;status&quot;&gt;&lt;span&gt;21:40&lt;/span&gt;&lt;span&gt;●●●&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+      &lt;section class=&quot;next diecut&quot;&gt;
+        &lt;div class=&quot;tags&quot;&gt;&lt;span class=&quot;tag ink&quot;&gt;A1&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;Unidade 1 Chegando&lt;/span&gt;&lt;/div&gt;
+        &lt;p class=&quot;topic&quot;&gt;Tema 1: Pronomes, ser e estar&lt;/p&gt;
+        &lt;div class=&quot;stage&quot;&gt;&lt;span class=&quot;n&quot; aria-hidden=&quot;true&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;span&gt;Etapa 2 de 5&lt;/span&gt;Reconhecer&lt;/span&gt;&lt;/div&gt;
+        &lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;album&quot;&gt;
+        &lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+          &lt;div class=&quot;fig pink diecut&quot;&gt;&lt;b&gt;1&lt;/b&gt;&lt;span&gt;Pronomes + ser/estar&lt;span class=&quot;sub&quot;&gt;Etapa 2 de 5&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;fig white diecut&quot;&gt;&lt;b&gt;2&lt;/b&gt;Artigos e contrações&lt;/div&gt;
+          &lt;div class=&quot;fig white diecut tilt&quot;&gt;&lt;b&gt;3&lt;/b&gt;Presente regular&lt;/div&gt;
+          &lt;div class=&quot;slot&quot;&gt;Outros temas: em breve&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Propuesta C"></iframe>
+    <div class="body">
+      <h2>C · Hallmark <span>tema Sticker</span></h2>
+      <div class="sw"><i style="background:oklch(95.7% 0.013 82)" data-c="papel"></i><i style="background:oklch(21% 0.011 81)" data-c="tinta"></i><i style="background:oklch(56% 0.225 2)" data-c="rosa"></i><i style="background:oklch(87.6% 0.179 119)" data-c="lima"></i><i style="background:oklch(99.4% 0.007 89)" data-c="blanco"></i></div>
+      <dl><dt>Tipografía</dt><dd>Bowlby One SC para títulos y cifras, Sofia Sans para el texto</dd><dt>Tono</dt><dd>Juguetón, de papelería, ruidoso</dd></dl>
+      <p class="why">Encaja porque el mapa se vuelve un álbum de figurinhas: cada tema terminado queda pegado, y eso da ganas de completarlo.</p>
+      <a href="c-hallmark.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+</div>
+</body>
+</html>

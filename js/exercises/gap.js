@@ -5,9 +5,9 @@ import { onceButton, withGaps, onEnter } from './common.js';
 
 export function render(ex, el, { submit }) {
   const { nodes, gaps } = withGaps(ex.text);
-  const input = answerInput({ label: 'Deine Antwort' });
+  const input = answerInput({ label: 'Sua resposta' });
   input.addEventListener('input', () => { gaps[0].textContent = input.value() || '(1)'; });
-  const btn = onceButton('Prüfen', () => submit(input.value()), () => input.value().trim() !== '');
+  const btn = onceButton('Verificar', () => submit(input.value()), () => input.value().trim() !== '');
   input.addEventListener('input', btn.refresh);
   onEnter(input, () => btn.click());
   el.append(ex.context && h('p', { class: 'muted' }, rich(ex.context)), h('p', { class: 'sentence', lang: 'pt-BR' }, nodes), input, btn);

@@ -6,7 +6,7 @@ export function render(ex, el, { submit }) {
   const picked = [];
   const line = h('div', { class: 'built', lang: 'pt-BR', 'aria-live': 'polite' });
   const pool = h('div', { class: 'pool', lang: 'pt-BR' });
-  const btn = onceButton('Prüfen', () => submit(picked.map(i => ex.chunks[i])), () => picked.length === ex.chunks.length);
+  const btn = onceButton('Verificar', () => submit(picked.map(i => ex.chunks[i])), () => picked.length === ex.chunks.length);
   const toggle = i => {
     const at = picked.indexOf(i);
     if (at >= 0) picked.splice(at, 1); else picked.push(i);
@@ -15,7 +15,7 @@ export function render(ex, el, { submit }) {
   const draw = () => {
     line.replaceChildren(...(picked.length
       ? picked.map(i => h('button', { type: 'button', class: 'chunk', onclick: () => toggle(i) }, ex.chunks[i]))
-      : [h('span', { class: 'muted' }, 'Tippe die Blöcke in der richtigen Reihenfolge an.')]));
+      : [h('span', { class: 'muted' }, 'Toque nos blocos na ordem certa.')]));
     pool.replaceChildren(...ex.chunks.map((c, i) => h('button', {
       type: 'button', class: picked.includes(i) ? 'chunk used' : 'chunk', 'aria-pressed': String(picked.includes(i)), onclick: () => toggle(i),
     }, c)));

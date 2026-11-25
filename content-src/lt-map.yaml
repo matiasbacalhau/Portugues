@@ -1,33 +1,26 @@
-# Ids reales de LanguageTool 6.8 (de-DE), tomados de respuestas del servidor local.
+# Reglas de LanguageTool (pt-BR) que la app traduce. Los ids de gramática se agregan al verlos en las respuestas del
+# servidor (tools/lt_check.py y el registro de la app): hasta entonces caen en `categories`.
 # Cada `es` nombra la regla y nunca la forma correcta (regla 3). Sin `tag` = la regla se muestra pero no toca el mastery.
 rules:
-  HILFSVERB_HABEN_SEIN: {tag: a1.perfekt.hilfsverb, es: "El Perfekt lleva un verbo auxiliar que depende del verbo principal: los de movimiento o cambio de estado usan el otro."}
-  ZUM_FEM_NOMEN: {tag: a1.nom.fem, es: "El sustantivo es femenino: la contracción de preposición y artículo es otra."}
-  DE_AGREEMENT: {es: "El artículo tiene que concordar en género y caso con el sustantivo: revisá el género de la palabra."}
-  OBJECT_AGREEMENT: {es: "Regla del objeto directo e indirecto: el caso del artículo no es el que pide el verbo."}
-  DE_VERBAGREEMENT: {es: "El verbo cambia con cada persona: tiene que concordar con el sujeto."}
-  GERMAN_SPELLER_RULE: {es: "Hay una palabra mal escrita: revisá su ortografía."}
+  MORFOLOGIK_RULE_PT_BR: {es: "Hay una palabra mal escrita: revisá su ortografía (ojo con las tildes y la ç)."}
   UPPERCASE_SENTENCE_START: {es: "Regla del comienzo de oración: la primera palabra se escribe de una manera especial."}
-  FRAGEZEICHEN_STATT_PUNKT: {es: "El tipo de oración (aquí, una pregunta) pide un signo de cierre distinto del que usaste."}
-  DE_DOUBLE_PUNCTUATION: {es: "Hay un signo de puntuación repetido."}
-  KOMMA_VOR_UND_ODER: {es: "Regla de la coma antes de und/oder: revisá si lo que sigue es una oración con sujeto propio."}
-  KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2: {es: "Regla de la puntuación entre la oración principal y la subordinada: falta un signo que las separe."}
+  DOUBLE_PUNCTUATION: {es: "Hay un signo de puntuación repetido."}
 categories:
   CONFUSED_WORDS: "palabras fáciles de confundir"
   TYPOS: "ortografía"
   GRAMMAR: "gramática"
   CASING: "mayúsculas y minúsculas"
   PUNCTUATION: "puntuación"
-  HILFESTELLUNG_KOMMASETZUNG: "puntuación"
   TYPOGRAPHY: "tipografía"
   REDUNDANCY: "palabra repetida"
   COLLOQUIALISMS: "lenguaje coloquial"
   REPETITIONS_STYLE: "estilo"
   STYLE: "estilo"
+  REGIONALISMS: "variante de Portugal"
 notice_categories: [STYLE, TYPOGRAPHY, REDUNDANCY, COLLOQUIALISMS, REPETITIONS_STYLE]
-# Palabras que LanguageTool no conoce y que no son errores: si GERMAN_SPELLER_RULE marca una, no cuenta.
+# Palabras que LanguageTool no conoce y que no son errores: si el corrector ortográfico marca una, no cuenta.
 # Una palabra por entrada (LanguageTool marca de a una: "Buenos Aires" va como Buenos y Aires).
-# Sin importar mayúsculas. Solo nombres que no existen en alemán: una palabra alemana mal escrita nunca va acá.
+# Sin importar mayúsculas. Solo nombres que no existen en portugués: una palabra portuguesa mal escrita nunca va acá.
 accepted_words:
   # Nombres en español
   - Matías
@@ -38,163 +31,34 @@ accepted_words:
   - Nicolás
   - Joaquín
   - Tomás
-  - Lucas
-  - Benjamín
   - Agustín
-  - Facundo
-  - Gonzalo
-  - Ignacio
-  - Juan
-  - José
-  - Diego
-  - Pablo
-  - Sebastián
-  - Alejandro
-  - Andrés
-  - Federico
-  - Francisco
-  - Javier
-  - Carlos
-  - Luis
-  - Miguel
-  - Jorge
-  - Ramiro
   - Lucía
   - Sofía
-  - Valentina
-  - Camila
-  - Martina
-  - Catalina
-  - Florencia
-  - Agustina
-  - Julieta
-  - Victoria
-  - Paula
-  - Carolina
-  - Mariana
-  - Gabriela
-  - Laura
-  - Ana
-  - María
-  - Belén
-  - Inés
-  - Josefina
-  - Rocío
-  - Micaela
-  - Milagros
-  - Guadalupe
-  - Pilar
-  - Romina
-  # Apellidos frecuentes
-  - González
-  - Rodríguez
-  - Fernández
-  - López
-  - Martínez
-  - Pérez
-  - García
-  - Gómez
-  - Sánchez
-  - Díaz
-  - Romero
-  - Álvarez
-  - Torres
-  - Ruiz
-  - Ramírez
-  - Gutiérrez
-  - Benítez
-  - Suárez
-  # Personajes de la app
+  # Personajes del curso
   - Leo
-  - Mia
-  - Bruno
   - Tom
+  - Mia
   - Lea
-  - Paul
-  - Lina
-  - Jana
-  - Gino
-  # Ciudades que en alemán se escriben igual
+  - Rafa
+  - Caju
+  # Lugares de la Argentina y del Uruguay
   - Buenos
   - Aires
-  - Córdoba
   - Rosario
   - Mendoza
-  - Tucumán
-  - Salta
-  - Bariloche
-  - Ushuaia
-  - Neuquén
+  - Córdoba
   - Montevideo
-  - Asunción
-  - Bogotá
-  - Medellín
-  - Lima
-  - Quito
-  - Caracas
-  - Valparaíso
-  - Cusco
-  - Cancún
-  - Guadalajara
-  - Monterrey
-  - Madrid
-  - Barcelona
-  - Sevilla
-  - Valencia
-  - Bilbao
-  - Málaga
-  - Granada
-  - Zaragoza
-  - Salamanca
-  - Peru
-  - Uruguay
-  - Paraguay
-  - Venezuela
-  - Ecuador
-  - Bolivia
-  # Marcas
-  - adidas
-  - Nike
-  - Puma
-  - Mac
-  - MacBook
-  - iPhone
-  - iPad
-  - Apple
-  - Samsung
-  - Google
-  - WhatsApp
-  - Instagram
-  - TikTok
-  - YouTube
-  - Netflix
-  - Spotify
-  - Amazon
-  - Uber
-  - Airbnb
-  - Zara
-  - Coca
-  - Cola
-  - Starbucks
-  - McDonald's
-  - Lidl
-  - Aldi
+  - Palermo
   - Rappi
-  - Mercado
-  - Libre
 # Catálogo cerrado del corrector de gramática (proxy/): el modelo solo puede devolver estas categorías.
 # `hint` (inglés) va al modelo y nunca se muestra; `es` lo ve el usuario y nombra la regla sin la forma (regla 3).
 llm_categories:
-  AKK_MASK: {tag: a1.akk.mask, es: "Con este verbo, la palabra es el objeto directo y va en *Akkusativ*: revisá si su género es el que cambia.", hint: "A masculine noun is the direct (accusative) object, but its article or ending is not the accusative masculine form (for example 'ein Hund' or 'der Mann' as the object of haben, brauchen, möchten, sehen, kaufen)."}
-  AKK_FEM: {tag: a1.akk.fem, es: "El artículo del objeto directo no es el del género de esta palabra: en *Akkusativ* cambia un solo género, y no es el de ella.", hint: "A feminine noun is the direct (accusative) object, but its article is not feminine (for example 'einen Tasche')."}
-  AKK_NEUT: {tag: a1.akk.neut, es: "El artículo del objeto directo no es el del género de esta palabra: en *Akkusativ* cambia un solo género, y no es el de ella.", hint: "A neuter noun is the direct (accusative) object, but its article is not neuter (for example 'einen Brot' or 'eine Bett')."}
-  AKK_PLURAL: {tag: a1.akk.plural, es: "En plural, el artículo del objeto directo queda igual que en *Nominativ*.", hint: "A plural noun is the direct (accusative) object, but its article is not the plural form (for example 'den Betten' as the object)."}
-  NOM_MASK: {tag: a1.nom.mask, es: "El artículo no corresponde al género de esta palabra: el género se aprende con cada sustantivo.", hint: "A masculine noun is the subject or follows 'sein', but its article is not masculine nominative (for example 'Die Tisch ist alt')."}
-  NOM_FEM: {tag: a1.nom.fem, es: "El artículo no corresponde al género de esta palabra: el género se aprende con cada sustantivo.", hint: "A feminine noun is the subject or follows 'sein', but its article is not feminine nominative (for example 'Der Lampe ist neu')."}
-  NOM_NEUT: {tag: a1.nom.neut, es: "El artículo no corresponde al género de esta palabra: el género se aprende con cada sustantivo.", hint: "A neuter noun is the subject or follows 'sein', but its article is not neuter nominative (for example 'Der Bett ist groß')."}
-  NOM_PLURAL: {tag: a1.nom.plural, es: "En plural el artículo es uno solo para los tres géneros.", hint: "A plural noun is the subject or follows 'sein', but its article is not the plural nominative form (for example 'Das Betten sind groß')."}
-  AKK_AFTER_SEIN: {es: "*sein* no tiene objeto directo: lo que va con *sein* es otra forma de nombrar al sujeto y queda en *Nominativ*.", hint: "A noun after the verb 'sein' is wrongly put in the accusative (for example 'Das ist den Kaffee' or 'Er ist einen Freund'). Not for a noun after a preposition (for example 'in das Zimmer'): use DAT_AFTER_PREP there."}
-  DAT_AFTER_PREP: {es: "Con esta preposición el sustantivo va en *Dativ*, un caso que todavía no viste: el artículo no es el de *Nominativ* ni el de *Akkusativ*.", hint: "After a preposition that takes the dative, the article or contraction is not dative: aus, bei, mit, nach, seit, von, zu always; in, an, auf, unter, neben, hinter, vor, über, zwischen when they say where something is (answering 'wo?'). Examples: 'Sie ist in das Zimmer', 'mit der Freund', 'Ich wohne bei die Oma'."}
-  SEIN_FORM: {tag: a1.sein.praesens, es: "*sein* es irregular: cada persona tiene su forma. Revisá cuál pide el sujeto.", hint: "The form of 'sein' does not match the subject (for example 'ich ist', 'du bin', 'wir seid')."}
-  VERB_PERSON: {es: "El verbo cambia con cada persona: tiene que concordar con el sujeto.", hint: "A verb other than 'sein' has an ending that does not match the subject (for example 'du kommt', 'ich brauchst')."}
-  VERB_POSITION: {es: "Regla de la posición del verbo: en la oración afirmativa y en la pregunta con W, el verbo conjugado va en segundo lugar.", hint: "In a statement or a W-question the conjugated verb is not in second position (for example 'Heute ich bin müde', 'Wo du wohnst?'). Quote the conjugated verb."}
+  ART_MASC: {tag: a1.genero.masc, es: "El artículo no corresponde al género de esta palabra en portugués, que no siempre es el del español: el género se aprende con cada sustantivo.", hint: "The article (or the article inside a contraction) of a masculine noun is feminine (for example 'a leite', 'na sal', 'uma sofá'). Many of these nouns are feminine in Spanish."}
+  ART_FEM: {tag: a1.genero.fem, es: "El artículo no corresponde al género de esta palabra en portugués: las palabras en *-agem* son femeninas aunque en español terminen en *-aje*.", hint: "The article (or the article inside a contraction) of a feminine noun is masculine (for example 'o viagem', 'no mensagem', 'um cor'). Many of these nouns are masculine in Spanish."}
+  CONTR_MISSING: {tag: a1.contr.em, es: "Preposición + artículo se contraen en una sola palabra en portugués: acá van separados.", hint: "A preposition (em, de, por, a) is written separately before a definite article where Brazilian Portuguese contracts them (for example 'em o quarto', 'de a Argentina', 'por o centro', 'a o banco'). Quote the preposition and the article together."}
+  COUNTRY_ARTICLE: {tag: a1.contr.de, es: "Este país lleva artículo en portugués (o no lo lleva): la preposición cambia según eso.", hint: "A country name is used with the wrong article or contraction: countries such as o Brasil, a Argentina, o Chile, a Espanha take the article ('do Brasil', 'na Argentina'), while Portugal, Cuba, Angola do not ('de Portugal', not 'do Portugal'). Quote the preposition or contraction."}
+  SER_ESTAR: {tag: a1.ser.estar, es: "*ser* y *estar* no reparten igual que en español en este caso: el hambre, el sueño y el frío se dicen con *estar com*, y dónde queda un lugar fijo, con *ficar* o *ser*.", hint: "Clearly wrong choice between ser and estar (for example 'Eu sou cansado hoje' for a temporary state, 'Eu sou com fome', 'Ela está argentina' for origin). Do not report 'estar' or 'ser' for the location of a fixed place: both are accepted there. Quote the verb."}
+  SER_FORM: {tag: a1.ser.presente, es: "*ser* es irregular: cada persona tiene su forma. Revisá cuál pide el sujeto (*você* y *a gente* van con la de *ele*).", hint: "The form of 'ser' does not match the subject (for example 'eu é', 'você sou', 'nós são', 'a gente somos')."}
+  ESTAR_FORM: {tag: a1.estar.presente, es: "*estar* cambia con cada persona: revisá cuál pide el sujeto (*você* y *a gente* van con la de *ele*).", hint: "The form of 'estar' does not match the subject (for example 'eu está', 'você estou', 'eles está')."}
+  VERB_PERSON: {tag: a1.presente.regular, es: "El verbo cambia con cada persona: tiene que concordar con el sujeto (*você* y *a gente* van con la forma de *ele*).", hint: "A verb other than ser or estar has an ending that does not match the subject (for example 'eu mora', 'você moro', 'a gente moramos', 'eles fala')."}
+  SPANISH_WORD: {es: "Esa palabra es de español (o se escribe así solo en español): en portugués es otra.", hint: "A Spanish word or a Spanish spelling used where Portuguese has a different word (for example 'pero' for 'mas', 'muy' for 'muito', 'yo' for 'eu', 'también' for 'também', 'calle' for 'rua', 'vivo en' for 'moro em', 'hay' for 'tem/há'). Quote the Spanish word."}

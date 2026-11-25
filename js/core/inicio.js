@@ -7,7 +7,7 @@ import {answerEntry, ltEntry} from './log.js';
 const WEAK = 0.5;
 
 export function greeting(hour, name) {
-  const base = hour < 12 ? 'Guten Morgen' : hour < 19 ? 'Guten Tag' : 'Guten Abend';
+  const base = hour < 12 ? 'Bom dia' : hour < 19 ? 'Boa tarde' : 'Boa noite';
   const n = name?.trim();
   return n ? `${base}, ${n}` : base;
 }
@@ -15,7 +15,7 @@ export function greeting(hour, name) {
 // tags: curriculum.tags ({[tag]: {title}}). Usa el título del tag más flojo con datos; texto con *énfasis* para rich().
 export function humorLine(mastery, tags) {
   const withData = Object.entries(tags).map(([tag, t]) => ({title: t.title, m: masteryOf(mastery, tag)})).filter(x => x.m !== null);
-  if (!withData.length) return 'Primer día. Arrancamos por lo básico: *sein*.';
+  if (!withData.length) return 'Primer día. Arrancamos por lo básico: *ser* y *estar*.';
   const worst = withData.reduce((a, b) => (b.m < a.m ? b : a));
   if (worst.m < WEAK) return `Lo que más te viene costando: *${worst.title}*.`;
   return 'Todo en orden. Sigamos subiendo.';

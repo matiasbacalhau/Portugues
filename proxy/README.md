@@ -24,10 +24,10 @@ LanguageTool deja pasar los errores de caso y de artículo del tema 3, como *Ich
    ```bash
    npm run deploy
    ```
-   Wrangler imprime la URL, algo como `https://deutschlernen-grammar.<tu-cuenta>.workers.dev`.
+   Wrangler imprime la URL, algo como `https://portugues-grammar.<tu-cuenta>.workers.dev`.
 6. Corré el bench desde la raíz del repo:
    ```bash
-   node tools/grammar_bench.mjs https://deutschlernen-grammar.<tu-cuenta>.workers.dev
+   node tools/grammar_bench.mjs https://portugues-grammar.<tu-cuenta>.workers.dev
    ```
    Para comparar con Gemini, agregá `gemini` al final.
 7. **Solo si el bench da 0 falsos positivos:** poné esa URL en `API` (`js/services/grammar.js`), commiteá y hacé push.
@@ -45,7 +45,7 @@ Después de cambiarlo, publicá con `npm run deploy` y volvé a correr el bench.
 
 1. Las escrituras que fallan quedan pendientes y se corrigen solas al volver la red. Nada se marca mal por un corte.
 2. Cada respuesta trae un `traceId`. La app lo guarda en el log local, en las entradas `t: 'lt'` con `src`, y en el panel de Cloudflare se busca así:
-   - abrí Workers → `deutschlernen-grammar` → Logs;
+   - abrí Workers → `portugues-grammar` → Logs;
    - filtrá por `traceId`, o por `msg`: `request rejected`, `provider failed` o `marks dropped`.
 3. `version` en la respuesta dice qué deploy contestó. Si no es el último, el `npm run deploy` no se aplicó.
 4. Un falso positivo no da error: llega como una respuesta normal. Se ve con el ⚑ en la app y con el bench.

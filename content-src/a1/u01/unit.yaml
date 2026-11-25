@@ -1,8 +1,8 @@
 id: a1.u01
 level: A1
-title: "Ankommen"
+title: "Chegando"
 # Un tema sin archivo, o con `draft: true`, se embebe como borrador y no se le exigen mínimos.
 topics:
-  - {id: a1.u1.t1, file: t1-sein.yaml}
-  - {id: a1.u1.t2, file: t2-genus.yaml}
-  - {id: a1.u1.t3, file: t3-akkusativ.yaml}
+  - {id: a1.u1.t1, file: t1-ser-estar.yaml}
+  - {id: a1.u1.t2, file: t2-artigos.yaml}
+  - {id: a1.u1.t3, file: t3-presente.yaml}

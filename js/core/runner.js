@@ -65,6 +65,7 @@ export function itemInfo(ex, key) {
     case 'choice': return {tag: ex.tag, dims: ex.dims, answers: correctTexts(ex.options), label: null};
     case 'order': return {tag: ex.tag, dims: ex.dims, answers: ex.answers.map(a => a.join(' ')), label: null};
     case 'spot-error': return {tag: ex.tag, dims: ex.dims, answers: ex.corrections, label: null};
+    case 'pares': return {tag: ex.tag, dims: ex.dims, answers: ex.pair.map(p => p.pt), label: null};
     case 'writing-guided':
     case 'writing-free': return {tag: null, dims: undefined, answers: [], label: null};
     default: return {tag: ex.tag, dims: ex.dims, answers: ex.answers ?? [], label: null};

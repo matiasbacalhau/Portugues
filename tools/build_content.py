@@ -9,9 +9,9 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 SRC = os.path.join(ROOT, 'content-src')
 OUT = os.path.join(ROOT, 'data')
 
-# Claves de un ejercicio cuyo valor es alemán (para calcular `words`).
+# Claves de un ejercicio cuyo valor es portugués (para calcular `words`).
 CLAVES_DE = {'text', 'pt', 'answers', 'chunks', 'tokens', 'corrections', 'options', 'bubbles', 'gaps',
-             'questions', 'sentences', 'apply', 'source', 'context'}
+             'questions', 'sentences', 'apply', 'source', 'context', 'pair'}
 # Claves que son español o explicación: no se recorren.
 CLAVES_ES = {'rule', 'rules', 'errors', 'es', 'prompt', 'instruction', 'scene', 'title', 'dims', 'tag', 'tags'}
 
@@ -33,7 +33,7 @@ def escribir(path, data):
 
 
 def textos_de(x, clave=None):
-    """Strings alemanes de un ejercicio."""
+    """Strings en portugués de un ejercicio."""
     if isinstance(x, str):
         yield x
     elif isinstance(x, list):

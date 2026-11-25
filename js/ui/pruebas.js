@@ -1,4 +1,4 @@
-// Pruebas de la iteración 0 en el iPhone: instalación, almacenamiento, offline, voz alemana y LanguageTool.
+// Pruebas de la iteración 0 en el iPhone: instalación, almacenamiento, offline, voz de portugués y LanguageTool.
 // La lógica de cada prueba está en core/checks.js; acá solo se arman las tarjetas.
 import { h, isStandalone } from './dom.js';
 import * as tts from '../services/tts.js';
@@ -16,10 +16,10 @@ function row(title, help) {
 }
 
 async function voiceCard() {
-  const voice = row('Voz alemana', 'Para una voz mejor: en Ajustes buscá "Voces" (Accesibilidad → Leer y hablar → Voces → Alemán) y descargá una voz "mejorada". Probá primero con la predeterminada y después cada voz de la lista.');
+  const voice = row('Voz en portugués', 'Para una voz mejor: en Ajustes buscá "Voces" (Accesibilidad → Leer y hablar → Voces → Portugués (Brasil)) y descargá una voz "mejorada". Probá primero con la predeterminada y después cada voz de la lista.');
   // iOS lista voces que no están descargadas: forzar una de esas da "synthesis-failed".
-  const voiceSelect = h('select', { 'aria-label': 'Voz alemana' }, h('option', { value: '' }, 'Predeterminada del sistema'));
-  const voices = tts.supported() ? await tts.germanVoices() : [];
+  const voiceSelect = h('select', { 'aria-label': 'Voz en portugués' }, h('option', { value: '' }, 'Predeterminada del sistema'));
+  const voices = tts.supported() ? await tts.portugueseVoices() : [];
   voice.set(voicesCheck(tts.supported(), voices));
   voiceSelect.append(...voices.map((v, i) => h('option', { value: i }, `${v.name} (${v.lang})`)));
   voice.card.append(

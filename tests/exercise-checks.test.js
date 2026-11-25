@@ -3,25 +3,29 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { checkExercise, countItems } from '../js/core/checks/index.js';
 import { EVALUATED_OK } from '../js/core/checks/common.js';
-import { instances } from '../js/core/generators/articulo-caso.js';
+import { instances } from '../js/core/generators/artigo.js';
 
 const RULE = 'Regla del tag.';
-const RULE_DE = 'Regel des Tags.';
+const RULE_DE = 'Regra do tag.';
 const ctx = {
   curriculum: {tags: {
     t: {rule: RULE, rule_pt: RULE_DE, orthographic: false},
     o: {rule: RULE, rule_pt: RULE_DE, orthographic: true},
-    'a1.akk.mask': {rule: 'Regla akk.', rule_pt: 'Regel für Akkusativ maskulin.', orthographic: false},
-    'a1.sein.praesens': {rule: 'Regla sein.', rule_pt: 'Regel für sein im Präsens.', orthographic: false},
-    'a1.pron.personal': {rule: 'Regla pronombres.', rule_pt: 'Regel für Personalpronomen.', orthographic: false},
+    'a1.contr.em': {rule: 'Regla contracción.', rule_pt: 'Regra da contração.', orthographic: false},
+    'a1.estar.presente': {rule: 'Regla estar.', rule_pt: 'Regra do estar.', orthographic: false},
+    'a1.pron.sujeito': {rule: 'Regla pronombres.', rule_pt: 'Regra dos pronomes.', orthographic: false},
   }},
 };
 const run = (ex, answer) => checkExercise(ex, answer, ctx);
+// ¿`text` contiene `answer` como palabra(s) entera(s)? Las respuestas del portugués son cortas (*na*, *é*): un
+// substring daría falsos positivos (*na* dentro de *una*).
+const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const hasWord = (text, answer) => new RegExp(`(^|[^\\p{L}])${esc(answer)}([^\\p{L}]|$)`, 'iu').test(text ?? '');
 const noLeak = (rs, accepted) => rs.forEach((r) => accepted.forEach((a) => {
-  assert.ok(!r.rule?.includes(a), `${r.key} filtra ${a}`);
+  assert.ok(!hasWord(r.rule, a), `${r.key} filtra ${a}`);
   if (!r.ok) {
     assert.ok(r.rule_pt, `${r.key} debe tener rule_pt`);
-    assert.ok(!r.rule_pt.includes(a), `${r.key} filtra ${a} en rule_pt`);
+    assert.ok(!hasWord(r.rule_pt, a), `${r.key} filtra ${a} en rule_pt`);
   }
 }));
 
@@ -40,22 +44,23 @@ test('gap: ok, error anotado, error sin anotar, aviso', async () => {
   const bad = await run(ex, 'xyz');
   assert.equal(bad[0].rule, RULE);
   noLeak(bad, ex.answers);
-  const orth = await run({...ex, tag: 'o', answers: ['Löffel'], errors: []}, 'Loeffel');
+  const orth = await run({...ex, tag: 'o', answers: ['recepção'], errors: []}, 'recepcao');
   assert.equal(orth[0].ok, false);
-  const lax = await run({...ex, answers: ['Löffel']}, 'Loeffel');
-  assert.deepEqual([lax[0].ok, lax[0].notice], [true, 'ojo: ö']);
+  const lax = await run({...ex, answers: ['recepção']}, 'recepcao');
+  assert.deepEqual([lax[0].ok, lax[0].notice], [true, 'ojo: ç']);
 });
 
 test('gap generado: usa diagnose y completa prereq', async () => {
-  const tpl = {id: 'tpl', tag_prefix: 'a1.akk', det: 'indef', kase: 'akk', verb: 'brauchen', context: 'x', text: 'Ich brauche ___ {noun}.', slot: {pos: 'noun', fields: ['casa'], countable: false}};
-  const lex = [{lemma: 'Löffel', article: 'der', pos: 'noun', field: 'casa', plural: 'Löffel'}];
+  const tpl = {id: 'tpl', tag_prefix: 'a1.contr', prep: 'em', det: 'def', context: 'x', text: 'O celular estava ___ {noun}.', slot: {pos: 'noun', fields: ['casa']}};
+  const lex = [{lemma: 'mesa', article: 'a', pos: 'noun', field: 'casa', plural: 'mesas'}];
   const [g] = instances(tpl, lex);
-  const [r] = await run(g, 'ein');
-  assert.match(r.rule, /brauchen/);
-  assert.ok(!r.rule.includes('einen'));
-  const [r2] = await run(g, 'eine');
-  assert.equal(r2.prereq, 'a1.nom.mask');
-  assert.equal((await run(g, 'einen'))[0].ok, true);
+  assert.equal(g.tag, 'a1.contr.em');
+  const [r] = await run(g, 'em a');
+  assert.match(r.rule, /se contrae/);
+  assert.ok(!/\bna\b/.test(r.rule));
+  const [r2] = await run(g, 'no');
+  assert.equal(r2.prereq, 'a1.genero.fem');
+  assert.equal((await run(g, 'na'))[0].ok, true);
 });
 
 test('situation con 2 gaps: dos Result con key ex#0 y ex#1', async () => {
@@ -67,38 +72,39 @@ test('situation con 2 gaps: dos Result con key ex#0 y ex#1', async () => {
 });
 
 test('transform y translate comparan con matchAnswer', async () => {
-  const tr = {id: 'tf', type: 'transform', tag: 't', source: 's', instruction: 'i', answers: ['Ich habe einen Hund']};
-  assert.equal((await run(tr, 'ich habe einen hund.'))[0].ok, true);
-  const tl = {id: 'tl', type: 'translate', tag: 't', from: 'es', source: 's', answers: ['Ich brauche einen Löffel']};
-  assert.equal((await run(tl, 'Ich brauche einen Loeffel'))[0].ok, true);
-  assert.equal((await run(tl, 'Ich brauche einen Tisch'))[0].ok, false);
+  const tr = {id: 'tf', type: 'transform', tag: 't', source: 's', instruction: 'i', answers: ['Eu tenho um cachorro']};
+  assert.equal((await run(tr, 'eu tenho um cachorro.'))[0].ok, true);
+  const tl = {id: 'tl', type: 'translate', tag: 't', from: 'es', source: 's', answers: ['Eu preciso de uma colher']};
+  assert.equal((await run(tl, 'Eu preciso de uma colhér'.replace('é', 'e')))[0].ok, true);
+  assert.equal((await run(tl, 'Eu preciso de uma mesa'))[0].ok, false);
 });
 
 test('transform y translate: una frase mal escrita lleva las palabras que difieren, sin la forma correcta', async () => {
-  const tl = {id: 'tl', type: 'translate', tag: 't', from: 'es', source: 's', answers: ['Sie sind in Zimmer 12.', 'Sie sind im Zimmer 12.']};
-  const [r] = await run(tl, 'Sie ist in das Zimmer 12.');
-  assert.deepEqual(r.wrong, [{offset: 4, length: 3}, {offset: 11, length: 3}]);
+  const tl = {id: 'tl', type: 'translate', tag: 't', from: 'es', source: 's', answers: ['A senhora está no quarto 3.', 'A senhora fica no quarto 3.']};
+  const [r] = await run(tl, 'A senhora estão na quarto 3.');
+  assert.deepEqual(r.wrong, [{offset: 10, length: 5}, {offset: 16, length: 2}]);
   assert.equal(r.rule, RULE);
-  assert.equal((await run(tl, 'Sie sind im Zimmer 12.'))[0].wrong, undefined);  assert.equal(r.given, 'Sie ist in das Zimmer 12.');
-  assert.equal((await run(tl, 'Sie sind im Zimmer 12.'))[0].given, undefined);
+  assert.equal(r.given, 'A senhora estão na quarto 3.');
+  assert.equal((await run(tl, 'A senhora está no quarto 3.'))[0].wrong, undefined);
+  assert.equal((await run(tl, 'A senhora está no quarto 3.'))[0].given, undefined);
 });
 
 test('frase con lo evaluado bien y el error en otra palabra: no culpa al tema', async () => {
-  const tl = {id: 'tl', type: 'translate', tag: 'a1.sein.praesens', from: 'es', source: 's', answers: ['Wir sind in der Küche.', 'In der Küche sind wir.']};
-  const [r] = await run(tl, 'Wir sind in die Küche.');
+  const tl = {id: 'tl', type: 'translate', tag: 'a1.estar.presente', from: 'es', source: 's', answers: ['Nós estamos na cozinha.', 'Na cozinha estamos nós.']};
+  const [r] = await run(tl, 'Nós estamos no cozinha.');
   assert.equal(r.ok, false);
   assert.equal(r.rule, EVALUATED_OK);
   assert.equal(r.wrong.length, 1);
-  // Si la forma de sein también difiere, la regla es la del tema.
-  assert.equal((await run(tl, 'Wir ist in die Küche.'))[0].rule, 'Regla sein.');
+  // Si la forma de estar también difiere, la regla es la del tema.
+  assert.equal((await run(tl, 'Nós está no cozinha.'))[0].rule, 'Regla estar.');
   // Falta el pronombre: lo evaluado (pronombres) no está bien, aunque lo subrayado no lo muestre.
-  const pr = {...tl, tag: 'a1.pron.personal'};
-  assert.equal((await run(pr, 'Sind in der Küche.'))[0].rule, 'Regla pronombres.');
-  assert.equal((await run(pr, 'Wir sind in die Küche.'))[0].rule, EVALUATED_OK);
-  // Un tag sin palabras clave conocidas (W-Fragen evalúa el orden) siempre muestra su regla.
-  assert.equal((await run({...tl, tag: 't'}, 'Wir sind in die Küche.'))[0].rule, RULE);
+  const pr = {...tl, tag: 'a1.pron.sujeito'};
+  assert.equal((await run(pr, 'Estamos na cozinha.'))[0].rule, 'Regla pronombres.');
+  assert.equal((await run(pr, 'Nós estamos no cozinha.'))[0].rule, EVALUATED_OK);
+  // Un tag sin palabras clave conocidas siempre muestra su regla.
+  assert.equal((await run({...tl, tag: 't'}, 'Nós estamos no cozinha.'))[0].rule, RULE);
   // Un error anotado gana.
-  assert.equal((await run({...tl, errors: [{answer: 'Wir sind in die Küche.', rule: 'Anotada.'}]}, 'Wir sind in die Küche.'))[0].rule, 'Anotada.');
+  assert.equal((await run({...tl, errors: [{answer: 'Nós estamos no cozinha.', rule: 'Anotada.'}]}, 'Nós estamos no cozinha.'))[0].rule, 'Anotada.');
 });
 
 test('order: acepta cualquier orden válido, compara por texto', async () => {
@@ -150,9 +156,9 @@ test('spot-error: palabra correcta tocada, corrección mal escrita, ok', async (
   assert.equal(touched[0].ok, false);
   // Tocar una palabra correcta muestra la regla del ítem (la pista que hace falta), no el título del tema.
   assert.equal(touched[0].rule, 'Esa palabra está bien. Akkusativ.');
-  assert.equal(touched[0].rule_pt, `Dieses Wort ist richtig. ${RULE_DE}`);
+  assert.equal(touched[0].rule_pt, `Esta palavra está certa. ${RULE_DE}`);
   assert.equal((await run({...ex, rule: undefined}, {index: 1, text: 'x'}))[0].rule, 'Esa palabra está bien. ' + RULE);
-  assert.equal((await run({...ex, rule: undefined}, {index: 1, text: 'x'}))[0].rule_pt, `Dieses Wort ist richtig. ${RULE_DE}`);
+  assert.equal((await run({...ex, rule: undefined}, {index: 1, text: 'x'}))[0].rule_pt, `Esta palavra está certa. ${RULE_DE}`);
   const wrongCorr = await run(ex, {index: 2, text: 'eine'});
   assert.equal(wrongCorr[0].ok, false);
   assert.equal(wrongCorr[0].rule_pt, RULE_DE);
@@ -163,8 +169,8 @@ test('spot-error: palabra correcta tocada, corrección mal escrita, ok', async (
 test('reading: opciones y escritas, una Result por pregunta', async () => {
   const ex = {id: 'r', type: 'reading', title: 't', text: 'x', questions: [
     {tag: 't', prompt: '?', options: [{text: 'a'}, {text: 'b', correct: true}]},
-    {tag: 't', prompt: '?', answers: ['Löffel']}]};
-  const rs = await run(ex, [0, 'loeffel']);
+    {tag: 't', prompt: '?', answers: ['recepção']}]};
+  const rs = await run(ex, [0, 'recepcao']);
   assert.deepEqual(rs.map((r) => [r.key, r.ok]), [['r#0', false], ['r#1', true]]);
 });
 
@@ -196,14 +202,15 @@ test('multi-ítem siempre usa id#n, aun con un ítem; los de un ítem usan id', 
   assert.deepEqual((await run(gp, 'der')).map((r) => r.key), ['g1']);
 });
 
-const tpl = {id: 'tpl', tag_prefix: 'a1.akk', det: 'indef', kase: 'akk', verb: 'brauchen', context: 'x', text: 'Ich brauche ___ {noun}.', slot: {pos: 'noun', fields: ['casa'], countable: false}};
-const generated = instances(tpl, [{lemma: 'Löffel', article: 'der', pos: 'noun', field: 'casa', plural: 'Löffel'}])[0];
+const tpl = {id: 'tpl', tag_prefix: 'a1.contr', prep: 'em', det: 'def', context: 'x', text: 'O celular estava ___ {noun}.', slot: {pos: 'noun', fields: ['casa']}};
+const generated = instances(tpl, [{lemma: 'mesa', article: 'a', pos: 'noun', field: 'casa', plural: 'mesas'}])[0];
 const SWEEP = [
   [{id: 'c', type: 'choice', tag: 't', prompt: '?', options: [{text: 'der', correct: true}, {text: 'die'}]}, 1, ['der']],
   [{id: 'g', type: 'gap', tag: 't', text: '___', answers: ['der'], errors: [{answer: 'die', rule: 'No es femenino.'}]}, 'die', ['der']],
   [{id: 'g2', type: 'gap', tag: 't', text: '___', answers: ['der']}, 'xyz', ['der']],
-  [generated, 'eine', ['einen']],
-  [generated, 'ein', ['einen']],
+  [generated, 'no', ['na']],
+  [generated, 'em a', ['na']],
+  [generated, 'a', ['na']],
   [{id: 's', type: 'situation', scene: {}, bubbles: [], gaps: [{tag: 't', answers: ['der']}, {tag: 't', answers: ['die']}]}, ['x', 'y'], ['der', 'die']],
   [{id: 'tf', type: 'transform', tag: 't', source: 's', instruction: 'i', answers: ['Ich habe einen Hund']}, 'x', ['Ich habe einen Hund']],
   [{id: 'tl', type: 'translate', tag: 't', from: 'es', source: 's', answers: ['Ich brauche einen Löffel']}, 'x', ['Ich brauche einen Löffel']],
@@ -225,8 +232,8 @@ test('ninguna regla contiene una respuesta aceptada (todos los tipos)', async ()
         assert.ok(r.rule_pt.length > 0, `${ex.id}/${r.key} rule_pt no debe estar vacío`);
       }
       for (const a of accepted) {
-        assert.ok(!r.rule?.includes(a), `${ex.id}/${r.key} filtra "${a}": ${r.rule}`);
-        assert.ok(!r.rule_pt?.includes(a), `${ex.id}/${r.key} filtra "${a}" en rule_pt: ${r.rule_pt}`);
+        assert.ok(!hasWord(r.rule, a), `${ex.id}/${r.key} filtra "${a}": ${r.rule}`);
+        assert.ok(!hasWord(r.rule_pt, a), `${ex.id}/${r.key} filtra "${a}" en rule_pt: ${r.rule_pt}`);
       }
     }
   }

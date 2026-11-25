@@ -2,59 +2,73 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { matchAnswer, clean, wrongWords, closestAnswer } from '../js/core/normalize.js';
 
-test('exacto', () => assert.deepEqual(matchAnswer('den', ['den'], {orthographic: false}), {ok: true, notice: null}));
+const lax = {orthographic: false};
+const strict = {orthographic: true};
+
+test('exacto', () => assert.deepEqual(matchAnswer('no', ['no'], lax), {ok: true, notice: null}));
 test('variantes del teclado iOS', () => {
-  assert.equal(matchAnswer('  Ich  bin  müde. ', ['ich bin müde'], {orthographic: false}).ok, true);
-  assert.equal(matchAnswer('Wie geht’s?', ["Wie geht's?"], {orthographic: false}).ok, true);
+  assert.equal(matchAnswer('  Eu  estou  cansado. ', ['eu estou cansado'], lax).ok, true);
+  assert.equal(matchAnswer('Tudo bem?', ['Tudo bem?'], lax).ok, true);
 });
 test('clean: comillas tipográficas y puntuación final', () =>
-  assert.equal(clean(' „Hallo“  Welt! '), '"Hallo" Welt'));
+  assert.equal(clean(' “Oi”  gente! '), '"Oi" gente'));
 test('mayúscula inicial no ortográfica: ok sin aviso', () =>
-  assert.deepEqual(matchAnswer('Den', ['den'], {orthographic: false}), {ok: true, notice: null}));
-test('ss por ß no ortográfico: ok con aviso', () =>
-  assert.deepEqual(matchAnswer('Strasse', ['Straße'], {orthographic: false}), {ok: true, notice: 'ojo: ß'}));
-test('ue por ü: ok con aviso', () => assert.equal(matchAnswer('muede', ['müde'], {orthographic: false}).notice, 'ojo: ü'));
-test('sin umlaut (u por ü): ok con aviso', () => assert.equal(matchAnswer('mude', ['müde'], {orthographic: false}).notice, 'ojo: ü'));
-test('sustantivo en minúscula no ortográfico: ok con aviso', () =>
-  assert.deepEqual(matchAnswer('ich brauche einen löffel', ['Ich brauche einen Löffel'], {orthographic: false}),
-    {ok: true, notice: 'ojo: mayúscula'}));
-test('tag ortográfico exige ß, umlaut y mayúscula', () => {
-  assert.equal(matchAnswer('Strasse', ['Straße'], {orthographic: true}).ok, false);
-  assert.equal(matchAnswer('ich brauche einen löffel', ['Ich brauche einen Löffel'], {orthographic: true}).ok, false);
+  assert.deepEqual(matchAnswer('Na', ['na'], lax), {ok: true, notice: null}));
+test('sin ç no ortográfico: ok con aviso', () =>
+  assert.deepEqual(matchAnswer('recepcao', ['recepção'], lax), {ok: true, notice: 'ojo: ç'}));
+test('sin tilde no ortográfico: ok con aviso de la tilde que falta', () => {
+  assert.equal(matchAnswer('cafe', ['café'], lax).notice, 'ojo: é');
+  assert.equal(matchAnswer('estao', ['estão'], lax).notice, 'ojo: ã');
+  assert.equal(matchAnswer('voce', ['você'], lax).notice, 'ojo: ê');
 });
-test('nunca borra el rasgo evaluado: einen ≠ ein', () => assert.equal(matchAnswer('ein', ['einen'], {orthographic: false}).ok, false));
+test('sin tilde, si queda otra palabra, no se acepta nunca: é ≠ e, está ≠ esta, avó ≠ avô', () => {
+  assert.equal(matchAnswer('e', ['é'], lax).ok, false);
+  assert.equal(matchAnswer('esta', ['está'], lax).ok, false);
+  assert.equal(matchAnswer('Ele esta na praia', ['Ele está na praia'], lax).ok, false);
+  assert.equal(matchAnswer('avô', ['avó'], lax).ok, false);
+  assert.equal(matchAnswer('nos', ['nós'], lax).ok, false);
+  assert.equal(matchAnswer('a', ['à'], lax).ok, false);
+});
+test('tag ortográfico exige tilde, ç y mayúscula', () => {
+  assert.equal(matchAnswer('recepcao', ['recepção'], strict).ok, false);
+  assert.equal(matchAnswer('cafe', ['café'], strict).ok, false);
+});
+test('nunca borra el rasgo evaluado: no ≠ na', () => assert.equal(matchAnswer('no', ['na'], lax).ok, false));
 test('ortográfico: palabra suelta exige mayúscula inicial', () =>
-  assert.equal(matchAnswer('löffel', ['Löffel'], {orthographic: true}).ok, false));
+  assert.equal(matchAnswer('brasil', ['Brasil'], strict).ok, false));
 test('ortográfico: frase tolera mayúscula de inicio de oración', () =>
-  assert.equal(matchAnswer('ich brauche einen Löffel', ['Ich brauche einen Löffel'], {orthographic: true}).ok, true));
+  assert.equal(matchAnswer('eu moro no Brasil', ['Eu moro no Brasil'], strict).ok, true));
 
 const words = (text, ws) => ws.map(w => text.slice(w.offset, w.offset + w.length));
 test('wrongWords: subraya las palabras que no están en la respuesta más parecida', () => {
-  const t = 'Sie ist in das Zimmer 12.';
-  assert.deepEqual(words(t, wrongWords(t, ['Sie sind in Zimmer 12.', 'Sie sind im Zimmer 12.', 'Im Zimmer 12 sind Sie.'], {orthographic: false})), ['ist', 'das']);
+  const t = 'A senhora estão em o quarto 3.';
+  assert.deepEqual(words(t, wrongWords(t, ['A senhora está no quarto 3.', 'A senhora fica no quarto 3.'], lax)), ['estão', 'em', 'o']);
 });
 test('wrongWords: el orden cuenta (otra posición es otra palabra)', () => {
-  const t = 'Sie in Zimmer 12 sind.';
-  assert.deepEqual(words(t, wrongWords(t, ['Sie sind in Zimmer 12.'], {orthographic: false})), ['sind']);
+  const t = 'Eu no quarto estou.';
+  assert.deepEqual(words(t, wrongWords(t, ['Eu estou no quarto.'], lax)), ['estou']);
 });
-test('wrongWords: tolera mayúscula, puntuación y, si el tag no es ortográfico, umlauts', () => {
-  const t = 'ich brauche ein Loeffel';
-  assert.deepEqual(words(t, wrongWords(t, ['Ich brauche einen Löffel.'], {orthographic: false})), ['ein']);
-  assert.deepEqual(words(t, wrongWords(t, ['Ich brauche einen Löffel.'], {orthographic: true})), ['ein', 'Loeffel']);
+test('wrongWords: tolera mayúscula, puntuación y, si el tag no es ortográfico, tildes', () => {
+  const t = 'o leite esta na geladeira';
+  // *esta* sin tilde es otra palabra: se subraya aun sin ser ortográfico.
+  assert.deepEqual(words(t, wrongWords(t, ['O leite está na geladeira.'], lax)), ['esta']);
+  const u = 'a recepcao fica no terreo';
+  assert.deepEqual(words(u, wrongWords(u, ['A recepção fica no térreo.'], lax)), []);
+  assert.deepEqual(words(u, wrongWords(u, ['A recepção fica no térreo.'], strict)), ['recepcao', 'terreo']);
 });
 test('wrongWords: una palabra suelta no se subraya', () =>
-  assert.deepEqual(wrongWords('die', ['der'], {orthographic: false}), []));
+  assert.deepEqual(wrongWords('a', ['o'], lax), []));
 
-// Un umlaut puede llegar como una letra (ü) o como u + diéresis combinante; se ven igual y tienen que contar igual.
+// Una tilde puede llegar como una letra (é) o como e + acento combinante; se ven igual y tienen que contar igual.
 const NFD = s => s.normalize('NFD');
-test('umlauts descompuestos (NFD) cuentan igual que los compuestos', () => {
-  assert.deepEqual(matchAnswer(NFD('Das Frühstück ist in der Küche'), ['Das Frühstück ist in der Küche'], {orthographic: true}), {ok: true, notice: null});
-  assert.equal(matchAnswer('Küche', [NFD('Küche')], {orthographic: true}).ok, true);
+test('tildes descompuestas (NFD) cuentan igual que las compuestas', () => {
+  assert.deepEqual(matchAnswer(NFD('A recepção é no térreo'), ['A recepção é no térreo'], strict), {ok: true, notice: null});
+  assert.equal(matchAnswer('você', [NFD('você')], strict).ok, true);
 });
-test('wrongWords: con umlauts descompuestos no subraya de más y los offsets caen en el texto escrito', () => {
-  const t = NFD('Die Küche ist groß');
-  assert.deepEqual(words(t, wrongWords(t, ['Die Küche ist klein'], {orthographic: true})), [NFD('groß')]);
+test('wrongWords: con tildes descompuestas no subraya de más y los offsets caen en el texto escrito', () => {
+  const t = NFD('A recepção é grande');
+  assert.deepEqual(words(t, wrongWords(t, ['A recepção é pequena'], strict)), [NFD('grande')]);
 });
 
 test('closestAnswer: la respuesta aceptada más parecida', () =>
-  assert.equal(closestAnswer('Sie ist in das Zimmer 12.', ['Im Zimmer 12 sind Sie.', 'Sie sind in Zimmer 12.'], {orthographic: false}), 'Sie sind in Zimmer 12.'));
+  assert.equal(closestAnswer('A senhora estão no quarto 3.', ['No quarto 3 está a senhora.', 'A senhora está no quarto 3.'], lax), 'A senhora está no quarto 3.'));

@@ -3,7 +3,7 @@ import { h } from './dom.js';
 import { stepKey } from '../core/progress.js';
 import { stepStatus } from '../core/inicio.js';
 
-const TEXT = { 'sin-intentar': 'noch nicht begonnen', superado: 'abgeschlossen', reforzar: 'wiederholen', pendiente: 'ausstehend' };
+const TEXT = { 'sin-intentar': 'ainda não começada', superado: 'concluída', reforzar: 'repetir', pendiente: 'pendente' };
 
 export default async function tema(el, { store, content, params }) {
   const C = await content();
@@ -11,18 +11,18 @@ export default async function tema(el, { store, content, params }) {
   const def = Object.values(C.units).flatMap(u => u.topics).find(t => t.topic === id);
   const title = C.curriculum.topics.find(t => t.id === id)?.title ?? id;
   if (!def || def.draft || !def.steps?.length) {
-    el.append(h('p', {}, 'Este tema todavía no tiene contenido.'), h('a', { class: 'button secondary', href: '#/mapa' }, 'Themenkarte'));
+    el.append(h('p', {}, 'Este tema todavía no tiene contenido.'), h('a', { class: 'button secondary', href: '#/mapa' }, 'Mapa de temas'));
     return;
   }
   const progress = (await store.get('progress')) ?? { steps: {} };
   el.append(
     h('h1', {}, title),
-    def.ficha && h('a', { class: 'button secondary', href: `#/ficha/${encodeURIComponent(id)}` }, 'Theoriekarte'),
+    def.ficha && h('a', { class: 'button secondary', href: `#/ficha/${encodeURIComponent(id)}` }, 'Ficha'),
     h('div', { class: 'card' }, def.steps.map(s => {
       const status = stepStatus(progress.steps[stepKey(id, s.n)]?.attempts.at(-1));
       return h('a', { class: 'map-step', 'data-status': status, href: `#/grupo/${encodeURIComponent(id)}/${s.n}` },
-        h('span', {}, `Stufe ${s.n} · ${s.name}`), h('span', { class: 'muted' }, TEXT[status]));
+        h('span', {}, `Etapa ${s.n} · ${s.name}`), h('span', { class: 'muted' }, TEXT[status]));
     })),
-    h('a', { class: 'button secondary', href: '#/mapa' }, 'Themenkarte'),
+    h('a', { class: 'button secondary', href: '#/mapa' }, 'Mapa de temas'),
   );
 }

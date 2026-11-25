@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>A · taste-skill</title>
+<!-- taste-skill · app sheet "editorial-greeting" (seed 1984920212), kind workspace, screen home.
+     Redraw: accent #1b6e66 (deep teal) replaced by azulejo cobalt #1a5bb5, because teal is the sister app's identity.
+     Face chosen: a surface from the product's world (azulejo white #f2f5f9 instead of #f9f9f9).
+     Signature element: the 5-step ladder of the topic, drawn as five segments. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ground: #ffffff;
+  --surface: #f2f5f9;
+  --raised: #ffffff;
+  --border: #e3e8ef;
+  --rule: #e9edf3;
+  --text: #1f201d;
+  --muted: #5d6168;
+  --accent: #1a5bb5;
+  --accent-tint: #dfe9f7;
+  --primary: #1f201d;
+  --radius-card: 22px;
+  --radius-control: 999px;
+  --font: "Instrument Sans", Inter, system-ui, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: #e8ecf2; display: grid; place-items: center; min-height: 100vh; font: 400 14px/1.45 var(--font); color: var(--text); }
+.canvas { width: 1280px; height: 800px; margin: 0 auto; background: var(--surface); display: grid; grid-template-columns: 1fr 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 56px; }
+.side h1 { font: 400 44px/1.02 var(--serif); letter-spacing: -0.01em; margin: 0 0 12px; }
+.side p { font-size: 16px; color: var(--muted); margin: 0 0 28px; max-width: 30ch; }
+.spec { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.spec .row { display: flex; gap: 8px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); transform-origin: center; background: var(--ground); border-radius: 44px; overflow: hidden; outline: 10px solid #1f201d; justify-self: center; position: relative; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 600; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+.mark { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; }
+.mark svg { display: block; }
+.bar a { color: var(--muted); text-decoration: none; font-size: 14px; }
+.content { padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+.greet { font: 400 40px/1 var(--serif); letter-spacing: -0.01em; margin: 12px 0 0; }
+.panel { background: var(--surface); border-radius: var(--radius-card); padding: 20px; }
+.panel h2 { font-size: 14px; font-weight: 600; margin: 0 0 12px; display: flex; justify-content: space-between; }
+.panel h2 span { font-weight: 400; color: var(--muted); }
+.path { color: var(--muted); margin: 0 0 4px; }
+.topic { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 14px; line-height: 1.2; }
+.ladder { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 8px; }
+.ladder i { height: 8px; border-radius: 999px; background: var(--border); }
+.ladder i.done { background: var(--primary); }
+.ladder i.now { background: var(--accent); }
+.step { margin: 0 0 16px; }
+.step b { font-weight: 600; color: var(--accent); }
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border-radius: var(--radius-control); font: 600 16px var(--font); border: 0; cursor: pointer; transition: transform .12s cubic-bezier(.22,1,.36,1), background .15s; }
+.btn:active { transform: scale(.97); }
+.btn.primary { background: var(--primary); color: #fff; }
+.btn.primary:hover { background: #000; }
+.btn.secondary { background: #e1e6ee; color: var(--text); }
+.btn.block { width: 100%; }
+.chip { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: var(--accent-tint); color: #0f3d7a; font-weight: 500; }
+.rows { display: flex; flex-direction: column; gap: 8px; }
+.r { background: var(--raised); border: 1px solid var(--border); border-radius: 14px; min-height: 52px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.r .t { font-weight: 500; }
+.r .s { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.r.now { border-color: var(--accent); }
+.r.now .s { color: var(--accent); font-weight: 500; }
+.r.soon { background: transparent; border-style: dashed; color: var(--muted); }
+.tabs { height: 72px; display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--rule); padding-bottom: 18px; }
+.tabs a { display: flex; align-items: center; justify-content: center; color: var(--muted); text-decoration: none; font-weight: 500; }
+.tabs a.on { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <section class="side">
+    <h1>Una página en blanco de azulejo</h1>
+    <p>Fondo blanco, tinta casi negra y un solo azul cobalto: marca la etapa en la que estás y nada más.</p>
+    <div class="spec">
+      <span class="chip" lang="pt-BR">Etapa 2 de 5</span>
+      <div class="row" lang="pt-BR"><button class="btn primary">Verificar</button><button class="btn secondary">Continuar</button></div>
+    </div>
+  </section>
+
+  <div class="phone" lang="pt-BR" role="img" aria-label="Tela inicial no iPhone">
+    <div class="status"><span>21:40</span><span>●●●</span></div>
+    <div class="bar">
+      <span class="mark"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="6" fill="#1a5bb5"/><path d="M11 3 L19 11 L11 19 L3 11 Z" fill="#fff"/><circle cx="11" cy="11" r="3" fill="#1a5bb5"/></svg>Português</span>
+      <a href="#">Ajustes</a>
+    </div>
+    <div class="content">
+      <h2 class="greet">Boa noite, Matías</h2>
+      <section class="panel">
+        <h2>Próximo grupo <span>A1</span></h2>
+        <p class="path">Unidade 1 · Chegando</p>
+        <p class="topic">Tema 1 · Pronomes, ser e estar</p>
+        <div class="ladder" aria-hidden="true"><i class="done"></i><i class="now"></i><i></i><i></i><i></i></div>
+        <p class="step">Etapa 2 de 5: <b>Reconhecer</b></p>
+        <button class="btn primary block">Começar</button>
+      </section>
+      <section class="panel">
+        <h2>Mapa A1 <span>3 temas</span></h2>
+        <div class="rows">
+          <div class="r now"><span class="t">Pronomes + ser/estar</span><span class="s">Etapa 2 de 5</span></div>
+          <div class="r"><span class="t">Artigos e contrações</span></div>
+          <div class="r"><span class="t">Presente regular</span></div>
+          <div class="r soon"><span>Outros temas</span><span class="s">em breve</span></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(".canvas").style.zoom=k}fit();addEventListener("resize",fit)</script>
+</body>
+</html>

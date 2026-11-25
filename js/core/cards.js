@@ -49,7 +49,7 @@ const pick = (list, rng) => list[Math.floor(rng() * list.length)];
 // Hueco de nivel 3: un gap generado de siempre (cuenta para el mastery de su tag) que además repasa la palabra.
 const asLevel3 = (ex, lemma) => ({...ex, id: `card3:${ex.id}`, review: true, vocab: {lemma, rung: 3, mode: 'read'}});
 
-// Sustantivo: una plantilla de artículos con lugar para el lema; si ninguna sirve, la genérica de Nominativ (`card_only`).
+// Sustantivo: una plantilla de artículos con lugar para el lema; si ninguna sirve, la genérica (`card_only`).
 function nounGap(word, templates, usable, rng) {
   const from = (tpls) => tpls.flatMap((t) => instancesOf(t, [word])).filter((e) => usable(e.tag));
   const articles = templates.filter((t) => !t.kind);
@@ -58,15 +58,14 @@ function nounGap(word, templates, usable, rng) {
   return pool.length ? asLevel3(pick(pool, rng), word.lemma) : null;
 }
 
-// Sin *sie*/*Sie* sueltos: serían ambiguos (ella, ellos o usted), como en sein-praesens.js.
-const SUBJECTS = {ich: 'Ich', du: 'Du', er: 'Er', wir: 'Wir', ihr: 'Ihr', sie: 'Tom und Lea'};
+// Un sujeto por forma del presente de Brasil (*você* va con la forma de *ele*; *vocês*, con la de *eles*).
+const SUBJECTS = {eu: 'Eu', ele: 'Você', nos: 'Nós', eles: 'Vocês'};
 const PERSONS = Object.keys(SUBJECTS);
 
-// Verbo: forma conjugada en contexto (spec §4). *sein* cuenta para a1.sein.praesens; en los demás, la persona con
-// forma irregular cuenta para a1.praesens.irregular.
+// Verbo: forma conjugada en contexto (spec §4). Un verbo con `tag` en el léxico (*ser*, *estar*) cuenta para ese tag;
+// en los demás, la persona con forma irregular cuenta para a1.presente.irregular.
 function verbGap(word, usable, rng) {
-  const tagOf = (p) => (word.lemma === 'sein' ? 'a1.sein.praesens'
-    : word.irregular?.[p] !== undefined ? 'a1.praesens.irregular' : 'a1.praesens.regular');
+  const tagOf = (p) => word.tag ?? (word.irregular?.[p] !== undefined ? 'a1.presente.irregular' : 'a1.presente.regular');
   const persons = PERSONS.filter((p) => usable(tagOf(p)));
   if (!persons.length) return null;
   const person = pick(persons, rng);
@@ -112,7 +111,7 @@ export function pickCards(srs, {now, rng, lexicon, templates, topic, groupExerci
     if (out.some((c) => c.type === 'dictation' && c.lemmas.includes(lemma))) continue;
     const entry = srs[lemma];
     let rung = entry.rung;
-    if (rung === 3 && word.pos === 'verb' && !tagUnlocked('a1.praesens.regular', mastery, curriculum)) rung = 2;
+    if (rung === 3 && word.pos === 'verb' && !tagUnlocked('a1.presente.regular', mastery, curriculum)) rung = 2;
     let ex = null;
     if (rung === 3 && audio && entry.listenUnlocked?.[3] && rng() < 0.5) {
       const reveals = revealing([...groupExercises, ...out]);
@@ -134,11 +133,11 @@ export function pickCards(srs, {now, rng, lexicon, templates, topic, groupExerci
 // audio, el mismo ejercicio.
 export function withoutAudio(ex, {lexicon, rng}) {
   if (ex.type === 'card' && ex.mode === 'listen') return makeCard(ex.word, {rung: ex.rung, mode: 'read', lexicon, rng});
-  if (ex.type === 'dictation' || (ex.type === 'situation' && ex.listen)) return null;
+  if (ex.type === 'dictation' || ex.type === 'pares' || (ex.type === 'situation' && ex.listen)) return null;
   return ex;
 }
 
-// Después de responder una tarjeta (reglas 2 y 3): imagen y "der Schlüssel · llave" (con 🔊 de `de`) solo si acertó. Tras
+// Después de responder una tarjeta (reglas 2 y 3): imagen y "a chave · llave" (con 🔊 de `pt`) solo si acertó. Tras
 // un error, nada: en el nivel 1 la imagen es el significado; en el nivel 2, la palabra es la respuesta.
 export function cardReveal(ex, results) {
   if (!results.length || !results.every((r) => r.ok)) return {picture: false, pt: null, label: null};

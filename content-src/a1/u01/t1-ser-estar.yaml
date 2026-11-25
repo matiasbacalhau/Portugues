@@ -1,0 +1,804 @@
+# Tema 1: pronomes sujeito + ser + estar (+ ficar para lugares fijos).
+# Escena: llegada a la Pousada Maré, en Santa Teresa (Rio de Janeiro).
+# Personajes fijos: Leo (vos, de Rosario), Tom (Canadá, ronca, beliche de arriba), Mia (Chile), Lea (España),
+# Ana y Rafa (recepción), Dona Célia (huésped mayor, se la trata de *a senhora*), Caju (el perro de la recepción).
+# dims.person en los ítems de ser/estar: la forma del presente de Brasil (eu, ele = você/ele/a gente, nos, eles = vocês/eles),
+# para que el "ejemplo distinto" del curriculum nunca muestre la misma forma.
+# dims.use en los ítems de a1.ser.estar: ser | estar | com (estar com fome…) | ficar.
+# Las escenas están en presente: los ítems cerrados de ser/estar aceptan solo formas de presente.
+topic: a1.u1.t1
+tags: [a1.pron.sujeito, a1.ser.presente, a1.estar.presente, a1.ser.estar]
+arbitrary: false
+hides: []
+ficha:
+  short:
+    - "Como en español, el portugués tiene dos verbos: *ser* para lo que algo es (origen, profesión, cómo es) y *estar* para cómo está ahora o dónde está. Casi siempre reparten igual que en español."
+    - "En Brasil se habla con *você*, que conjuga como *ele* (tercera persona), igual que *usted*. El *tu* existe, pero en buena parte del país casi no se oye, y con *você* nunca te equivocás."
+    - "*a gente* quiere decir *nosotros* en la charla de todos los días, pero conjuga en singular, como *ele*: *a gente está cansado*. *nós* también se usa, sobre todo al escribir."
+    - "El sujeto se puede omitir como en español (*Sou da Argentina*), pero con *você* conviene decirlo: *é* sirve para *você*, *ele*, *ela* y *a gente*, y sin pronombre no se sabe de quién hablás."
+    - "Tres diferencias con el español: el hambre, el sueño, el frío y el apuro se dicen con *estar com* (*estou com fome*: tengo hambre); dónde queda un lugar fijo se dice sobre todo con *ficar* (*Onde fica o banheiro?*); y para tratar de usted a alguien mayor se usa *o senhor* / *a senhora*, que conjuga como *ele*."
+  table:
+    head: ["Persona", "ser", "estar", "en español"]
+    rows:
+      - ["eu", "sou", "estou", "yo soy / estoy"]
+      - ["você · ele · ela · a gente", "é", "está", "vos sos / estás · él, ella es / está · nosotros (a gente)"]
+      - ["o senhor · a senhora", "é", "está", "usted es / está"]
+      - ["nós", "somos", "estamos", "nosotros somos / estamos"]
+      - ["vocês · eles · elas", "são", "estão", "ustedes son / están · ellos, ellas son / están"]
+  more:
+    - "Por qué *você* conjuga como *ele*. Viene de *vossa mercê* (vuestra merced), que se fue gastando: *vossemecê*, *vosmecê*, *você*. Exactamente el mismo viaje que hizo *usted*. Por eso los dos conjugan en tercera persona."
+    - "*Tu* en Brasil. Existe y en algunas regiones (el sur, partes del nordeste) se usa mucho, a menudo con el verbo de *você*: *tu é*. En Rio y São Paulo la mayoría dice *você*, que en la charla se acorta a *cê*: *Cê tá bem?*. Para empezar, *você* sirve en todo el país."
+    - "*a gente* = *la gente* que se volvió *nosotros*. En la calle es más común que *nós*. Como nació de un sustantivo singular, el verbo va en singular: *a gente mora*, *a gente é*. Decir *a gente somos* es un error que se oye, pero que en un examen cuenta como error."
+    - "La tilde no es decoración. *é* (es) y *e* (y) son palabras distintas; *está* (está) y *esta* (esta) también. Por eso en estos casos la app no te perdona la tilde."
+    - "*estar com*: *estou com fome* (tengo hambre), *com sede* (sed), *com sono* (sueño), *com frio* (frío), *com calor*, *com pressa* (apuro), *com medo* (miedo). *Tenho fome* también existe, pero en Brasil suena a libro."
+    - "*ficar* para ubicar lugares: *A praia fica perto* (la playa queda cerca). *Onde é o banheiro?* y *Onde está o banheiro?* también se dicen y se entienden; *fica* es lo más natural para algo que no se mueve."
+    - "La edad se *tiene*, como en español: *Tenho 30 anos*. Y el estado civil se dice con *ser*: *Sou casado*, *sou solteiro* (en español rioplatense se suele decir *estoy casado*)."
+    - "*o senhor* / *a senhora*: así se trata de usted a alguien mayor o en un contexto muy formal. Conjuga como *ele*: *A senhora está no quarto 3*. Entre gente joven, en una pousada, todo el mundo es *você*."
+
+steps:
+  # ───────────────────────────── Etapa 1 ─────────────────────────────
+  - n: 1
+    name: "Descobrir"
+    scene: {title: "Chegada na pousada", context: "Pousada Maré, Santa Teresa · 22:15 · el bondinho ya no anda y subiste la ladera a pie con la mochila"}
+    exercises:
+      - id: t1-1-det-ser
+        type: detective
+        tag: a1.ser.presente
+        sentences:
+          - {pt: "Eu sou o Leo.", highlight: "sou"}
+          - {pt: "Você é a Ana, né?", highlight: "é"}
+          - {pt: "O Tom é do Canadá.", highlight: "é"}
+          - {pt: "Nós somos novos aqui.", highlight: "somos"}
+          - {pt: "A gente é da mesma cidade!", highlight: "é"}
+          - {pt: "Vocês são da Espanha?", highlight: "são"}
+        rules:
+          - {text: "La forma cambia según el sujeto, y *você* y *a gente* van con la misma que *ele*.", correct: true}
+          - {text: "La forma cambia según la palabra que viene después."}
+          - {text: "*você* y *a gente* tienen cada uno una forma propia."}
+          - {text: "La forma cambia cuando la frase es una pregunta."}
+        apply:
+          - {text: "A Mia ___ do Chile.", answers: ["é"], dims: {person: ele}}
+          - {text: "Eu ___ argentino.", answers: ["sou"], dims: {person: eu}}
+          - {text: "Vocês ___ muito simpáticos.", answers: ["são"], dims: {person: eles}}
+        curiosities: ["*é* (es) lleva tilde y *e* (y) no: dos palabras distintas que solo se diferencian en el acento."]
+        reviewed: true
+
+      - id: t1-1-det-estar
+        type: detective
+        tag: a1.estar.presente
+        sentences:
+          - {pt: "Eu estou cansado.", highlight: "estou"}
+          - {pt: "Você está molhado!", highlight: "está"}
+          - {pt: "A gente está na varanda.", highlight: "está"}
+          - {pt: "Nós estamos no quarto 12.", highlight: "estamos"}
+          - {pt: "O Tom e a Mia estão na cozinha.", highlight: "estão"}
+        rules:
+          - {text: "*estar* cambia según el sujeto: *você* y *a gente* comparten forma con *ele*, y *vocês* con *eles*.", correct: true}
+          - {text: "*estar* cambia según si se habla de un lugar o de cómo está alguien."}
+          - {text: "*estar* tiene la misma forma para todas las personas."}
+        apply:
+          - {text: "A gente ___ com fome.", answers: ["está"], dims: {person: ele}}
+          - {text: "Eu ___ na recepção.", answers: ["estou"], dims: {person: eu}}
+        curiosities: ["*está* (verbo) y *esta* (demostrativo) se diferencian solo por la tilde, que marca dónde cae el acento."]
+        reviewed: true
+
+      - id: t1-1-ch-voce
+        type: choice
+        tag: a1.pron.sujeito
+        prompt: "La recepcionista te sonríe y te pregunta si sos el de la reserva de las diez. ¿Qué te dice?"
+        options:
+          - {text: "Você é o Leo?", correct: true}
+          - {text: "Você és o Leo?", rule: "*você* nació como forma de tratamiento (como *usted*) y conjuga en tercera persona, no en segunda."}
+          - {text: "Você sou o Leo?", rule: "Esa forma de *ser* es la de *eu*; acá la recepcionista le habla a otra persona."}
+          - {text: "Você somos o Leo?", rule: "Esa forma es la de *nós*; la recepcionista le habla a una sola persona."}
+        dims: {person: ele}
+        curiosities: ["*você* viene de *vossa mercê* (vuestra merced): por eso conjuga como *ele*, igual que *usted*."]
+        reviewed: true
+
+      - id: t1-1-ch-com-fome
+        type: choice
+        tag: a1.ser.estar
+        prompt: "Son las 22:30 y no comés desde el aeropuerto. Le decís a la Ana:"
+        options:
+          - {text: "Estou com muita fome.", correct: true}
+          - {text: "Sou com muita fome.", rule: "El hambre es un estado de ahora, no algo que sos: va con el otro verbo."}
+          - {text: "Estou muita fome.", rule: "En portugués el hambre no se *tiene* ni se *es*: se *está con* ella. Falta la preposición."}
+          - {text: "Sou muita fome.", rule: "El hambre es un estado de ahora, no algo que sos, y además se dice con una preposición."}
+        dims: {use: com}
+        curiosities: ["En Brasil se *está con* hambre, sed, sueño, frío o apuro: *estou com sono* es 'tengo sueño'."]
+        reviewed: true
+
+      - id: t1-1-ch-senhora
+        type: choice
+        tag: a1.estar.presente
+        prompt: "Llega Dona Célia, una señora de setenta años con dos valijas. La Ana la trata de usted y le dice en qué cuarto está:"
+        options:
+          - {text: "A senhora está no quarto 3.", correct: true}
+          - {text: "A senhora estás no quarto 3.", rule: "*a senhora* es una forma de tratamiento, como *usted*: conjuga en tercera persona."}
+          - {text: "A senhora estou no quarto 3.", rule: "Esa forma es la de *eu*; la Ana habla de otra persona."}
+          - {text: "A senhora estão no quarto 3.", rule: "Esa forma es la del plural; Dona Célia es una sola persona."}
+        dims: {person: ele}
+        reviewed: true
+
+      # Reserva
+      - id: t1-1-det-ser-b
+        type: detective
+        tag: a1.ser.presente
+        reserve: true
+        sentences:
+          - {pt: "Eu sou a Mia.", highlight: "sou"}
+          - {pt: "Você é o Tom, né?", highlight: "é"}
+          - {pt: "A pousada é pequena.", highlight: "é"}
+          - {pt: "Nós somos do Chile.", highlight: "somos"}
+          - {pt: "Vocês são muito barulhentos!", highlight: "são"}
+        rules:
+          - {text: "La forma depende del sujeto: *eu*, *nós* y *vocês* tienen la suya, y *você*, *ele* y *ela* comparten una.", correct: true}
+          - {text: "La forma depende del género del sustantivo que viene después."}
+          - {text: "La forma depende de si se habla de una cosa o de una persona."}
+        apply:
+          - {text: "O quarto ___ muito bonito.", answers: ["é"], dims: {person: ele}}
+          - {text: "Eu e a Lea ___ amigas.", answers: ["somos"], dims: {person: nos}}
+        reviewed: true
+
+
+  # ───────────────────────────── Etapa 2 ─────────────────────────────
+  - n: 2
+    name: "Reconhecer"
+    scene: {title: "Na recepção", context: "22:20 · la Ana habla rapidísimo y Caju, el perro, te huele la mochila"}
+    exercises:
+      - id: t1-2-ord-banheiro
+        type: order
+        tag: a1.ser.estar
+        prompt: "Preguntale a la Ana por el baño, como lo diría un brasileño."
+        chunks: ["fica", "onde", "o banheiro"]
+        answers: [["onde", "fica", "o banheiro"]]
+        dims: {use: ficar}
+        reviewed: true
+
+      - id: t1-2-ch-cansado
+        type: choice
+        tag: a1.ser.estar
+        prompt: "La Ana te ve la cara y te pregunta si estás bien. ¿Qué le contestás?"
+        options:
+          - {text: "Estou muito cansado.", correct: true}
+          - {text: "Sou muito cansado.", rule: "Con el otro verbo diría que sos una persona cansada por naturaleza; hablás de cómo estás hoy."}
+          - {text: "Tenho muito cansado.", rule: "El cansancio no se tiene: es un estado, y va con el verbo de los estados."}
+        dims: {use: estar}
+        reviewed: true
+
+      - id: t1-2-se-toalhas
+        type: spot-error
+        tag: a1.estar.presente
+        prompt: "La Ana te pasa un papelito con la info del cuarto. Tiene un error."
+        tokens: ["As", "toalhas", "está", "no", "armário."]
+        wrong: 2
+        corrections: ["estão"]
+        rule: "El sujeto es plural: *estar* tiene que ir en la forma de plural."
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t1-2-ord-de-onde
+        type: order
+        tag: a1.ser.presente
+        prompt: "La Ana quiere saber de dónde sos."
+        chunks: ["é", "você", "de onde"]
+        answers: [["de onde", "você", "é"], ["de onde", "é", "você"]]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-2-se-voce-esta
+        type: spot-error
+        tag: a1.pron.sujeito
+        prompt: "Mensaje de Rafa, el otro recepcionista. Tiene un error."
+        tokens: ["Oi,", "Leo!", "Você", "estás", "no", "quarto", "12."]
+        wrong: 3
+        corrections: ["está"]
+        rule: "*você* conjuga en tercera persona, como *usted*: la forma de segunda no va con *você*."
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-2-ord-senha
+        type: order
+        tag: a1.ser.presente
+        prompt: "Lo más importante: el wifi."
+        chunks: ["a senha", "qual", "do wi-fi", "é"]
+        answers: [["qual", "é", "a senha", "do wi-fi"]]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-2-se-a-gente
+        type: spot-error
+        tag: a1.pron.sujeito
+        prompt: "Mensaje de la Mia al grupo. Tiene un error."
+        tokens: ["A", "gente", "estamos", "na", "varanda.", "Vem!"]
+        wrong: 2
+        corrections: ["está"]
+        rule: "*a gente* significa *nosotros*, pero el verbo va en singular, como con *ele*."
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-2-ord-cafe
+        type: order
+        tag: a1.ser.presente
+        prompt: "Tenés hambre desde el avión. Preguntá a qué hora es el desayuno."
+        chunks: ["que horas", "o café da manhã", "é", "a"]
+        answers: [["a", "que horas", "é", "o café da manhã"]]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-2-se-ser-cansada
+        type: spot-error
+        tag: a1.ser.estar
+        prompt: "Mensaje de la Lea, que llegó hace cinco minutos. Tiene un error."
+        tokens: ["Gente,", "eu", "sou", "muito", "cansada", "hoje."]
+        wrong: 2
+        corrections: ["estou", "tô"]
+        rule: "*hoje* muestra que es un estado de ahora, no algo que la Lea es siempre: va con el otro verbo."
+        dims: {use: estar}
+        reviewed: true
+
+      - id: t1-2-ord-tom
+        type: order
+        tag: a1.estar.presente
+        prompt: "Contale a la Ana dónde está tu compañero de cuarto."
+        chunks: ["no quarto", "o Tom", "está"]
+        answers: [["o Tom", "está", "no quarto"], ["no quarto", "está", "o Tom"]]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-2-se-somos-sao
+        type: spot-error
+        tag: a1.ser.presente
+        prompt: "La Ana te cuenta de tus compañeros de cuarto. Tiene un error."
+        tokens: ["O", "Tom", "e", "a", "Mia", "é", "muito", "legais."]
+        wrong: 5
+        corrections: ["são"]
+        rule: "*o Tom e a Mia* son dos personas: el sujeto es plural y *ser* tiene que ir en plural."
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t1-2-ord-praia
+        type: order
+        tag: a1.ser.estar
+        prompt: "Querés saber si la playa queda cerca."
+        chunks: ["perto", "a praia", "fica"]
+        answers: [["a praia", "fica", "perto"]]
+        dims: {use: ficar}
+        reviewed: true
+
+      - id: t1-2-ch-ser-origem
+        type: choice
+        tag: a1.ser.estar
+        prompt: "Rafa le pregunta a la Mia de dónde es. ¿Qué contesta?"
+        options:
+          - {text: "Eu sou do Chile.", correct: true}
+          - {text: "Eu estou do Chile.", rule: "El origen es parte de lo que alguien es, no un estado: va con el otro verbo."}
+          - {text: "Eu fico do Chile.", rule: "*ficar* sirve para ubicar lugares o para 'quedarse'; el origen va con otro verbo."}
+        dims: {use: ser}
+        reviewed: true
+
+      - id: t1-2-se-voces-esta
+        type: spot-error
+        tag: a1.estar.presente
+        prompt: "Cartelito en la puerta de la cocina. Tiene un error."
+        tokens: ["Pessoal,", "vocês", "está", "convidados", "para", "o", "jantar!"]
+        wrong: 2
+        corrections: ["estão"]
+        rule: "*vocês* es plural: *estar* va en la forma de plural, la misma que con *eles*."
+        dims: {person: eles}
+        reviewed: true
+
+      # Reserva
+      - id: t1-2-ord-recepcao
+        type: order
+        tag: a1.ser.estar
+        reserve: true
+        prompt: "Volviste a perderte en el pasillo."
+        chunks: ["a recepção", "onde", "fica"]
+        answers: [["onde", "fica", "a recepção"]]
+        dims: {use: ficar}
+        reviewed: true
+
+      - id: t1-2-se-eu-esta
+        type: spot-error
+        tag: a1.estar.presente
+        reserve: true
+        prompt: "Tu mensaje al grupo, escrito con sueño. Tiene un error."
+        tokens: ["Eu", "está", "na", "cama.", "Boa", "noite!"]
+        wrong: 1
+        corrections: ["estou", "tô"]
+        rule: "Esa forma es la de *você* y *ele*; el sujeto sos vos mismo."
+        dims: {person: eu}
+        reviewed: true
+
+      - id: t1-2-ord-nomes
+        type: order
+        tag: a1.ser.presente
+        reserve: true
+        prompt: "Les preguntás a dos chicas nuevas cómo se llaman (con *ser*)."
+        chunks: ["vocês", "quem", "são"]
+        answers: [["quem", "são", "vocês"]]
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t1-2-se-caju
+        type: spot-error
+        tag: a1.ser.presente
+        reserve: true
+        prompt: "Cartel de la recepción. Tiene un error."
+        tokens: ["O", "Caju", "são", "o", "cachorro", "da", "pousada."]
+        wrong: 2
+        corrections: ["é"]
+        rule: "Caju es uno solo: el sujeto es singular y *ser* va en singular."
+        dims: {person: ele}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 3 ─────────────────────────────
+  - n: 3
+    name: "Aplicar no contexto"
+    scene: {title: "Um e-mail da pousada", context: "Al día siguiente · 9:30 · llegó un mail con las reglas de la casa"}
+    generated: 3
+    exercises:
+      - id: t1-3-read-regras
+        type: reading
+        title: "Bem-vindos à Pousada Maré!"
+        text: |
+          Olá, pessoal! Bem-vindos à Pousada Maré!
+          Nós somos a Ana e o Rafa, da recepção. Aqui estão as regras da casa:
+          A recepção fica no térreo e está aberta das 7h às 23h. O café da manhã é das 7h às 10h, na varanda. O silêncio é das 22h às 7h. O cachorro da recepção é o Caju. Ele é muito carinhoso, mas não é um travesseiro! Vocês estão com alguma dúvida? A gente está sempre aqui.
+          Um abraço,
+          Ana e Rafa
+        questions:
+          - tag: a1.ser.presente
+            prompt: "Quem é o Caju?"
+            answers: ["O cachorro da recepção", "É o cachorro da recepção", "O Caju é o cachorro da recepção", "Ele é o cachorro da recepção", "O cachorro", "É o cachorro", "Um cachorro", "É um cachorro", "O cachorro da pousada", "É o cachorro da pousada"]
+            dims: {person: ele}
+          - tag: a1.ser.estar
+            prompt: "Onde fica a recepção?"
+            options:
+              - {text: "No térreo.", correct: true}
+              - {text: "Na varanda.", rule: "La pregunta es dónde queda la recepción: la varanda es el lugar de otra regla de la casa."}
+              - {text: "No quarto 12.", rule: "El mail no habla de ese cuarto: buscá la frase con *fica*."}
+            dims: {use: ficar}
+          - tag: a1.ser.presente
+            prompt: "Quando é o café da manhã?"
+            options:
+              - {text: "Das 7h às 10h.", correct: true}
+              - {text: "Das 22h às 7h.", rule: "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno."}
+              - {text: "Das 7h às 23h.", rule: "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno."}
+            dims: {person: ele}
+          - tag: a1.ser.estar
+            prompt: "O Caju é um travesseiro?"
+            options:
+              - {text: "Não, ele é um cachorro.", correct: true}
+              - {text: "Não, ele está um cachorro.", rule: "Lo que alguien es (un perro, una persona) no es un estado: va con el otro verbo."}
+              - {text: "Sim, ele é muito carinhoso.", rule: "Leé de nuevo la frase sobre el Caju y el travesseiro: tiene un *não*."}
+            dims: {use: ser}
+        reviewed: true
+
+      - id: t1-3-se-senhora
+        type: spot-error
+        tag: a1.estar.presente
+        prompt: "Respuesta de la pousada a Dona Célia, que escribió muy formal. Tiene un error."
+        tokens: ["Prezada", "Dona", "Célia,", "a", "senhora", "estão", "no", "quarto", "3."]
+        wrong: 5
+        corrections: ["está"]
+        rule: "*a senhora* es una sola persona tratada de usted: conjuga como *ele*, en singular."
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-3-tr-fome
+        type: translate
+        tag: a1.ser.estar
+        from: es
+        source: "Tengo hambre."
+        answers: ["Estou com fome.", "Eu estou com fome.", "Tô com fome.", "Eu tô com fome.", "Tenho fome.", "Eu tenho fome."]
+        dims: {use: com}
+        errors:
+          - {answer: "Sou com fome.", rule: "El hambre es un estado: va con *estar com*."}
+          - {answer: "Estou fome.", rule: "En Brasil el hambre se dice con *estar* y una preposición: falta esa preposición."}
+          - {answer: "Eu estou fome.", rule: "En Brasil el hambre se dice con *estar* y una preposición: falta esa preposición."}
+        curiosities: ["*Tenho fome* también es correcto, pero en Brasil lo natural es *estou com fome*."]
+        reviewed: true
+
+      - id: t1-3-se-a-gente-somos
+        type: spot-error
+        tag: a1.pron.sujeito
+        prompt: "Reseña de un huésped en la web de la pousada. Tiene un error."
+        tokens: ["A", "gente", "somos", "de", "Rosario", "e", "amamos", "a", "pousada!"]
+        wrong: 2
+        corrections: ["é"]
+        rule: "*a gente* significa *nosotros*, pero el verbo va en singular, como con *ele*."
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-3-tr-de-onde
+        type: translate
+        tag: a1.ser.presente
+        from: es
+        source: "¿De dónde sos?"
+        answers: ["De onde você é?", "De onde é você?", "Você é de onde?", "De onde tu é?", "De onde você é", "Cê é de onde?"]
+        dims: {person: ele}
+        errors:
+          - {answer: "De onde você está?", rule: "El origen es parte de lo que alguien es: va con *ser*."}
+          - {answer: "De onde você és?", rule: "*você* conjuga en tercera persona, como *usted*."}
+        reviewed: true
+
+      - id: t1-3-se-onde-esta-ficar
+        type: spot-error
+        tag: a1.ser.estar
+        prompt: "Mensaje de un huésped a la recepción, a las 7:01. Tiene un error."
+        tokens: ["Bom", "dia!", "Onde", "sou", "a", "varanda?", "Estou", "com", "fome."]
+        wrong: 3
+        corrections: ["fica", "é", "está"]
+        rule: "Esa forma es la de *eu*, pero la que se ubica es la varanda: hace falta el verbo de los lugares, en tercera persona."
+        dims: {use: ficar}
+        reviewed: true
+
+      - id: t1-3-tr-estamos
+        type: translate
+        tag: a1.estar.presente
+        from: es
+        source: "Estamos en la cocina."
+        answers: ["Estamos na cozinha.", "Nós estamos na cozinha.", "A gente está na cozinha.", "A gente tá na cozinha.", "Tamos na cozinha.", "Nós tamos na cozinha.", "Na cozinha estamos nós."]
+        dims: {person: nos}
+        errors:
+          - {answer: "Estamos em a cozinha.", rule: "*em* + artículo se contrae en una sola palabra."}
+          - {answer: "A gente estamos na cozinha.", rule: "*a gente* significa *nosotros*, pero el verbo va en singular."}
+        reviewed: true
+
+      - id: t1-3-se-tom-esta-canada
+        type: spot-error
+        tag: a1.ser.estar
+        prompt: "Presentación de Tom en el grupo de la pousada. Tiene un error."
+        tokens: ["Oi!", "Eu", "sou", "o", "Tom", "e", "estou", "do", "Canadá."]
+        wrong: 6
+        corrections: ["sou"]
+        rule: "El origen es parte de lo que alguien es, no un estado: va con el otro verbo."
+        dims: {use: ser}
+        reviewed: true
+
+      - id: t1-3-tr-senhora
+        type: translate
+        tag: a1.pron.sujeito
+        from: es
+        source: "Usted está en el cuarto 3, señora."
+        answers: ["A senhora está no quarto 3.", "A senhora está no quarto três.", "A senhora fica no quarto 3.", "A senhora fica no quarto três.", "A senhora está no quarto número 3.", "A senhora está no quarto 3, dona Célia.", "A senhora está no quarto três, senhora."]
+        dims: {person: ele}
+        errors:
+          - {answer: "Você está no quarto 3.", rule: "Con una señora mayor que se trata de usted, en Brasil se usa la forma de tratamiento respetuosa, no *você*."}
+          - {answer: "A senhora estás no quarto 3.", rule: "*a senhora* conjuga en tercera persona, como *usted*."}
+        reviewed: true
+
+      # Reserva
+      - id: t1-3-se-hospedes
+        type: spot-error
+        tag: a1.estar.presente
+        reserve: true
+        prompt: "Queja anónima en el libro de la recepción. Tiene un error."
+        tokens: ["Os", "hóspedes", "do", "quarto", "5", "está", "muito", "barulhentos."]
+        wrong: 5
+        corrections: ["estão", "são"]
+        rule: "*os hóspedes* es plural: el verbo tiene que ir en plural."
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t1-3-tr-sede
+        type: translate
+        tag: a1.ser.estar
+        reserve: true
+        from: es
+        source: "Mia tiene sed."
+        answers: ["A Mia está com sede.", "Mia está com sede.", "A Mia tá com sede.", "Mia tá com sede.", "A Mia tem sede.", "Mia tem sede."]
+        dims: {use: com}
+        errors:
+          - {answer: "A Mia é com sede.", rule: "La sed es un estado de ahora: va con *estar com*."}
+          - {answer: "A Mia está sede.", rule: "La sed se dice con *estar* y una preposición: falta esa preposición."}
+        reviewed: true
+
+      - id: t1-3-tr-somos
+        type: translate
+        tag: a1.ser.presente
+        reserve: true
+        from: es
+        source: "Somos de Chile."
+        answers: ["Somos do Chile.", "Nós somos do Chile.", "A gente é do Chile.", "Somos chilenos.", "Nós somos chilenos.", "Somos chilenas.", "Nós somos chilenas.", "A gente é chileno.", "A gente é chilena."]
+        dims: {person: nos}
+        errors:
+          - {answer: "Somos de Chile.", rule: "En portugués *Chile* lleva artículo: la preposición se contrae con él."}
+          - {answer: "Estamos do Chile.", rule: "El origen va con *ser*, no con *estar*."}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 4 ─────────────────────────────
+  - n: 4
+    name: "Produzir com apoio"
+    scene: {title: "Quarto 12", context: "23:40 · luz apagada, Tom ronca como un tractor y nadie duerme"}
+    field: pousada
+    generated: 3
+    exercises:
+      - id: t1-4-sit-ronco
+        type: situation
+        scene: {title: "Quarto 12", context: "23:40 · alguien ronca en la oscuridad"}
+        bubbles:
+          - {who: them, text: "Ei! Quem está roncando assim?"}
+          - {who: me, text: "É o Tom. ___ está no beliche de cima."}
+          - {who: them, text: "Você tem protetor de ouvido?"}
+          - {who: me, text: "Não, infelizmente. E eu ___ tão cansado!"}
+        gaps:
+          - tag: a1.pron.sujeito
+            answers: ["Ele", "O Tom", "Tom"]
+            dims: {person: ele}
+            errors:
+              - {answer: "Ela", rule: "El pronombre sigue al sujeto del que hablás: fijate quién ronca."}
+              - {answer: "Você", rule: "*você* es la persona a la que le hablás; acá hablás de un tercero."}
+          - tag: a1.estar.presente
+            answers: ["estou", "tô"]
+            dims: {person: eu}
+            errors:
+              - {answer: "está", rule: "Esa forma es la de *você* y *ele*; el sujeto acá sos vos mismo."}
+              - {answer: "sou", rule: "El cansancio es un estado de ahora: va con el otro verbo."}
+        reviewed: true
+
+      - id: t1-4-tf-tom
+        type: transform
+        tag: a1.estar.presente
+        source: "Eu estou no beliche de cima."
+        instruction: "Agora com *o Tom* como sujeito."
+        answers: ["O Tom está no beliche de cima.", "Tom está no beliche de cima.", "O Tom tá no beliche de cima.", "No beliche de cima está o Tom."]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-4-sit-mia
+        type: situation
+        scene: {title: "Quarto 12", context: "23:45 · entra una chica con la linterna del celular buscando su cama"}
+        bubbles:
+          - {who: them, text: "Oi, eu sou a Mia. Sou nova aqui."}
+          - {who: me, text: "Oi, Mia! De onde você ___?"}
+          - {who: them, text: "Do Chile. E você?"}
+          - {who: me, text: "Da Argentina. Onde ___ a sua cama? Em cima ou embaixo?"}
+        gaps:
+          - tag: a1.ser.presente
+            answers: ["é"]
+            dims: {person: ele}
+            errors:
+              - {answer: "está", rule: "El origen es parte de lo que alguien es: va con el otro verbo."}
+              - {answer: "és", rule: "*você* conjuga en tercera persona, como *usted*."}
+          - tag: a1.ser.estar
+            answers: ["fica", "está", "é"]
+            dims: {use: ficar}
+            errors:
+              - {answer: "sou", rule: "Esa forma es la de *eu*; acá preguntás por la cama."}
+        reviewed: true
+
+      - id: t1-4-tf-toalhas
+        type: transform
+        tag: a1.estar.presente
+        source: "A toalha está molhada."
+        instruction: "Agora no plural: *as toalhas*."
+        answers: ["As toalhas estão molhadas.", "As toalhas tão molhadas."]
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t1-4-gap-voces
+        type: gap
+        tag: a1.estar.presente
+        context: "1:00 · Tom y Mia vuelven del bar cantando por el pasillo."
+        text: "Silêncio! Vocês ___ muito barulhentos!"
+        answers: ["estão", "são", "tão"]
+        dims: {person: eles}
+        errors:
+          - {answer: "está", rule: "*vocês* es plural: el verbo va en la forma de plural, la misma que con *eles*."}
+          - {answer: "estais", rule: "Esa forma de *vós* ya casi no se usa: en Brasil *vocês* conjuga como *eles*."}
+        reviewed: true
+
+      - id: t1-4-sit-chave
+        type: situation
+        scene: {title: "No corredor", context: "0:10 · volviste del baño y la llave no abre"}
+        bubbles:
+          - {who: them, text: "Hã? Quem está aí?"}
+          - {who: me, text: "Sou ___, o Leo! A chave não funciona."}
+          - {who: them, text: "Ai, não! E onde estão a Mia e a Lea?"}
+          - {who: me, text: "___ ainda estão no bar."}
+        gaps:
+          - tag: a1.pron.sujeito
+            answers: ["eu"]
+            dims: {person: eu}
+            errors:
+              - {answer: "ele", rule: "Hablás de vos mismo: el pronombre es el de primera persona."}
+          - tag: a1.pron.sujeito
+            answers: ["Elas", "As duas"]
+            dims: {person: eles}
+            errors:
+              - {answer: "Eles", rule: "Mia y Lea son dos mujeres: el pronombre plural tiene que ser el femenino."}
+              - {answer: "Vocês", rule: "*vocês* son las personas a las que les hablás; Mia y Lea no están en el pasillo."}
+              - {answer: "Ela", rule: "Son dos personas: el pronombre tiene que ser plural."}
+        reviewed: true
+
+      - id: t1-4-tf-mia
+        type: transform
+        tag: a1.pron.sujeito
+        source: "A Mia é do Chile."
+        instruction: "Troque *a Mia* por um pronome."
+        answers: ["Ela é do Chile.", "É do Chile."]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-4-sit-toalha
+        type: situation
+        scene: {title: "Quarto 12", context: "0:30 · inventario de lo que falta, con linterna"}
+        bubbles:
+          - {who: them, text: "Leo, essa toalha é sua?"}
+          - {who: me, text: "Não, essa toalha é do Tom. E ela ___ molhada."}
+          - {who: them, text: "Que nojo! E os travesseiros?"}
+          - {who: me, text: "Os travesseiros ___ ótimos. Mas o cobertor é muito fino."}
+        gaps:
+          - tag: a1.estar.presente
+            answers: ["está", "tá"]
+            dims: {person: ele}
+            errors:
+              - {answer: "estão", rule: "*ela* reemplaza a *a toalha*, que es una sola: el verbo va en singular."}
+              - {answer: "é", rule: "Estar mojada es un estado de ahora, no algo que la toalla es: va con el otro verbo."}
+          - tag: a1.ser.presente
+            answers: ["são", "estão"]
+            dims: {person: eles}
+            errors:
+              - {answer: "é", rule: "*os travesseiros* es plural: el verbo va en plural."}
+        reviewed: true
+
+      - id: t1-4-tf-senhora
+        type: transform
+        tag: a1.pron.sujeito
+        source: "Você está no quarto 3."
+        instruction: "Agora para a Dona Célia, com o tratamento formal (*a senhora*)."
+        answers: ["A senhora está no quarto 3.", "A senhora está no quarto três.", "Dona Célia, a senhora está no quarto 3.", "A senhora fica no quarto 3."]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t1-4-gap-ficar
+        type: gap
+        tag: a1.ser.estar
+        context: "La Lea busca el baño en plena noche y te manda un audio susurrando."
+        text: "Leo, onde ___ o banheiro? Não acho!"
+        answers: ["fica", "é", "está"]
+        dims: {use: ficar}
+        errors:
+          - {answer: "estou", rule: "Esa forma es la de *eu*; el que se ubica acá es el baño."}
+          - {answer: "estão", rule: "El baño es uno solo: el verbo va en singular."}
+        curiosities: ["Para algo que no se mueve, como un baño o una playa, lo más natural en Brasil es *ficar*: *Onde fica…?*"]
+        reviewed: true
+
+      - id: t1-4-tf-onde
+        type: transform
+        tag: a1.ser.estar
+        source: "A praia fica a dez minutos daqui."
+        instruction: "Pergunte onde fica a praia."
+        answers: ["Onde fica a praia?", "Onde é a praia?", "Onde está a praia?", "A praia fica onde?"]
+        dims: {use: ficar}
+        reviewed: true
+
+      # Reserva
+      - id: t1-4-sit-cafe
+        type: situation
+        reserve: true
+        scene: {title: "Na varanda", context: "7:05 · nadie durmió y Tom está fresquísimo"}
+        bubbles:
+          - {who: them, text: "Bom dia! Tudo bem?"}
+          - {who: me, text: "Não! Nós ___ muito cansados. Você ronca como um trator!"}
+          - {who: them, text: "Eu? Eu não ronco!"}
+          - {who: me, text: "Ronca, sim! Pergunta pra Mia e pra Lea. ___ também estão cansadas."}
+        gaps:
+          - tag: a1.estar.presente
+            answers: ["estamos", "tamos"]
+            dims: {person: nos}
+            errors:
+              - {answer: "estão", rule: "Esa es la forma de *vocês* y *eles*; el sujeto acá es *nós*."}
+              - {answer: "somos", rule: "El cansancio de hoy es un estado: va con el otro verbo."}
+          - tag: a1.pron.sujeito
+            answers: ["Elas", "As duas"]
+            dims: {person: eles}
+            errors:
+              - {answer: "Eles", rule: "Mia y Lea son dos mujeres: el pronombre plural tiene que ser el femenino."}
+        reviewed: true
+
+      - id: t1-4-sit-porta
+        type: situation
+        reserve: true
+        scene: {title: "No portão", context: "22:16 · tocás el portero eléctrico, empapado"}
+        bubbles:
+          - {who: them, text: "Alô? Quem é?"}
+          - {who: me, text: "Oi! ___ sou o Leo. Tenho uma reserva."}
+          - {who: them, text: "Ah, o Leo! Pode entrar, o portão está aberto."}
+          - {who: me, text: "Obrigado! A mochila ___ tão pesada."}
+        gaps:
+          - tag: a1.pron.sujeito
+            answers: ["Eu"]
+            dims: {person: eu}
+            errors:
+              - {answer: "Ele", rule: "Hablás de vos mismo: el pronombre es el de primera persona."}
+              - {answer: "Você", rule: "*você* es a quien le hablás; acá te presentás vos."}
+          - tag: a1.estar.presente
+            answers: ["está", "é", "tá"]
+            dims: {person: ele}
+            errors:
+              - {answer: "estou", rule: "El sujeto es *a mochila*, no vos: va la forma de tercera persona."}
+              - {answer: "estão", rule: "*a mochila* es una sola: el verbo va en singular."}
+        reviewed: true
+
+      - id: t1-4-tf-nos
+        type: transform
+        tag: a1.estar.presente
+        reserve: true
+        source: "Eu estou cansado."
+        instruction: "Agora com *nós*."
+        answers: ["Nós estamos cansados.", "Estamos cansados.", "Nós estamos cansadas.", "Estamos cansadas."]
+        dims: {person: nos}
+        reviewed: true
+
+      - id: t1-4-gap-elas
+        type: gap
+        tag: a1.pron.sujeito
+        reserve: true
+        context: "La Ana te señala a dos chicas que entran al cuarto de al lado con una mala cada una."
+        text: "Essas são a Júlia e a Bia. ___ são de Minas Gerais."
+        answers: ["Elas", "As duas"]
+        dims: {person: eles}
+        errors:
+          - {answer: "Ela", rule: "Son dos personas: el pronombre tiene que ser plural."}
+          - {answer: "Vocês", rule: "*vocês* son las personas a las que les hablás; la Ana te habla a vos de ellas."}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 5 ─────────────────────────────
+  - n: 5
+    name: "Escrever livremente"
+    scene: {title: "Grupo da Pousada Maré", context: "Mediodía · 47 mensajes sin leer, la mitad sobre los ronquidos de Tom"}
+    exercises:
+      - id: t1-5-wg-apresentar
+        type: writing-guided
+        topic: a1.u1.t1
+        prompt: "Presentate en el grupo de WhatsApp de la pousada: quién sos, de dónde sos, en qué cuarto estás y cómo estás hoy."
+        constraints:
+          - "Usá *ser* y *estar* al menos una vez cada uno."
+          - "Entre 3 y 5 oraciones."
+        tips:
+          - "Para el origen: *ser* + *de* (contraído con el artículo del país): *da Argentina*, *do Uruguai*."
+          - "Para cómo estás: *estar* + adjetivo (*cansado*, *feliz*, *molhado*…) o *estar com* (*com fome*, *com sono*)."
+          - "Al grupo le podés hablar de *vocês*."
+        checklist:
+          - "Dijiste quién sos, de dónde sos, en qué cuarto estás y cómo estás."
+          - "Usaste *ser* y *estar*."
+          - "Suena a mensaje de grupo: hay saludo y despedida."
+        model: "Oi, gente! Eu sou o Leo e sou da Argentina, de Rosario. Agora estou no quarto 12. Hoje estou um pouco cansado, mas muito feliz. Até mais tarde!"
+        reviewed: true
+
+      - id: t1-5-wg-perguntas
+        type: writing-guided
+        topic: a1.u1.t1
+        prompt: "Dos chicas nuevas entran al grupo. Escribiles un mensaje de bienvenida con preguntas para conocerlas."
+        constraints:
+          - "3 preguntas distintas (de dónde son, cómo están, dónde está su cuarto…)."
+          - "Hablales en plural, con *vocês*."
+          - "Usá *ser* y *estar*."
+        tips:
+          - "*vocês* conjuga como *eles*."
+          - "Para el origen, *De onde vocês são?*; para cómo están, *estar*."
+          - "Si contás algo del grupo, *a gente* conjuga como *ele*."
+        checklist:
+          - "Hiciste 3 preguntas distintas."
+          - "Les hablaste con *vocês* en todo el mensaje."
+          - "Las preguntas sirven para conocer a alguien (nada de interrogatorios policiales)."
+        model: "Oi, meninas, bem-vindas! De onde vocês são? Vocês estão cansadas da viagem? Em que quarto vocês estão? Hoje à noite a gente está na varanda. Vocês vêm?"
+        reviewed: true
+
+      - id: t1-5-wf-quarto
+        type: writing-free
+        topic: a1.u1.t1
+        prompt: "Contá en el grupo quiénes duermen en tu cuarto, de dónde son, cómo son y cómo están hoy. Si alguien ronca, es el momento de decirlo (con cariño)."
+        tips:
+          - "Para cada persona: el nombre, de dónde es, cómo es (*ser*) y cómo está hoy (*estar*)."
+          - "Cuando ya nombraste a alguien, seguí con *ele* o *ela*."
+        checklist:
+          - "Contaste quiénes son, de dónde son, cómo son y cómo están."
+          - "Usaste al menos dos personas distintas de *ser* o *estar* (por ejemplo *nós* y *ele*)."
+          - "El texto se entiende de punta a punta."
+        model: "No quarto 12 somos três: a Lea, o Tom e eu. A Lea é da Espanha e é muito simpática. O Tom é do Canadá. Ele é engraçado, mas de noite ele ronca muito. Hoje a gente está muito cansado. Alguém tem protetor de ouvido?"
+        reviewed: true

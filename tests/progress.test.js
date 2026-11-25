@@ -24,8 +24,8 @@ const unit = {
     {topic: 'a1.u1.t3', draft: true, tags: ['a1.akk.mask'], steps: []},
   ],
 };
-const templates = [{id: 'tpl', tag_prefix: 'a1.akk', det: 'indef', kase: 'akk', verb: 'brauchen', context: 'c', text: 'Ich brauche ___ {noun}.', slot: {pos: 'noun', fields: ['f'], countable: false}}];
-const lexicon = ['Hund', 'Katze', 'Tisch', 'Buch', 'Haus', 'Auto'].map((lemma, i) => ({lemma, pos: 'noun', article: ['der', 'die', 'das'][i % 3], plural: lemma + 'e', field: 'f'}));
+const templates = [{id: 'tpl', tag_prefix: 'a1.genero', det: 'indef', context: 'c', text: 'Eu preciso de ___ {noun}.', slot: {pos: 'noun', fields: ['f'], countable: false}}];
+const lexicon = ['cachorro', 'gata', 'livro', 'mesa', 'carro', 'casa'].map((lemma, i) => ({lemma, pos: 'noun', article: ['o', 'a'][i % 2], plural: lemma + 's', field: 'f'}));
 const empty = {steps: {}};
 const noMastery = {tags: {}, pairs: {}};
 const ids = g => g.exercises.map(e => e.id);
@@ -60,7 +60,7 @@ test('reintento: no vistos primero (reserva incluida), sin duplicados', () => {
 
 test('reintento: con todo visto rellena con gap generados y después con vistos más viejos', () => {
   const u = withSteps(unit, 0, 1, {generated: 3});
-  u.topics[0].tags = ['a1.akk.mask'];
+  u.topics[0].tags = ['a1.genero.masc'];
   const prog = {steps: {'a1.u1.t1/1': {attempts: [attempt(false)], seen: {p1a: 30, p1b: 10, p1c: 20, p1r: 40}}}};
   const g = buildGroup(u, 'a1.u1.t1', 1, prog, noMastery, {now: NOW, rng: lcg(2), templates, lexicon, otherExercises: []});
   const gen = g.exercises.filter(e => e.generated);
@@ -72,7 +72,7 @@ test('reintento: con todo visto rellena con gap generados y después con vistos 
 
 test('primer intento con generated: exactamente N gaps generados al final', () => {
   const u = withSteps(unit, 0, 1, {generated: 2});
-  u.topics[0].tags = ['a1.akk.mask'];
+  u.topics[0].tags = ['a1.genero.masc'];
   const g = buildGroup(u, 'a1.u1.t1', 1, empty, noMastery, {now: NOW, rng: lcg(3), templates, lexicon, otherExercises: []});
   assert.equal(g.exercises.length, 5);
   assert.deepEqual(g.exercises.map(e => !!e.generated), [false, false, false, true, true]);

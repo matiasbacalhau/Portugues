@@ -2,70 +2,73 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { diagnose } from '../js/core/diagnose.js';
 
-const item = (gender, det = 'indef', extra = {}) => ({tag: `a1.akk.${{m: 'mask', f: 'fem', n: 'neut'}[gender]}`,
-  dims: {gender, kase: 'akk', det}, noun: 'Löffel', verb: 'brauchen', ...extra});
+// Hueco de artículo (tema 2): sin prep es el artículo solo; con prep, la contracción.
+const art = (gender, extra = {}) => ({tag: `a1.genero.${{m: 'masc', f: 'fem'}[gender]}`,
+  dims: {gender, number: 'sg', det: 'def'}, noun: 'leite', ...extra});
+const contr = (gender, prep = 'em', extra = {}) => ({tag: `a1.contr.${prep}`,
+  dims: {gender, number: 'sg', det: 'def', prep}, noun: 'geladeira', ...extra});
+const noLeak = (d, forms) => forms.forEach((f) => {
+  assert.doesNotMatch(d.rule, new RegExp(`(^|[^\\p{L}])${f}([^\\p{L}]|$)`, 'u'), `rule filtra ${f}`);
+  assert.doesNotMatch(d.rule_pt, new RegExp(`(^|[^\\p{L}])${f}([^\\p{L}]|$)`, 'u'), `rule_pt filtra ${f}`);
+});
 
-test('caso equivocado: nombra la regla de caso y no la forma esperada', () => {
-  const d = diagnose(item('m'), 'ein');
-  assert.match(d.rule, /brauchen.*Akkusativ \(objeto directo\)/);
-  assert.doesNotMatch(d.rule, /einen/);
-  assert.match(d.rule_pt, /\*brauchen\* verlangt Akkusativ/);
-  assert.doesNotMatch(d.rule_pt, /einen/);
+test('género equivocado en el artículo: nombra el género, sin la forma', () => {
+  const d = diagnose(art('m'), 'a');
+  assert.equal(d.rule, '*leite* no es femenino en portugués: revisá el género.');
+  assert.equal(d.rule_pt, 'Preste atenção ao gênero: *leite* não é feminino.');
   assert.equal(d.prereq, null);
 });
 
-test('género equivocado: nombra el género y apunta al prerrequisito', () => {
-  const d = diagnose(item('m'), 'eine');
-  assert.equal(d.rule, '*Löffel* no es femenino: revisá el género.');
-  assert.doesNotMatch(d.rule, /einen/);
-  assert.equal(d.rule_pt, 'Achte auf das Geschlecht: *Löffel* hat ein anderes grammatisches Geschlecht.');
-  assert.doesNotMatch(d.rule_pt, /einen/);
-  assert.equal(d.prereq, 'a1.nom.mask');
+test('género equivocado en la contracción: nombra el género y apunta al prerrequisito', () => {
+  const d = diagnose(contr('f'), 'no');
+  assert.match(d.rule, /\*geladeira\* no es masculino/);
+  noLeak(d, ['na']);
+  assert.equal(d.prereq, 'a1.genero.fem');
 });
 
-test('género y casos con def y kein sin filtrar la forma', () => {
-  assert.equal(diagnose(item('m', 'def'), 'der').prereq, null);
-  assert.doesNotMatch(diagnose(item('m', 'def'), 'der').rule, /\bden\b/);
-  assert.doesNotMatch(diagnose(item('m', 'def'), 'der').rule_pt, /\bden\b/);
-  assert.equal(diagnose(item('m', 'def'), 'das').prereq, 'a1.nom.mask');
-  assert.doesNotMatch(diagnose(item('m', 'kein'), 'kein').rule, /keinen/);
-  assert.doesNotMatch(diagnose(item('m', 'kein'), 'kein').rule_pt, /keinen/);
-  assert.match(diagnose(item('f', 'indef', {noun: 'Gabel'}), 'ein').rule, /\*Gabel\* no es neutro|masculino/);
+test('contracción separada (em a, de o): dice que se junta, sin la forma', () => {
+  const d = diagnose(contr('f'), 'em a');
+  assert.match(d.rule, /se contrae en una sola palabra/);
+  noLeak(d, ['na']);
+  const e = diagnose(contr('m', 'de', {noun: 'quarto'}), 'de o');
+  assert.match(e.rule, /\*de\* \+ artículo/);
+  noLeak(e, ['do']);
+});
+
+test('artículo sin la preposición: dice qué preposición falta, sin la forma', () => {
+  const d = diagnose(contr('f'), 'a');
+  assert.match(d.rule, /Falta la preposición \*em\*/);
+  noLeak(d, ['na']);
+});
+
+test('número equivocado: nombra el número', () => {
+  const d = diagnose(contr('f'), 'nas');
+  assert.match(d.rule, /revisá el número/);
+  noLeak(d, ['na']);
 });
 
 test('ninguna celda: la rule del tag', () => {
-  const tags = {'a1.akk.mask': {rule: 'La regla del tag.'}};
-  const d = diagnose(item('m'), 'xyz', tags);
-  assert.deepEqual(d, {
-    rule: 'La regla del tag.',
-    rule_pt: 'Wiederhole die grammatische Regel für dieses Thema.',
-    prereq: null,
-  });
-
-  const tagsWithDe = {'a1.akk.mask': {rule: 'La regla del tag.', rule_pt: 'Die Regel des Tags.'}};
-  const dDe = diagnose(item('m'), 'xyz', tagsWithDe);
-  assert.deepEqual(dDe, {
-    rule: 'La regla del tag.',
-    rule_pt: 'Die Regel des Tags.',
-    prereq: null,
-  });
+  const tags = {'a1.genero.masc': {rule: 'La regla del tag.', rule_pt: 'A regra.'}};
+  assert.deepEqual(diagnose(art('m'), 'xyz', tags), {rule: 'La regla del tag.', rule_pt: 'A regra.', prereq: null});
+  assert.equal(diagnose(art('m'), 'xyz').rule, 'Repasá la regla de este tema.');
 });
 
-test('verbo conjugado: si escribió la forma de otra persona, nombra esa persona sin revelar la forma esperada', () => {
-  const lexicon = [
-    {lemma: 'wohnen', pos: 'verb'},
-    {lemma: 'sprechen', pos: 'verb', irregular: {du: 'sprichst', er: 'spricht'}},
-  ];
-  const gap = {tag: 'a1.praesens.regular', dims: {person: 'du'}, verb: 'wohnen', generated: true};
-  const d1 = diagnose(gap, 'wohne', {}, lexicon);
-  assert.equal(d1.rule, 'Esa forma es la de *ich*: fijate quién es el sujeto.');
-  assert.doesNotMatch(d1.rule, /wohnst/);
-  assert.equal(d1.rule_pt, 'Überprüfe das Subjekt: Die Verbendung muss zum Subjekt passen.');
-  assert.doesNotMatch(d1.rule_pt, /wohnst/);
+const morar = {lemma: 'morar', pos: 'verb'};
+const ser = {lemma: 'ser', pos: 'verb', irregular: {eu: 'sou', ele: 'é', nos: 'somos', eles: 'são'}};
+const verbItem = (person, verb = 'morar') => ({tag: 'a1.presente.regular', dims: {person}, verb});
 
-  const d2 = diagnose({...gap, tag: 'a1.praesens.irregular', verb: 'sprechen'}, 'spricht', {}, lexicon);
-  assert.equal(d2.rule, 'Esa forma es la de *er*, *sie* (ella) y *es*: fijate quién es el sujeto.');
-  assert.doesNotMatch(d2.rule, /sprichst/);
-  assert.equal(d2.rule_pt, 'Überprüfe das Subjekt: Die Verbendung muss zum Subjekt passen.');
-  assert.doesNotMatch(d2.rule_pt, /sprichst/);
+test('verbo conjugado: si escribió la forma de otra persona, nombra esa persona sin revelar la forma esperada', () => {
+  const d = diagnose(verbItem('eu'), 'mora', {}, [morar]);
+  assert.match(d.rule, /\*você\*, \*ele\*, \*ela\* y \*a gente\*/);
+  noLeak(d, ['moro']);
+  const e = diagnose(verbItem('ele', 'ser'), 'são', {}, [ser]);
+  assert.match(e.rule, /\*vocês\*, \*eles\* y \*elas\*/);
+  noLeak(e, ['é']);
+  assert.match(diagnose(verbItem('nos'), 'moro', {}, [morar]).rule_pt, /Forma de \*eu\*/);
+});
+
+test('verbo: una forma que no es de ninguna persona cae en la regla del tag', () => {
+  const tags = {'a1.presente.regular': {rule: 'Regla.', rule_pt: 'Regra.'}};
+  assert.equal(diagnose(verbItem('eu'), 'moran', tags, [morar]).rule, 'Regla.');
+  assert.equal(diagnose(verbItem('eu'), 'mora', tags, []).rule, 'Regla.');
 });

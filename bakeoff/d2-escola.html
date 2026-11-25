@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>D2 · Escola</title>
+<meta name="description" content="Propuesta D2 del concurso: tema Werkstatt de Hallmark con azul, verde y amarillo como primarios.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@700&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · built: 2026-11-25 · genre: playful · scope: app · shape: app screen · theme: Werkstatt (werkstatt: putty), dealt 3/3, seed pwa-privada-para-aprender-c6e6·b54229dc·2026-11-25·r1 · colourway by request: the red primary replaced by Brazilian green; each primary codes one tema · signature: the 5-step ladder as a ruled timetable of boxed cells, the current stage filled in its tema's primary */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R5 V4 · weakest: E, no photographs exist, so the ruled cells and the primaries carry the screen */
+:root {
+  --color-paper: oklch(88% 0.022 85); --color-paper-2: oklch(83% 0.026 82); --color-paper-3: oklch(93% 0.016 86);
+  --color-ink: oklch(18% 0.008 60); --color-ink-2: oklch(27% 0.01 60); --color-muted: oklch(39% 0.014 62);
+  --color-rule: oklch(62% 0.022 72);
+  --color-blue: oklch(40% 0.17 262); --color-green: oklch(50% 0.15 150); --color-yellow: oklch(89% 0.17 98);
+  --color-accent-ink: oklch(97% 0.012 85); --color-focus: oklch(40% 0.17 262);
+  --color-desk: oklch(80% 0.026 82);
+  --font-display: "Jost", "Futura", sans-serif; --font-body: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --rule-hair: 1px; --rule-bar: 2px; --rule-box: 3px;
+  --tracking-display: -0.005em; --display-weight: 700;
+  --dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-yellow); color: var(--color-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); line-height: 1.02; text-transform: uppercase; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 3.5rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-ink-2); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 12px; }
+.tag { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; background: var(--color-blue); color: var(--color-accent-ink); font-weight: 600; font-size: 14px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 600; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: var(--rule-bar) solid var(--color-ink); }
+.word { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 18px; }
+.bar a { color: var(--color-ink); font-weight: 600; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bar a:hover { text-decoration-thickness: 3px; }
+.content { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 2.1rem; margin: 0; }
+
+.sheet { border: var(--rule-box) solid var(--color-ink); }
+.cells { display: grid; grid-template-columns: 64px minmax(0, 1fr); border-bottom: var(--rule-box) solid var(--color-ink); }
+.cells > div { padding: 8px 12px; }
+.cells > div + div { border-left: var(--rule-box) solid var(--color-ink); }
+.cells small { display: block; color: var(--color-muted); font-weight: 600; font-size: 13px; }
+.cells .lvl { font-family: var(--font-display); font-size: 1.9rem; line-height: 1.1; display: flex; align-items: center; justify-content: center; padding: 0; }
+.topic { padding: 12px; border-bottom: var(--rule-box) solid var(--color-ink); }
+.topic h3 { font-size: 1.35rem; margin: 0; }
+.topic small { display: block; color: var(--color-muted); font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+.ladder { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-bottom: var(--rule-box) solid var(--color-ink); }
+.ladder span { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; height: 52px; display: flex; align-items: center; justify-content: center; }
+.ladder span + span { border-left: var(--rule-bar) solid var(--color-ink); }
+.ladder .done { background: var(--color-paper-2); }
+.ladder .now { background: var(--color-blue); color: var(--color-accent-ink); }
+.stage { padding: 8px 12px; display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; }
+.stage b { font-family: var(--font-display); text-transform: uppercase; font-size: 1.2rem; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-bar) solid var(--color-ink); font: 600 16px/1 var(--font-body); text-transform: uppercase; color: var(--color-ink); background: transparent; cursor: pointer; transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out); }
+.btn:hover { background: var(--color-paper-3); }
+.btn--primary { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
+.btn--primary:hover { background: var(--color-ink-2); }
+.btn:active { background: var(--color-paper-2); }
+.btn--primary:active { background: var(--color-ink); color: var(--color-yellow); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; transition: none; }
+.block { width: 100%; border-width: 0; border-top: var(--rule-box) solid var(--color-ink); }
+
+.map h2 { font-size: 1.2rem; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 600 14px var(--font-body); color: var(--color-muted); text-transform: none; }
+.rows { border-top: var(--rule-bar) solid var(--color-ink); }
+.r { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; min-height: 46px; border-bottom: var(--rule-hair) solid var(--color-rule); font-weight: 600; }
+.r i { width: 28px; height: 28px; font-style: normal; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; }
+.r .b { background: var(--color-blue); color: var(--color-accent-ink); }
+.r .g { background: var(--color-green); color: var(--color-accent-ink); }
+.r .y { background: var(--color-yellow); color: var(--color-ink); }
+.r small { color: var(--color-muted); font-weight: 600; font-size: 13px; }
+.r.soon { color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <section class="side">
+    <h1 class="display">Un programa de escuela</h1>
+    <p>Celdas con borde negro y tres primarios de Brasil. Cada tema tiene su color: azul, verde o amarillo, y lo mantiene en toda la app.</p>
+    <div class="spec" lang="pt-BR">
+      <span class="tag">Etapa 2 de 5</span>
+      <div class="row"><button class="btn btn--primary">Verificar</button><button class="btn">Continuar</button></div>
+    </div>
+  </section>
+
+  <div class="phone" lang="pt-BR" role="img" aria-label="Tela inicial no iPhone">
+    <div class="status">21:40</div>
+    <div class="bar"><span class="word">Português</span><a href="#">Ajustes</a></div>
+    <div class="content">
+      <h2 class="display greet">Boa noite, Matías</h2>
+      <section class="sheet">
+        <div class="cells">
+          <div class="lvl">A1</div>
+          <div><small>Unidade 1</small>Chegando</div>
+        </div>
+        <div class="topic"><small>Tema 1</small><h3 class="display">Pronomes, ser e estar</h3></div>
+        <div class="ladder" aria-hidden="true"><span class="done">1</span><span class="now">2</span><span>3</span><span>4</span><span>5</span></div>
+        <div class="stage"><span>Etapa 2 de 5</span><b>Reconhecer</b></div>
+        <button class="btn btn--primary block">Começar</button>
+      </section>
+      <section class="map">
+        <h2 class="display">Mapa A1 <small>3 temas</small></h2>
+        <div class="rows">
+          <div class="r"><i class="b">1</i>Pronomes + ser/estar<small>Etapa 2 de 5</small></div>
+          <div class="r"><i class="g">2</i>Artigos e contrações<small></small></div>
+          <div class="r"><i class="y">3</i>Presente regular<small></small></div>
+          <div class="r soon"><i></i>Outros temas<small>em breve</small></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(".canvas").style.zoom=k}fit();addEventListener("resize",fit)</script>
+</body>
+</html>

@@ -8,7 +8,7 @@ import { renderGlossary } from './glosario.js';
 import { render as renderExercise } from '../exercises/index.js';
 import { checkExercise } from '../core/checks/index.js';
 import { EVALUATED_OK } from '../core/checks/common.js';
-import { gradeWriting, countSentences, isAcceptedWord, buildAcceptedWordsSet } from '../core/checks/writing.js';
+import { gradeWriting, countSentences, isAcceptedWord, buildAcceptedWordsSet, SPELLER_RULE } from '../core/checks/writing.js';
 import { buildGroup, commitNext, activeTagsFor } from '../core/progress.js';
 import { pickGlossary } from '../core/glossary.js';
 import { reviewCandidates, itemInfo, exampleFor, curiosityFor, correctSentence, needsFicha, applyCommit, closeSaved, recordAnswer, carryResolved, segments, stopwatch, skipExercise, applyRewrite } from '../core/runner.js';
@@ -40,7 +40,7 @@ export default async function grupo(el, { store, content, params }) {
   const topic = unit?.topics.find(t => t.topic === topicId);
   const stepDef = topic?.steps?.find(s => s.n === n);
   if (!topic || topic.draft || !stepDef) {
-    el.append(h('p', {}, 'Diese Stufe hat noch keinen Inhalt.'), h('a', { class: 'button secondary', href: '#/' }, 'Start'));
+    el.append(h('p', {}, 'Esta etapa ainda não tem conteúdo.'), h('a', { class: 'button secondary', href: '#/' }, 'Início'));
     return;
   }
   const titleOf = id => C.curriculum.topics.find(t => t.id === id)?.title ?? id;
@@ -90,8 +90,8 @@ export default async function grupo(el, { store, content, params }) {
   const counter = h('span', { class: 'muted' });
   const bar = h('div', { class: 'group-bar' },
     h('a', { class: 'close', href: '#/', 'aria-label': 'Salir al inicio' }, '✕'),
-    h('div', { class: 'group-title' }, h('strong', {}, `Stufe ${n} · ${stepDef.name}`), counter),
-    group.glossary && h('button', { type: 'button', class: 'secondary small', onclick: () => { glossaryBox.hidden = !glossaryBox.hidden; } }, 'Wortschatz'),
+    h('div', { class: 'group-title' }, h('strong', {}, `Etapa ${n} · ${stepDef.name}`), counter),
+    group.glossary && h('button', { type: 'button', class: 'secondary small', onclick: () => { glossaryBox.hidden = !glossaryBox.hidden; } }, 'Vocabulário'),
   );
   const screen = h('div', { class: 'screen' });
   // Región viva: el resultado de cada ejercicio se anuncia sin releer toda la pantalla.
@@ -129,13 +129,13 @@ export default async function grupo(el, { store, content, params }) {
       return;
     }
     if (group.glossary && !group.glossaryShown && group.index === 0) {
-      const box = h('div', { class: 'card' }, h('h2', {}, 'Wortschatz'), h('p', { class: 'muted' }, 'Palabras para usar en este grupo. Después quedan en el botón "Wortschatz".'));
+      const box = h('div', { class: 'card' }, h('h2', {}, 'Vocabulário'), h('p', { class: 'muted' }, 'Palabras para usar en este grupo. Después quedan en el botón "Vocabulário".'));
       renderGlossary(box, group.glossary);
       show(h('p', { class: 'scene' }, rich(stepDef.scene.context)), box, h('button', { type: 'button', onclick: async () => {
         group = { ...group, glossaryShown: true };
         await save();
         next();
-      } }, 'Start'));
+      } }, 'Início'));
       return;
     }
     if (needsFicha(group, topic)) {
@@ -143,7 +143,7 @@ export default async function grupo(el, { store, content, params }) {
         group = { ...group, fichaShown: true };
         await save();
         next();
-      } }, 'Weiter'));
+      } }, 'Continuar'));
       return;
     }
     let ex = group.exercises[group.index];
@@ -209,7 +209,7 @@ export default async function grupo(el, { store, content, params }) {
         if (!first.showFicha) return;
         await new Promise(resolve => {
           const box = h('div', { class: 'card' }, renderFicha(topic, titleOf(topicId)),
-            h('button', { type: 'button', onclick: () => { box.remove(); resolve(); } }, 'Weiter'));
+            h('button', { type: 'button', onclick: () => { box.remove(); resolve(); } }, 'Continuar'));
           body.append(box);
           box.scrollIntoView({ block: 'start' });
         });
@@ -220,7 +220,7 @@ export default async function grupo(el, { store, content, params }) {
       group.index === 0 && n !== 3 && h('p', { class: 'scene' }, h('strong', {}, stepDef.scene.title), ' · ', rich(stepDef.scene.context)),
     ];
     // Una sola vez: con el iPhone en silencio el TTS no suena y no hay forma de detectarlo.
-    const hasAudio = !group.audioOff && (ex.type === 'dictation' || (ex.type === 'card' && ex.mode === 'listen') || (ex.type === 'situation' && ex.listen));
+    const hasAudio = !group.audioOff && (ex.type === 'dictation' || ex.type === 'pares' || (ex.type === 'card' && ex.mode === 'listen') || (ex.type === 'situation' && ex.listen));
     if (hasAudio && tts.supported() && !audioHintSeen) {
       audioHintSeen = true;
       head.push(h('p', { class: 'muted' }, 'Si no suena, sacá el modo silencio del iPhone.'));
@@ -259,8 +259,8 @@ export default async function grupo(el, { store, content, params }) {
 
   function feedback(ex, answer, results) {
     announcer.textContent = WRITING.has(ex.type)
-      ? (results[0].pending ? 'Sin conexión: se corrige después.' : results[0].ok ? 'Fehlerfrei' : 'Mit Fehlern')
-      : (results.every(r => r.ok) ? 'Richtig' : 'Falsch');
+      ? (results[0].pending ? 'Sin conexión: se corrige después.' : results[0].ok ? 'Sem erros' : 'Com erros')
+      : (results.every(r => r.ok) ? 'Certo' : 'Errado');
     const nodes = WRITING.has(ex.type) ? writingFeedback(ex, answer, results[0]) : closedFeedback(ex, answer, results);
     const anyBad = results.some(r => !r.ok && !r.pending);
     const fichaDef = defOf(ex.topic ?? topicId);
@@ -268,7 +268,7 @@ export default async function grupo(el, { store, content, params }) {
     const fichaBtn = anyBad && fichaDef?.ficha && h('button', { type: 'button', class: 'secondary', onclick: () => {
       if (fichaBox.firstChild) fichaBox.replaceChildren();
       else fichaBox.append(h('div', { class: 'card' }, renderFicha(fichaDef, titleOf(ex.topic ?? topicId))));
-    } }, 'Theoriekarte');
+    } }, 'Ficha');
     const report = reportBox(ex, answer);
     // Siguiente se usa una vez y espera a que el ⚑ termine de guardar la cuarentena antes del commit (regla 4).
     const nextBtn = h('button', { type: 'button', onclick: async () => {
@@ -282,7 +282,7 @@ export default async function grupo(el, { store, content, params }) {
         nextBtn.disabled = false;
         announcer.textContent = 'No se pudo guardar. Probá de nuevo.';
       }
-    } }, 'Weiter');
+    } }, 'Continuar');
     show(nodes, fichaBtn, fichaBox, report, nextBtn);
   }
 
@@ -295,7 +295,7 @@ export default async function grupo(el, { store, content, params }) {
       const example = exampleFor(ex, r, { results, answer, curriculum: C.curriculum, rng });
       return h('div', { class: 'item' },
         multi && info.label && h('p', { class: 'item-label', lang: 'pt-BR' }, rich(info.label)),
-        r.ok ? h('span', { class: 'tag-ok' }, 'Richtig') : h('span', { class: 'tag-bad' }, 'Falsch'),
+        r.ok ? h('span', { class: 'tag-ok' }, 'Certo') : h('span', { class: 'tag-bad' }, 'Errado'),
         // Lo que escribió el usuario: la frase con lo que difiere subrayado, o la palabra suelta (la situación ya la muestra).
         r.wrong ? underlined(r.given, r.wrong, r.rule !== EVALUATED_OK)
           : !r.ok && r.given && ex.type !== 'situation' && h('p', { class: 'muted' }, 'Escribiste: ', h('em', { lang: 'pt-BR' }, r.given)),
@@ -306,7 +306,7 @@ export default async function grupo(el, { store, content, params }) {
             ? [
                 h('p', { class: 'rule-primary', lang: 'pt-BR' }, rich(r.rule_pt)),
                 h('details', { class: 'rule-accordion' },
-                  h('summary', { lang: 'pt-BR' }, 'Erklärung auf Spanisch anzeigen'),
+                  h('summary', { lang: 'pt-BR' }, 'Ver a explicação em espanhol'),
                   h('p', { class: 'rule-detailed', lang: 'es' }, rich(r.rule)),
                 ),
               ]
@@ -319,13 +319,13 @@ export default async function grupo(el, { store, content, params }) {
     const curiosity = curiosityFor(ex, results, C.curriculum, rng);
     const sentence = correctSentence(ex, answer, results);
     const listen = sentence && listenButton(sentence);
-    // Tarjeta: imagen y "der Schlüssel · llave" con 🔊 solo tras acertar (antes del acierto revelarían la respuesta).
+    // Tarjeta: imagen y "a chave · llave" con 🔊 solo tras acertar (antes del acierto revelarían la respuesta).
     const reveal = ex.type === 'card' && cardReveal(ex, results);
     return [
       reveal?.picture && wordPicture(ex.word, 'card'),
       reveal?.label && h('p', { class: 'sentence' }, reveal.label, ' ', listenButton(reveal.pt)),
       ex.type === 'situation' && situationReplay(ex, answer, results),
-      allOk && multi ? [h('span', { class: 'tag-ok' }, 'Richtig'), listen, results.filter(r => r.notice).map(r => h('p', { class: 'muted' }, r.notice))] : items,
+      allOk && multi ? [h('span', { class: 'tag-ok' }, 'Certo'), listen, results.filter(r => r.notice).map(r => h('p', { class: 'muted' }, r.notice))] : items,
       !(allOk && multi) && listen,
       curiosity && h('p', { class: 'curiosity' }, rich(curiosity)),
     ];
@@ -362,7 +362,7 @@ export default async function grupo(el, { store, content, params }) {
     const rewrite = h('div');
     const onUpdateResult = updated => {
       verdictBox.replaceChildren(verdict(updated.ok));
-      announcer.textContent = updated.ok ? 'Fehlerfrei' : 'Mit Fehlern';
+      announcer.textContent = updated.ok ? 'Sem erros' : 'Com erros';
     };
     return [
       verdictBox,
@@ -377,7 +377,7 @@ export default async function grupo(el, { store, content, params }) {
 
   function spellerWordActions(ex, text, r, { markedBox, listBox, onUpdateResult }) {
     if (!r.marks?.length) return null;
-    const spellerEs = C.ltMap?.rules?.GERMAN_SPELLER_RULE?.es;
+    const spellerEs = C.ltMap?.rules?.[SPELLER_RULE]?.es;
     const spellingMarks = r.marks.filter(m => m.kind === 'error' && spellerEs && m.text === spellerEs);
     if (!spellingMarks.length) return null;
     const words = [...new Set(spellingMarks.map(m => text.slice(m.offset, m.offset + m.length).trim()).filter(Boolean))];

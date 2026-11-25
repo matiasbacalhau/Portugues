@@ -3,15 +3,14 @@
 import { instancesOf } from './generators/index.js';
 import { countItems } from './checks/index.js';
 import { itemInfo, containsAnswer } from './runner.js';
-import { present } from './morph.js';
+import { present, PERSONS } from './morph.js';
 
 const MAX_WORDS = 8;
-const PERSONS = ['ich', 'du', 'er', 'wir', 'ihr', 'sie'];
 const words = (s) => String(s).toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
 
-// Las formas de una palabra en las frases: lema y plural en sustantivos; presente en verbos (salvo *sein*, cuyas formas
-// supletivas aparecen en casi toda frase y no muestran la raíz del infinitivo).
-export const wordForms = (w) => (w.pos === 'verb' && w.lemma !== 'sein'
+// Las formas de una palabra en las frases: lema y plural en sustantivos; presente en verbos (salvo los que tienen `tag`
+// propio, *ser* y *estar*, cuyas formas aparecen en casi toda frase y no muestran la raíz del infinitivo).
+export const wordForms = (w) => (w.pos === 'verb' && !w.tag
   ? [...new Set([w.lemma, ...PERSONS.flatMap((p) => present(w, p))])]
   : w.plural ? [w.lemma, w.plural] : [w.lemma]);
 
@@ -19,7 +18,7 @@ export const wordForms = (w) => (w.pos === 'verb' && w.lemma !== 'sein'
 function sentencesOf(ex) {
   switch (ex.type) {
     case 'transform': return ex.answers;
-    case 'translate': return ex.from === 'pt' ? [] : ex.answers; // desde el alemán, la respuesta no es alemán
+    case 'translate': return ex.from === 'pt' ? [] : ex.answers; // desde el portugués, la respuesta no es portugués
     case 'detective': return ex.sentences.map((s) => s.pt);
     case 'situation': return ex.bubbles.map((b) => b.text);
     default: return [];

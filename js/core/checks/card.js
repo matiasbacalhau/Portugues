@@ -13,7 +13,7 @@ export function forms(ex, lexicon) {
   if (w.pos !== 'noun') return [w.lemma];
   const articles = new Set([w.article, ...lexicon.filter((x) => x.lemma === w.lemma && x.pos === 'noun').map((x) => x.article)]);
   const out = [...articles].filter(Boolean).map((a) => `${a} ${w.lemma}`);
-  return out.length ? out : [w.lemma]; // sin artículo en el léxico (países como *Deutschland*): el lema solo
+  return out.length ? out : [w.lemma]; // sin artículo en el léxico (países como *Portugal*): el lema solo
 }
 
 export async function check(ex, answer, ctx) {

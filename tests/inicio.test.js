@@ -5,21 +5,21 @@ import {recordAttempt, commitNext} from '../js/core/progress.js';
 import {applyCommit} from '../js/core/runner.js';
 
 test('saludo según la hora, con nombre opcional', () => {
-  assert.equal(greeting(8), 'Guten Morgen');
-  assert.equal(greeting(11), 'Guten Morgen');
-  assert.equal(greeting(12), 'Guten Tag');
-  assert.equal(greeting(18), 'Guten Tag');
-  assert.equal(greeting(19), 'Guten Abend');
-  assert.equal(greeting(3), 'Guten Morgen');
-  assert.equal(greeting(9, 'Mati'), 'Guten Morgen, Mati');
-  assert.equal(greeting(9, '  '), 'Guten Morgen');
+  assert.equal(greeting(8), 'Bom dia');
+  assert.equal(greeting(11), 'Bom dia');
+  assert.equal(greeting(12), 'Boa tarde');
+  assert.equal(greeting(18), 'Boa tarde');
+  assert.equal(greeting(19), 'Boa noite');
+  assert.equal(greeting(3), 'Bom dia');
+  assert.equal(greeting(9, 'Mati'), 'Bom dia, Mati');
+  assert.equal(greeting(9, '  '), 'Bom dia');
 });
 
 const topics = {'a1.akk': {title: 'Akkusativ'}, 'a1.sein': {title: 'sein en presente'}};
 const m = (tags) => ({tags: Object.fromEntries(Object.entries(tags).map(([k, v]) => [k, {m: v, n: 1, last: 0}])), pairs: {}});
 
 test('línea con humor: sin datos, tag flojo, todo bien', () => {
-  assert.match(humorLine({tags: {}, pairs: {}}, topics), /Primer día.*\*sein\*/);
+  assert.match(humorLine({tags: {}, pairs: {}}, topics), /Primer día.*\*ser\*/);
   assert.equal(humorLine(m({'a1.akk': 0.3, 'a1.sein': 0.9}), topics), 'Lo que más te viene costando: *Akkusativ*.');
   // Sin artículo ni verbo que concuerde con el título: sirve para títulos en plural ("Pronombres personales").
   assert.equal(humorLine(m({'a1.akk': 0.3}), {'a1.akk': {title: 'Pronombres personales'}}), 'Lo que más te viene costando: *Pronombres personales*.');

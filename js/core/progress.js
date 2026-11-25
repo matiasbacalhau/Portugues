@@ -32,14 +32,15 @@ function shuffle(arr, rng) {
 }
 
 // Gaps generados de las plantillas cuyo tag_prefix es prefijo de algún tag del tema, sin repetir ni los ya vistos.
-// Las plantillas `card_only` son solo para las tarjetas de nivel 3 (cards.js). Primero, al azar, las de un `noun`
-// de `prefer` (lemas en aprendizaje, spec §5.3); después, al azar, el resto.
+// Las plantillas `card_only` son solo para las tarjetas de nivel 3 (cards.js). Primero, al azar, las de un `noun` o un
+// `verb` de `prefer` (lemas en aprendizaje, spec §5.3); después, al azar, el resto.
 function generated(topic, templates, lexicon, rng, skip, prefer = new Set()) {
   const tpls = (templates ?? []).filter(t => !t.card_only && topic.tags.some(tag => tag.startsWith(t.tag_prefix)));
   const pool = new Map();
   for (const t of tpls) for (const e of instancesOf(t, lexicon ?? [])) if (!skip.has(e.id)) pool.set(e.id, e);
   const all = shuffle([...pool.values()], rng);
-  return [...all.filter(e => prefer.has(e.noun)), ...all.filter(e => !prefer.has(e.noun))];
+  const preferred = e => prefer.has(e.noun) || prefer.has(e.verb);
+  return [...all.filter(preferred), ...all.filter(e => !preferred(e))];
 }
 
 // opts: {now, rng, templates, lexicon, otherExercises, curriculum?, preferLemmas?: Set}

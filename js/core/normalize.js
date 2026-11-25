@@ -1,26 +1,32 @@
 // Comparación de respuestas: tolera teclado y ortografía solo cuando el tag no es ortográfico.
 
-// Limpia comillas tipográficas, espacios y puntuación final, y compone los umlauts (u + ¨ → ü, forma NFC).
+// Limpia comillas tipográficas, espacios y puntuación final, y compone las tildes (e + ´ → é, forma NFC).
 export function clean(s) {
   return s.normalize('NFC').trim().replace(/\s+/g, ' ')
     .replace(/[’‘]/g, "'").replace(/[„“”]/g, '"')
     .replace(/[.!?]+$/, '').trim();
 }
 
-const lower = (s) => s.toLocaleLowerCase('de');
-const UMLAUT = {ä: ['ae', 'a'], ö: ['oe', 'o'], ü: ['ue', 'u']};
+const lower = (s) => s.toLocaleLowerCase('pt-BR');
 
-// Pliega ß y umlauts en minúsculas; `i` elige la variante (0 = ae/oe/ue, 1 = a/o/u).
-function fold(s, i) {
-  return lower(s).replace(/ß/g, 'ss').replace(/[äöü]/g, (c) => UMLAUT[c][i]);
+// Pliega tildes y ç en minúsculas (á à â ã → a, ç → c…).
+const strip = (s) => s.normalize('NFD').replace(/\p{M}/gu, '').normalize('NFC');
+function fold(s) {
+  return strip(lower(s));
 }
 
-// Primer rasgo que la respuesta no respetó: ß, luego ä/ö/ü, luego mayúscula.
+// Palabras que sin la tilde son OTRA palabra: ahí la tilde no se tolera nunca (*é* es "es"; *e* es "y").
+const CONTRASTIVE = new Set(['é', 'está', 'estás', 'nós', 'à', 'às', 'dá', 'dás', 'dê', 'têm', 'vêm', 'pôr', 'pôde', 'avó', 'avô',
+  'sé', 'pé', 'pás', 'nó', 'pôs']);
+const words = (s) => s.match(/[\p{L}\p{M}]+/gu) ?? [];
+const breaksMeaning = (answer, target) => words(lower(target)).some((w) => CONTRASTIVE.has(w) && !words(lower(answer)).includes(w));
+
+// Primer rasgo que la respuesta no respetó: ç, luego la tilde, luego mayúscula.
 function notice(answer, target) {
-  const a = lower(answer), t = target;
-  if (t.includes('ß') && !a.includes('ß')) return 'ojo: ß';
-  const um = [...t].find((c) => UMLAUT[c] && !answer.includes(c));
-  if (um) return `ojo: ${um}`;
+  const a = lower(answer), t = lower(target);
+  if (t.includes('ç') && !a.includes('ç')) return 'ojo: ç';
+  const mark = [...t].find((c) => c !== strip(c) && c !== 'ç' && !a.includes(c));
+  if (mark) return `ojo: ${mark}`;
   return 'ojo: mayúscula';
 }
 
@@ -34,14 +40,14 @@ export function matchAnswer(answer, accepted, {orthographic}) {
   if (targets.some((t) => t === a || (a && firstCaseOk(t) && sameButFirstCase(a, t)))) return {ok: true, notice: null};
   if (orthographic) return {ok: false, notice: null};
   for (const t of targets) {
-    if ([0, 1].some((i) => fold(a, i) === fold(t, i))) return {ok: true, notice: notice(a, t)};
+    if (fold(a) === fold(t) && !breaksMeaning(a, t)) return {ok: true, notice: notice(a, t)};
   }
   return {ok: false, notice: null};
 }
 
 const tokens = (s) => [...s.matchAll(/[\p{L}\p{M}\p{N}]+/gu)].map((m) => ({w: m[0], offset: m.index, length: m[0].length}));
 
-const same = (x, y, orthographic) => (x = x.normalize('NFC'), y = y.normalize('NFC'), lower(x) === lower(y)) || (!orthographic && [0, 1].some((i) => fold(x, i) === fold(y, i)));
+const same = (x, y, orthographic) => (x = x.normalize('NFC'), y = y.normalize('NFC'), lower(x) === lower(y)) || (!orthographic && fold(x) === fold(y) && !breaksMeaning(x, y));
 
 // Alinea una frase con la respuesta aceptada más parecida (por subsecuencia común más larga).
 function align(answer, accepted, {orthographic}) {

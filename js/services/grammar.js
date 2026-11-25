@@ -1,7 +1,7 @@
 // Cliente del corrector de gramática (proxy/, un Cloudflare Worker): marca los errores que LanguageTool deja pasar (casos, artículos, verbos).
 // El texto se envía al Worker y de ahí al proveedor (Claude o Gemini). Con API vacía, la app corrige solo con LanguageTool.
 // La URL se completa recién cuando el bench (tools/grammar_bench.mjs) da 0 falsos positivos.
-const API = 'https://deutschlernen-grammar.matiasbacalhau.workers.dev/';
+const API = 'https://portugues-grammar.matiasbacalhau.workers.dev/';
 
 // Devuelve marcas {offset, length, llm: categoría, src: {provider, model, trace}}. Un error lleva el status HTTP, como en languagetool.js.
 // Sin token contra la API por defecto (o ante 401/403 del proxy), degrada a [] para que la app siga con LanguageTool gratis.

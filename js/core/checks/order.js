@@ -4,7 +4,7 @@
 import { clean } from '../normalize.js';
 import { result, tagInfo } from './common.js';
 
-const foldFirst = (s) => s.charAt(0).toLocaleLowerCase('de') + s.slice(1);
+const foldFirst = (s) => s.charAt(0).toLocaleLowerCase('pt-BR') + s.slice(1);
 const joined = (chunks) => foldFirst(clean(chunks.join(' ')));
 
 export async function check(ex, answer, ctx) {

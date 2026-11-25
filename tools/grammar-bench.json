@@ -1,55 +1,147 @@
 {
-  "_": "Set de prueba del corrector de gramática (tools/grammar_bench.mjs). correct: textos sin errores (cualquier marca es un falso positivo). wrong: un error conocido por texto, con la cita y la categoría esperadas.",
+  "_": "Set de prueba del corrector de gramática (tools/grammar_bench.mjs), portugués de Brasil. correct: textos sin errores (cualquier marca es un falso positivo; incluye formas coloquiales correctas: a gente, tá, num, pra). wrong: un error conocido por texto, con la cita y la categoría esperadas.",
   "correct": [
-    "Ich bin Ana. Ich komme aus Argentinien und wohne jetzt in Berlin.",
-    "Das Zimmer ist klein, aber das Bett ist bequem.",
-    "Ich brauche einen Löffel und eine Tasse.",
-    "Hast du einen Stift? Ich möchte etwas schreiben.",
-    "Wir sind in der Küche. Der Kaffee ist heiß.",
-    "Ich habe einen Bruder und eine Schwester.",
-    "Wo ist die Rezeption? Ich suche den Schlüssel.",
-    "Ich möchte einen Kaffee und ein Brot, bitte.",
-    "Die Lampe ist neu. Die Betten sind alt.",
-    "Er heißt Tom und kommt aus England.",
-    "Brauchst du ein Handtuch? Ich habe zwei Handtücher.",
-    "Heute bin ich müde. Morgen gehe ich in die Stadt.",
-    "Wie heißt du? Woher kommst du?",
-    "Ich sehe den Mann an der Rezeption.",
-    "Wir haben ein Zimmer mit Fenster.",
-    "Das ist der Kaffee von Paul. Er ist kalt.",
-    "Sie ist neu hier und sucht eine Wohnung.",
-    "Ich kaufe einen Apfel und ein Brot.",
-    "Seid ihr im Hostel? Wir sind im Park.",
-    "Ich habe keinen Hund, aber ich habe eine Katze.",
-    "Das Fenster ist offen. Der Schrank ist leer.",
-    "Ich trinke gern Tee. Hast du Milch?",
-    "Ich bin im Zimmer 12. Wo bist du?",
-    "Ich gehe in das Zimmer und suche den Schlüssel.",
-    "Lea wohnt bei der Oma und fährt mit dem Bus."
+    "Eu sou o Leo. Sou da Argentina e agora moro no Rio.",
+    "O quarto é pequeno, mas a cama é confortável.",
+    "Eu preciso de uma colher e de um copo.",
+    "Você tem uma caneta? Eu quero escrever.",
+    "Nós estamos na cozinha. O café está quente.",
+    "Eu tenho um irmão e uma irmã.",
+    "Onde fica a recepção? Eu estou procurando a chave.",
+    "Eu quero um café e um pão de queijo, por favor.",
+    "O leite está na geladeira e o sal está no armário.",
+    "Ele se chama Tom e é do Canadá.",
+    "A viagem foi longa, mas a pousada é ótima.",
+    "Hoje eu estou cansado. Amanhã eu vou à praia.",
+    "Como você se chama? De onde você é?",
+    "A gente mora num apartamento perto da praia.",
+    "Eles falam espanhol e inglês.",
+    "Eu gosto muito do Rio e da comida brasileira.",
+    "A Dona Célia é de Portugal e mora em Lisboa.",
+    "Vocês estão com fome? O jantar tá pronto.",
+    "A mensagem da Ana é para você.",
+    "Nós abrimos a janela de manhã.",
+    "O Tom e a Mia estão no bar.",
+    "Eu tô com sono. Boa noite!",
+    "A cor do quarto é bonita.",
+    "Eu moro em São Paulo, mas sou do Uruguai.",
+    "A gente come pão com manteiga no café da manhã."
   ],
   "wrong": [
-    {"text": "Ich habe ein Hund.", "quote": "ein", "category": "AKK_MASK"},
-    {"text": "Ich brauche ein Löffel.", "quote": "ein", "category": "AKK_MASK"},
-    {"text": "Ich sehe der Mann.", "quote": "der", "category": "AKK_MASK"},
-    {"text": "Ich kaufe ein Apfel und ein Brot.", "quote": "ein", "category": "AKK_MASK"},
-    {"text": "Ich möchte ein Kaffee, bitte.", "quote": "ein", "category": "AKK_MASK"},
-    {"text": "Ich habe einen Tasche.", "quote": "einen", "category": "AKK_FEM"},
-    {"text": "Ich habe einen Bruder und ein Schwester.", "quote": "ein", "category": "AKK_FEM"},
-    {"text": "Ich brauche einen Brot.", "quote": "einen", "category": "AKK_NEUT"},
-    {"text": "Das ist den Kaffee von Paul.", "quote": "den", "category": "AKK_AFTER_SEIN"},
-    {"text": "Die Tisch ist alt.", "quote": "Die", "category": "NOM_MASK"},
-    {"text": "Der Lampe ist neu.", "quote": "Der", "category": "NOM_FEM"},
-    {"text": "Der Bett ist groß.", "quote": "Der", "category": "NOM_NEUT"},
-    {"text": "Das Betten sind neu.", "quote": "Das", "category": "NOM_PLURAL"},
-    {"text": "Ich ist müde.", "quote": "ist", "category": "SEIN_FORM"},
-    {"text": "Du bin im Hostel.", "quote": "bin", "category": "SEIN_FORM"},
-    {"text": "Wir seid in der Küche.", "quote": "seid", "category": "SEIN_FORM"},
-    {"text": "Die Betten ist groß.", "quote": "ist", "category": "SEIN_FORM"},
-    {"text": "Du kommt aus Brasilien.", "quote": "kommt", "category": "VERB_PERSON"},
-    {"text": "Ich brauchst einen Löffel.", "quote": "brauchst", "category": "VERB_PERSON"},
-    {"text": "Heute ich bin müde.", "quote": "bin", "category": "VERB_POSITION"},
-    {"text": "Wo du wohnst?", "quote": "wohnst", "category": "VERB_POSITION"},
-    {"text": "Wir sind in das Zimmer 12.", "quote": "das", "category": "DAT_AFTER_PREP"},
-    {"text": "Ich fahre mit der Bus zur Arbeit.", "quote": "der", "category": "DAT_AFTER_PREP"}
+    {
+      "text": "Eu bebo a leite todo dia.",
+      "quote": "a",
+      "category": "ART_MASC"
+    },
+    {
+      "text": "Me passa a sal, por favor.",
+      "quote": "a",
+      "category": "ART_MASC"
+    },
+    {
+      "text": "O viagem foi muito longa.",
+      "quote": "O",
+      "category": "ART_FEM"
+    },
+    {
+      "text": "Eu recebi o mensagem da Ana.",
+      "quote": "o",
+      "category": "ART_FEM"
+    },
+    {
+      "text": "Que lindo o cor do quarto!",
+      "quote": "o",
+      "category": "ART_FEM"
+    },
+    {
+      "text": "As bicicletas estão no garagem.",
+      "quote": "no",
+      "category": "ART_FEM"
+    },
+    {
+      "text": "O celular está em o quarto.",
+      "quote": "em o",
+      "category": "CONTR_MISSING"
+    },
+    {
+      "text": "A chave de o quarto está aqui.",
+      "quote": "de o",
+      "category": "CONTR_MISSING"
+    },
+    {
+      "text": "Eu sou de Argentina.",
+      "quote": "de",
+      "category": "COUNTRY_ARTICLE"
+    },
+    {
+      "text": "A Dona Célia é do Portugal.",
+      "quote": "do",
+      "category": "COUNTRY_ARTICLE"
+    },
+    {
+      "text": "Eu moro em Brasil desde 2020.",
+      "quote": "em",
+      "category": "COUNTRY_ARTICLE"
+    },
+    {
+      "text": "Hoje eu sou muito cansado.",
+      "quote": "sou",
+      "category": "SER_ESTAR"
+    },
+    {
+      "text": "Eu sou com fome.",
+      "quote": "sou",
+      "category": "SER_ESTAR"
+    },
+    {
+      "text": "Eu é argentino.",
+      "quote": "é",
+      "category": "SER_FORM"
+    },
+    {
+      "text": "Você sou do Chile?",
+      "quote": "sou",
+      "category": "SER_FORM"
+    },
+    {
+      "text": "Nós são amigos.",
+      "quote": "são",
+      "category": "SER_FORM"
+    },
+    {
+      "text": "Eu está na cozinha.",
+      "quote": "está",
+      "category": "ESTAR_FORM"
+    },
+    {
+      "text": "Vocês está com fome?",
+      "quote": "está",
+      "category": "ESTAR_FORM"
+    },
+    {
+      "text": "Você moras no Rio?",
+      "quote": "moras",
+      "category": "VERB_PERSON"
+    },
+    {
+      "text": "A gente moramos perto da praia.",
+      "quote": "moramos",
+      "category": "VERB_PERSON"
+    },
+    {
+      "text": "Eles falan muito rápido.",
+      "quote": "falan",
+      "category": "VERB_PERSON"
+    },
+    {
+      "text": "Eu gosto muito, pero o quarto é pequeno.",
+      "quote": "pero",
+      "category": "SPANISH_WORD"
+    },
+    {
+      "text": "A pousada é muy bonita.",
+      "quote": "muy",
+      "category": "SPANISH_WORD"
+    }
   ]
 }

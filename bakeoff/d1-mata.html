@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>D1 · Mata</title>
+<meta name="description" content="Propuesta D1 del concurso: tema Squeeze de Hallmark en verde, amarillo y azul de Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@800&family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · built: 2026-11-25 · genre: playful · scope: app · shape: app screen · theme: Squeeze, dealt 1/3, seed pwa-privada-para-aprender-c6e6·b54229dc·2026-11-25·r1 · colourway by request: Brazilian green ground, yellow in place of peach, blue in place of the sunk well · signature: the stage set as one huge figure on the green, the way a stall sets its price */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: E, no photographs exist, so the green and the figure carry the screen alone */
+:root {
+  --color-paper: oklch(48% 0.135 152); --color-paper-2: oklch(54% 0.135 152); --color-paper-3: oklch(33% 0.13 262);
+  --color-ink: oklch(99% 0.005 90); --color-ink-2: oklch(95% 0.02 120); --color-muted: oklch(92% 0.035 150); --color-rule: oklch(62% 0.11 152);
+  --color-accent: oklch(90% 0.18 98); --color-accent-2: oklch(84% 0.17 92); --color-accent-ink: oklch(26% 0.08 150); --color-focus: oklch(90% 0.18 98);
+  --color-card: oklch(97% 0.012 85); --color-card-ink: oklch(24% 0.05 160);
+  --color-desk: oklch(30% 0.08 152); --color-frame: oklch(18% 0.03 160);
+  --font-display: "Gabarito", ui-sans-serif, system-ui, sans-serif; --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 24px; --radius-control: 16px; --radius-pill: 999px; --rule-hair: 1px; --rule-bar: 2px;
+  --shadow-card: 0 14px 32px -16px oklch(18% 0.05 160 / 0.55);
+  --tracking-display: -0.025em; --display-weight: 800;
+  --dur-micro: 120ms; --dur-short: 200ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-accent) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 500 16px/1.55 var(--font-body); display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); line-height: 1; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 4rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-muted); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 12px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-frame); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 700; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-weight: 800; font-size: 19px; letter-spacing: var(--tracking-display); }
+.bar a { color: var(--color-ink); font-weight: 700; font-size: 15px; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bar a:hover { text-decoration-color: var(--color-accent); }
+.content { padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 1.5rem; margin: 4px 0 0; color: var(--color-ink-2); }
+
+.hero { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 12px; }
+.figure small { font-variant-numeric: lining-nums tabular-nums; }
+.figure { font-family: var(--font-display); font-weight: 800; font-size: 9.5rem; line-height: .78; letter-spacing: -0.05em; font-variant-numeric: lining-nums tabular-nums; }
+.figure small { font-size: 3rem; letter-spacing: -0.03em; color: var(--color-muted); }
+.hero p { margin: 0; padding-bottom: 8px; font-weight: 700; line-height: 1.25; }
+.hero p span { display: block; color: var(--color-muted); font-weight: 500; font-size: 14px; }
+
+.card { background: var(--color-card); color: var(--color-card-ink); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 20px; }
+.card .meta { font-weight: 700; font-size: 14px; margin: 0 0 4px; opacity: .75; }
+.card h3 { font-size: 1.55rem; margin: 0 0 16px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-bar) solid var(--color-ink); border-radius: var(--radius-control); font: 700 17px/1.25 var(--font-body); color: var(--color-ink); background: transparent; cursor: pointer; transition: translate var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out); }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); border-color: var(--color-accent); }
+.btn--primary:hover { background: var(--color-accent-2); border-color: var(--color-accent-2); }
+.btn:active { translate: 0 1px; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible, .tile:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; transition: none; }
+.card .btn:focus-visible { outline-color: var(--color-card-ink); }
+.block { width: 100%; }
+.pill { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-paper-3); color: var(--color-ink); font-weight: 700; font-size: 14px; }
+
+.map h2 { font-size: 1.35rem; margin: 4px 0 12px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 700 14px var(--font-body); color: var(--color-muted); }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.tile { background: var(--color-paper-2); border-radius: 20px; padding: 12px 16px; min-height: 76px; display: flex; flex-direction: column; justify-content: space-between; font-weight: 700; font-size: 14px; line-height: 1.25; transition: background-color var(--dur-short) var(--ease-out); }
+.tile b { font-family: var(--font-display); font-size: 1.4rem; line-height: 1; }
+.tile.on { background: var(--color-paper-3); box-shadow: inset 0 0 0 3px var(--color-accent); }
+.tile.soon { background: transparent; box-shadow: inset 0 0 0 var(--rule-bar) var(--color-rule); color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn, .tile { transition: none; } }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <section class="side">
+    <h1 class="display">Todo verde, como la mata</h1>
+    <p>El fondo entero es verde. El amarillo queda para los botones y el azul para el tema en el que estás.</p>
+    <div class="spec" lang="pt-BR">
+      <span class="pill">Etapa 2 de 5</span>
+      <div class="row"><button class="btn btn--primary">Verificar</button><button class="btn">Continuar</button></div>
+    </div>
+  </section>
+
+  <div class="phone" lang="pt-BR" role="img" aria-label="Tela inicial no iPhone">
+    <div class="status">21:40</div>
+    <div class="bar"><span class="word">Português</span><a href="#">Ajustes</a></div>
+    <div class="content">
+      <h2 class="display greet">Boa noite, Matías</h2>
+      <div class="hero">
+        <span class="figure" aria-hidden="true">2<small>/5</small></span>
+        <p><span>Etapa 2 de 5</span>Reconhecer</p>
+      </div>
+      <section class="card">
+        <p class="meta">A1, Unidade 1 Chegando, Tema 1</p>
+        <h3 class="display">Pronomes, ser e estar</h3>
+        <button class="btn btn--primary block">Começar</button>
+      </section>
+      <section class="map">
+        <h2 class="display">Mapa A1 <small>3 temas</small></h2>
+        <div class="tiles">
+          <div class="tile on"><b>1</b>Pronomes + ser/estar</div>
+          <div class="tile"><b>2</b>Artigos e contrações</div>
+          <div class="tile"><b>3</b>Presente regular</div>
+          <div class="tile soon"><b>+</b>Outros temas: em breve</div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(".canvas").style.zoom=k}fit();addEventListener("resize",fit)</script>
+</body>
+</html>

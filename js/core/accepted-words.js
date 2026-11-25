@@ -3,20 +3,16 @@
 
 export const DEFAULT_ACCEPTED_WORDS = [
   // Nombres del curso y nombres comunes
-  'Agustin', 'Agustín', 'Andrea', 'Anna', 'Bruno', 'Camila', 'Carlos', 'Daniel', 'David', 'Diego',
-  'Elena', 'Fernando', 'Gabriel', 'Herbert', 'Jan', 'Jana', 'Joaquin', 'Joaquín', 'Jonas', 'Juan',
-  'Julian', 'Julián', 'Krause', 'Laura', 'Lea', 'Leo', 'Lucas', 'Lucia', 'Lucía', 'Manuel',
-  'Maria', 'María', 'Martin', 'Martín', 'Mateo', 'Matias', 'Matías', 'Max', 'Mia', 'Nicolas',
-  'Nicolás', 'Paul', 'Paula', 'Pedro', 'Santiago', 'Sofia', 'Sofía', 'Tom', 'Valentina', 'Yilmaz',
-  // Ciudades y países (LATAM, España y DACH)
-  'Alemania', 'Argentinien', 'Argentina', 'Asunción', 'Asuncion', 'Austria', 'Barcelona', 'Berlin', 'Berlín',
-  'Bogotá', 'Bogota', 'Bolivia', 'Buenos Aires', 'Caracas', 'Chile', 'Colonia', 'Colombia', 'Cordoba',
-  'Córdoba', 'Deutschland', 'Dresden', 'Düsseldorf', 'Dusseldorf', 'Ecuador', 'España', 'Frankfurt',
-  'Hamburg', 'Hamburgo', 'Italien', 'Italia', 'Kanada', 'Canada', 'Köln', 'Koln', 'La Paz', 'Leipzig',
-  'Lima', 'Madrid', 'Medellín', 'Medellin', 'Mendoza', 'México', 'Mexico', 'Montevideo', 'München',
-  'Munich', 'Österreich', 'Oesterreich', 'Paraguay', 'Perú', 'Peru', 'Quito', 'Rosario', 'Santiago',
-  'Schweiz', 'Suiza', 'Sevilla', 'Spanien', 'Stuttgart', 'Uruguay', 'Valencia', 'Valparaíso',
-  'Valparaiso', 'Venezuela', 'Viena', 'Wien', 'Zürich', 'Zurich',
+  'Agustin', 'Agustín', 'Ana', 'Andrea', 'Anna', 'Bruno', 'Camila', 'Carlos', 'Daniel', 'David', 'Diego',
+  'Elena', 'Fernando', 'Gabriel', 'Joaquin', 'Joaquín', 'João', 'Juan', 'Julian', 'Julián', 'Laura', 'Leo', 'Lucas',
+  'Lucia', 'Lucía', 'Manuel', 'Maria', 'María', 'Martin', 'Martín', 'Mateo', 'Matias', 'Matías', 'Mia', 'Nicolas',
+  'Nicolás', 'Paula', 'Pedro', 'Rafa', 'Santiago', 'Sofia', 'Sofía', 'Tiago', 'Tom', 'Valentina',
+  // Ciudades y países (LATAM, España, Brasil y Portugal)
+  'Argentina', 'Asunción', 'Asuncion', 'Barcelona', 'Belo Horizonte', 'Bogotá', 'Bogota', 'Bolivia', 'Brasília',
+  'Buenos Aires', 'Caracas', 'Chile', 'Colombia', 'Cordoba', 'Córdoba', 'Curitiba', 'Ecuador', 'España', 'Florianópolis',
+  'Fortaleza', 'La Paz', 'Lima', 'Lisboa', 'Madrid', 'Manaus', 'Medellín', 'Medellin', 'Mendoza', 'México', 'Mexico',
+  'Montevideo', 'Niterói', 'Paraguay', 'Perú', 'Peru', 'Porto Alegre', 'Quito', 'Recife', 'Rio', 'Rosario', 'Salvador',
+  'Santiago', 'São Paulo', 'Sevilla', 'Uruguay', 'Valencia', 'Valparaíso', 'Valparaiso', 'Venezuela',
 ];
 
 export function normalizeAcceptedWord(w) {
@@ -24,7 +20,6 @@ export function normalizeAcceptedWord(w) {
     .normalize('NFD')
     .replace(/\p{M}/gu, '')
     .toLowerCase()
-    .replace(/ß/g, 'ss')
     .replace(/[^\p{L}\p{N}]/gu, '');
 }
 

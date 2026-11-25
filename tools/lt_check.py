@@ -1,6 +1,6 @@
-"""Chequeo de alemán contra un LanguageTool propio (Docker), nunca contra la API pública.
+"""Chequeo del portugués de Brasil contra un LanguageTool propio (Docker), nunca contra la API pública.
 
-Prueba de humo del servidor y después todo el alemán del contenido (tools/german_texts.mjs).
+Prueba de humo del servidor y después todo el portugués del contenido (tools/portuguese_texts.mjs).
 """
 import json
 import os
@@ -15,13 +15,13 @@ DOCKER = 'docker run -d --rm -p 8010:8010 erikvl87/languagetool'
 
 
 # Reglas de estilo entre oraciones consecutivas: al agrupar textos sueltos en un request
-# dispararían falsos positivos (p. ej. tres frases seguidas que empiezan con "Ich", o una respuesta con
-# "gern" y su variante con "gerne" en el mismo lote, que DE_WORD_COHERENCY toma como un mismo texto).
-BATCH_DISABLED = 'GERMAN_WORD_REPEAT_BEGINNING_RULE,DE_WORD_COHERENCY'
+# dispararían falsos positivos (p. ej. tres frases seguidas que empiezan con "Eu", o una respuesta con
+# "num" y su variante "em um" en el mismo lote, que la coherencia toma como un mismo texto).
+BATCH_DISABLED = 'PORTUGUESE_WORD_REPEAT_BEGINNING_RULE,PT_WORD_COHERENCY,PORTUGUESE_WORD_REPEAT_RULE'
 
 
 def check(text, disabled=None):
-    params = {'text': text, 'language': 'de-DE'}
+    params = {'text': text, 'language': 'pt-BR'}
     if disabled:
         params['disabledRules'] = disabled
     data = urllib.parse.urlencode(params).encode()
@@ -64,16 +64,16 @@ def locate(batch, matches):
 
 def content_texts():
     root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
-    out = subprocess.run(['node', os.path.join(root, 'tools', 'german_texts.mjs')],
+    out = subprocess.run(['node', os.path.join(root, 'tools', 'portuguese_texts.mjs')],
                          check=True, capture_output=True, text=True, cwd=root).stdout
     return json.loads(out)
 
 
 def main():
     wait_ready()
-    if not check('Ich habe ein Fehler gemacht.'):
+    if not check('Eu moro numa casa muito bonitta.'):
         sys.exit('LanguageTool no detectó un error obvio: revisar el servidor.')
-    matches = check('Ich habe einen Fehler gemacht.')
+    matches = check('Eu moro numa casa muito bonita.')
     if matches:
         sys.exit(f'LanguageTool marcó errores en una frase correcta: {matches}')
     texts = [t for t in content_texts() if 'ignore' not in t]
@@ -85,7 +85,7 @@ def main():
             failures += 1
             print(f"FAIL {t['where']} [{m['rule']['id']}] {m['message']} -> {t['text']}")
     if failures:
-        sys.exit(f'{failures} problema(s) de alemán en el contenido.')
+        sys.exit(f'{failures} problema(s) de portugués en el contenido.')
     print(f'LanguageTool OK ({len(texts)} textos)')
 
 

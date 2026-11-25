@@ -49,11 +49,11 @@ test('DEFAULT_ACCEPTED_WORDS incluye nombres y lugares comunes (Matias, Madrid, 
   assert.equal(isAcceptedWord('Anna', set), true);
 });
 
-test('relevant: filtra GERMAN_SPELLER_RULE en palabras aceptadas sin importar mayúsculas o tildes', () => {
+test('relevant: filtra MORFOLOGIK_RULE_PT_BR en palabras aceptadas sin importar mayúsculas o tildes', () => {
   const text = 'Ich bin Matías und wohne in madrid.';
   const matches = [
-    { offset: 8, length: 6, rule: { id: 'GERMAN_SPELLER_RULE', category: { id: 'TYPOS' } } },
-    { offset: 28, length: 6, rule: { id: 'GERMAN_SPELLER_RULE', category: { id: 'TYPOS' } } },
+    { offset: 8, length: 6, rule: { id: 'MORFOLOGIK_RULE_PT_BR', category: { id: 'TYPOS' } } },
+    { offset: 28, length: 6, rule: { id: 'MORFOLOGIK_RULE_PT_BR', category: { id: 'TYPOS' } } },
   ];
   const ltMap = { accepted_words: ['Matias', 'Madrid'] };
   const filtered = relevant(matches, ltMap, { text });
@@ -73,7 +73,7 @@ test('relevant: no filtra errores que no sean de ortografía', () => {
 test('relevant: no filtra palabras desconocidas que no están en la lista', () => {
   const text = 'Ich bin Xyzzq.';
   const matches = [
-    { offset: 8, length: 5, rule: { id: 'GERMAN_SPELLER_RULE', category: { id: 'TYPOS' } } },
+    { offset: 8, length: 5, rule: { id: 'MORFOLOGIK_RULE_PT_BR', category: { id: 'TYPOS' } } },
   ];
   const ltMap = { accepted_words: ['Matias'] };
   const filtered = relevant(matches, ltMap, { text });
@@ -83,9 +83,9 @@ test('relevant: no filtra palabras desconocidas que no están en la lista', () =
 test('gradeWriting con acceptedWords: ignora errores ortográficos en palabras aceptadas', () => {
   const text = 'Ich bin matías.';
   const matches = [
-    { offset: 8, length: 6, rule: { id: 'GERMAN_SPELLER_RULE', category: { id: 'TYPOS' } } },
+    { offset: 8, length: 6, rule: { id: 'MORFOLOGIK_RULE_PT_BR', category: { id: 'TYPOS' } } },
   ];
-  const ltMap = { rules: { GERMAN_SPELLER_RULE: { es: 'Ortografía' } }, categories: {}, notice_categories: [] };
+  const ltMap = { rules: { MORFOLOGIK_RULE_PT_BR: { es: 'Ortografía' } }, categories: {}, notice_categories: [] };
   const res = gradeWriting(matches, ltMap, { text, acceptedWords: ['Matias'] });
   assert.equal(res.ok, true);
   assert.deepEqual(res.marks, []);
@@ -93,7 +93,7 @@ test('gradeWriting con acceptedWords: ignora errores ortográficos en palabras a
 
 test('gradeWriting con mt.context: funciona con la lista de ltMap sin importar mayúsculas ni tildes', () => {
   const ltMap = {
-    rules: { GERMAN_SPELLER_RULE: { es: 'Ortografía' } },
+    rules: { MORFOLOGIK_RULE_PT_BR: { es: 'Ortografía' } },
     categories: {},
     notice_categories: [],
     accepted_words: ['Matías', 'Córdoba'],
@@ -101,7 +101,7 @@ test('gradeWriting con mt.context: funciona con la lista de ltMap sin importar m
   // Caso 1: en la lista con tilde 'Matías', el usuario escribió 'matias' (sin tilde)
   const mt1 = {
     offset: 8, length: 6,
-    rule: { id: 'GERMAN_SPELLER_RULE', category: { id: 'TYPOS' } },
+    rule: { id: 'MORFOLOGIK_RULE_PT_BR', category: { id: 'TYPOS' } },
     context: { text: 'Ich bin matias.', offset: 8, length: 6 },
   };
   const res1 = gradeWriting([mt1], ltMap);
@@ -111,7 +111,7 @@ test('gradeWriting con mt.context: funciona con la lista de ltMap sin importar m
   // Caso 2: en la lista 'Córdoba', el usuario escribió 'cordoba' (sin tilde)
   const mt2 = {
     offset: 13, length: 7,
-    rule: { id: 'GERMAN_SPELLER_RULE', category: { id: 'TYPOS' } },
+    rule: { id: 'MORFOLOGIK_RULE_PT_BR', category: { id: 'TYPOS' } },
     context: { text: 'Ich wohne in cordoba.', offset: 13, length: 7 },
   };
   const res2 = gradeWriting([mt2], ltMap);
@@ -122,10 +122,10 @@ test('gradeWriting con mt.context: funciona con la lista de ltMap sin importar m
 test('check integra acceptedWords y filtra las reglas de ortografía en palabras aceptadas', async () => {
   const lt = {
     check: async () => [
-      { offset: 8, length: 6, rule: { id: 'GERMAN_SPELLER_RULE', category: { id: 'TYPOS' } } },
+      { offset: 8, length: 6, rule: { id: 'MORFOLOGIK_RULE_PT_BR', category: { id: 'TYPOS' } } },
     ],
   };
-  const ltMap = { rules: { GERMAN_SPELLER_RULE: { es: 'Ortografía' } }, categories: {}, notice_categories: [] };
+  const ltMap = { rules: { MORFOLOGIK_RULE_PT_BR: { es: 'Ortografía' } }, categories: {}, notice_categories: [] };
   const [res] = await check(
     { id: 'w1', type: 'writing-free' },
     { text: 'Ich bin matías.' },

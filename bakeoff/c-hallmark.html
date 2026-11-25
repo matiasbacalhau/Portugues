@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>C · Hallmark</title>
+<meta name="description" content="Propuesta C del concurso de identidad visual: tema Sticker de Hallmark.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Sofia+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · built: 2026-11-24 · genre: playful · scope: app · shape: app screen · theme: Sticker (sticker: sheet), dealt 1/3, seed pwa-privada-para-aprender-6220·b54229dc·2026-11-24·r0 · signature: the A1 map as a sticker album, each tema a figurinha stuck down, the ones to come as empty dashed slots */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, no photographs exist, so the fills and the album carry the screen */
+:root {
+  --color-paper: oklch(95.7% 0.013 82); --color-paper-2: oklch(92.8% 0.021 79); --color-paper-3: oklch(99.4% 0.007 89);
+  --color-ink: oklch(21% 0.011 81); --color-ink-2: oklch(30% 0.013 78); --color-muted: oklch(50% 0.017 64);
+  --color-rule: oklch(82% 0.02 80); --color-white: oklch(99.5% 0.003 82);
+  --color-accent: oklch(56% 0.225 2); --color-accent-deep: oklch(49% 0.205 2); --color-accent-2: oklch(87.6% 0.179 119); --color-slot: oklch(95% 0.021 355);
+  --color-accent-ink: oklch(99.5% 0.003 82); --color-focus: oklch(56% 0.225 2);
+  --color-desk: oklch(90% 0.02 80);
+  --font-display: "Bowlby One SC", "Arial Black", sans-serif; --font-body: "Sofia Sans", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 18px; --radius-pill: 999px; --rule-bar: 2px;
+  --shadow-card: 5px 6px 0 var(--color-ink); --shadow-press: 1px 1px 0 var(--color-ink);
+  --tracking-display: 0.005em;
+  --dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent-2); color: var(--color-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { text-wrap: balance; font-family: var(--font-display); font-weight: 400; letter-spacing: var(--tracking-display); line-height: 1.02; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 3.25rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-ink-2); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 16px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 700; font-size: 14px; }
+.bar { height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-size: 18px; }
+.bar a { color: var(--color-ink); font-weight: 700; font-size: 15px; }
+.content { padding: 4px 20px 16px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 2.1rem; margin: 8px 0 4px; }
+
+.diecut { border: 6px solid var(--color-white); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.next { background: var(--color-paper-3); padding: 16px 16px 20px; rotate: -1.2deg; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.tag { display: inline-flex; align-items: center; height: 26px; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-accent-2); color: var(--color-ink); font-weight: 700; font-size: 13px; }
+.tag.ink { background: var(--color-ink); color: var(--color-paper); }
+.topic { font-weight: 600; font-size: 20px; line-height: 1.2; margin: 0 0 12px; }
+.stage { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
+.stage .n { font-family: var(--font-display); font-size: 3.4rem; line-height: .9; color: var(--color-accent); }
+.stage .w { font-weight: 600; line-height: 1.25; }
+.stage .w span { display: block; color: var(--color-muted); font-weight: 700; font-size: 14px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; border-radius: var(--radius-pill); font: 700 17px var(--font-body); color: var(--color-ink); background: transparent; border: 0; box-shadow: inset 0 0 0 2px var(--color-ink); cursor: pointer; transition: translate var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out); }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); box-shadow: 0 0 0 5px var(--color-white), var(--shadow-card); }
+.btn--primary:hover { background: var(--color-accent-deep); }
+.btn--primary:active { translate: 4px 5px; box-shadow: 0 0 0 5px var(--color-white), var(--shadow-press); }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; transition: none; }
+.btn.block { width: calc(100% - 8px); }
+
+.album h2 { font-size: 1.35rem; margin: 8px 0 12px; display: flex; justify-content: space-between; align-items: baseline; }
+.album h2 small { font: 700 14px var(--font-body); color: var(--color-muted); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.fig { aspect-ratio: 3 / 4; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; font-weight: 700; font-size: 13px; line-height: 1.2; }
+.fig b { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; line-height: 1; }
+.fig.pink { background: var(--color-accent); color: var(--color-accent-ink); rotate: 2deg; }
+.fig.white { background: var(--color-paper-3); rotate: -2deg; }
+.fig.white.tilt { rotate: 1.5deg; }
+.fig .sub { display: block; margin-top: 4px; font-weight: 600; opacity: .9; }
+.slot { grid-column: 1 / -1; min-height: 52px; border: var(--rule-bar) dashed var(--color-rule); border-radius: var(--radius-card); display: flex; align-items: center; padding: 0 16px; color: var(--color-muted); font-weight: 700; font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <section class="side">
+    <h1 class="display">Un álbum de figurinhas</h1>
+    <p>Papel cálido, tinta negra, rosa y lima a pleno. Cada tema que terminás queda pegado en el álbum como una figurita.</p>
+    <div class="spec" lang="pt-BR">
+      <span class="tag ink">Etapa 2 de 5</span>
+      <div class="row"><button class="btn btn--primary">Verificar</button><button class="btn">Continuar</button></div>
+    </div>
+  </section>
+
+  <div class="phone" lang="pt-BR" role="img" aria-label="Tela inicial no iPhone">
+    <div class="status"><span>21:40</span><span>●●●</span></div>
+    <div class="bar"><span class="word">Português</span><a href="#">Ajustes</a></div>
+    <div class="content">
+      <h2 class="display greet">Boa noite, Matías</h2>
+      <section class="next diecut">
+        <div class="tags"><span class="tag ink">A1</span><span class="tag">Unidade 1 Chegando</span></div>
+        <p class="topic">Tema 1: Pronomes, ser e estar</p>
+        <div class="stage"><span class="n" aria-hidden="true">2</span><span class="w"><span>Etapa 2 de 5</span>Reconhecer</span></div>
+        <button class="btn btn--primary block">Começar</button>
+      </section>
+      <section class="album">
+        <h2 class="display">Mapa A1 <small>3 temas</small></h2>
+        <div class="grid">
+          <div class="fig pink diecut"><b>1</b><span>Pronomes + ser/estar<span class="sub">Etapa 2 de 5</span></span></div>
+          <div class="fig white diecut"><b>2</b>Artigos e contrações</div>
+          <div class="fig white diecut tilt"><b>3</b>Presente regular</div>
+          <div class="slot">Outros temas: em breve</div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(".canvas").style.zoom=k}fit();addEventListener("resize",fit)</script>
+</body>
+</html>

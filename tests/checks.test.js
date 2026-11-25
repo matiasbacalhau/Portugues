@@ -33,9 +33,9 @@ test('modo avión: lista solo con service worker activo y la app en caché', () 
   assert.deepEqual(offlineCheck(false, true), { ok: false, text: 'todavía no (recargá una vez)' });
 });
 
-test('voces: cuenta las alemanas o dice por qué no hay', () => {
+test('voces: cuenta las de portugués o dice por qué no hay', () => {
   assert.deepEqual(voicesCheck(true, [{}, {}]), { ok: true, text: '2 voz/voces' });
-  assert.deepEqual(voicesCheck(true, []), { ok: false, text: 'no hay voces alemanas' });
+  assert.deepEqual(voicesCheck(true, []), { ok: false, text: 'no hay voces de portugués de Brasil' });
   assert.deepEqual(voicesCheck(false, []), { ok: false, text: 'este navegador no tiene síntesis de voz' });
 });
 
@@ -52,14 +52,14 @@ test('escuchar: pide la frase de prueba con la voz elegida', async () => {
   let call;
   const anna = { name: 'Anna' };
   await speakCheck(async (text, opts) => { call = { text, opts }; }, anna);
-  assert.deepEqual(call, { text: 'Guten Tag! Ich lerne Deutsch.', opts: { rate: 0.9, voice: anna } });
+  assert.deepEqual(call, { text: 'Bom dia! Eu estou aprendendo português.', opts: { rate: 0.9, voice: anna } });
 });
 
 test('LanguageTool: tiene que detectar el error de la frase de prueba', async () => {
   let sent;
   const found = async text => { sent = text; return [{}]; };
   assert.deepEqual(await ltCheck(found), { ok: true, text: 'responde (1 error detectado)' });
-  assert.equal(sent, 'Ich habe ein Fehler gemacht.');
+  assert.equal(sent, 'Eu moro numa casa muito bonitta.');
   assert.deepEqual(await ltCheck(async () => []), { ok: false, text: 'responde, pero no detectó el error' });
   const offline = async () => { throw new Error('Failed to fetch'); };
   assert.deepEqual(await ltCheck(offline), { ok: false, text: 'bloqueado o sin red: Failed to fetch' });

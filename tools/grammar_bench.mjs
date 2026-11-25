@@ -1,7 +1,7 @@
 // Corre el set de prueba (tools/grammar-bench.json) contra el Worker del corrector y reporta falsos positivos, falsos negativos y latencia.
 // Uso: node tools/grammar_bench.mjs <url del Worker> [claude|gemini]
 // Criterio para activar un proveedor (completar API en js/services/grammar.js): 0 falsos positivos en los textos correctos.
-// Gasta llamadas reales al proveedor (~43 por corrida). Va de a una, con pausa, para no chocar con el rate limit del Worker.
+// Gasta llamadas reales al proveedor (~48 por corrida). Va de a una, con pausa, para no chocar con el rate limit del Worker.
 import { readFileSync } from 'node:fs';
 
 const [url, provider] = process.argv.slice(2);

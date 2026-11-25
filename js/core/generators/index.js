@@ -1,5 +1,5 @@
 // Instancias de una plantilla según su generador (`kind`); sin `kind`, la plantilla es de artículos.
-import { instances as articuloCaso } from './articulo-caso.js';
-import { instances as seinPraesens } from './sein-praesens.js';
+import { instances as artigo } from './artigo.js';
+import { instances as presente } from './presente.js';
 
-export const instancesOf = (template, lexicon) => (template.kind === 'sein' ? seinPraesens(template) : articuloCaso(template, lexicon));
+export const instancesOf = (template, lexicon) => (template.kind === 'presente' ? presente(template, lexicon) : artigo(template, lexicon));

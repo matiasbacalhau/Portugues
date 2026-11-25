@@ -11,8 +11,9 @@ import * as detective from './detective.js';
 import * as writing from './writing.js';
 import * as card from './card.js';
 import * as dictation from './dictation.js';
+import * as pares from './pares.js';
 
-const PLUGINS = { choice, gap, situation, transform, translate, order, 'spot-error': spotError, reading, detective, 'writing-guided': writing, 'writing-free': writing, card, dictation };
+const PLUGINS = { choice, gap, situation, transform, translate, order, 'spot-error': spotError, reading, detective, 'writing-guided': writing, 'writing-free': writing, card, dictation, pares };
 
 export function render(exercise, el, opts) {
   const p = PLUGINS[exercise.type];

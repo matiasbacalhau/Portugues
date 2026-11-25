@@ -10,7 +10,7 @@ import { makeGemini } from '../proxy/providers/gemini.js';
 import { handle } from '../proxy/worker.js';
 
 const catalog = {
-  AKK_MASK: {tag: 'a1.akk.mask', es: 'Regla del acusativo masculino.', hint: 'Accusative masculine article or ending is wrong.'},
+  ART_MASC: {tag: 'a1.genero.masc', es: 'Regla del artículo masculino.', hint: 'Masculine noun with a feminine article.'},
   VERB_PERSON: {es: 'Regla de la persona del verbo.', hint: 'Verb does not agree with the subject.'},
 };
 
@@ -18,8 +18,8 @@ const catalog = {
 
 test('validate ubica la cita según la aparición pedida', () => {
   const text = 'Ich habe ein Hund und ein Hund.';
-  const {marks, dropped} = validate(text, [{quote: 'ein', occurrence: 2, category: 'AKK_MASK'}], catalog);
-  assert.deepEqual(marks, [{offset: 22, length: 3, category: 'AKK_MASK'}]);
+  const {marks, dropped} = validate(text, [{quote: 'ein', occurrence: 2, category: 'ART_MASC'}], catalog);
+  assert.deepEqual(marks, [{offset: 22, length: 3, category: 'ART_MASC'}]);
   assert.deepEqual(dropped, {});
 });
 
@@ -27,10 +27,10 @@ test('validate descarta categorías fuera del catálogo, citas ausentes y citas 
   const text = 'Ich habe ein Hund.';
   const {marks, dropped} = validate(text, [
     {quote: 'ein', occurrence: 1, category: 'SPELLING'},
-    {quote: 'eine', occurrence: 1, category: 'AKK_MASK'},
-    {quote: 'ein', occurrence: 2, category: 'AKK_MASK'},
-    {quote: 'in', occurrence: 1, category: 'AKK_MASK'},
-    {quote: '', occurrence: 1, category: 'AKK_MASK'},
+    {quote: 'eine', occurrence: 1, category: 'ART_MASC'},
+    {quote: 'ein', occurrence: 2, category: 'ART_MASC'},
+    {quote: 'in', occurrence: 1, category: 'ART_MASC'},
+    {quote: '', occurrence: 1, category: 'ART_MASC'},
   ], catalog);
   assert.deepEqual(marks, []);
   assert.deepEqual(dropped, {category_unknown: 1, quote_not_found: 3, offset_off_word: 1});
@@ -39,17 +39,17 @@ test('validate descarta categorías fuera del catálogo, citas ausentes y citas 
 test('validate acepta citas de varias palabras y descarta la misma marca repetida', () => {
   const text = 'Ich sehe der Mann.';
   const {marks, dropped} = validate(text, [
-    {quote: 'der Mann', occurrence: 1, category: 'AKK_MASK'},
-    {quote: 'der Mann', occurrence: 1, category: 'AKK_MASK'},
+    {quote: 'der Mann', occurrence: 1, category: 'ART_MASC'},
+    {quote: 'der Mann', occurrence: 1, category: 'ART_MASC'},
   ], catalog);
-  assert.deepEqual(marks, [{offset: 9, length: 8, category: 'AKK_MASK'}]);
+  assert.deepEqual(marks, [{offset: 9, length: 8, category: 'ART_MASC'}]);
   assert.deepEqual(dropped, {duplicate: 1});
 });
 
 test('validate cuenta las apariciones como palabra: "ein" dentro de "einen" no cuenta', () => {
   const text = 'Ich habe einen Bruder und ein Schwester.';
-  const {marks} = validate(text, [{quote: 'ein', occurrence: 1, category: 'AKK_MASK'}], catalog);
-  assert.deepEqual(marks, [{offset: 26, length: 3, category: 'AKK_MASK'}]);
+  const {marks} = validate(text, [{quote: 'ein', occurrence: 1, category: 'ART_MASC'}], catalog);
+  assert.deepEqual(marks, [{offset: 26, length: 3, category: 'ART_MASC'}]);
 });
 
 test('validate trata ä, ö, ü y ß como letras', () => {
@@ -60,55 +60,51 @@ test('validate trata ä, ö, ü y ß como letras', () => {
 // genders: el género sale del léxico cuando el sustantivo está en él
 
 const nouns = nounIndex([
-  {lemma: 'Löffel', pos: 'noun', article: 'der', plural: 'Löffel'},
-  {lemma: 'Tasche', pos: 'noun', article: 'die', plural: 'Taschen'},
-  {lemma: 'Bett', pos: 'noun', article: 'das', plural: 'Betten'},
-  {lemma: 'See', pos: 'noun', article: 'der', plural: 'Seen'},
-  {lemma: 'See', pos: 'noun', article: 'die', plural: 'Seen'},
-  {lemma: 'Leute', pos: 'noun', article: null, plural: null},
-  {lemma: 'gehen', pos: 'verb'},
+  {lemma: 'leite', pos: 'noun', article: 'o', plural: null},
+  {lemma: 'viagem', pos: 'noun', article: 'a', plural: 'viagens'},
+  {lemma: 'personagem', pos: 'noun', article: 'o', plural: 'personagens'},
+  {lemma: 'personagem', pos: 'noun', article: 'a', plural: 'personagens'},
+  {lemma: 'Portugal', pos: 'noun', article: null, plural: null},
+  {lemma: 'morar', pos: 'verb'},
 ]);
-const err = (category, noun) => ({quote: 'ein', occurrence: 1, category, noun});
+const err = (category, noun) => ({quote: 'a', occurrence: 1, category, noun});
 
-test('recategorize: el género del léxico manda sobre el del modelo, en Akkusativ y en Nominativ', () => {
-  assert.equal(recategorize(err('AKK_NEUT', 'Löffel')).category, 'AKK_NEUT', 'sin índice no cambia nada');
-  assert.equal(recategorize(err('AKK_NEUT', 'Löffel'), nouns).category, 'AKK_MASK');
-  assert.equal(recategorize(err('AKK_MASK', 'Tasche'), nouns).category, 'AKK_FEM');
-  assert.equal(recategorize(err('NOM_FEM', 'Bett'), nouns).category, 'NOM_NEUT');
-  assert.equal(recategorize(err('AKK_MASK', 'Betten'), nouns).category, 'AKK_PLURAL');
-  assert.equal(recategorize(err('NOM_MASK', 'Taschen'), nouns).category, 'NOM_PLURAL');
+test('recategorize: el género del léxico manda sobre el del modelo (que a veces sigue al español)', () => {
+  assert.equal(recategorize(err('ART_FEM', 'leite')).category, 'ART_FEM', 'sin índice no cambia nada');
+  assert.equal(recategorize(err('ART_FEM', 'leite'), nouns).category, 'ART_MASC');
+  assert.equal(recategorize(err('ART_MASC', 'viagem'), nouns).category, 'ART_FEM');
+  assert.equal(recategorize(err('ART_FEM', 'Leite'), nouns).category, 'ART_MASC');
 });
 
-test('recategorize: plural igual al singular (Löffel) respeta lo que eligió el modelo entre singular y plural', () => {
-  assert.equal(recategorize(err('AKK_PLURAL', 'Löffel'), nouns).category, 'AKK_PLURAL');
-  assert.equal(recategorize(err('AKK_FEM', 'Löffel'), nouns).category, 'AKK_MASK');
+test('recategorize: el plural tiene el género del lema', () => {
+  assert.equal(recategorize(err('ART_MASC', 'viagens'), nouns).category, 'ART_FEM');
 });
 
 test('recategorize: no toca sustantivos desconocidos, de dos géneros o sin artículo, ni categorías de verbo', () => {
-  for (const e of [err('AKK_NEUT', 'Hund'), err('AKK_MASK', 'See'), err('NOM_FEM', 'Leute'), err('AKK_MASK', ''), err('SEIN_FORM', 'Bett'), err('AKK_AFTER_SEIN', 'Löffel')]) {
+  for (const e of [err('ART_FEM', 'cachorro'), err('ART_MASC', 'personagem'), err('ART_FEM', 'Portugal'), err('ART_MASC', ''), err('SER_FORM', 'leite'), err('CONTR_MISSING', 'leite')]) {
     assert.deepEqual(recategorize(e, nouns), e);
   }
 });
 
 test('recategorize: toma la última palabra si el modelo manda artículo y sustantivo', () => {
-  assert.equal(recategorize(err('AKK_NEUT', 'ein Löffel'), nouns).category, 'AKK_MASK');
+  assert.equal(recategorize(err('ART_FEM', 'a leite'), nouns).category, 'ART_MASC');
 });
 
 // prompt
 
 test('buildPrompt: el esquema solo admite las categorías del catálogo y el prompt no lleva los textos en español', () => {
-  const p = buildPrompt('Ich habe ein Hund.', catalog);
-  assert.deepEqual(p.schema.properties.errors.items.properties.category.enum, ['AKK_MASK', 'VERB_PERSON']);
+  const p = buildPrompt('Eu bebo um água.', catalog);
+  assert.deepEqual(p.schema.properties.errors.items.properties.category.enum, ['ART_MASC', 'VERB_PERSON']);
   assert.deepEqual(p.schema.properties.errors.items.required, ['quote', 'occurrence', 'noun', 'category']);
-  assert.match(p.system, /AKK_MASK: Accusative masculine/);
+  assert.match(p.system, /ART_MASC: Masculine noun/);
   assert.ok(!p.system.includes('Regla del'));
-  assert.match(p.user, /Ich habe ein Hund\./);
+  assert.match(p.user, /Eu bebo um água\./);
 });
 
 // adaptadores
 
-const prompt = buildPrompt('Ich habe ein Hund.', catalog);
-const errors = [{quote: 'ein', occurrence: 1, category: 'AKK_MASK'}];
+const prompt = buildPrompt('Eu bebo um água.', catalog);
+const errors = [{quote: 'um', occurrence: 1, category: 'ART_MASC'}];
 
 test('claude: Haiku 5.5 por defecto, salida JSON por esquema y sin temperature', async () => {
   let params, opts;
@@ -151,7 +147,7 @@ test('gemini: generateContent con esquema y temperatura 0', async () => {
   const body = JSON.parse(init.body);
   assert.equal(body.generationConfig.temperature, 0);
   assert.equal(body.generationConfig.responseMimeType, 'application/json');
-  assert.deepEqual(body.generationConfig.responseSchema.properties.errors.items.properties.category.enum, ['AKK_MASK', 'VERB_PERSON']);
+  assert.deepEqual(body.generationConfig.responseSchema.properties.errors.items.properties.category.enum, ['ART_MASC', 'VERB_PERSON']);
   assert.deepEqual(out, {model: 'gemini-2.5-flash-lite', errors});
 });
 
@@ -164,13 +160,13 @@ test('gemini: un status de error se propaga con el status', async () => {
 
 const ORIGIN = 'https://matiasbacalhau.github.io';
 const env = {ALLOWED_ORIGINS: ORIGIN, PROVIDER: 'fake', FAKE_KEY: 'x', CF_VERSION_METADATA: {id: 'v1'}};
-const TEXT = 'Ich habe ein Hund.';
+const TEXT = 'Eu bebo um água.';
 
 function setup({correct = async () => ({model: 'fake-1', errors})} = {}) {
   const lines = [];
   const deps = {
-    catalog: {...catalog, AKK_NEUT: {es: 'n', hint: 'h'}},
-    nouns: nounIndex([{lemma: 'Hund', pos: 'noun', article: 'der', plural: 'Hunde'}]),
+    catalog: {...catalog, ART_FEM: {es: 'f', hint: 'h'}},
+    nouns: nounIndex([{lemma: 'água', pos: 'noun', article: 'a', plural: 'águas'}]),
     providers: {fake: {key: 'FAKE_KEY', correct}, other: {key: 'OTHER_KEY', correct}},
     log: (level, msg, fields) => lines.push({level, msg, ...fields}),
     hits: new Map(),
@@ -187,7 +183,7 @@ test('handler: corrige y devuelve proveedor, modelo, versión, traceId y marcas,
   const res = await call({text: TEXT});
   assert.equal(res.status, 200);
   assert.equal(res.headers.get('access-control-allow-origin'), ORIGIN);
-  assert.deepEqual(await res.json(), {provider: 'fake', model: 'fake-1', version: 'v1', traceId: 'ray-1', marks: [{offset: 9, length: 3, category: 'AKK_MASK'}]});
+  assert.deepEqual(await res.json(), {provider: 'fake', model: 'fake-1', version: 'v1', traceId: 'ray-1', marks: [{offset: 8, length: 2, category: 'ART_MASC'}]});
   const summary = lines.find(l => l.msg === 'grammar corrected');
   assert.equal(summary.level, 'info');
   assert.equal(summary.traceId, 'ray-1');
@@ -195,9 +191,9 @@ test('handler: corrige y devuelve proveedor, modelo, versión, traceId y marcas,
 });
 
 test('handler: corrige el género con el léxico y lo cuenta en el resumen', async () => {
-  const {call, lines} = setup({correct: async () => ({model: 'fake-1', errors: [{quote: 'ein', occurrence: 1, noun: 'Hund', category: 'AKK_NEUT'}]})});
+  const {call, lines} = setup({correct: async () => ({model: 'fake-1', errors: [{quote: 'um', occurrence: 1, noun: 'água', category: 'ART_MASC'}]})});
   const res = await call({text: TEXT});
-  assert.deepEqual((await res.json()).marks, [{offset: 9, length: 3, category: 'AKK_MASK'}]);
+  assert.deepEqual((await res.json()).marks, [{offset: 8, length: 2, category: 'ART_FEM'}]);
   assert.equal(lines.find(l => l.msg === 'grammar corrected').recategorized, 1);
 });
 
@@ -246,7 +242,7 @@ test('handler: el rechazo por origen dice qué origen llegó; el fallo del prove
 });
 
 test('handler: las marcas descartadas se loguean con su motivo', async () => {
-  const {call, lines} = setup({correct: async () => ({model: 'fake-1', errors: [{quote: 'zz', occurrence: 1, category: 'AKK_MASK'}]})});
+  const {call, lines} = setup({correct: async () => ({model: 'fake-1', errors: [{quote: 'zz', occurrence: 1, category: 'ART_MASC'}]})});
   await call({text: TEXT});
   const l = lines.find(x => x.msg === 'marks dropped');
   assert.deepEqual(l.dropped, {quote_not_found: 1});

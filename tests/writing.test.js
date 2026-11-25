@@ -34,11 +34,11 @@ const ltMap = {
 };
 
 test('Schule: dos marcas de error con los textos del lt-map y dos penalizaciones', () => {
-  const g = gradeWriting(SCHULE, realMap);
+  const g = gradeWriting(SCHULE, ltMap);
   assert.equal(g.ok, false);
   assert.deepEqual(g.marks.map(x => [x.offset, x.length, x.kind]), [[4, 4, 'error'], [9, 3, 'error']]);
-  assert.equal(g.marks[0].text, realMap.rules.HILFSVERB_HABEN_SEIN.es);
-  assert.equal(g.marks[1].text, realMap.rules.ZUM_FEM_NOMEN.es);
+  assert.equal(g.marks[0].text, ltMap.rules.HILFSVERB_HABEN_SEIN.es);
+  assert.equal(g.marks[1].text, ltMap.rules.ZUM_FEM_NOMEN.es);
   assert.deepEqual(g.penalties, [{tag: 'a1.perfekt.hilfsverb'}, {tag: 'a1.nom.fem'}]);
 });
 
@@ -104,18 +104,18 @@ const ctx = (id, cat, offset, length) => ({...m(id, cat, offset, length), contex
 const accepted = {...ltMap, accepted_words: ['matías', 'Rosario']};
 
 test('palabra aceptada marcada como mal escrita: sin marca ni error, sin importar mayúsculas', () => {
-  const g = gradeWriting([ctx('GERMAN_SPELLER_RULE', 'TYPOS', 8, 6), ctx('GERMAN_SPELLER_RULE', 'TYPOS', 19, 7)], accepted);
+  const g = gradeWriting([ctx('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 8, 6), ctx('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 19, 7)], accepted);
   assert.deepEqual(g, {ok: true, marks: [], penalties: []});
 });
 
 test('palabra aceptada con la tilde descompuesta (como la escribe el iPhone a veces): también se acepta', () => {
   const t = 'Ich bin Matías.';
-  const mt = {...m('GERMAN_SPELLER_RULE', 'TYPOS', 8, 7), context: {text: t, offset: 8, length: 7}};
+  const mt = {...m('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 8, 7), context: {text: t, offset: 8, length: 7}};
   assert.equal(gradeWriting([mt], accepted).ok, true);
 });
 
 test('palabra que no está en la lista: sigue siendo error de ortografía', () => {
-  const g = gradeWriting([ctx('GERMAN_SPELLER_RULE', 'TYPOS', 8, 6)], ltMap);
+  const g = gradeWriting([ctx('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 8, 6)], ltMap);
   assert.equal(g.ok, false);
   assert.equal(g.marks.length, 1);
 });
@@ -126,13 +126,13 @@ test('otra regla sobre una palabra aceptada: sigue contando', () => {
 });
 
 test('la palabra aceptada no va al registro de reglas', () => {
-  assert.deepEqual(ltRulesOf([ctx('GERMAN_SPELLER_RULE', 'TYPOS', 8, 6), ...DASS], accepted).map(x => x.rule), ['RELATIVPRONOMEN_STATT_DASS']);
+  assert.deepEqual(ltRulesOf([ctx('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 8, 6), ...DASS], accepted).map(x => x.rule), ['RELATIVPRONOMEN_STATT_DASS']);
 });
 
 test('la lista real acepta nombres, ciudades y marcas', () => {
-  for (const w of ['Matías', 'Aires', 'adidas']) {
-    const t = `Ich mag ${w}.`;
-    const mt = {...m('GERMAN_SPELLER_RULE', 'TYPOS', 8, w.length), context: {text: t, offset: 8, length: w.length}};
+  for (const w of ['Matías', 'Aires', 'Rosario', 'Caju']) {
+    const t = `Eu gosto ${w}.`;
+    const mt = {...m('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 9, w.length), context: {text: t, offset: 9, length: w.length}};
     assert.equal(gradeWriting([mt], realMap).ok, true, w);
   }
 });
@@ -234,12 +234,12 @@ test('STYLE real (lt-map): solo aviso, la escritura sigue ok', () => {
   assert.deepEqual(g.marks.map(x => [x.kind, x.text]), [['notice', 'estilo']]);
 });
 
-test('OBJECT_AGREEMENT está mapeada sin tag y sin delatar la forma', () => {
-  const g = gradeWriting([m('OBJECT_AGREEMENT', 'GRAMMAR', 11, 10, 'Prüfen Sie ...', ['einen Kaffee'])], realMap);
+test('el corrector ortográfico pt-BR está mapeado sin tag y sin delatar la forma', () => {
+  const g = gradeWriting([m('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 19, 7, 'Possível erro ortográfico.', ['bonita'])], realMap);
   assert.equal(g.ok, false);
   assert.deepEqual(g.penalties, []);
-  assert.ok(!g.marks[0].text.includes('einen'));
-  assert.notEqual(g.marks[0].text, 'gramática');
+  assert.ok(!g.marks[0].text.includes('bonita'));
+  assert.equal(g.marks[0].text, realMap.rules.MORFOLOGIK_RULE_PT_BR.es);
 });
 
 test('el es de ningún lt-map nombra signos ni formas concretas de puntuación', () => {
@@ -271,21 +271,21 @@ const src = {provider: 'claude', model: 'claude-haiku-5-5', trace: 't-1'};
 const llm = (category, offset, length) => ({offset, length, llm: category, src});
 
 test('marca del corrector: texto del catálogo, error y penalización con su tag', () => {
-  const g = gradeWriting([llm('AKK_MASK', 9, 3)], realMap);
+  const g = gradeWriting([llm('ART_MASC', 8, 1)], realMap);
   assert.equal(g.ok, false);
-  assert.deepEqual(g.marks, [{offset: 9, length: 3, text: realMap.llm_categories.AKK_MASK.es, kind: 'error'}]);
-  assert.deepEqual(g.penalties, [{tag: 'a1.akk.mask'}]);
+  assert.deepEqual(g.marks, [{offset: 8, length: 1, text: realMap.llm_categories.ART_MASC.es, kind: 'error'}]);
+  assert.deepEqual(g.penalties, [{tag: 'a1.genero.masc'}]);
 });
 
 test('el corrector reemplaza la marca de gramática de LT que se superpone; la de ortografía queda', () => {
-  // "Ich möchte ein Kaffee." con OBJECT_AGREEMENT (11-21) y una falta de ortografía inventada en "Kaffee"
+  // "Eu bebo a leitte." con una regla de gramática de LT (8-16) y una falta de ortografía en "leitte"
   const g = gradeWriting([
-    m('OBJECT_AGREEMENT', 'GRAMMAR', 11, 10),
-    m('GERMAN_SPELLER_RULE', 'TYPOS', 15, 6),
-    llm('AKK_MASK', 11, 3),
+    m('CONCORDANCIA_GENERO', 'GRAMMAR', 8, 8),
+    m('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 10, 6),
+    llm('ART_MASC', 8, 1),
   ], realMap);
-  assert.deepEqual(g.marks.map(x => [x.offset, x.length]), [[15, 6], [11, 3]]);
-  assert.deepEqual(g.penalties, [{tag: 'a1.akk.mask'}]);
+  assert.deepEqual(g.marks.map(x => [x.offset, x.length]), [[10, 6], [8, 1]]);
+  assert.deepEqual(g.penalties, [{tag: 'a1.genero.masc'}]);
 });
 
 test('categoría del corrector desconocida para la app: "gramática", sin penalización', () => {
@@ -294,23 +294,27 @@ test('categoría del corrector desconocida para la app: "gramática", sin penali
   assert.deepEqual(g.penalties, []);
 });
 
-test('ningún texto del catálogo del corrector trae un artículo alemán (regla 3)', () => {
-  for (const c of Object.values(realMap.llm_categories)) assert.ok(!/\b(einen|eine|ein|den|der|die|das)\b/.test(c.es), c.es);
+test('ningún texto del catálogo del corrector cita una forma portuguesa entre asteriscos que pueda ser la respuesta (regla 3)', () => {
+  const FORMS = new Set(['o', 'a', 'os', 'as', 'um', 'uma', 'no', 'na', 'do', 'da', 'sou', 'é', 'somos', 'são', 'estou', 'está', 'estamos', 'estão']);
+  for (const c of Object.values(realMap.llm_categories)) {
+    const cited = [...c.es.matchAll(/\*([^*]+)\*/g)].map((x) => x[1].toLowerCase());
+    assert.ok(!cited.some((w) => FORMS.has(w)), c.es);
+  }
 });
 
 test('check: ltRules registra las marcas del corrector con proveedor, modelo y traceId', async () => {
-  const lt = {check: async () => [m('GERMAN_SPELLER_RULE', 'TYPOS', 0, 3), llm('AKK_MASK', 9, 3)]};
-  const [r] = await check({id: 'w4', type: 'writing-free'}, {text: 'Ich habe ein Hund.'}, {lt, ltMap: realMap});
+  const lt = {check: async () => [m('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 0, 3), llm('ART_MASC', 8, 1)]};
+  const [r] = await check({id: 'w4', type: 'writing-free'}, {text: 'Eu bebo a leite.'}, {lt, ltMap: realMap});
   assert.deepEqual(r.ltRules, [
-    {rule: 'GERMAN_SPELLER_RULE', mapped: true},
-    {rule: 'llm:AKK_MASK', mapped: true, src},
+    {rule: 'MORFOLOGIK_RULE_PT_BR', mapped: true},
+    {rule: 'llm:ART_MASC', mapped: true, src},
   ]);
 });
 
 test('withGrammar: une LT y el corrector; si el corrector falla, falla todo (la escritura queda pendiente)', async () => {
-  const lt = async () => [m('GERMAN_SPELLER_RULE', 'TYPOS', 0, 3)];
-  const ok = await withGrammar(lt, async () => [llm('AKK_MASK', 9, 3)])('Ich habe ein Hund.');
-  assert.deepEqual(ok.map(x => x.llm ?? x.rule.id), ['GERMAN_SPELLER_RULE', 'AKK_MASK']);
+  const lt = async () => [m('MORFOLOGIK_RULE_PT_BR', 'TYPOS', 0, 3)];
+  const ok = await withGrammar(lt, async () => [llm('ART_MASC', 8, 1)])('Ich habe ein Hund.');
+  assert.deepEqual(ok.map(x => x.llm ?? x.rule.id), ['MORFOLOGIK_RULE_PT_BR', 'ART_MASC']);
   await assert.rejects(withGrammar(lt, async () => { throw Object.assign(new Error('x'), {status: 502}); })('Hallo.'), e => e.status === 502);
 });
 
@@ -329,12 +333,12 @@ test('grammar.check: POST al proxy y marcas con su origen', async () => {
   let sent;
   globalThis.fetch = async (url, init) => {
     sent = {url, body: JSON.parse(init.body)};
-    return new Response(JSON.stringify({provider: 'claude', model: 'claude-haiku-5-5', version: 'v1', traceId: 't-1', marks: [{offset: 9, length: 3, category: 'AKK_MASK'}]}));
+    return new Response(JSON.stringify({provider: 'claude', model: 'claude-haiku-5-5', version: 'v1', traceId: 't-1', marks: [{offset: 8, length: 1, category: 'ART_MASC'}]}));
   };
   try {
     const marks = await grammarCheck('Ich habe ein Hund.', {url: 'https://proxy.example/'});
     assert.deepEqual(sent, {url: 'https://proxy.example/', body: {text: 'Ich habe ein Hund.'}});
-    assert.deepEqual(marks, [llm('AKK_MASK', 9, 3)]);
+    assert.deepEqual(marks, [llm('ART_MASC', 8, 1)]);
   } finally {
     globalThis.fetch = orig;
   }
@@ -357,7 +361,7 @@ test('grammar.check: sin token contra la API por defecto devuelve [] sin red; co
     called += 1;
     const body = JSON.parse(init.body);
     if (body.token !== 'secreto') return new Response('{"error":"unauthorized"}', {status: 401});
-    return new Response(JSON.stringify({provider: 'claude', model: 'claude-haiku-5-5', version: 'v1', traceId: 't-1', marks: [{offset: 9, length: 3, category: 'AKK_MASK'}]}));
+    return new Response(JSON.stringify({provider: 'claude', model: 'claude-haiku-5-5', version: 'v1', traceId: 't-1', marks: [{offset: 8, length: 1, category: 'ART_MASC'}]}));
   };
   try {
     assert.deepEqual(await grammarCheck('Ich habe ein Hund.'), []);
@@ -365,32 +369,31 @@ test('grammar.check: sin token contra la API por defecto devuelve [] sin red; co
     assert.deepEqual(await grammarCheck('Ich habe ein Hund.', {token: 'malo'}), []);
     assert.equal(called, 1, 'con token inválido degrada a [] en 401');
     const marks = await grammarCheck('Ich habe ein Hund.', {token: 'secreto'});
-    assert.deepEqual(marks, [llm('AKK_MASK', 9, 3)]);
+    assert.deepEqual(marks, [llm('ART_MASC', 8, 1)]);
   } finally {
     globalThis.fetch = orig;
   }
 });
 
 test('puntaje gradual por oración: 1 error en 4 oraciones da score 0.75; 1 error en 5 oraciones da score 0.8 y ok true', () => {
-  const text4 = 'Ich bin Leo. Ich komme aus Spanien. Sie ist ein Person. Wir sind nett.';
-  const g4 = gradeWriting([llm('NOM_FEM', 44, 3)], realMap, {text: text4});
+  const text4 = 'Eu sou o Leo. Eu sou da Argentina. O viagem foi longa. Nós somos amigos.';
+  const g4 = gradeWriting([llm('ART_FEM', 35, 1)], realMap, {text: text4});
   assert.equal(g4.score, 0.75);
   assert.equal(g4.ok, false);
 
-  const text5 = 'Hallo! Ich bin Leo. Ich komme aus Spanien. Sie ist ein Person. Wir sind nett.';
-  const g5 = gradeWriting([llm('NOM_FEM', 51, 3)], realMap, {text: text5});
+  const text5 = 'Oi! Eu sou o Leo. Eu sou da Argentina. O viagem foi longa. Nós somos amigos.';
+  const g5 = gradeWriting([llm('ART_FEM', 39, 1)], realMap, {text: text5});
   assert.equal(g5.score, 0.8);
   assert.equal(g5.ok, true);
 });
 
 test('activeTags: reglas de temas aún no vistos pasan a notice sin bajar score ni penalizar mastery', () => {
-  const text = 'In Zimmer 12 sind wir zu dritt. Lea ist ein nette Person. Sie wohnt in das Zimmer.';
+  const text = 'No quarto 12 somos três. A Lea mora em o centro. Ela gosta a praia.';
   const matches = [
-    llm('NOM_FEM', 40, 3),
-    llm('DAT_AFTER_PREP', 68, 13),
-    m('DE_AGREEMENT', 'GRAMMAR', 40, 16),
+    llm('CONTR_MISSING', 36, 4),
+    llm('ART_MASC', 61, 1),
   ];
-  const activeTags = new Set(['a1.pron.personal', 'a1.sein.praesens', 'a1.wfragen']);
+  const activeTags = new Set(['a1.pron.sujeito', 'a1.ser.presente', 'a1.estar.presente']);
   const g = gradeWriting(matches, realMap, {text, activeTags});
   assert.equal(g.ok, true);
   assert.equal(g.score, 1);
@@ -399,13 +402,13 @@ test('activeTags: reglas de temas aún no vistos pasan a notice sin bajar score 
 });
 
 test('activeTags: reglas del tema activo siguen siendo error y penalizan', () => {
-  const text = 'Ich ist müde. Wir bin hier.';
-  const matches = [llm('SEIN_FORM', 4, 3)];
-  const activeTags = new Set(['a1.pron.personal', 'a1.sein.praesens']);
+  const text = 'Eu é argentino. Nós somos amigos.';
+  const matches = [llm('SER_FORM', 3, 1)];
+  const activeTags = new Set(['a1.pron.sujeito', 'a1.ser.presente']);
   const g = gradeWriting(matches, realMap, {text, activeTags});
   assert.equal(g.ok, false);
   assert.equal(g.score, 0.5);
-  assert.deepEqual(g.penalties, [{tag: 'a1.sein.praesens'}]);
+  assert.deepEqual(g.penalties, [{tag: 'a1.ser.presente'}]);
   assert.equal(g.marks[0].kind, 'error');
 });
 
@@ -413,10 +416,10 @@ test('check: devuelve score y rewards de topicTags', async () => {
   const lt = {check: async () => []};
   const [r] = await check(
     {id: 'w1', type: 'writing-free'},
-    {text: 'Ich bin Leo. Du bist nett.'},
-    {lt, ltMap: realMap, topicTags: ['a1.sein.praesens']}
+    {text: 'Eu sou o Leo. Você é legal.'},
+    {lt, ltMap: realMap, topicTags: ['a1.ser.presente']}
   );
   assert.equal(r.ok, true);
   assert.equal(r.score, 1);
-  assert.deepEqual(r.rewards, ['a1.sein.praesens']);
+  assert.deepEqual(r.rewards, ['a1.ser.presente']);
 });

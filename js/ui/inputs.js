@@ -3,9 +3,9 @@ import * as tts from '../services/tts.js';
 
 let seq = 0;
 
-const KEYS = ['ä', 'ö', 'ü', 'ß'];
+const KEYS = ['ã', 'õ', 'á', 'é', 'ê', 'ó', 'ô', 'ç', 'à', 'í', 'ú', 'â'];
 
-// Campo de respuesta con fila de teclas ä ö ü ß. Las teclas insertan en el cursor y no le sacan el foco al campo.
+// Campo de respuesta con fila de teclas con tildes y ç. Las teclas insertan en el cursor y no le sacan el foco al campo.
 export function answerInput({ multiline = false, label } = {}) {
   const id = `answer-${++seq}`;
   const field = h(multiline ? 'textarea' : 'input', {
@@ -29,7 +29,7 @@ export function answerInput({ multiline = false, label } = {}) {
   return root;
 }
 
-// Botón 🔊 que lee `text` con la voz alemana predeterminada (en iOS, forzar una voz de la lista falla).
+// Botón 🔊 que lee `text` con la voz de portugués predeterminada (en iOS, forzar una voz de la lista falla).
 // Sin síntesis de voz no se muestra. Con el iPhone en silencio no suena: no hay forma de detectarlo.
 export function listenButton(text) {
   if (!tts.supported()) return null;

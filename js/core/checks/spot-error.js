@@ -9,7 +9,7 @@ export async function check(ex, {index, text}, ctx) {
   if (index !== ex.wrong) {
     return [result(ex.id, ex.tag, false, {
       rule: `Esa palabra está bien. ${rule}`,
-      rule_pt: rule_pt ? `Dieses Wort ist richtig. ${rule_pt}` : null,
+      rule_pt: rule_pt ? `Esta palavra está certa. ${rule_pt}` : null,
     })];
   }
   const ok = matchAnswer(text ?? '', ex.corrections, {orthographic: !!info.orthographic});

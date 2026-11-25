@@ -3,7 +3,7 @@
 const API = 'https://api.languagetool.org/v2/check';
 
 // Con mala señal (subte, wifi cautivo) el fetch puede colgarse: a los `timeout` ms se aborta y la escritura queda pendiente.
-export async function check(text, { language = 'de-DE', timeout = 15000 } = {}) {
+export async function check(text, { language = 'pt-BR', timeout = 15000 } = {}) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeout);
   try {

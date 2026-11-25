@@ -1,0 +1,669 @@
+# Tema 3: presente regular (-ar, -er, -ir) + los sonidos que el español no tiene (nasales; e/o abiertas y cerradas).
+# Escena: la rutina de la semana en la Pousada Maré y la clase de portugués que da el Rafa los martes en la varanda.
+# dims.person en los ítems de presente: eu | ele (você, ele, ela, a gente) | nos | eles (vocês, eles, elas).
+# Los `pares` no llevan dims: la palabra que suena se sortea al mostrar el ejercicio.
+# Trampas para hispanohablantes: la tercera del plural termina en -m (falam, comem), nunca en -n; *você* y *a gente*
+# conjugan como *ele*; *gostar* pide *de*; *morar* es 'vivir en un lugar'.
+topic: a1.u1.t3
+tags: [a1.presente.regular, a1.som.nasal, a1.som.abertas]
+arbitrary: false
+hides: []
+ficha:
+  short:
+    - "El presente regular se arma como en español: raíz + terminación. *falar → fal- + o, a, amos, am*; *comer → com- + o, e, emos, em*; *abrir → abr- + o, e, imos, em*."
+    - "En Brasil hay cuatro formas para aprender: *eu*, la de *você/ele/ela/a gente*, *nós* y la de *vocês/eles/elas*."
+    - "La tercera del plural termina en *-m*, nunca en *-n*: *eles falam*, *vocês comem*. Al oído casi no se nota: la *-m* final no se pronuncia como consonante, vuelve nasal la vocal."
+    - "El portugués tiene vocales nasales (*ã*, *õ*, y la vocal antes de *m* o *n* en la misma sílaba): el aire sale también por la nariz. *pão* (pan) y *pau* (palo) son palabras distintas."
+    - "Y tiene una *e* y una *o* abiertas (*é*, *ó*) además de las cerradas (*ê*, *ô*): *avó* es abuela y *avô* es abuelo. La tilde te dice cuál es."
+  table:
+    head: ["", "falar", "comer", "abrir"]
+    rows:
+      - ["eu", "falo", "como", "abro"]
+      - ["você · ele · ela · a gente", "fala", "come", "abre"]
+      - ["nós", "falamos", "comemos", "abrimos"]
+      - ["vocês · eles · elas", "falam", "comem", "abrem"]
+  more:
+    - "Por qué *-m* y no *-n*. En latín la forma era *amant*, *comedunt*. El castellano se quedó con la *n*; en portugués la consonante se fue debilitando hasta quedar solo como nasalidad de la vocal, y se escribe *-m*: *falam* suena casi como *fálãu*."
+    - "*-ão* es la vocal nasal más famosa del portugués: *pão*, *mão*, *não*, *estão*. Para hacerla, decí *au* dejando salir aire por la nariz. Si te tapás la nariz y suena distinto, lo estás haciendo bien."
+    - "*cansado* (cansado) y *casado* (casado) solo se diferencian por la nasal. Decir *estou casado* cuando querías decir *estou cansado* es un clásico de los hispanohablantes en Brasil."
+    - "Vocales abiertas: la *é* de *café* y la *ó* de *avó* suenan con la boca más abierta que en español; la *ê* de *você* y la *ô* de *avô*, más cerradas. El español tiene una sola *e* y una sola *o*, en el medio."
+    - "*gostar de*: en portugués no *te gusta* algo, *gostás de* algo. *Eu gosto de café* (me gusta el café). La *de* se contrae con el artículo: *Eu gosto do Rio*."
+    - "*morar* y *viver*: *Eu moro no Rio* (vivo en Rio, mi casa está ahí). *viver* es 'vivir' en sentido amplio: *viver bem*, *viver muitos anos*. *Vivo no Rio* se entiende, pero suena a portuñol."
+    - "*você* conjuga como *ele*: *você fala*, nunca *você falas*. Es la trampa más común del hispanohablante, que oye *você* y piensa en *vos*."
+
+steps:
+  # ───────────────────────────── Etapa 1 ─────────────────────────────
+  - n: 1
+    name: "Descobrir"
+    scene: {title: "Aula de português na varanda", context: "Martes · 18:00 · el Rafa reparte fotocopias y Caju duerme debajo de la mesa"}
+    exercises:
+      - id: t3-1-det-ar
+        type: detective
+        tag: a1.presente.regular
+        sentences:
+          - {pt: "Eu falo espanhol.", highlight: "falo"}
+          - {pt: "Você fala inglês?", highlight: "fala"}
+          - {pt: "A gente fala português na aula.", highlight: "fala"}
+          - {pt: "Nós falamos muito!", highlight: "falamos"}
+          - {pt: "O Tom e a Lea falam três línguas.", highlight: "falam"}
+        rules:
+          - {text: "La terminación cambia con el sujeto; *você* y *a gente* llevan la misma que *ele*.", correct: true}
+          - {text: "La terminación depende de la lengua de la que se habla."}
+          - {text: "*você* tiene una terminación propia, como el *vos* del español."}
+          - {text: "La forma es la misma para todas las personas."}
+        apply:
+          - {text: "Eu ___ (morar) em Rosario.", answers: ["moro"], dims: {person: eu}}
+          - {text: "A Mia ___ (trabalhar) num hotel.", answers: ["trabalha"], dims: {person: ele}}
+          - {text: "Vocês ___ (estudar) muito.", answers: ["estudam"], dims: {person: eles}}
+        curiosities: ["*falam* se escribe con *-m*, como todas las terceras del plural del portugués."]
+        reviewed: true
+
+      - id: t3-1-det-er-ir
+        type: detective
+        tag: a1.presente.regular
+        sentences:
+          - {pt: "Eu como pão de queijo.", highlight: "como"}
+          - {pt: "A Ana come na cozinha.", highlight: "come"}
+          - {pt: "Nós comemos às oito.", highlight: "comemos"}
+          - {pt: "Nós abrimos a janela.", highlight: "abrimos"}
+          - {pt: "Eles abrem a pousada às sete.", highlight: "abrem"}
+        rules:
+          - {text: "Los verbos en *-er* y en *-ir* comparten terminaciones, salvo la de *nós*, que lleva la vocal del infinitivo.", correct: true}
+          - {text: "Los verbos en *-er* y en *-ir* tienen terminaciones totalmente distintas."}
+          - {text: "Los verbos en *-ir* terminan siempre en *-i*."}
+        apply:
+          - {text: "Vocês ___ (beber) café?", answers: ["bebem"], dims: {person: eles}}
+          - {text: "Nós ___ (dividir) a conta.", answers: ["dividimos"], dims: {person: nos}}
+        reviewed: true
+
+      - id: t3-1-pr-pao
+        type: pares
+        tag: a1.som.nasal
+        pair: [{pt: "pão", es: "pan"}, {pt: "pau", es: "palo"}]
+        rule: "*ão* es nasal (el aire sale también por la nariz); *au* es una vocal común, como en español. Escuchá si la vocal suena 'tapada'."
+        rule_pt: "*ão* é nasal (o ar sai também pelo nariz); *au* é oral. Ouça se a vogal soa nasal."
+        curiosities: ["Tapate la nariz y decí *pão*: si suena distinto, la nasal te salió bien."]
+        reviewed: true
+
+      - id: t3-1-pr-cansado
+        type: pares
+        tag: a1.som.nasal
+        frame: "Hoje eu estou ___."
+        pair: [{pt: "cansado", es: "cansado"}, {pt: "casado", es: "casado"}]
+        rule: "Una de las dos tiene la *a* nasal (por la *n* que la sigue en la misma sílaba); la otra, no. Escuchá si la primera *a* suena nasal."
+        rule_pt: "Uma das duas tem o *a* nasal (por causa do *n* na mesma sílaba); a outra, não."
+        curiosities: ["*Estou casado* cuando querías decir *estou cansado*: el error más simpático de un hispanohablante en Brasil."]
+        reviewed: true
+
+      - id: t3-1-ch-voce-fala
+        type: choice
+        tag: a1.presente.regular
+        prompt: "El Rafa le pregunta a la Lea si habla inglés. ¿Qué le dice?"
+        options:
+          - {text: "Você fala inglês?", correct: true}
+          - {text: "Você falas inglês?", rule: "*você* conjuga en tercera persona, como *usted*: la *-s* del *vos* no va."}
+          - {text: "Você falamos inglês?", rule: "Esa terminación es la de *nós*; el Rafa le habla a una sola persona."}
+          - {text: "Você falam inglês?", rule: "Esa terminación es la del plural; el Rafa le habla a una sola persona."}
+        dims: {person: ele}
+        reviewed: true
+
+      # Reserva
+      - id: t3-1-pr-la
+        type: pares
+        tag: a1.som.nasal
+        reserve: true
+        pair: [{pt: "lã", es: "lana"}, {pt: "lá", es: "allá"}]
+        rule: "La tilde *~* vuelve nasal la vocal; el acento *´* solo marca dónde cae el acento. Escuchá si la *a* suena nasal."
+        rule_pt: "O til torna a vogal nasal; o acento agudo só marca a sílaba tônica."
+        reviewed: true
+
+      - id: t3-1-det-eles
+        type: detective
+        tag: a1.presente.regular
+        reserve: true
+        sentences:
+          - {pt: "Eles moram perto da praia.", highlight: "moram"}
+          - {pt: "Vocês comem muito!", highlight: "comem"}
+          - {pt: "As meninas abrem a janela.", highlight: "abrem"}
+          - {pt: "O Tom e a Mia estudam juntos.", highlight: "estudam"}
+        rules:
+          - {text: "La forma de *vocês* y *eles* termina en *-m*, no en *-n* como en español.", correct: true}
+          - {text: "La forma de *vocês* y *eles* termina como en español."}
+          - {text: "La forma de *vocês* termina distinto que la de *eles*."}
+        apply:
+          - {text: "Elas ___ (falar) muito rápido.", answers: ["falam"], dims: {person: eles}}
+          - {text: "Vocês ___ (vender) bolo?", answers: ["vendem"], dims: {person: eles}}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 2 ─────────────────────────────
+  - n: 2
+    name: "Reconhecer"
+    scene: {title: "A rotina da pousada", context: "Miércoles · 8:00 · el pizarrón de la cocina tiene los turnos de la semana"}
+    exercises:
+      - id: t3-2-pr-avo
+        type: pares
+        tag: a1.som.abertas
+        frame: "Essa é a foto da minha ___."
+        pair: [{pt: "avó", es: "abuela"}, {pt: "avô", es: "abuelo"}]
+        rule: "*ó* es una *o* abierta (la boca bien abierta); *ô*, una *o* cerrada (casi hacia la *u*). Escuchá cuánto se abre la boca en la última sílaba."
+        rule_pt: "*ó* é um *o* aberto; *ô*, um *o* fechado. Ouça a última sílaba."
+        reviewed: true
+
+      - id: t3-2-se-falan
+        type: spot-error
+        tag: a1.presente.regular
+        prompt: "Mensaje del Tom en el grupo. Tiene un error."
+        tokens: ["A", "Ana", "e", "o", "Rafa", "falan", "muito", "rápido!"]
+        wrong: 5
+        corrections: ["falam"]
+        rule: "En portugués la tercera del plural termina en *-m*, nunca en *-n* como en español."
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t3-2-ord-gosto
+        type: order
+        tag: a1.presente.regular
+        prompt: "Contale al Rafa que te gusta el café de la pousada."
+        chunks: ["gosto", "eu", "do café", "da pousada"]
+        answers: [["eu", "gosto", "do café", "da pousada"]]
+        dims: {person: eu}
+        reviewed: true
+
+      - id: t3-2-se-voce-moras
+        type: spot-error
+        tag: a1.presente.regular
+        prompt: "Mensaje de la Mia a un chico que conoció en la playa. Tiene un error."
+        tokens: ["E", "você?", "Você", "moras", "aqui", "no", "Rio?"]
+        wrong: 3
+        corrections: ["mora"]
+        rule: "*você* conjuga en tercera persona, como *usted*: la *-s* del *vos* no va."
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t3-2-pr-nos
+        type: pares
+        tag: a1.som.abertas
+        pair: [{pt: "nós", es: "nosotros"}, {pt: "nos", es: "nos (pronombre) / en los"}]
+        rule: "*nós* lleva la *o* abierta y acentuada; *nos* es átona y su *o* es cerrada, casi una *u*. Escuchá si la *o* suena abierta y fuerte."
+        rule_pt: "*nós* tem o *o* aberto e tônico; *nos* é átono, com *o* fechado."
+        reviewed: true
+
+      - id: t3-2-ord-a-gente
+        type: order
+        tag: a1.presente.regular
+        prompt: "Contás a qué hora cenan en la pousada."
+        chunks: ["às oito", "a gente", "janta"]
+        answers: [["a gente", "janta", "às oito"], ["às oito", "a gente", "janta"]]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t3-2-se-a-gente-comemos
+        type: spot-error
+        tag: a1.presente.regular
+        prompt: "Cartelito del pizarrón de la cocina. Tiene un error."
+        tokens: ["Quarta:", "a", "gente", "comemos", "na", "varanda."]
+        wrong: 3
+        corrections: ["come"]
+        rule: "*a gente* significa *nosotros*, pero el verbo va en singular, como con *ele*."
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t3-2-pr-mundo
+        type: pares
+        tag: a1.som.nasal
+        frame: "Ele disse ___."
+        pair: [{pt: "mundo", es: "mundo"}, {pt: "mudo", es: "mudo"}]
+        rule: "En una de las dos, la *u* es nasal (por la *n* que la sigue); en la otra, es una *u* común. Escuchá si la *u* suena nasal."
+        rule_pt: "Em uma das duas o *u* é nasal; na outra, não."
+        reviewed: true
+
+      - id: t3-2-ord-abrimos
+        type: order
+        tag: a1.presente.regular
+        prompt: "La Ana explica a qué hora abren la recepción."
+        chunks: ["a recepção", "nós", "abrimos", "às sete"]
+        answers: [["nós", "abrimos", "a recepção", "às sete"], ["às sete", "nós", "abrimos", "a recepção"]]
+        dims: {person: nos}
+        reviewed: true
+
+      - id: t3-2-se-eu-vivo
+        type: spot-error
+        tag: a1.presente.regular
+        prompt: "Tu presentación en la clase del Rafa. Tiene un error."
+        tokens: ["Eu", "sou", "o", "Leo", "e", "vivo", "em", "Rosario."]
+        wrong: 5
+        corrections: ["moro"]
+        rule: "Para decir en qué ciudad está tu casa, el portugués usa otro verbo: *viver* es 'vivir' en sentido amplio."
+        dims: {person: eu}
+        curiosities: ["*Vivo em Rosario* se entiende, pero un brasileño diría siempre *moro*."]
+        reviewed: true
+
+      - id: t3-2-ch-gostar
+        type: choice
+        tag: a1.presente.regular
+        prompt: "Dona Célia cuenta qué le gusta de Rio. ¿Qué frase está bien?"
+        options:
+          - {text: "Eu gosto muito da praia.", correct: true}
+          - {text: "Me gusta muito a praia.", rule: "Esa construcción es del español: en portugués la persona es el sujeto y *gostar* pide una preposición."}
+          - {text: "Eu gosto muito a praia.", rule: "*gostar* pide una preposición antes de lo que te gusta (y se contrae con el artículo)."}
+        dims: {person: eu}
+        curiosities: ["En portugués no *te gusta* algo: *gostás de* algo. La persona es el sujeto."]
+        reviewed: true
+
+      - id: t3-2-se-comen
+        type: spot-error
+        tag: a1.presente.regular
+        prompt: "Mensaje de la Lea sobre los turnos de la cocina. Tiene un error."
+        tokens: ["O", "Tom", "e", "o", "Martín", "comen", "muito", "tarde."]
+        wrong: 5
+        corrections: ["comem"]
+        rule: "En portugués la tercera del plural termina en *-m*, nunca en *-n* como en español."
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t3-2-ord-estuda
+        type: order
+        tag: a1.presente.regular
+        prompt: "Contás qué hace la Mia por las tardes."
+        chunks: ["português", "a Mia", "estuda", "de tarde"]
+        answers: [["a Mia", "estuda", "português", "de tarde"], ["de tarde", "a Mia", "estuda", "português"]]
+        dims: {person: ele}
+        reviewed: true
+
+      # Reserva
+      - id: t3-2-pr-so
+        type: pares
+        tag: a1.som.abertas
+        reserve: true
+        pair: [{pt: "só", es: "solo"}, {pt: "sou", es: "soy"}]
+        rule: "*só* tiene una *o* abierta; en *sou* la *o* es cerrada (y en Brasil la *u* casi no se oye). Escuchá cuánto se abre la boca."
+        rule_pt: "*só* tem *o* aberto; *sou* tem *o* fechado."
+        reviewed: true
+
+      - id: t3-2-pr-lindo
+        type: pares
+        tag: a1.som.nasal
+        reserve: true
+        frame: "Que ___!"
+        pair: [{pt: "lindo", es: "lindo"}, {pt: "lido", es: "leído"}]
+        rule: "En una de las dos, la *i* es nasal (por la *n* de la misma sílaba); en la otra, no. Escuchá si la *i* suena nasal."
+        rule_pt: "Em uma das duas o *i* é nasal; na outra, não."
+        reviewed: true
+
+      - id: t3-2-se-voces-trabalhan
+        type: spot-error
+        tag: a1.presente.regular
+        reserve: true
+        prompt: "Pregunta de un huésped en el libro de la recepción. Tiene un error."
+        tokens: ["Vocês", "trabalhan", "no", "domingo?"]
+        wrong: 1
+        corrections: ["trabalham"]
+        rule: "En portugués la tercera del plural termina en *-m*, nunca en *-n* como en español."
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t3-2-ord-bebe
+        type: order
+        tag: a1.presente.regular
+        prompt: "Contás qué toma el Tom en el desayuno."
+        chunks: ["o Tom", "bebe", "suco de laranja"]
+        answers: [["o Tom", "bebe", "suco de laranja"]]
+        dims: {person: ele}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 3 ─────────────────────────────
+  - n: 3
+    name: "Aplicar no contexto"
+    scene: {title: "O blog da pousada", context: "Jueves · el Rafa escribe en el blog de la pousada sobre la gente que pasa por ahí"}
+    generated: 3
+    exercises:
+      - id: t3-3-read-blog
+        type: reading
+        title: "Quem mora na Pousada Maré?"
+        text: |
+          Esta semana, a Pousada Maré está cheia! A Mia é do Chile e estuda medicina. De manhã, ela estuda na varanda e, de tarde, trabalha num café em Santa Teresa.
+          O Tom e a Lea falam três línguas. Eles trabalham pela internet e sempre almoçam tarde. O Leo é argentino e mora em Rosario. Ele aprende português comigo às terças.
+          E nós? A Ana e eu abrimos a recepção às sete e fechamos às onze da noite. A gente adora esta casa!
+          Rafa
+        questions:
+          - tag: a1.presente.regular
+            prompt: "Onde a Mia trabalha?"
+            answers: ["Num café em Santa Teresa", "Num café", "Em um café", "Ela trabalha num café", "Ela trabalha num café em Santa Teresa", "Em um café em Santa Teresa", "Em Santa Teresa"]
+            dims: {person: ele}
+          - tag: a1.presente.regular
+            prompt: "Quantas línguas o Tom e a Lea falam?"
+            options:
+              - {text: "Eles falam três línguas.", correct: true}
+              - {text: "Eles falan três línguas.", rule: "La tercera del plural termina en *-m*, nunca en *-n*."}
+              - {text: "Eles fala três línguas.", rule: "El sujeto es plural (el Tom y la Lea): el verbo va en plural."}
+            dims: {person: eles}
+          - tag: a1.presente.regular
+            prompt: "A que horas o Rafa e a Ana abrem a recepção?"
+            options:
+              - {text: "Às sete.", correct: true}
+              - {text: "Às onze.", rule: "A esa hora la cierran: buscá la frase con *abrimos*."}
+              - {text: "Às terças.", rule: "Ese es el día de la clase de portugués, no un horario de la recepción."}
+            dims: {person: eles}
+          - tag: a1.presente.regular
+            prompt: "Onde o Leo mora?"
+            answers: ["Em Rosario", "Ele mora em Rosario", "O Leo mora em Rosario", "Rosario", "Na Argentina, em Rosario", "Em Rosario, na Argentina"]
+            dims: {person: ele}
+        reviewed: true
+
+      - id: t3-3-tr-gosto
+        type: translate
+        tag: a1.presente.regular
+        from: es
+        source: "Me gusta mucho Rio."
+        answers: ["Eu gosto muito do Rio.", "Gosto muito do Rio.", "Eu adoro o Rio.", "Adoro o Rio."]
+        dims: {person: eu}
+        errors:
+          - {answer: "Me gusta muito o Rio.", rule: "En portugués la persona es el sujeto: se dice con *gostar de*."}
+          - {answer: "Eu gosto muito o Rio.", rule: "*gostar* pide una preposición, que se contrae con el artículo de *o Rio*."}
+          - {answer: "Eu gosto muito de Rio.", rule: "*o Rio* lleva artículo: la preposición se contrae con él."}
+        reviewed: true
+
+      - id: t3-3-se-elas-estudan
+        type: spot-error
+        tag: a1.presente.regular
+        prompt: "Comentario en el blog. Tiene un error."
+        tokens: ["Minhas", "filhas", "também", "estudan", "português!"]
+        wrong: 3
+        corrections: ["estudam"]
+        rule: "En portugués la tercera del plural termina en *-m*, nunca en *-n* como en español."
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t3-3-tr-voce-trabalha
+        type: translate
+        tag: a1.presente.regular
+        from: es
+        source: "¿Trabajás acá?"
+        answers: ["Você trabalha aqui?", "Trabalha aqui?", "Você trabalha aqui", "Tu trabalha aqui?", "Cê trabalha aqui?"]
+        dims: {person: ele}
+        errors:
+          - {answer: "Você trabalhas aqui?", rule: "*você* conjuga en tercera persona, como *usted*."}
+          - {answer: "Trabalhas aqui?", rule: "En Brasil se trata de *você*, que conjuga en tercera persona."}
+        reviewed: true
+
+      - id: t3-3-se-nos-abremos
+        type: spot-error
+        tag: a1.presente.regular
+        prompt: "Correo de la Ana a un proveedor. Tiene un error."
+        tokens: ["Nós", "abremos", "a", "pousada", "às", "sete", "horas."]
+        wrong: 1
+        corrections: ["abrimos"]
+        rule: "En los verbos en *-ir*, la forma de *nós* lleva la vocal del infinitivo, no la de los verbos en *-er*."
+        dims: {person: nos}
+        reviewed: true
+
+      - id: t3-3-tr-moramos
+        type: translate
+        tag: a1.presente.regular
+        from: es
+        source: "Vivimos cerca de la playa."
+        answers: ["Moramos perto da praia.", "Nós moramos perto da praia.", "A gente mora perto da praia."]
+        dims: {person: nos}
+        errors:
+          - {answer: "Vivemos perto da praia.", rule: "Para decir dónde está tu casa, el portugués usa otro verbo."}
+          - {answer: "A gente moramos perto da praia.", rule: "*a gente* conjuga en singular, como *ele*."}
+          - {answer: "Moramos perto de a praia.", rule: "*de* + artículo se contrae en una sola palabra."}
+        reviewed: true
+
+      - id: t3-3-se-voce-come
+        type: spot-error
+        tag: a1.presente.regular
+        prompt: "Pregunta del Tom a la Mia, por chat. Tiene un error."
+        tokens: ["Você", "comes", "carne?", "Hoje", "tem", "churrasco!"]
+        wrong: 1
+        corrections: ["come"]
+        rule: "*você* conjuga en tercera persona, como *usted*: la *-s* del *vos* no va."
+        dims: {person: ele}
+        reviewed: true
+
+      # Reserva
+      - id: t3-3-tr-eles-falam
+        type: translate
+        tag: a1.presente.regular
+        reserve: true
+        from: es
+        source: "Ellos hablan muy rápido."
+        answers: ["Eles falam muito rápido.", "Eles falam muito depressa.", "Falam muito rápido."]
+        dims: {person: eles}
+        errors:
+          - {answer: "Eles falan muito rápido.", rule: "La tercera del plural termina en *-m*, nunca en *-n*."}
+          - {answer: "Eles falam muy rápido.", rule: "*muy* es del español: en portugués es otra palabra."}
+        reviewed: true
+
+      - id: t3-3-se-eu-bebe
+        type: spot-error
+        tag: a1.presente.regular
+        reserve: true
+        prompt: "Tu respuesta en el blog. Tiene un error."
+        tokens: ["Eu", "bebe", "café", "na", "varanda", "todo", "dia."]
+        wrong: 1
+        corrections: ["bebo"]
+        rule: "Esa terminación es la de *você* y *ele*; el sujeto acá sos vos."
+        dims: {person: eu}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 4 ─────────────────────────────
+  - n: 4
+    name: "Produzir com apoio"
+    scene: {title: "Conversa na varanda", context: "Viernes · 22:00 · todos en la varanda, con vista a la bahía"}
+    field: verbos
+    generated: 3
+    exercises:
+      - id: t3-4-sit-trabalho
+        type: situation
+        scene: {title: "Na varanda", context: "22:00 · el Martín, el uruguayo, te pregunta por tu vida"}
+        bubbles:
+          - {who: them, text: "E aí, Leo, o que você faz na Argentina?"}
+          - {who: me, text: "Eu ___ numa escola. Sou professor de música."}
+          - {who: them, text: "Que legal! E você ___ espanhol com os alunos, né?"}
+        gaps:
+          - tag: a1.presente.regular
+            answers: ["trabalho", "ensino", "dou aula"]
+            dims: {person: eu}
+            errors:
+              - {answer: "trabalha", rule: "Esa terminación es la de *você* y *ele*; el sujeto acá sos vos."}
+              - {answer: "trabajo", rule: "Esa palabra es del español: en portugués el verbo es *trabalhar*."}
+          - tag: a1.presente.regular
+            answers: ["fala"]
+            dims: {person: ele}
+            errors:
+              - {answer: "falas", rule: "*você* conjuga en tercera persona, como *usted*."}
+              - {answer: "falo", rule: "Esa terminación es la de *eu*; el sujeto es *você*."}
+        reviewed: true
+
+      - id: t3-4-tf-eles
+        type: transform
+        tag: a1.presente.regular
+        source: "A Mia estuda medicina."
+        instruction: "Agora com *a Mia e a Lea*."
+        answers: ["A Mia e a Lea estudam medicina.", "Mia e Lea estudam medicina."]
+        dims: {person: eles}
+        reviewed: true
+
+      - id: t3-4-sit-rotina
+        type: situation
+        scene: {title: "Na varanda", context: "22:15 · la Lea cuenta su rutina en Madrid"}
+        bubbles:
+          - {who: them, text: "Em Madri, eu e o meu namorado ___ muito tarde, às dez da noite!"}
+          - {who: me, text: "Na Argentina também! E vocês ___ o quê, normalmente?"}
+          - {who: them, text: "Massa, salada… E muito pão!"}
+        gaps:
+          - tag: a1.presente.regular
+            answers: ["jantamos", "comemos"]
+            dims: {person: nos}
+            errors:
+              - {answer: "jantam", rule: "El sujeto incluye a la Lea (*eu e o meu namorado* = *nós*): el verbo va en la forma de *nós*."}
+              - {answer: "janta", rule: "El sujeto son dos personas que incluyen a la Lea: el verbo va en la forma de *nós*."}
+          - tag: a1.presente.regular
+            answers: ["comem", "jantam"]
+            dims: {person: eles}
+            errors:
+              - {answer: "comen", rule: "La tercera del plural termina en *-m*, nunca en *-n*."}
+              - {answer: "comemos", rule: "Esa es la forma de *nós*; acá le preguntás a ellos (*vocês*)."}
+        reviewed: true
+
+      - id: t3-4-tf-a-gente
+        type: transform
+        tag: a1.presente.regular
+        source: "Nós moramos em Santa Teresa."
+        instruction: "Agora com *a gente*."
+        answers: ["A gente mora em Santa Teresa."]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t3-4-gap-gostar
+        type: gap
+        tag: a1.presente.regular
+        context: "La Ana le pregunta al Martín qué le gusta hacer en Rio."
+        text: "Eu ___ muito de correr na praia."
+        answers: ["gosto"]
+        dims: {person: eu}
+        errors:
+          - {answer: "gusto", rule: "Esa forma es del español: en portugués el verbo es *gostar*."}
+          - {answer: "gosta", rule: "Esa terminación es la de *você* y *ele*; el sujeto acá es *eu*."}
+        reviewed: true
+
+      - id: t3-4-sit-domingo
+        type: situation
+        scene: {title: "Na varanda", context: "22:40 · planes para el domingo"}
+        bubbles:
+          - {who: them, text: "Domingo vocês ___ o café da manhã às nove?"}
+          - {who: me, text: "Não, domingo a gente ___ mais tarde, às dez."}
+        gaps:
+          - tag: a1.presente.regular
+            answers: ["tomam", "servem"]
+            dims: {person: eles}
+            errors:
+              - {answer: "toman", rule: "La tercera del plural termina en *-m*, nunca en *-n*."}
+              - {answer: "toma", rule: "*vocês* es plural: el verbo va en la forma de plural."}
+          - tag: a1.presente.regular
+            answers: ["toma", "come", "acorda", "serve"]
+            dims: {person: ele}
+            errors:
+              - {answer: "tomamos", rule: "*a gente* significa *nosotros*, pero el verbo va en singular."}
+              - {answer: "comemos", rule: "*a gente* significa *nosotros*, pero el verbo va en singular."}
+        reviewed: true
+
+      - id: t3-4-tf-voce
+        type: transform
+        tag: a1.presente.regular
+        source: "Eu escrevo muitas mensagens."
+        instruction: "Agora pergunte ao Tom, com *você*."
+        answers: ["Você escreve muitas mensagens?", "Tom, você escreve muitas mensagens?", "Você escreve muitas mensagens, Tom?"]
+        dims: {person: ele}
+        reviewed: true
+
+      - id: t3-4-gap-abrir
+        type: gap
+        tag: a1.presente.regular
+        context: "Hace calor. Le pedís permiso al Tom para abrir la ventana."
+        text: "Tom, eu ___ a janela? Está muito quente."
+        answers: ["abro"]
+        dims: {person: eu}
+        errors:
+          - {answer: "abre", rule: "Esa terminación es la de *você* y *ele*; el sujeto acá es *eu*."}
+          - {answer: "abrimos", rule: "Esa es la forma de *nós*; pedís permiso solo para vos."}
+        reviewed: true
+
+      # Reserva
+      - id: t3-4-sit-aula
+        type: situation
+        reserve: true
+        scene: {title: "Aula de português", context: "Martes · 18:30 · el Rafa pregunta qué hacen todos"}
+        bubbles:
+          - {who: them, text: "Mia, você ___ muito no café?"}
+          - {who: me, text: "Ela trabalha muito! E nós ___ português todo dia."}
+        gaps:
+          - tag: a1.presente.regular
+            answers: ["trabalha"]
+            dims: {person: ele}
+            errors:
+              - {answer: "trabalhas", rule: "*você* conjuga en tercera persona, como *usted*."}
+          - tag: a1.presente.regular
+            answers: ["estudamos", "praticamos", "falamos", "aprendemos"]
+            dims: {person: nos}
+            errors:
+              - {answer: "estudam", rule: "Esa es la forma de *vocês* y *eles*; el sujeto acá es *nós*."}
+        reviewed: true
+
+      - id: t3-4-tf-eu
+        type: transform
+        tag: a1.presente.regular
+        reserve: true
+        source: "O Tom bebe café sem açúcar."
+        instruction: "Agora com *eu*."
+        answers: ["Eu bebo café sem açúcar.", "Bebo café sem açúcar."]
+        dims: {person: eu}
+        reviewed: true
+
+      - id: t3-4-gap-vendem
+        type: gap
+        tag: a1.presente.regular
+        reserve: true
+        context: "En la feria le preguntás a dos señoras si tienen tapioca."
+        text: "As senhoras ___ tapioca aqui?"
+        answers: ["vendem", "têm", "fazem"]
+        dims: {person: eles}
+        errors:
+          - {answer: "venden", rule: "La tercera del plural termina en *-m*, nunca en *-n*."}
+          - {answer: "vende", rule: "*as senhoras* es plural: el verbo va en plural."}
+        reviewed: true
+
+  # ───────────────────────────── Etapa 5 ─────────────────────────────
+  - n: 5
+    name: "Escrever livremente"
+    scene: {title: "Blog da Pousada Maré", context: "Sábado · el Rafa te pide un texto para el blog"}
+    exercises:
+      - id: t3-5-wg-rotina
+        type: writing-guided
+        topic: a1.u1.t3
+        prompt: "Contá tu rutina en la pousada: a qué hora te levantás, qué desayunás, qué hacés a la tarde y a la noche."
+        constraints:
+          - "Al menos 4 verbos distintos en presente."
+          - "Entre 4 y 6 oraciones."
+        tips:
+          - "Verbos útiles: *acordar* (despertarse), *tomar*, *comer*, *estudar*, *trabalhar*, *jantar*."
+          - "*eu* + raíz + *-o*: *eu acordo*, *eu como*, *eu abro*."
+          - "*gostar de*: *eu gosto de…*"
+        checklist:
+          - "Contaste la mañana, la tarde y la noche."
+          - "Usaste al menos 4 verbos distintos."
+          - "Ninguna tercera del plural termina en *-n*."
+        model: "Eu acordo às oito. Tomo café na varanda e como pão com manteiga. De tarde, eu estudo português e caminho na praia. De noite, a gente janta na cozinha. Eu gosto muito desta rotina!"
+        reviewed: true
+
+      - id: t3-5-wg-pessoas
+        type: writing-guided
+        topic: a1.u1.t3
+        prompt: "Escribí para el blog sobre dos personas de la pousada: qué hacen, dónde viven, qué idiomas hablan."
+        constraints:
+          - "Una persona con *ele* o *ela* y dos personas juntas con *eles* o *elas*."
+          - "Al menos 3 verbos distintos en presente."
+        tips:
+          - "La tercera del plural termina en *-m*: *eles falam*, *elas comem*."
+          - "*morar em* para dónde vive alguien."
+        checklist:
+          - "Hablaste de una persona y de dos personas juntas."
+          - "Las formas del plural terminan en *-m*."
+          - "El texto se entiende de punta a punta."
+        model: "A Mia mora em Santiago e estuda medicina. Ela fala espanhol e inglês. O Tom e a Lea trabalham pela internet. Eles moram em Madri e falam três línguas."
+        reviewed: true
+
+      - id: t3-5-wf-convite
+        type: writing-free
+        topic: a1.u1.t3
+        prompt: "Escribile a la gente de la pousada para invitarlos a un asado argentino: qué día, a qué hora, qué comen y qué toman."
+        tips:
+          - "Podés hablarles con *vocês* y contar lo que van a hacer con *a gente* o *nós*."
+          - "*a gente* conjuga como *ele*; *nós*, con *-mos*."
+        checklist:
+          - "Dijiste el día, la hora, la comida y la bebida."
+          - "Usaste *vocês* y *a gente* o *nós*."
+          - "Suena a invitación: hay saludo y despedida."
+        model: "Oi, pessoal! No sábado a gente faz um churrasco argentino na varanda, às oito da noite. Eu cozinho a carne e a Mia prepara a salada. Vocês trazem as bebidas? A gente come, bebe e conversa até tarde. Beijos!"
+        reviewed: true

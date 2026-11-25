@@ -6,13 +6,14 @@ import { normalizeAcceptedWord, buildAcceptedWordsSet, isAcceptedWord } from '..
 
 export { normalizeAcceptedWord, buildAcceptedWordsSet, isAcceptedWord };
 
+// Corrector ortográfico de LanguageTool para pt-BR (los demás errores de ortografía llegan con la categoría TYPOS).
+export const SPELLER_RULE = 'MORFOLOGIK_RULE_PT_BR';
+
 const overlaps = (a, b) => a.offset < b.offset + b.length && b.offset < a.offset + a.length;
 
-const IMPLICIT_TAGS = {
-  DAT_AFTER_PREP: ['a2.dativ'],
-  DE_AGREEMENT: ['a1.nom.mask', 'a1.nom.fem', 'a1.nom.neut', 'a1.nom.plural'],
-  OBJECT_AGREEMENT: ['a1.akk.mask', 'a1.akk.fem', 'a1.akk.neut', 'a1.akk.plural'],
-};
+// Reglas de LanguageTool sin `tag` en lt-map que igual tocan un tema: solo cuentan si ese tema está activo.
+// Vacío hasta tener los ids reales de LanguageTool pt-BR (se agregan al verlos en las respuestas del servidor).
+const IMPLICIT_TAGS = {};
 
 function isRuleActive(ruleId, entryTag, activeSet) {
   if (!activeSet) return true;
@@ -41,7 +42,7 @@ export const relevant = (matches, ltMap, { text, acceptedWords } = {}) => {
   const set = buildAcceptedWordsSet(acceptedWords ?? [], ltMap?.accepted_words ?? []);
   if (!set.size) return matches;
   return matches.filter(mt => {
-    if (mt.rule?.id !== 'GERMAN_SPELLER_RULE' && mt.rule?.category?.id !== 'TYPOS') return true;
+    if (mt.rule?.id !== SPELLER_RULE && mt.rule?.category?.id !== 'TYPOS') return true;
     const word = wordOf(mt, text);
     return !word || !isAcceptedWord(word, set);
   });

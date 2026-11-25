@@ -1,328 +1,334 @@
+# Curriculum A1→C1 de portugués de Brasil para hispanohablantes.
+# Orden: unión de los temas de los PDFs de referencia (Português para principiantes, UW; actividades de Ornelas de Avelar;
+# 17 Minute Languages; Elbibliote) más lo que les falta (registro oral: pra, tá, cadê; conectores; Celpe-Bras).
+# Solo la unidad 1 de A1 tiene contenido; el resto es esqueleto (título + tag) y se muestra como "em breve".
+# Cada `rule` y `rule_pt` nombra la regla y nunca la forma que va (regla 3).
 levels: [A1, A2, B1, B2, C1]
 topics:
-  - {id: a1.u1.t1, level: A1, unit: a1.u01, title: "Personalpronomen + sein + W-Fragen"}
-  - {id: a1.u1.t2, level: A1, unit: a1.u01, title: "Artikel und Genus (Nominativ)"}
-  - {id: a1.u1.t3, level: A1, unit: a1.u01, title: "Akkusativ con haben, möchten y brauchen"}
-  - {id: a1.u2.t1, level: A1, title: "Präsens regular y V2"}
-  - {id: a1.u2.t2, level: A1, title: "Präsens irregular (e→i, a→ä)"}
-  - {id: a1.u3.t1, level: A1, title: "Pregunta sí/no, nicht y kein"}
-  - {id: a1.u3.t2, level: A1, title: "Posesivos"}
-  - {id: a1.u4.t1, level: A1, title: "Modales: können, müssen, wollen, dürfen"}
-  - {id: a1.u4.t2, level: A1, title: "Verbos separables"}
-  - {id: a1.u5.t1, level: A1, title: "Imperativ"}
-  - {id: a1.u5.t2, level: A1, title: "Preposiciones de tiempo y lugar"}
-  - {id: a1.u6.t1, level: A1, title: "Conectores und/aber/oder/denn"}
-  - {id: a1.u6.t2, level: A1, title: "Perfekt de verbos frecuentes (introducción)"}
-  - {id: a2.t1, level: A2, title: "Perfekt completo"}
-  - {id: a2.t2, level: A2, title: "Präteritum de sein, haben y modales"}
-  - {id: a2.t3, level: A2, title: "Dativ"}
-  - {id: a2.t4, level: A2, title: "Preposiciones con Akk/Dat"}
-  - {id: a2.t5, level: A2, title: "Reflexivos"}
-  - {id: a2.t6, level: A2, title: "Comparativo y superlativo"}
-  - {id: a2.t7, level: A2, title: "Adjetivo tras artículo"}
-  - {id: a2.t8, level: A2, title: "Subordinadas con weil/dass/wenn"}
-  - {id: b1.t1, level: B1, title: "Präteritum y Plusquamperfekt"}
-  - {id: b1.t2, level: B1, title: "Konjunktiv II"}
-  - {id: b1.t3, level: B1, title: "Passiv"}
-  - {id: b1.t4, level: B1, title: "Relativas"}
-  - {id: b1.t5, level: B1, title: "Declinación adjetival completa"}
-  - {id: b1.t6, level: B1, title: "Genitiv"}
-  - {id: b1.t7, level: B1, title: "zu + Infinitiv"}
-  - {id: b1.t8, level: B1, title: "Conectores dobles"}
-  - {id: b2.t1, level: B2, title: "Passiv en todos los tiempos"}
-  - {id: b2.t2, level: B2, title: "Konjunktiv I"}
-  - {id: b2.t3, level: B2, title: "Subordinadas avanzadas"}
-  - {id: b2.t4, level: B2, title: "n-Deklination"}
-  - {id: b2.t5, level: B2, title: "Participios como adjetivo"}
-  - {id: b2.t6, level: B2, title: "Partículas modales"}
-  - {id: c1.t1, level: C1, title: "Nominalstil y Verbalstil"}
-  - {id: c1.t2, level: C1, title: "Partizipialattribute"}
-  - {id: c1.t3, level: C1, title: "Discurso indirecto"}
-  - {id: c1.t4, level: C1, title: "Funktionsverbgefüge"}
-  - {id: c1.t5, level: C1, title: "Orden del Mittelfeld"}
+  - {id: a1.u1.t1, level: A1, unit: a1.u01, title: "Pronomes, ser e estar"}
+  - {id: a1.u1.t2, level: A1, unit: a1.u01, title: "Artigos, gênero e contrações"}
+  - {id: a1.u1.t3, level: A1, unit: a1.u01, title: "Presente regular e os sons do português"}
+  - {id: a1.u2.t1, level: A1, title: "Presente irregular: ter, ir, fazer, poder, querer"}
+  - {id: a1.u2.t2, level: A1, title: "Perguntas e negação"}
+  - {id: a1.u3.t1, level: A1, title: "Possessivos (meu, seu, dele)"}
+  - {id: a1.u3.t2, level: A1, title: "Demonstrativos (este, esse, aquele, isso)"}
+  - {id: a1.u4.t1, level: A1, title: "Ir + infinitivo (futuro próximo)"}
+  - {id: a1.u4.t2, level: A1, title: "Estar + gerúndio"}
+  - {id: a1.u5.t1, level: A1, title: "Preposições de lugar e de tempo"}
+  - {id: a1.u5.t2, level: A1, title: "Números, horas e datas"}
+  - {id: a1.u6.t1, level: A1, title: "Pretérito perfeito regular (introdução)"}
+  - {id: a1.u6.t2, level: A1, title: "Gostar de, precisar de e querer"}
+  - {id: a2.t1, level: A2, title: "Pretérito perfeito irregular"}
+  - {id: a2.t2, level: A2, title: "Pretérito imperfeito"}
+  - {id: a2.t3, level: A2, title: "Perfeito ou imperfeito"}
+  - {id: a2.t4, level: A2, title: "Pronomes objeto e sua colocação no Brasil"}
+  - {id: a2.t5, level: A2, title: "Comparativos e superlativos"}
+  - {id: a2.t6, level: A2, title: "Imperativo"}
+  - {id: a2.t7, level: A2, title: "Por e para"}
+  - {id: a2.t8, level: A2, title: "Verbos reflexivos"}
+  - {id: b1.t1, level: B1, title: "Presente do subjuntivo"}
+  - {id: b1.t2, level: B1, title: "Futuro do subjuntivo (quando, se + for)"}
+  - {id: b1.t3, level: B1, title: "Imperfeito do subjuntivo e condicional"}
+  - {id: b1.t4, level: B1, title: "Infinitivo pessoal"}
+  - {id: b1.t5, level: B1, title: "Particípio e voz passiva"}
+  - {id: b1.t6, level: B1, title: "Mais-que-perfeito composto (tinha feito)"}
+  - {id: b1.t7, level: B1, title: "Discurso indireto"}
+  - {id: b1.t8, level: B1, title: "Conectores do texto"}
+  - {id: b2.t1, level: B2, title: "Subjuntivo nas orações adverbiais"}
+  - {id: b2.t2, level: B2, title: "Tempos compostos do subjuntivo"}
+  - {id: b2.t3, level: B2, title: "Relativos variáveis (o qual, cujo)"}
+  - {id: b2.t4, level: B2, title: "Registro formal e informal (pra, tá, cadê)"}
+  - {id: b2.t5, level: B2, title: "Particípios duplos (aceito, aceitado)"}
+  - {id: c1.t1, level: C1, title: "Colocação pronominal formal e mesóclise"}
+  - {id: c1.t2, level: C1, title: "Concordância avançada"}
+  - {id: c1.t3, level: C1, title: "Estilo nominal e texto acadêmico"}
+  - {id: c1.t4, level: C1, title: "Tarefas integradas do Celpe-Bras"}
+  - {id: c1.t5, level: C1, title: "Expressões idiomáticas"}
 tags:
-  a1.pron.personal:
-    title: "Pronombres personales"
+  # ─────────────── A1 · Unidade 1 · Tema 1 ───────────────
+  a1.pron.sujeito:
+    title: "Pronombres de sujeto"
     requires: []
     orthographic: false
-    rule: "Los *Personalpronomen* (pronombres personales) reemplazan al sujeto y hay uno distinto para cada persona; el trato formal se escribe con mayúscula."
-    rule_pt: "Personalpronomen stehen für Subjekte und wechseln je nach Person; Höflichkeitsformen werden großgeschrieben."
+    rule: "El pronombre de sujeto tiene que corresponder a la persona de la que se habla (quién, cuántos, varón o mujer); en Brasil la forma de tratamiento y la de 'nosotros' coloquial conjugan en tercera persona del singular."
+    rule_pt: "O pronome sujeito tem que corresponder à pessoa de quem se fala (quem, quantos, homem ou mulher); no Brasil, a forma de tratamento e o 'nós' coloquial se conjugam na terceira pessoa do singular."
     examples:
-      - {pt: "Ich bin müde.", es: "Estoy cansado.", dims: {"person": "ich"}}
-      - {pt: "Du bist im Hostel.", es: "Estás en el hostel.", dims: {"person": "du"}}
-      - {pt: "Er kommt aus Brasilien.", es: "Él viene de Brasil.", dims: {"person": "er"}}
-      - {pt: "Wir sind im Zimmer.", es: "Estamos en el cuarto.", dims: {"person": "wir"}}
-    curiosities: ["*du* y el inglés antiguo *thou* vienen de la misma raíz germánica."]
-  a1.sein.praesens:
-    title: "sein en presente"
-    requires: [a1.pron.personal]
+      - {pt: "Você é do Chile?", es: "¿Vos sos de Chile?", dims: {"person": "ele"}}
+      - {pt: "A gente está no quarto.", es: "Estamos en el cuarto.", dims: {"person": "ele"}}
+      - {pt: "Eu sou o Leo.", es: "Yo soy Leo.", dims: {"person": "eu"}}
+      - {pt: "Nós somos amigos.", es: "Somos amigos.", dims: {"person": "nos"}}
+      - {pt: "Vocês são muito legais.", es: "Ustedes son muy buena onda.", dims: {"person": "eles"}}
+    curiosities:
+      - "*você* viene de *vossa mercê* (vuestra merced), igual que *usted*: por eso conjuga en tercera persona."
+      - "*a gente* significa *nosotros* en la charla de todos los días, pero el verbo va en singular: *a gente vai*."
+  a1.ser.presente:
+    title: "ser en presente"
+    requires: [a1.pron.sujeito]
     orthographic: false
-    rule: "El verbo *sein* (ser/estar) es irregular: cambia con cada persona y sirve tanto para ser como para estar."
-    rule_pt: "Das Verb *sein* ist unregelmäßig: Es hat für jede Person eine eigene Form im Präsens."
+    rule: "*ser* es irregular: tiene una forma para *eu*, una para *você/ele/a gente*, una para *nós* y una para *vocês/eles*."
+    rule_pt: "*ser* tem formas irregulares: uma para *eu*, uma para *você/ele/a gente*, uma para *nós* e uma para *vocês/eles*."
     examples:
-      - {pt: "Ich bin neu hier.", es: "Soy nuevo acá.", dims: {"person": "ich"}}
-      - {pt: "Du bist im Hostel.", es: "Estás en el hostel.", dims: {"person": "du"}}
-      - {pt: "Wir sind in der Küche.", es: "Estamos en la cocina.", dims: {"person": "wir"}}
-      - {pt: "Sie ist an der Rezeption.", es: "Ella está en la recepción.", dims: {"person": "sie"}}
-    curiosities: ["*sein* es irregular, igual que *to be* en inglés y *ser* en español y portugués."]
-  a1.wfragen:
-    title: "W-Fragen"
+      - {pt: "Eu sou argentino.", es: "Soy argentino.", dims: {"person": "eu"}}
+      - {pt: "O Tom é do Canadá.", es: "Tom es de Canadá.", dims: {"person": "ele"}}
+      - {pt: "Nós somos novos aqui.", es: "Somos nuevos acá.", dims: {"person": "nos"}}
+      - {pt: "Elas são da Espanha.", es: "Ellas son de España.", dims: {"person": "eles"}}
+  a1.estar.presente:
+    title: "estar en presente"
+    requires: [a1.pron.sujeito]
+    orthographic: false
+    rule: "*estar* tiene una forma para cada persona del presente; la de *você/ele* y la de *vocês/eles* llevan tilde en la última sílaba."
+    rule_pt: "*estar* tem uma forma para cada pessoa do presente; as de *você/ele* e de *vocês/eles* têm acento na última sílaba."
+    examples:
+      - {pt: "Eu estou cansado.", es: "Estoy cansado.", dims: {"person": "eu"}}
+      - {pt: "A Mia está na cozinha.", es: "Mia está en la cocina.", dims: {"person": "ele"}}
+      - {pt: "Nós estamos atrasados.", es: "Estamos atrasados.", dims: {"person": "nos"}}
+      - {pt: "Vocês estão com fome?", es: "¿Ustedes tienen hambre?", dims: {"person": "eles"}}
+  a1.ser.estar:
+    title: "ser, estar y ficar"
+    requires: [a1.ser.presente, a1.estar.presente]
+    orthographic: false
+    rule: "*ser* va con la identidad, el origen y las características; *estar*, con los estados pasajeros y con el hambre, el sueño o el frío (con *com*); para ubicar un lugar fijo se usa sobre todo *ficar*."
+    rule_pt: "*ser* indica identidade, origem e características; *estar*, estados passageiros e fome, sono ou frio (com *com*); para localizar um lugar fixo se usa sobretudo *ficar*."
+    examples:
+      - {pt: "O quarto é pequeno.", es: "El cuarto es chico.", dims: {"use": "ser"}}
+      - {pt: "O quarto está bagunçado.", es: "El cuarto está desordenado.", dims: {"use": "estar"}}
+      - {pt: "Estou com fome.", es: "Tengo hambre.", dims: {"use": "com"}}
+      - {pt: "Onde fica o banheiro?", es: "¿Dónde queda el baño?", dims: {"use": "ficar"}}
+    curiosities:
+      - "En Brasil el hambre, el sueño, el frío y el apuro no se *tienen*: se *está con* ellos. *Estou com sono* es 'tengo sueño'."
+      - "*ficar* tiene dos caras: 'quedar' (*Onde fica a praia?*) y 'ponerse' (*Fiquei feliz*: me puse contento)."
+
+  # ─────────────── A1 · Unidade 1 · Tema 2 ───────────────
+  a1.genero.masc:
+    title: "Género: masculino"
     requires: []
     orthographic: false
-    rule: "Las *W-Fragen* (preguntas con palabra interrogativa) empiezan con esa palabra y el verbo conjugado va enseguida, en segunda posición."
-    rule_pt: "W-Fragen beginnen mit einem Fragewort; konjugierte Verben folgen an Position 2."
+    rule: "El artículo sigue el género del sustantivo en portugués, que no siempre es el del español: el género se aprende con cada palabra."
+    rule_pt: "O artigo segue o gênero do substantivo em português, que nem sempre é o do espanhol: o gênero se aprende com cada palavra."
     examples:
-      - {pt: "Wer ist das?", es: "¿Quién es?", dims: {"word": "wer"}}
-      - {pt: "Was ist das?", es: "¿Qué es esto?", dims: {"word": "was"}}
-      - {pt: "Wo ist die Küche?", es: "¿Dónde está la cocina?", dims: {"word": "wo"}}
-      - {pt: "Woher kommst du?", es: "¿De dónde sos?", dims: {"word": "woher"}}
-      - {pt: "Wie heißt du?", es: "¿Cómo te llamás?", dims: {"word": "wie"}}
-    curiosities: ["Casi todas las palabras interrogativas alemanas empiezan con *w*, como *who*, *what* y *where* en inglés."]
-  a1.nom.mask:
-    title: "Nominativ masculino"
+      - {pt: "O leite está na geladeira.", es: "La leche está en la heladera.", dims: {"gender": "m"}}
+      - {pt: "O sal está ali.", es: "La sal está ahí.", dims: {"gender": "m"}}
+      - {pt: "A viagem foi longa.", es: "El viaje fue largo.", dims: {"gender": "f"}}
+      - {pt: "A mensagem é do Tom.", es: "El mensaje es de Tom.", dims: {"gender": "f"}}
+    curiosities:
+      - "*o leite*, *o sal*, *o mel*, *o nariz*, *o sangue*: masculinos en portugués y femeninos en español. Son de los cambios de género más comunes."
+  a1.genero.fem:
+    title: "Género: femenino"
     requires: []
     orthographic: false
-    rule: "En *Nominativ* (el sujeto) cada sustantivo trae el artículo de su género, que se aprende con la palabra o se deduce de sus pistas (terminación, palabra compuesta, *-chen*, plural)."
-    rule_pt: "Im Nominativ (Subjekt) richtet sich jede Artikelform nach maskulinem Genus."
+    rule: "El artículo sigue el género del sustantivo en portugués: las palabras en *-agem* son femeninas, aunque en español terminen en *-aje* y sean masculinas."
+    rule_pt: "O artigo segue o gênero do substantivo em português: as palavras em *-agem* são femininas."
     examples:
-      - {pt: "Der Löffel ist neu.", es: "La cuchara es nueva.", dims: {"gender": "m"}}
-      - {pt: "Die Lampe ist im Zimmer.", es: "La lámpara está en el cuarto.", dims: {"gender": "f"}}
-      - {pt: "Das Bett ist groß.", es: "La cama es grande.", dims: {"gender": "n"}}
-  a1.nom.fem:
-    title: "Nominativ femenino"
-    requires: []
+      - {pt: "A viagem foi longa.", es: "El viaje fue largo.", dims: {"gender": "f"}}
+      - {pt: "A cor do quarto é bonita.", es: "El color del cuarto es lindo.", dims: {"gender": "f"}}
+      - {pt: "O leite está na geladeira.", es: "La leche está en la heladera.", dims: {"gender": "m"}}
+      - {pt: "O sal está ali.", es: "La sal está ahí.", dims: {"gender": "m"}}
+    curiosities:
+      - "*-agem* = *-aje*, pero cambia de género: *a viagem* (el viaje), *a mensagem* (el mensaje), *a garagem* (el garaje), *a bagagem* (el equipaje)."
+  a1.contr.em:
+    title: "Contracción: em + artículo"
+    requires: [a1.genero.masc, a1.genero.fem]
     orthographic: false
-    rule: "En *Nominativ* (el sujeto) cada sustantivo trae el artículo de su género, que se aprende con la palabra o se deduce de sus pistas (terminación, palabra compuesta, *-chen*, plural)."
-    rule_pt: "Im Nominativ (Subjekt) richtet sich jede Artikelform nach femininem Genus."
+    rule: "La preposición de lugar se junta con el artículo en una sola palabra, que sigue el género y el número del sustantivo; nunca se escriben separados."
+    rule_pt: "A preposição de lugar se junta ao artigo numa palavra só, que segue o gênero e o número do substantivo; nunca se escrevem separados."
     examples:
-      - {pt: "Die Lampe ist neu.", es: "La lámpara es nueva.", dims: {"gender": "f"}}
-      - {pt: "Der Tisch ist alt.", es: "La mesa es vieja.", dims: {"gender": "m"}}
-      - {pt: "Das Fenster ist offen.", es: "La ventana está abierta.", dims: {"gender": "n"}}
-  a1.nom.neut:
-    title: "Nominativ neutro"
-    requires: []
+      - {pt: "O Tom está no quarto.", es: "Tom está en el cuarto.", dims: {"gender": "m"}}
+      - {pt: "A toalha está na mochila.", es: "La toalla está en la mochila.", dims: {"gender": "f"}}
+      - {pt: "As chaves estão nas mesas.", es: "Las llaves están en las mesas.", dims: {"number": "pl"}}
+  a1.contr.de:
+    title: "Contracción: de + artículo"
+    requires: [a1.genero.masc, a1.genero.fem]
     orthographic: false
-    rule: "En *Nominativ* (el sujeto) cada sustantivo trae el artículo de su género, que se aprende con la palabra o se deduce de sus pistas (terminación, palabra compuesta, *-chen*, plural)."
-    rule_pt: "Im Nominativ (Subjekt) richtet sich jede Artikelform nach neutralem Genus."
+    rule: "La preposición de origen y pertenencia se junta con el artículo en una sola palabra; los países llevan artículo y se juntan con ella, salvo unos pocos sin artículo (*Portugal*, *Cuba*), que no tienen con qué juntarse."
+    rule_pt: "A preposição de origem e posse se junta ao artigo numa palavra só; os países têm artigo e se juntam a ela, menos alguns sem artigo (*Portugal*, *Cuba*), que não têm com que se juntar."
     examples:
-      - {pt: "Das Bett ist groß.", es: "La cama es grande.", dims: {"gender": "n"}}
-      - {pt: "Der Schrank ist leer.", es: "El armario está vacío.", dims: {"gender": "m"}}
-      - {pt: "Die Küche ist klein.", es: "La cocina es chica.", dims: {"gender": "f"}}
-  a1.nom.plural:
-    title: "Nominativ plural"
-    requires: []
+      - {pt: "A Mia é do Chile.", es: "Mia es de Chile.", dims: {"gender": "m"}}
+      - {pt: "Eu sou da Argentina.", es: "Soy de Argentina.", dims: {"gender": "f"}}
+      - {pt: "A chave do quarto está aqui.", es: "La llave del cuarto está acá.", dims: {"gender": "m"}}
+    curiosities:
+      - "En portugués casi todos los países llevan artículo: *o Brasil*, *a Argentina*, *o Chile*, *a Espanha*. Por eso *do Brasil*, *da Argentina*. Las excepciones más conocidas: *Portugal*, *Cuba*, *Moçambique*, *Angola*."
+
+  # ─────────────── A1 · Unidade 1 · Tema 3 ───────────────
+  a1.presente.regular:
+    title: "Presente regular"
+    requires: [a1.pron.sujeito]
     orthographic: false
-    rule: "En *Nominativ* (el sujeto) el plural comparte un único artículo para todos los géneros."
-    rule_pt: "Im Nominativ Plural gilt dieselbe Artikelform für alle Genera."
+    rule: "En el presente regular la terminación cambia con la persona y depende de si el verbo termina en *-ar*, *-er* o *-ir*; *você* y *a gente* van con la forma de *ele*."
+    rule_pt: "No presente regular a terminação muda com a pessoa e depende de o verbo terminar em *-ar*, *-er* ou *-ir*; *você* e *a gente* vão com a forma de *ele*."
     examples:
-      - {pt: "Die Betten sind groß.", es: "Las camas son grandes.", dims: {"gender": "pl"}}
-      - {pt: "Der Tisch ist alt.", es: "La mesa es vieja.", dims: {"gender": "m"}}
-      - {pt: "Die Lampen sind neu.", es: "Las lámparas son nuevas.", dims: {"gender": "pl"}}
-      - {pt: "Das Fenster ist offen.", es: "La ventana está abierta.", dims: {"gender": "n"}}
-  a1.akk.mask:
-    title: "Akkusativ masculino"
-    requires: [a1.nom.mask]
-    orthographic: false
-    rule: "Con *brauchen*, *haben* y *möchten* el objeto va en *Akkusativ* (objeto directo): el artículo depende del género del sustantivo, y solo uno de los tres géneros cambia respecto del *Nominativ*."
-    rule_pt: "Mit *brauchen*, *haben* und *möchten* steht Akkusativ: Nur maskulines Genus verändert seine Artikelform gegenüber Nominativ."
-    examples:
-      - {pt: "Ich brauche einen Löffel.", es: "Necesito una cuchara.", dims: {"gender": "m"}}
-      - {pt: "Ich habe eine Tasche.", es: "Tengo un bolso.", dims: {"gender": "f"}}
-      - {pt: "Ich möchte ein Brot.", es: "Quiero un pan.", dims: {"gender": "n"}}
-  a1.akk.fem:
-    title: "Akkusativ femenino"
-    requires: [a1.nom.fem]
-    orthographic: false
-    rule: "Con *brauchen*, *haben* y *möchten* el objeto va en *Akkusativ* (objeto directo): el artículo depende del género del sustantivo, y solo uno de los tres géneros cambia respecto del *Nominativ*."
-    rule_pt: "Mit *brauchen*, *haben* und *möchten* steht Akkusativ: Feminines Genus bleibt unverändert gegenüber Nominativ."
-    examples:
-      - {pt: "Ich habe eine Tasche.", es: "Tengo un bolso.", dims: {"gender": "f"}}
-      - {pt: "Ich brauche einen Löffel.", es: "Necesito una cuchara.", dims: {"gender": "m"}}
-      - {pt: "Ich möchte ein Brot.", es: "Quiero un pan.", dims: {"gender": "n"}}
-  a1.akk.neut:
-    title: "Akkusativ neutro"
-    requires: [a1.nom.neut]
-    orthographic: false
-    rule: "Con *brauchen*, *haben* y *möchten* el objeto va en *Akkusativ* (objeto directo): el artículo depende del género del sustantivo, y solo uno de los tres géneros cambia respecto del *Nominativ*."
-    rule_pt: "Mit *brauchen*, *haben* und *möchten* steht Akkusativ: Neutrales Genus bleibt unverändert gegenüber Nominativ."
-    examples:
-      - {pt: "Ich möchte ein Brot.", es: "Quiero un pan.", dims: {"gender": "n"}}
-      - {pt: "Ich brauche einen Löffel.", es: "Necesito una cuchara.", dims: {"gender": "m"}}
-      - {pt: "Ich habe eine Lampe.", es: "Tengo una lámpara.", dims: {"gender": "f"}}
-  a1.akk.plural:
-    title: "Akkusativ plural"
-    requires: [a1.nom.plural]
-    orthographic: false
-    rule: "Con *brauchen*, *haben* y *möchten* el objeto va en *Akkusativ* (objeto directo); el plural no cambia: queda igual que en Nominativ."
-    rule_pt: "Mit *brauchen*, *haben* und *möchten* steht Akkusativ: Pluralformen bleiben unverändert gegenüber Nominativ."
-    examples:
-      - {pt: "Wir brauchen Teller.", es: "Necesitamos platos.", dims: {"gender": "pl"}}
-      - {pt: "Ich brauche einen Löffel.", es: "Necesito una cuchara.", dims: {"gender": "m"}}
-      - {pt: "Ich habe eine Tasche.", es: "Tengo un bolso.", dims: {"gender": "f"}}
-      - {pt: "Ich möchte ein Brot.", es: "Quiero un pan.", dims: {"gender": "n"}}
-  a1.ortho.nomen:
-    title: "Sustantivos con mayúscula"
-    requires: []
-    orthographic: true
-    rule: "En alemán todos los sustantivos se escriben con mayúscula inicial, también en medio de la oración."
-    rule_pt: "Im Deutschen werden alle Nomen großgeschrieben, auch im Satzinneren."
-    examples:
-      - {pt: "Ich brauche einen Löffel.", es: "Necesito una cuchara.", dims: {"gender": "m"}}
-      - {pt: "Ich habe eine Tasche.", es: "Tengo un bolso.", dims: {"gender": "f"}}
-      - {pt: "Ich möchte ein Brot.", es: "Quiero un pan.", dims: {"gender": "n"}}
-    curiosities: ["Hasta el siglo XVIII el inglés también escribía muchos sustantivos con mayúscula."]
-  a1.perfekt.hilfsverb:
-    title: "Perfekt: haben o sein"
-    requires: [a1.sein.praesens]
-    orthographic: false
-    rule: "El *Perfekt* (pretérito perfecto) lleva un verbo auxiliar que depende del verbo principal: los de movimiento o cambio de estado usan uno y la mayoría del resto usa el otro."
-    rule_pt: "Das Perfekt bildet man mit *haben* oder *sein*: Verben der Bewegung oder Zustandsänderung bilden das Perfekt meist mit *sein*."
-    examples:
-      - {pt: "Ich habe ein Brot gekauft.", es: "Compré un pan.", dims: {"aux": "haben"}}
-      - {pt: "Ich bin nach Berlin gefahren.", es: "Viajé a Berlín.", dims: {"aux": "sein"}}
-      - {pt: "Wir sind in Berlin geblieben.", es: "Nos quedamos en Berlín.", dims: {"aux": "sein"}}
-      - {pt: "Ich habe gut geschlafen.", es: "Dormí bien.", dims: {"aux": "haben"}}
-  a1.praesens.regular:
-    title: "Presente regular y V2"
-    requires: [a1.pron.personal]
-    orthographic: false
-  a1.praesens.irregular:
+      - {pt: "Eu moro em Buenos Aires.", es: "Vivo en Buenos Aires.", dims: {"person": "eu"}}
+      - {pt: "Você fala espanhol?", es: "¿Hablás español?", dims: {"person": "ele"}}
+      - {pt: "Nós comemos às oito.", es: "Comemos a las ocho.", dims: {"person": "nos"}}
+      - {pt: "Eles abrem a loja cedo.", es: "Ellos abren el negocio temprano.", dims: {"person": "eles"}}
+    curiosities:
+      - "*morar* es 'vivir en un lugar' (*Eu moro no Rio*); *viver* es 'vivir' en general (*viver bem*). Un hispanohablante dice *vivo em…* y se entiende, pero suena a portuñol."
+  a1.presente.irregular:
     title: "Presente irregular"
-    requires: [a1.praesens.regular]
+    requires: [a1.presente.regular]
     orthographic: false
-  a1.satz.ja-nein:
-    title: "Pregunta sí/no, nicht y kein"
-    requires: [a1.praesens.regular]
+    rule: "Algunos verbos muy usados no siguen las terminaciones regulares en alguna persona: esa forma se aprende de memoria."
+    rule_pt: "Alguns verbos muito usados não seguem as terminações regulares em alguma pessoa: essa forma se aprende de cor."
+  a1.som.nasal:
+    title: "Vocales nasales"
+    requires: []
     orthographic: false
-  a1.possessiv:
-    title: "Posesivos"
-    requires: [a1.nom.mask]
+    rule: "La tilde (*ã*, *õ*) y la *m* o *n* al final de la sílaba vuelven nasal la vocal: el aire sale también por la nariz, y eso cambia la palabra."
+    rule_pt: "O til (*ã*, *õ*) e o *m* ou *n* no fim da sílaba tornam a vogal nasal: o ar sai também pelo nariz, e isso muda a palavra."
+    examples:
+      - {pt: "pão", es: "pan", dims: {"sound": "nasal"}}
+      - {pt: "pau", es: "palo", dims: {"sound": "oral"}}
+      - {pt: "lã", es: "lana", dims: {"sound": "nasal"}}
+      - {pt: "lá", es: "allá", dims: {"sound": "oral"}}
+  a1.som.abertas:
+    title: "Vocales abiertas y cerradas"
+    requires: []
     orthographic: false
-  a1.modal:
-    title: "Modales"
-    requires: [a1.praesens.regular]
+    rule: "El portugués tiene una *e* y una *o* abiertas (*é*, *ó*) y otras cerradas (*ê*, *ô*): la diferencia cambia la palabra, y el acento escrito la marca."
+    rule_pt: "O português tem um *e* e um *o* abertos (*é*, *ó*) e outros fechados (*ê*, *ô*): a diferença muda a palavra, e o acento escrito a marca."
+    examples:
+      - {pt: "avó", es: "abuela", dims: {"sound": "aberta"}}
+      - {pt: "avô", es: "abuelo", dims: {"sound": "fechada"}}
+      - {pt: "é", es: "es", dims: {"sound": "aberta"}}
+      - {pt: "ê", es: "(la letra e)", dims: {"sound": "fechada"}}
+
+  # ─────────────── Esqueleto (sin contenido todavía) ───────────────
+  a1.interrog:
+    title: "Perguntas e negação"
+    requires: [a1.presente.regular]
     orthographic: false
-  a1.trennbar:
-    title: "Verbos separables"
-    requires: [a1.praesens.regular]
+  a1.possessivos:
+    title: "Possessivos"
+    requires: [a1.genero.masc, a1.genero.fem]
     orthographic: false
-  a1.imperativ:
-    title: "Imperativ"
-    requires: [a1.praesens.regular]
+  a1.demonstrativos:
+    title: "Demonstrativos"
+    requires: [a1.contr.em, a1.contr.de]
     orthographic: false
-  a1.praep:
-    title: "Preposiciones de tiempo y lugar"
-    requires: [a1.nom.mask]
+  a1.ir.infinitivo:
+    title: "Ir + infinitivo"
+    requires: [a1.presente.irregular]
     orthographic: false
-  a1.konnektor:
-    title: "und/aber/oder/denn"
-    requires: [a1.praesens.regular]
+  a1.estar.gerundio:
+    title: "Estar + gerúndio"
+    requires: [a1.estar.presente, a1.presente.regular]
     orthographic: false
-  a2.perfekt:
-    title: "Perfekt completo"
-    requires: [a1.praesens.regular]
+  a1.preposicoes:
+    title: "Preposições de lugar e de tempo"
+    requires: [a1.contr.em, a1.contr.de]
     orthographic: false
-  a2.praet:
-    title: "Präteritum de sein, haben y modales"
-    requires: [a1.praesens.regular]
+  a1.numeros:
+    title: "Números, horas e datas"
+    requires: []
     orthographic: false
-  a2.dativ:
-    title: "Dativ"
-    requires: [a1.praesens.regular]
+  a1.perfeito.regular:
+    title: "Pretérito perfeito regular"
+    requires: [a1.presente.regular]
     orthographic: false
-  a2.praep:
-    title: "Preposiciones con Akk/Dat"
-    requires: [a1.praesens.regular]
+  a1.gostar.de:
+    title: "Gostar de, precisar de"
+    requires: [a1.contr.de, a1.presente.regular]
     orthographic: false
-  a2.reflexiv:
-    title: "Reflexivos"
-    requires: [a1.praesens.regular]
+  a2.perfeito.irregular:
+    title: "Pretérito perfeito irregular"
+    requires: [a1.perfeito.regular]
     orthographic: false
-  a2.komparativ:
-    title: "Comparativo y superlativo"
-    requires: [a1.praesens.regular]
+  a2.imperfeito:
+    title: "Pretérito imperfeito"
+    requires: [a1.perfeito.regular]
     orthographic: false
-  a2.adjektiv:
-    title: "Adjetivo tras artículo"
-    requires: [a1.praesens.regular]
+  a2.perfeito.imperfeito:
+    title: "Perfeito ou imperfeito"
+    requires: [a2.perfeito.irregular, a2.imperfeito]
     orthographic: false
-  a2.nebensatz:
-    title: "Subordinadas con weil/dass/wenn"
-    requires: [a1.praesens.regular]
+  a2.pron.objeto:
+    title: "Pronomes objeto"
+    requires: [a1.pron.sujeito]
     orthographic: false
-  b1.praet:
-    title: "Präteritum y Plusquamperfekt"
-    requires: [a2.perfekt]
+  a2.comparativos:
+    title: "Comparativos e superlativos"
+    requires: [a1.ser.estar]
     orthographic: false
-  b1.konj2:
-    title: "Konjunktiv II"
-    requires: [a2.perfekt]
+  a2.imperativo:
+    title: "Imperativo"
+    requires: [a1.presente.irregular]
     orthographic: false
-  b1.passiv:
-    title: "Passiv"
-    requires: [a2.perfekt]
+  a2.por.para:
+    title: "Por e para"
+    requires: [a1.preposicoes]
     orthographic: false
-  b1.relativ:
-    title: "Relativas"
-    requires: [a2.perfekt]
+  a2.reflexivos:
+    title: "Verbos reflexivos"
+    requires: [a2.pron.objeto]
     orthographic: false
-  b1.adjektiv:
-    title: "Declinación adjetival completa"
-    requires: [a2.perfekt]
+  b1.subj.presente:
+    title: "Presente do subjuntivo"
+    requires: [a2.imperativo]
     orthographic: false
-  b1.genitiv:
-    title: "Genitiv"
-    requires: [a2.perfekt]
+  b1.subj.futuro:
+    title: "Futuro do subjuntivo"
+    requires: [b1.subj.presente]
     orthographic: false
-  b1.infinitiv:
-    title: "zu + Infinitiv"
-    requires: [a2.perfekt]
+  b1.subj.imperfeito:
+    title: "Imperfeito do subjuntivo e condicional"
+    requires: [b1.subj.presente]
     orthographic: false
-  b1.konnektor:
-    title: "Conectores dobles"
-    requires: [a2.perfekt]
+  b1.infinitivo.pessoal:
+    title: "Infinitivo pessoal"
+    requires: [a1.presente.regular]
     orthographic: false
-  b2.passiv:
-    title: "Passiv en todos los tiempos"
-    requires: [b1.praet]
+  b1.passiva:
+    title: "Particípio e voz passiva"
+    requires: [a2.perfeito.irregular]
     orthographic: false
-  b2.konj1:
-    title: "Konjunktiv I"
-    requires: [b1.praet]
+  b1.mais.que.perfeito:
+    title: "Mais-que-perfeito composto"
+    requires: [a2.perfeito.imperfeito]
     orthographic: false
-  b2.nebensatz:
-    title: "Subordinadas avanzadas"
-    requires: [b1.praet]
+  b1.discurso.indireto:
+    title: "Discurso indireto"
+    requires: [a2.perfeito.imperfeito]
     orthographic: false
-  b2.ndekl:
-    title: "n-Deklination"
-    requires: [b1.praet]
+  b1.conectores:
+    title: "Conectores do texto"
+    requires: [a2.perfeito.imperfeito]
     orthographic: false
-  b2.partizip:
-    title: "Participios como adjetivo"
-    requires: [b1.praet]
+  b2.subj.adverbial:
+    title: "Subjuntivo nas orações adverbiais"
+    requires: [b1.subj.imperfeito]
     orthographic: false
-  b2.partikel:
-    title: "Partículas modales"
-    requires: [b1.praet]
+  b2.subj.compostos:
+    title: "Tempos compostos do subjuntivo"
+    requires: [b1.subj.imperfeito]
     orthographic: false
-  c1.nominal:
-    title: "Nominalstil y Verbalstil"
-    requires: [b2.passiv]
+  b2.relativos:
+    title: "Relativos variáveis"
+    requires: [b1.conectores]
     orthographic: false
-  c1.partizip:
-    title: "Partizipialattribute"
-    requires: [b2.passiv]
+  b2.registro:
+    title: "Registro formal e informal"
+    requires: [b1.conectores]
     orthographic: false
-  c1.konj1:
-    title: "Discurso indirecto"
-    requires: [b2.passiv]
+  b2.participios.duplos:
+    title: "Particípios duplos"
+    requires: [b1.passiva]
     orthographic: false
-  c1.funktion:
-    title: "Funktionsverbgefüge"
-    requires: [b2.passiv]
+  c1.mesoclise:
+    title: "Colocação pronominal formal"
+    requires: [a2.pron.objeto, b2.registro]
     orthographic: false
-  c1.mittelfeld:
-    title: "Orden del Mittelfeld"
-    requires: [b2.passiv]
+  c1.concordancia:
+    title: "Concordância avançada"
+    requires: [b2.relativos]
+    orthographic: false
+  c1.estilo.nominal:
+    title: "Estilo nominal e texto acadêmico"
+    requires: [b2.registro]
+    orthographic: false
+  c1.celpe.bras:
+    title: "Tarefas integradas do Celpe-Bras"
+    requires: [b2.registro]
+    orthographic: false
+  c1.expressoes:
+    title: "Expressões idiomáticas"
+    requires: [b2.registro]
     orthographic: false

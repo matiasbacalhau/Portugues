@@ -1,8 +1,8 @@
 # Worker del corrector de gramática. Las claves NO van acá: se cargan con `npx wrangler secret put`.
-name = "deutschlernen-grammar"
+name = "portugues-grammar"
 main = "index.js"
 compatibility_date = "2026-10-01"
-# URL pública: https://deutschlernen-grammar.matiasbacalhau.workers.dev. Sin Preview URLs: un solo punto de entrada.
+# URL pública: https://portugues-grammar.matiasbacalhau.workers.dev. Sin Preview URLs: un solo punto de entrada.
 workers_dev = true
 preview_urls = false
 

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>B · awesome-design-md</title>
+<!-- awesome-design-md · based on the catalog's "Wise" DESIGN.md (brand removed).
+     Kept: sage canvas #e8ebe6, white cards as the only elevation, lime #9fe870 as the single CTA colour with ink text,
+     forest ink #163300 on positive surfaces, display at weight 900 (Inter 900 as the open substitute), Inter 600 for the rest,
+     24px radius on cards and buttons, 48px buttons. Runner-ups: Figma (pastel blocks), Miro (canary yellow). -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #9fe870;
+  --primary-active: #cdffad;
+  --primary-pale: #e2f6d5;
+  --ink: #0e0f0c;
+  --ink-deep: #163300;
+  --body: #454745;
+  --mute: #868685;
+  --canvas: #ffffff;
+  --canvas-soft: #e8ebe6;
+  --r-xl: 24px;
+  --r-pill: 9999px;
+  --font: Inter, system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: #d9ddd6; font: 400 16px/1.5 var(--font); color: var(--ink); font-feature-settings: "calt"; display: grid; place-items: center; min-height: 100vh; }
+.canvas { width: 1280px; height: 800px; background: var(--canvas-soft); display: grid; grid-template-columns: 1fr 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.side h1 { font: 900 64px/0.85 var(--font); letter-spacing: -0.02em; margin: 0 0 24px; color: var(--ink-deep); }
+.side p { font-size: 18px; color: var(--body); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.spec .row { display: flex; gap: 8px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--canvas-soft); border-radius: 44px; overflow: hidden; outline: 10px solid var(--ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 600; font-size: 14px; }
+.bar { height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.mark { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 17px; color: var(--ink-deep); }
+.bar a { color: var(--ink); font-weight: 600; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.content { padding: 4px 16px 16px; display: flex; flex-direction: column; gap: 12px; }
+.greet { font: 900 46px/0.9 var(--font); letter-spacing: -0.02em; margin: 8px 4px 12px; color: var(--ink-deep); }
+.card { background: var(--canvas); border-radius: var(--r-xl); padding: 24px; }
+.level { display: inline-flex; height: 28px; padding: 0 12px; align-items: center; border-radius: 8px; background: var(--primary-pale); color: var(--ink-deep); font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+.path { color: var(--body); font-size: 14px; margin: 0 0 2px; }
+.topic { font: 600 24px/1.25 var(--font); letter-spacing: -0.02em; margin: 0 0 16px; }
+.stage { display: flex; align-items: baseline; gap: 10px; margin: 0 0 20px; }
+.stage .n { font: 900 40px/0.85 var(--font); color: var(--ink-deep); }
+.stage .n small { font-size: 20px; color: var(--mute); }
+.stage .w { font-weight: 600; }
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border-radius: var(--r-xl); font: 600 16px var(--font); border: 0; cursor: pointer; transition: transform .12s ease, background .15s; }
+.btn:active { transform: scale(.97); }
+.btn.primary { background: var(--primary); color: var(--ink); }
+.btn.primary:hover { background: var(--primary-active); }
+.btn.outline { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.btn.block { width: 100%; }
+.map h2 { font: 600 16px/1 var(--font); margin: 0 0 12px; display: flex; justify-content: space-between; }
+.map h2 span { color: var(--body); font-weight: 400; }
+.t { display: flex; align-items: center; justify-content: space-between; height: 48px; font-weight: 600; font-size: 15px; }
+.t + .t { border-top: 1px solid var(--canvas-soft); }
+.t .s { font-weight: 400; font-size: 14px; color: var(--mute); }
+.t .dot { width: 24px; height: 24px; border-radius: 50%; background: var(--canvas-soft); flex: none; margin-right: 12px; }
+.t .dot.on { background: var(--primary); box-shadow: inset 0 0 0 6px var(--primary-pale); }
+.t .l { display: flex; align-items: center; }
+.t.soon { color: var(--mute); }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <section class="side">
+    <h1>Peso pesado, verde lima</h1>
+    <p>Títulos negros a peso 900, fondo salvia, tarjetas blancas y un solo verde lima para la acción. Energía de cancha, no de biblioteca.</p>
+    <div class="spec" lang="pt-BR">
+      <span class="level">Etapa 2 de 5</span>
+      <div class="row"><button class="btn primary">Verificar</button><button class="btn outline">Continuar</button></div>
+    </div>
+  </section>
+
+  <div class="phone" lang="pt-BR" role="img" aria-label="Tela inicial no iPhone">
+    <div class="status"><span>21:40</span><span>●●●</span></div>
+    <div class="bar">
+      <span class="mark"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="7" fill="#9fe870"/><path d="M5 11h12M11 5l6 6-6 6" stroke="#163300" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Português</span>
+      <a href="#">Ajustes</a>
+    </div>
+    <div class="content">
+      <h2 class="greet">Boa noite, Matías</h2>
+      <section class="card">
+        <span class="level">A1 · Unidade 1 Chegando</span>
+        <p class="path">Tema 1</p>
+        <p class="topic">Pronomes, ser e estar</p>
+        <div class="stage"><span class="n" aria-hidden="true">2<small>/5</small></span><span class="w">Etapa 2 de 5:<br>Reconhecer</span></div>
+        <button class="btn primary block">Começar</button>
+      </section>
+      <section class="card map">
+        <h2>Mapa A1 <span>3 temas</span></h2>
+        <div class="t"><span class="l"><i class="dot on"></i>Pronomes + ser/estar</span><span class="s">Etapa 2 de 5</span></div>
+        <div class="t"><span class="l"><i class="dot"></i>Artigos e contrações</span></div>
+        <div class="t"><span class="l"><i class="dot"></i>Presente regular</span></div>
+        <div class="t soon"><span class="l"><i class="dot" style="background:none;box-shadow:inset 0 0 0 1.5px #c9ccc6"></i>Outros temas</span><span class="s">em breve</span></div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(".canvas").style.zoom=k}fit();addEventListener("resize",fit)</script>
+</body>
+</html>

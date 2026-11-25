@@ -1,7 +1,7 @@
 // Persistencia en IndexedDB: un almacén clave → valor. "meta" guarda schemaVersion, firstUseAt y lastBackupAt.
 import { SCHEMA_VERSION, migrate, makeBackup, parseBackup } from './backup.js';
 
-const DB_NAME = 'aleman';
+const DB_NAME = 'portugues';
 const STORE = 'kv';
 let dbPromise;
 

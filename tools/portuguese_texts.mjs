@@ -1,5 +1,5 @@
-// Lista todo el alemán que entra a la app, para que lt_check.py lo pase por LanguageTool.
-// Uso: node tools/german_texts.mjs  →  JSON [{where, text, ignore?}]
+// Lista todo el portugués que entra a la app, para que lt_check.py lo pase por LanguageTool.
+// Uso: node tools/portuguese_texts.mjs  →  JSON [{where, text, ignore?}]
 // Los textos de varias oraciones (reading.text, model) llevan multi: true y se chequean de a uno.
 // No se chequean: distractores de choice, la frase con el error de spot-error, ni las
 // cursivas/tablas de la ficha (son fragmentos; el resto de la ficha es castellano).
@@ -31,7 +31,7 @@ function exerciseTexts(ex) {
       break;
     case 'order': {
       // Los chunks van en mayúscula de mitad de frase: la oración se chequea con la primera letra en mayúscula.
-      const sentence = (a) => { const t = a.join(' '); return t.charAt(0).toLocaleUpperCase('de') + t.slice(1); };
+      const sentence = (a) => { const t = a.join(' '); return t.charAt(0).toLocaleUpperCase('pt-BR') + t.slice(1); };
       ex.answers.forEach((a, n) => add(`answers[${n}]`, sentence(a)));
       break;
     }
@@ -46,7 +46,7 @@ function exerciseTexts(ex) {
     }
     case 'reading':
       add('text', ex.text, true);
-      // Las preguntas se escriben en alemán (prompt, respuestas escritas y opciones); si una
+      // Las preguntas se escriben en portugués (prompt, respuestas escritas y opciones); si una
       // va en castellano, el ejercicio lleva lt_ignore.
       ex.questions.forEach((q, i) => {
         add(`questions[${i}].prompt`, q.prompt);
@@ -59,6 +59,9 @@ function exerciseTexts(ex) {
       ex.apply.forEach((a, i) => a.answers.forEach((ans, n) =>
         add(`apply[${i}].answers[${n}]`, a.text.includes('___') ? fill(a.text, ans) : ans)));
       break;
+    case 'pares':
+      ex.pair.forEach((p, n) => add(`pair[${n}]`, ex.frame ? fill(ex.frame, p.pt) : p.pt));
+      break;
     case 'writing-guided':
     case 'writing-free':
       add('model', ex.model, true);
@@ -68,7 +71,7 @@ function exerciseTexts(ex) {
   return out;
 }
 
-export function germanTexts({curriculum, lexicon, templates, units}) {
+export function portugueseTexts({curriculum, lexicon, templates, units}) {
   const out = [];
   for (const [tag, t] of Object.entries(curriculum.tags ?? {}))
     (t.examples ?? []).forEach((e, n) => out.push({where: `curriculum ${tag}: examples[${n}]`, text: e.pt}));
@@ -87,7 +90,7 @@ function main() {
   const units = [];
   for (const level of readdirSync(join(data, 'levels')))
     for (const f of readdirSync(join(data, 'levels', level)).sort()) units.push(read(`levels/${level}/${f}`));
-  const texts = germanTexts({curriculum: read('curriculum.json'), lexicon: read('lexicon.json'),
+  const texts = portugueseTexts({curriculum: read('curriculum.json'), lexicon: read('lexicon.json'),
     templates: read('templates.json'), units});
   process.stdout.write(JSON.stringify(texts));
 }

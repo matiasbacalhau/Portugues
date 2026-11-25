@@ -2,7 +2,7 @@
 import { h } from './dom.js';
 import { topicStatus } from '../core/progress.js';
 
-const LABEL = { nuevo: 'neu', 'en-curso': 'aktiv', dominado: 'gemeistert', reforzar: 'wiederholen', proximamente: 'demnächst' };
+const LABEL = { nuevo: 'novo', 'en-curso': 'em andamento', dominado: 'dominado', reforzar: 'repetir', proximamente: 'em breve' };
 
 export default async function mapa(el, { store, content }) {
   const C = await content();
@@ -16,5 +16,5 @@ export default async function mapa(el, { store, content }) {
       ? h('div', props, h('span', {}, t.title))
       : h('a', { ...props, href: `#/tema/${encodeURIComponent(t.id)}` }, h('span', {}, t.title));
   });
-  el.append(h('h1', {}, 'Themenkarte'), h('div', { class: 'card' }, rows), h('a', { class: 'button secondary', href: '#/' }, 'Start'));
+  el.append(h('h1', {}, 'Mapa de temas'), h('div', { class: 'card' }, rows), h('a', { class: 'button secondary', href: '#/' }, 'Início'));
 }

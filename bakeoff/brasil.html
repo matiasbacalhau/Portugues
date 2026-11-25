@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C en colores de Brasil</title>
+<style>
+:root { --bg: #f4f4f2; --card: #ffffff; --ink: #1a1a1a; --muted: #5f5f5c; --line: #e2e2de; }
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.5 system-ui, -apple-system, sans-serif; padding: 32px 24px 48px; }
+header { max-width: 1680px; margin: 0 auto 24px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+header p { margin: 0; color: var(--muted); max-width: 80ch; }
+.grid { max-width: 1680px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.frame { aspect-ratio: 1280 / 800; width: 100%; border: 0; display: block; background: var(--bg); }
+.body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+h2 { font-size: 18px; margin: 0; }
+h2 span { color: var(--muted); font-weight: 400; }
+.sw { display: flex; gap: 6px; }
+.sw i { width: 64px; height: 36px; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); position: relative; }
+.sw i::after { content: attr(data-c); position: absolute; top: 40px; left: 0; font: 400 10px system-ui; color: var(--muted); font-style: normal; white-space: nowrap; }
+.sw { margin-bottom: 14px; }
+dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+.why { margin: 4px 0 0; font-weight: 500; }
+a { color: var(--ink); }
+@media (max-width: 1100px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Propuesta C con los colores de Brasil</h1>
+  <p>El mismo diseño de figurinhas (Hallmark, tema Sticker): cambian solo los colores. Verde, amarillo y azul en tres combinaciones; la tipografía (Bowlby One SC y Sofia Sans) y los bordes blancos con sombra dura se mantienen.</p>
+</header>
+<div class="grid">
+  <article class="card">
+    <iframe class="frame" title="C1 · Bandeira" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;C1 · Bandeira&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Variante Bandeira del tema Sticker de Hallmark, con verde, amarillo y azul de Brasil.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Bowlby+One+SC&amp;family=Sofia+Sans:wght@400;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+/* Hallmark · built: 2026-11-24 · genre: playful · scope: app · shape: app screen · theme: Sticker (sticker: sheet, Brazilian colourway by request), dealt 1/3, seed pwa-privada-para-aprender-6220·b54229dc·2026-11-24·r0 · signature: the A1 map as a sticker album, each tema a figurinha stuck down, the ones to come as empty dashed slots */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, no photographs exist, so the fills and the album carry the screen */
+:root {
+  --color-paper: oklch(95.7% 0.013 82); --color-paper-2: oklch(92.8% 0.021 79); --color-card: oklch(99.4% 0.007 89);
+  --color-ink: oklch(21% 0.011 81); --color-ink-2: oklch(30% 0.013 78); --color-muted: oklch(50% 0.017 64);
+  --color-rule: oklch(82% 0.02 80); --color-white: oklch(99.5% 0.003 82); --color-desk: oklch(90% 0.02 80);
+  --color-field: var(--color-paper); --color-field-ink: var(--color-ink); --color-frame: var(--color-ink); --color-shadow: var(--color-ink);
+  --color-act: #00843d; --color-act-deep: #006b32; --color-act-ink: var(--color-white);
+  --color-mark: #ffdf00; --color-mark-ink: var(--color-ink);
+  --color-strong: #002776; --color-strong-ink: var(--color-white); --color-stage: #002776;
+  --color-fig: #00843d; --color-fig-ink: var(--color-white); --color-focus: #002776;
+  --font-display: &quot;Bowlby One SC&quot;, &quot;Arial Black&quot;, sans-serif; --font-body: &quot;Sofia Sans&quot;, ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 18px; --radius-pill: 999px; --rule-bar: 2px;
+  --shadow-card: 5px 6px 0 var(--color-shadow); --shadow-press: 1px 1px 0 var(--color-shadow);
+  --tracking-display: 0.005em;
+  --dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-mark); color: var(--color-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-field); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { text-wrap: balance; font-family: var(--font-display); font-weight: 400; letter-spacing: var(--tracking-display); line-height: 1.02; overflow-wrap: break-word; min-width: 0; }
+.side h1 { color: var(--color-field-ink); font-size: 3.25rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-field-ink); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 16px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-frame); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 700; font-size: 14px; }
+.bar { height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-size: 18px; }
+.bar a { color: var(--color-ink); font-weight: 700; font-size: 15px; }
+.content { padding: 4px 20px 16px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 2.1rem; margin: 8px 0 4px; }
+
+.diecut { border: 6px solid var(--color-white); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.next { background: var(--color-card); padding: 16px 16px 20px; rotate: -1.2deg; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.tag { display: inline-flex; align-items: center; height: 26px; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-mark); color: var(--color-mark-ink); font-weight: 700; font-size: 13px; }
+.tag.ink { background: var(--color-strong); color: var(--color-strong-ink); }
+.topic { font-weight: 600; font-size: 20px; line-height: 1.2; margin: 0 0 12px; }
+.stage { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
+.stage .n { font-family: var(--font-display); font-size: 3.4rem; line-height: .9; color: var(--color-stage); }
+.stage .w { font-weight: 600; line-height: 1.25; }
+.stage .w span { display: block; color: var(--color-muted); font-weight: 700; font-size: 14px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; border-radius: var(--radius-pill); font: 700 17px var(--font-body); color: var(--color-ink); background: transparent; border: 0; box-shadow: inset 0 0 0 2px var(--color-ink); cursor: pointer; transition: translate var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out); }
+.btn--primary { background: var(--color-act); color: var(--color-act-ink); box-shadow: 0 0 0 5px var(--color-white), var(--shadow-card); }
+.btn--primary:hover { background: var(--color-act-deep); }
+.btn--primary:active { translate: 4px 5px; box-shadow: 0 0 0 5px var(--color-white), var(--shadow-press); }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; transition: none; }
+.btn.block { width: calc(100% - 8px); }
+
+.album h2 { font-size: 1.35rem; margin: 8px 0 12px; display: flex; justify-content: space-between; align-items: baseline; }
+.album h2 small { font: 700 14px var(--font-body); color: var(--color-muted); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.fig { aspect-ratio: 3 / 4; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; font-weight: 700; font-size: 13px; line-height: 1.2; }
+.fig b { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; line-height: 1; }
+.fig.now { background: var(--color-fig); color: var(--color-fig-ink); rotate: 2deg; }
+.fig.white { background: var(--color-card); rotate: -2deg; }
+.fig.white.tilt { rotate: 1.5deg; }
+.fig .sub { display: block; margin-top: 4px; font-weight: 600; opacity: .9; }
+.slot { grid-column: 1 / -1; min-height: 52px; border: var(--rule-bar) dashed var(--color-rule); border-radius: var(--radius-card); display: flex; align-items: center; padding: 0 16px; color: var(--color-muted); font-weight: 700; font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+  &lt;section class=&quot;side&quot;&gt;
+    &lt;h1 class=&quot;display&quot;&gt;Bandeira&lt;/h1&gt;
+    &lt;p&gt;Verde para empezar, amarillo para marcar, azul para decir en qué etapa estás. Papel cálido y tinta negra, como el original.&lt;/p&gt;
+    &lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+      &lt;span class=&quot;tag ink&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+      &lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+    &lt;div class=&quot;status&quot;&gt;&lt;span&gt;21:40&lt;/span&gt;&lt;span&gt;●●●&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+      &lt;section class=&quot;next diecut&quot;&gt;
+        &lt;div class=&quot;tags&quot;&gt;&lt;span class=&quot;tag ink&quot;&gt;A1&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;Unidade 1 Chegando&lt;/span&gt;&lt;/div&gt;
+        &lt;p class=&quot;topic&quot;&gt;Tema 1: Pronomes, ser e estar&lt;/p&gt;
+        &lt;div class=&quot;stage&quot;&gt;&lt;span class=&quot;n&quot; aria-hidden=&quot;true&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;span&gt;Etapa 2 de 5&lt;/span&gt;Reconhecer&lt;/span&gt;&lt;/div&gt;
+        &lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;album&quot;&gt;
+        &lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+          &lt;div class=&quot;fig now diecut&quot;&gt;&lt;b&gt;1&lt;/b&gt;&lt;span&gt;Pronomes + ser/estar&lt;span class=&quot;sub&quot;&gt;Etapa 2 de 5&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;fig white diecut&quot;&gt;&lt;b&gt;2&lt;/b&gt;Artigos e contrações&lt;/div&gt;
+          &lt;div class=&quot;fig white diecut tilt&quot;&gt;&lt;b&gt;3&lt;/b&gt;Presente regular&lt;/div&gt;
+          &lt;div class=&quot;slot&quot;&gt;Outros temas: em breve&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>C1 · Bandeira <span>papel cálido</span></h2>
+      <div class="sw"><i style="background:oklch(95.7% 0.013 82)" data-c="papel"></i><i style="background:oklch(21% 0.011 81)" data-c="tinta"></i><i style="background:#00843d" data-c="#00843d"></i><i style="background:#ffdf00" data-c="#ffdf00"></i><i style="background:#002776" data-c="#002776"></i></div>
+      <p class="why">Verde para empezar, amarillo para marcar, azul para la etapa. Es la más parecida a la C original: solo cambian el rosa y la lima.</p>
+      <a href="c1-bandeira.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+  <article class="card">
+    <iframe class="frame" title="C2 · Canarinho" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;C2 · Canarinho&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Variante Canarinho del tema Sticker de Hallmark, con verde, amarillo y azul de Brasil.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Bowlby+One+SC&amp;family=Sofia+Sans:wght@400;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+/* Hallmark · built: 2026-11-24 · genre: playful · scope: app · shape: app screen · theme: Sticker (sticker: sheet, Brazilian colourway by request), dealt 1/3, seed pwa-privada-para-aprender-6220·b54229dc·2026-11-24·r0 · signature: the A1 map as a sticker album, each tema a figurinha stuck down, the ones to come as empty dashed slots */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, no photographs exist, so the fills and the album carry the screen */
+:root {
+  --color-paper: oklch(95.7% 0.013 82); --color-paper-2: oklch(92.8% 0.021 79); --color-card: oklch(99.4% 0.007 89);
+  --color-ink: oklch(21% 0.011 81); --color-ink-2: oklch(30% 0.013 78); --color-muted: oklch(50% 0.017 64);
+  --color-rule: oklch(82% 0.02 80); --color-white: oklch(99.5% 0.003 82); --color-desk: oklch(90% 0.02 80);
+  --color-field: #ffdf00; --color-field-ink: var(--color-ink); --color-frame: var(--color-ink); --color-shadow: var(--color-ink);
+  --color-act: #1a3d9e; --color-act-deep: #002776; --color-act-ink: var(--color-white);
+  --color-mark: #8fdca6; --color-mark-ink: var(--color-ink);
+  --color-strong: #00843d; --color-strong-ink: var(--color-white); --color-stage: #00843d;
+  --color-fig: #ffdf00; --color-fig-ink: var(--color-ink); --color-focus: #1a3d9e;
+  --font-display: &quot;Bowlby One SC&quot;, &quot;Arial Black&quot;, sans-serif; --font-body: &quot;Sofia Sans&quot;, ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 18px; --radius-pill: 999px; --rule-bar: 2px;
+  --shadow-card: 5px 6px 0 var(--color-shadow); --shadow-press: 1px 1px 0 var(--color-shadow);
+  --tracking-display: 0.005em;
+  --dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-mark); color: var(--color-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-field); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { text-wrap: balance; font-family: var(--font-display); font-weight: 400; letter-spacing: var(--tracking-display); line-height: 1.02; overflow-wrap: break-word; min-width: 0; }
+.side h1 { color: var(--color-field-ink); font-size: 3.25rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-field-ink); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 16px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-frame); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 700; font-size: 14px; }
+.bar { height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-size: 18px; }
+.bar a { color: var(--color-ink); font-weight: 700; font-size: 15px; }
+.content { padding: 4px 20px 16px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 2.1rem; margin: 8px 0 4px; }
+
+.diecut { border: 6px solid var(--color-white); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.next { background: var(--color-card); padding: 16px 16px 20px; rotate: -1.2deg; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.tag { display: inline-flex; align-items: center; height: 26px; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-mark); color: var(--color-mark-ink); font-weight: 700; font-size: 13px; }
+.tag.ink { background: var(--color-strong); color: var(--color-strong-ink); }
+.topic { font-weight: 600; font-size: 20px; line-height: 1.2; margin: 0 0 12px; }
+.stage { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
+.stage .n { font-family: var(--font-display); font-size: 3.4rem; line-height: .9; color: var(--color-stage); }
+.stage .w { font-weight: 600; line-height: 1.25; }
+.stage .w span { display: block; color: var(--color-muted); font-weight: 700; font-size: 14px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; border-radius: var(--radius-pill); font: 700 17px var(--font-body); color: var(--color-ink); background: transparent; border: 0; box-shadow: inset 0 0 0 2px var(--color-ink); cursor: pointer; transition: translate var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out); }
+.btn--primary { background: var(--color-act); color: var(--color-act-ink); box-shadow: 0 0 0 5px var(--color-white), var(--shadow-card); }
+.btn--primary:hover { background: var(--color-act-deep); }
+.btn--primary:active { translate: 4px 5px; box-shadow: 0 0 0 5px var(--color-white), var(--shadow-press); }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; transition: none; }
+.btn.block { width: calc(100% - 8px); }
+
+.album h2 { font-size: 1.35rem; margin: 8px 0 12px; display: flex; justify-content: space-between; align-items: baseline; }
+.album h2 small { font: 700 14px var(--font-body); color: var(--color-muted); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.fig { aspect-ratio: 3 / 4; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; font-weight: 700; font-size: 13px; line-height: 1.2; }
+.fig b { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; line-height: 1; }
+.fig.now { background: var(--color-fig); color: var(--color-fig-ink); rotate: 2deg; }
+.fig.white { background: var(--color-card); rotate: -2deg; }
+.fig.white.tilt { rotate: 1.5deg; }
+.fig .sub { display: block; margin-top: 4px; font-weight: 600; opacity: .9; }
+.slot { grid-column: 1 / -1; min-height: 52px; border: var(--rule-bar) dashed var(--color-rule); border-radius: var(--radius-card); display: flex; align-items: center; padding: 0 16px; color: var(--color-muted); font-weight: 700; font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+  &lt;section class=&quot;side&quot;&gt;
+    &lt;h1 class=&quot;display&quot;&gt;Canarinho&lt;/h1&gt;
+    &lt;p&gt;El amarillo de la camiseta como campo, el azul del short para empezar y el verde para lo que avanza.&lt;/p&gt;
+    &lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+      &lt;span class=&quot;tag ink&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+      &lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+    &lt;div class=&quot;status&quot;&gt;&lt;span&gt;21:40&lt;/span&gt;&lt;span&gt;●●●&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+      &lt;section class=&quot;next diecut&quot;&gt;
+        &lt;div class=&quot;tags&quot;&gt;&lt;span class=&quot;tag ink&quot;&gt;A1&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;Unidade 1 Chegando&lt;/span&gt;&lt;/div&gt;
+        &lt;p class=&quot;topic&quot;&gt;Tema 1: Pronomes, ser e estar&lt;/p&gt;
+        &lt;div class=&quot;stage&quot;&gt;&lt;span class=&quot;n&quot; aria-hidden=&quot;true&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;span&gt;Etapa 2 de 5&lt;/span&gt;Reconhecer&lt;/span&gt;&lt;/div&gt;
+        &lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;album&quot;&gt;
+        &lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+          &lt;div class=&quot;fig now diecut&quot;&gt;&lt;b&gt;1&lt;/b&gt;&lt;span&gt;Pronomes + ser/estar&lt;span class=&quot;sub&quot;&gt;Etapa 2 de 5&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;fig white diecut&quot;&gt;&lt;b&gt;2&lt;/b&gt;Artigos e contrações&lt;/div&gt;
+          &lt;div class=&quot;fig white diecut tilt&quot;&gt;&lt;b&gt;3&lt;/b&gt;Presente regular&lt;/div&gt;
+          &lt;div class=&quot;slot&quot;&gt;Outros temas: em breve&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>C2 · Canarinho <span>campo amarillo</span></h2>
+      <div class="sw"><i style="background:#ffdf00" data-c="#ffdf00"></i><i style="background:oklch(95.7% 0.013 82)" data-c="papel"></i><i style="background:#1a3d9e" data-c="#1a3d9e"></i><i style="background:#00843d" data-c="#00843d"></i><i style="background:#8fdca6" data-c="#8fdca6"></i></div>
+      <p class="why">El amarillo de la camiseta de la selección es el que manda; azul para empezar, verde para lo que avanza. Es la más ruidosa y la más brasileña.</p>
+      <a href="c2-canarinho.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+  <article class="card">
+    <iframe class="frame" title="C3 · Noite" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;C3 · Noite&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Variante Noite del tema Sticker de Hallmark, con verde, amarillo y azul de Brasil.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Bowlby+One+SC&amp;family=Sofia+Sans:wght@400;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+/* Hallmark · built: 2026-11-24 · genre: playful · scope: app · shape: app screen · theme: Sticker (sticker: vinyl, Brazilian colourway by request), dealt 1/3, seed pwa-privada-para-aprender-6220·b54229dc·2026-11-24·r0 · signature: the A1 map as a sticker album, each tema a figurinha stuck down, the ones to come as empty dashed slots */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, no photographs exist, so the fills and the album carry the screen */
+:root {
+  --color-paper: oklch(21% 0.011 81); --color-paper-2: oklch(25.5% 0.013 72); --color-card: oklch(27% 0.013 72);
+  --color-ink: oklch(95.7% 0.013 82); --color-ink-2: oklch(88% 0.013 82); --color-muted: oklch(74% 0.017 70);
+  --color-rule: oklch(40% 0.016 75); --color-white: oklch(99.5% 0.003 82); --color-desk: oklch(15% 0.008 81);
+  --color-field: var(--color-paper); --color-field-ink: var(--color-ink); --color-frame: oklch(9% 0.006 81); --color-shadow: oklch(9% 0.006 81);
+  --color-act: #ffdf00; --color-act-deep: #f2c800; --color-act-ink: #1c1a16;
+  --color-mark: #2dbe60; --color-mark-ink: #10130f;
+  --color-strong: #1e4fc2; --color-strong-ink: var(--color-white); --color-stage: #ffdf00;
+  --color-fig: #1e4fc2; --color-fig-ink: var(--color-white); --color-focus: #ffdf00;
+  --font-display: &quot;Bowlby One SC&quot;, &quot;Arial Black&quot;, sans-serif; --font-body: &quot;Sofia Sans&quot;, ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 18px; --radius-pill: 999px; --rule-bar: 2px;
+  --shadow-card: 5px 6px 0 var(--color-shadow); --shadow-press: 1px 1px 0 var(--color-shadow);
+  --tracking-display: 0.005em;
+  --dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-mark); color: var(--color-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-field); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { text-wrap: balance; font-family: var(--font-display); font-weight: 400; letter-spacing: var(--tracking-display); line-height: 1.02; overflow-wrap: break-word; min-width: 0; }
+.side h1 { color: var(--color-field-ink); font-size: 3.25rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-field-ink); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 16px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-frame); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; font-weight: 700; font-size: 14px; }
+.bar { height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-size: 18px; }
+.bar a { color: var(--color-ink); font-weight: 700; font-size: 15px; }
+.content { padding: 4px 20px 16px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 2.1rem; margin: 8px 0 4px; }
+
+.diecut { border: 6px solid var(--color-white); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.next { background: var(--color-card); padding: 16px 16px 20px; rotate: -1.2deg; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.tag { display: inline-flex; align-items: center; height: 26px; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-mark); color: var(--color-mark-ink); font-weight: 700; font-size: 13px; }
+.tag.ink { background: var(--color-strong); color: var(--color-strong-ink); }
+.topic { font-weight: 600; font-size: 20px; line-height: 1.2; margin: 0 0 12px; }
+.stage { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
+.stage .n { font-family: var(--font-display); font-size: 3.4rem; line-height: .9; color: var(--color-stage); }
+.stage .w { font-weight: 600; line-height: 1.25; }
+.stage .w span { display: block; color: var(--color-muted); font-weight: 700; font-size: 14px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; border-radius: var(--radius-pill); font: 700 17px var(--font-body); color: var(--color-ink); background: transparent; border: 0; box-shadow: inset 0 0 0 2px var(--color-ink); cursor: pointer; transition: translate var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out); }
+.btn--primary { background: var(--color-act); color: var(--color-act-ink); box-shadow: 0 0 0 5px var(--color-white), var(--shadow-card); }
+.btn--primary:hover { background: var(--color-act-deep); }
+.btn--primary:active { translate: 4px 5px; box-shadow: 0 0 0 5px var(--color-white), var(--shadow-press); }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; transition: none; }
+.btn.block { width: calc(100% - 8px); }
+
+.album h2 { font-size: 1.35rem; margin: 8px 0 12px; display: flex; justify-content: space-between; align-items: baseline; }
+.album h2 small { font: 700 14px var(--font-body); color: var(--color-muted); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.fig { aspect-ratio: 3 / 4; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; font-weight: 700; font-size: 13px; line-height: 1.2; }
+.fig b { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; line-height: 1; }
+.fig.now { background: var(--color-fig); color: var(--color-fig-ink); rotate: 2deg; }
+.fig.white { background: var(--color-card); rotate: -2deg; }
+.fig.white.tilt { rotate: 1.5deg; }
+.fig .sub { display: block; margin-top: 4px; font-weight: 600; opacity: .9; }
+.slot { grid-column: 1 / -1; min-height: 52px; border: var(--rule-bar) dashed var(--color-rule); border-radius: var(--radius-card); display: flex; align-items: center; padding: 0 16px; color: var(--color-muted); font-weight: 700; font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+  &lt;section class=&quot;side&quot;&gt;
+    &lt;h1 class=&quot;display&quot;&gt;Noite&lt;/h1&gt;
+    &lt;p&gt;La versión oscura, para el rato libre de la noche: amarillo para empezar, verde para marcar, azul para el tema en curso.&lt;/p&gt;
+    &lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+      &lt;span class=&quot;tag ink&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+      &lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+    &lt;div class=&quot;status&quot;&gt;&lt;span&gt;21:40&lt;/span&gt;&lt;span&gt;●●●&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      &lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+      &lt;section class=&quot;next diecut&quot;&gt;
+        &lt;div class=&quot;tags&quot;&gt;&lt;span class=&quot;tag ink&quot;&gt;A1&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;Unidade 1 Chegando&lt;/span&gt;&lt;/div&gt;
+        &lt;p class=&quot;topic&quot;&gt;Tema 1: Pronomes, ser e estar&lt;/p&gt;
+        &lt;div class=&quot;stage&quot;&gt;&lt;span class=&quot;n&quot; aria-hidden=&quot;true&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;span&gt;Etapa 2 de 5&lt;/span&gt;Reconhecer&lt;/span&gt;&lt;/div&gt;
+        &lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;album&quot;&gt;
+        &lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+          &lt;div class=&quot;fig now diecut&quot;&gt;&lt;b&gt;1&lt;/b&gt;&lt;span&gt;Pronomes + ser/estar&lt;span class=&quot;sub&quot;&gt;Etapa 2 de 5&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;fig white diecut&quot;&gt;&lt;b&gt;2&lt;/b&gt;Artigos e contrações&lt;/div&gt;
+          &lt;div class=&quot;fig white diecut tilt&quot;&gt;&lt;b&gt;3&lt;/b&gt;Presente regular&lt;/div&gt;
+          &lt;div class=&quot;slot&quot;&gt;Outros temas: em breve&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>C3 · Noite <span>fondo oscuro</span></h2>
+      <div class="sw"><i style="background:oklch(21% 0.011 81)" data-c="fondo"></i><i style="background:oklch(95.7% 0.013 82)" data-c="texto"></i><i style="background:#ffdf00" data-c="#ffdf00"></i><i style="background:#2dbe60" data-c="#2dbe60"></i><i style="background:#1e4fc2" data-c="#1e4fc2"></i></div>
+      <p class="why">La versión oscura, para estudiar de noche en el iPhone; el amarillo resalta mucho sobre el fondo oscuro. Mantiene los bordes blancos de figurita.</p>
+      <a href="c3-noite.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+</div>
+</body>
+</html>

@@ -13,13 +13,18 @@ export const keyFor = (ex, n) => `${ex.id}#${n}`;
 
 // Las palabras que evalúa cada tag, cuando lo evaluado es una palabra (no el orden, como en las W-Fragen).
 const KEY_WORDS = {
-  'a1.sein.praesens': ['bin', 'bist', 'ist', 'sind', 'seid'],
-  'a1.pron.personal': ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr'],
+  'a1.ser.presente': ['sou', 'é', 'somos', 'são'],
+  'a1.estar.presente': ['estou', 'está', 'estamos', 'estão'],
+  'a1.ser.estar': ['sou', 'é', 'somos', 'são', 'estou', 'está', 'estamos', 'estão'],
+  'a1.pron.sujeito': ['eu', 'você', 'ele', 'ela', 'nós', 'vocês', 'eles', 'elas', 'gente'],
 };
-const ARTICLES = ['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines', 'kein', 'keine', 'keinen', 'keinem', 'keiner', 'keines'];
-const keyWordsOf = tag => KEY_WORDS[tag] ?? (/^a1\.(nom|akk)\./.test(tag ?? '') ? ARTICLES : null);
+const ARTICLES = ['o', 'a', 'os', 'as', 'um', 'uma', 'uns', 'umas'];
+const CONTRACTIONS = ['no', 'na', 'nos', 'nas', 'num', 'numa', 'do', 'da', 'dos', 'das', 'dum', 'duma', 'pelo', 'pela', 'pelos', 'pelas',
+  'ao', 'à', 'aos', 'às', 'em', 'de', 'por'];
+const keyWordsOf = tag => KEY_WORDS[tag] ?? (/^a1\.genero\./.test(tag ?? '') ? ARTICLES
+  : /^a1\.contr\./.test(tag ?? '') ? [...ARTICLES, ...CONTRACTIONS] : null);
 export const EVALUATED_OK = 'Lo que practica este ejercicio está bien: el error está en lo subrayado, que es de otro tema.';
-export const EVALUATED_OK_PT = 'Das Thema dieser Übung ist richtig: Der Fehler liegt im unterstrichenen Teil.';
+export const EVALUATED_OK_PT = 'O tema deste exercício está certo: o erro está na parte sublinhada.';
 
 // item: ejercicio o hueco con {tag, answers, errors?, dims?, generated?}.
 export function checkWritten(key, item, answer, ctx) {

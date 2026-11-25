@@ -27,12 +27,12 @@ export function offlineCheck(controlled, cached) {
 
 export function voicesCheck(supported, voices) {
   if (!supported) return { ok: false, text: 'este navegador no tiene síntesis de voz' };
-  return result(voices.length > 0, `${voices.length} voz/voces`, 'no hay voces alemanas');
+  return result(voices.length > 0, `${voices.length} voz/voces`, 'no hay voces de portugués de Brasil');
 }
 
 export async function speakCheck(speak, voice) {
   try {
-    await speak('Guten Tag! Ich lerne Deutsch.', { rate: 0.9, voice });
+    await speak('Bom dia! Eu estou aprendendo português.', { rate: 0.9, voice });
     return { ok: true, text: `suena (${voiceName(voice, 'predeterminada')})` };
   } catch (e) {
     return { ok: false, text: `error con ${voiceName(voice, 'la predeterminada')}: ${e.message}` };
@@ -41,7 +41,7 @@ export async function speakCheck(speak, voice) {
 
 export async function ltCheck(check) {
   try {
-    const matches = await check('Ich habe ein Fehler gemacht.');
+    const matches = await check('Eu moro numa casa muito bonitta.');
     return result(matches.length > 0, `responde (${matches.length} error detectado)`, 'responde, pero no detectó el error');
   } catch (e) {
     return { ok: false, text: `bloqueado o sin red: ${e.message}` };
