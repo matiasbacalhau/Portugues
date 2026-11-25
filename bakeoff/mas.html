@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Más diseños de Brasil</title>
+<style>
+:root { --bg: #f4f4f2; --card: #ffffff; --ink: #1a1a1a; --muted: #5f5f5c; --line: #e2e2de; }
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.5 system-ui, -apple-system, sans-serif; padding: 32px 24px 48px; }
+header { max-width: 1680px; margin: 0 auto 24px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+header p { margin: 0; color: var(--muted); max-width: 80ch; }
+.grid { max-width: 1680px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.frame { aspect-ratio: 1280 / 800; width: 100%; border: 0; display: block; background: var(--bg); }
+.body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+h2 { font-size: 18px; margin: 0; }
+h2 span { color: var(--muted); font-weight: 400; }
+.sw { display: flex; gap: 6px; }
+.sw i { width: 64px; height: 36px; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); position: relative; }
+.sw i::after { content: attr(data-c); position: absolute; top: 40px; left: 0; font: 400 10px system-ui; color: var(--muted); font-style: normal; white-space: nowrap; }
+.sw { margin-bottom: 14px; }
+dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+.why { margin: 4px 0 0; font-weight: 500; }
+a { color: var(--ink); }
+@media (max-width: 1100px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Tres diseños más con Hallmark, en verde, azul y amarillo</h1>
+  <p>Temas nuevos, distintos de C y de la ronda D. La ronda anterior (Mata, Escola, Gráfica) está en nuevos.html y Bandeira en brasil.html.</p>
+</header>
+<div class="grid">
+  <article class="card">
+    <iframe class="frame" title="E1 · Carnaval" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;E1 · Carnaval&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Propuesta E1 del concurso: tema Carnival de Hallmark, con campos amarillo y verde y tinta azul.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&amp;family=Golos+Text:wght@400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+--color-paper: oklch(95% 0.03 95); --color-paper-2: oklch(91% 0.035 95); --color-paper-3: oklch(85% 0.045 95);
+--color-ink: oklch(22% 0.10 262); --color-ink-2: oklch(30% 0.09 262); --color-muted: oklch(42% 0.07 262);
+--color-rule: oklch(46% 0.14 152); --color-accent: oklch(86% 0.18 95); --color-accent-2: oklch(46% 0.14 152);
+--color-accent-ink: oklch(22% 0.10 262); --color-on-2: oklch(97% 0.02 95); --color-focus: oklch(46% 0.14 152);
+--color-desk: oklch(88% 0.04 95);
+--font-display: &quot;Big Shoulders Display&quot;, Impact, sans-serif; --font-body: &quot;Golos Text&quot;, system-ui, sans-serif;
+--radius-card: 2px; --rule-bar: 2px; --shadow-card: 4px 4px 0 var(--color-ink); --shadow-press: 1px 1px 0 var(--color-ink);
+--tracking-display: 0.015em; --display-weight: 800;
+--dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); line-height: 1; text-transform: uppercase; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 6rem; line-height: .9; margin: 0 0 20px; }
+.side p { font-size: 18px; margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 16px; }
+.chip { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; background: var(--color-accent-2); color: var(--color-on-2); font-weight: 500; font-size: 14px; border-radius: var(--radius-card); }
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 500; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 22px; }
+.bar a { color: var(--color-ink); font-weight: 500; text-decoration-color: var(--color-accent-2); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bar a:hover { text-decoration-thickness: 4px; }
+.content { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 4.2rem; line-height: .88; margin: 4px 0 4px; }
+.well { background: var(--color-accent-2); color: var(--color-on-2); border: var(--rule-bar) solid var(--color-ink); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 16px; }
+.well .meta { margin: 0 0 4px; font-weight: 500; font-size: 14px; }
+.well h3 { font-size: 2.1rem; margin: 0 0 12px; }
+.stage { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; padding-top: 12px; border-top: var(--rule-bar) solid var(--color-on-2); }
+.stage b { font-family: var(--font-display); font-weight: 800; font-size: 3.6rem; line-height: .85; }
+.stage span { font-weight: 500; line-height: 1.25; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-bar) solid var(--color-ink); border-radius: var(--radius-card); font: 800 20px/1 var(--font-display); text-transform: uppercase; color: var(--color-ink); background: var(--color-paper); box-shadow: var(--shadow-card); cursor: pointer; transition: background-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out), translate var(--dur-micro) var(--ease-out); }
+.btn:hover { background: var(--color-paper-2); }
+.btn--primary { background: var(--color-accent); }
+.btn--primary:hover { background: var(--color-paper-3); }
+.btn:active { translate: 3px 3px; box-shadow: var(--shadow-press); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; transition: none; }
+.block { width: 100%; }
+.map h2 { font-size: 1.8rem; margin: 4px 0 4px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 500 14px var(--font-body); text-transform: none; color: var(--color-muted); }
+.r { display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding: 0 8px; border-top: var(--rule-bar) solid var(--color-rule); font-weight: 500; }
+.r:last-child { border-bottom: var(--rule-bar) solid var(--color-rule); }
+.r.on { background: var(--color-ink); color: var(--color-paper); }
+.r small { font-size: 13px; }
+.r.soon { color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+&lt;section class=&quot;side&quot;&gt;
+&lt;h1 class=&quot;display&quot;&gt;Cartel de carnaval&lt;/h1&gt;
+&lt;p&gt;Letras de cartel, angostas y enormes. Verde y amarillo compiten como campos llenos y la tinta es azul profundo, nunca negra.&lt;/p&gt;
+&lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+&lt;span class=&quot;chip&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+&lt;div class=&quot;status&quot;&gt;21:40&lt;/div&gt;
+&lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+&lt;section class=&quot;well&quot;&gt;
+&lt;p class=&quot;meta&quot;&gt;A1, Unidade 1 Chegando, Tema 1&lt;/p&gt;
+&lt;h3 class=&quot;display&quot;&gt;Pronomes, ser e estar&lt;/h3&gt;
+&lt;div class=&quot;stage&quot;&gt;&lt;b aria-hidden=&quot;true&quot;&gt;2/5&lt;/b&gt;&lt;span&gt;Etapa 2 de 5:&lt;br&gt;Reconhecer&lt;/span&gt;&lt;/div&gt;
+&lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+&lt;div class=&quot;r on&quot;&gt;&lt;span&gt;Pronomes + ser/estar&lt;/span&gt;&lt;small&gt;Etapa 2 de 5&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;span&gt;Artigos e contrações&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;span&gt;Presente regular&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r soon&quot;&gt;&lt;span&gt;Outros temas&lt;/span&gt;&lt;small&gt;em breve&lt;/small&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>E1 · Carnaval <span>tema Carnival</span></h2>
+      <div class="sw"><i style="background:oklch(95% 0.03 95)" data-c="papel"></i><i style="background:oklch(22% 0.10 262)" data-c="tinta azul"></i><i style="background:oklch(46% 0.14 152)" data-c="verde"></i><i style="background:oklch(86% 0.18 95)" data-c="amarillo"></i><i style="background:oklch(85% 0.045 95)" data-c="papel oscuro"></i></div>
+      <dl><dt>Tipografía</dt><dd>Big Shoulders Display 800 en mayúsculas para títulos, Golos Text para el texto</dd></dl>
+      <p class="why">Un cartel de fiesta: letras angostas y enormes, el próximo grupo en un campo verde con sombra dura y el botón en amarillo. La tinta es azul, nunca negra.</p>
+      <a href="e1-carnaval.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+  <article class="card">
+    <iframe class="frame" title="E2 · Seleção" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;E2 · Seleção&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Propuesta E2 del concurso: tema Sport de Hallmark, con tinta azul, amarillo canarinho y reglas verdes.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@800&amp;family=Albert+Sans:wght@400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+--color-paper: oklch(98% 0.005 250); --color-paper-2: oklch(95% 0.006 250); --color-paper-3: oklch(91.5% 0.007 250);
+--color-ink: oklch(22% 0.11 262); --color-ink-2: oklch(28% 0.10 262); --color-muted: oklch(48% 0.03 255);
+--color-rule: oklch(80% 0.008 250); --color-rule-2: oklch(48% 0.14 152);
+--color-accent: oklch(88% 0.18 98); --color-accent-ink: oklch(22% 0.11 262); --color-accent-deep: oklch(48% 0.14 152);
+--color-on-ink: oklch(98% 0.005 250); --color-on-ink-muted: oklch(82% 0.03 255); --color-focus: oklch(48% 0.14 152);
+--color-desk: oklch(92% 0.008 250);
+--font-display: &quot;Saira Condensed&quot;, sans-serif; --font-body: &quot;Albert Sans&quot;, ui-sans-serif, sans-serif;
+--radius-card: 4px; --rule-hair: 1px; --rule-bar: 2px;
+--tracking-display: -0.015em; --display-weight: 800;
+--dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); line-height: 1.02; text-transform: uppercase; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 5rem; line-height: .95; margin: 0 0 20px; }
+.side p { font-size: 18px; margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 12px; }
+.chip { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: var(--radius-card); background: var(--color-ink); color: var(--color-on-ink); font-weight: 500; font-size: 14px; }
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 500; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: var(--rule-bar) solid var(--color-rule-2); }
+.word { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 22px; }
+.bar a { color: var(--color-ink); font-weight: 500; text-decoration: none; background: linear-gradient(var(--color-accent-deep), var(--color-accent-deep)) 0 100% / 0 2px no-repeat; transition: background-size var(--dur-micro) var(--ease-out); }
+.bar a:hover { background-size: 100% 2px; }
+.content { display: flex; flex-direction: column; }
+.greet { font-size: 3rem; margin: 16px 20px 12px; }
+.band { background: var(--color-ink); color: var(--color-on-ink); padding: 16px 20px 20px; }
+.band .meta { margin: 0 0 2px; font-size: 14px; color: var(--color-on-ink-muted); }
+.band h3 { font-size: 2rem; margin: 0 0 16px; }
+.course { list-style: none; margin: 0 0 8px; padding: 12px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; border-top: var(--rule-bar) solid var(--color-rule-2); }
+.course li { height: 40px; border-radius: var(--radius-card); background: var(--color-ink-2); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--color-on-ink-muted); }
+.course li.done { background: var(--color-rule-2); color: var(--color-on-ink); }
+.course li.now { background: var(--color-accent); color: var(--color-accent-ink); }
+.stage { margin: 0 0 16px; font-weight: 500; }
+.stage b { font-family: var(--font-display); text-transform: uppercase; font-size: 1.3rem; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-bar) solid var(--color-ink); border-radius: var(--radius-card); font: 800 20px/1 var(--font-display); text-transform: uppercase; color: var(--color-ink); background: transparent; cursor: pointer; transition: background-color var(--dur-micro) var(--ease-out); }
+.btn:hover { background: var(--color-paper-2); }
+.btn--primary { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-accent-ink); }
+.btn--primary:hover { background: var(--color-on-ink); border-color: var(--color-on-ink); }
+.btn:active { background: var(--color-paper-3); }
+.btn--primary:active { background: var(--color-accent); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; transition: none; }
+.band .btn:focus-visible { outline-color: var(--color-accent); }
+.block { width: 100%; }
+.map { padding: 16px 20px; }
+.map h2 { font-size: 1.6rem; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 500 14px var(--font-body); text-transform: none; color: var(--color-muted); }
+.rows { border-top: var(--rule-bar) solid var(--color-rule-2); border-bottom: var(--rule-bar) solid var(--color-rule-2); }
+.r { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: center; min-height: 44px; font-weight: 500; }
+.r + .r { border-top: var(--rule-hair) solid var(--color-rule); }
+.r b { font-family: var(--font-display); font-size: 1.3rem; }
+.r.on { background: var(--color-paper-2); }
+.r small { font-size: 13px; color: var(--color-muted); }
+.r.soon { color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn, .bar a { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+&lt;section class=&quot;side&quot;&gt;
+&lt;h1 class=&quot;display&quot;&gt;La camiseta de la Seleção&lt;/h1&gt;
+&lt;p&gt;Letra condensada de estadio, tinta azul, amarillo canarinho para empezar y verde para las líneas. Las 5 etapas se leen como un fixture.&lt;/p&gt;
+&lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+&lt;span class=&quot;chip&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn btn--primary&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+&lt;div class=&quot;status&quot;&gt;21:40&lt;/div&gt;
+&lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+&lt;section class=&quot;band&quot;&gt;
+&lt;p class=&quot;meta&quot;&gt;A1, Unidade 1 Chegando, Tema 1&lt;/p&gt;
+&lt;h3 class=&quot;display&quot;&gt;Pronomes, ser e estar&lt;/h3&gt;
+&lt;ol class=&quot;course&quot; aria-label=&quot;Etapa 2 de 5&quot;&gt;&lt;li class=&quot;done&quot;&gt;1&lt;/li&gt;&lt;li class=&quot;now&quot;&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;/ol&gt;
+&lt;p class=&quot;stage&quot;&gt;Etapa 2 de 5: &lt;b&gt;Reconhecer&lt;/b&gt;&lt;/p&gt;
+&lt;button class=&quot;btn btn--primary block&quot;&gt;Começar&lt;/button&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+&lt;div class=&quot;rows&quot;&gt;
+&lt;div class=&quot;r on&quot;&gt;&lt;b&gt;1&lt;/b&gt;Pronomes + ser/estar&lt;small&gt;Etapa 2 de 5&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;b&gt;2&lt;/b&gt;Artigos e contrações&lt;small&gt;&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;b&gt;3&lt;/b&gt;Presente regular&lt;small&gt;&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r soon&quot;&gt;&lt;b&gt;&lt;/b&gt;Outros temas&lt;small&gt;em breve&lt;/small&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>E2 · Seleção <span>tema Sport</span></h2>
+      <div class="sw"><i style="background:oklch(98% 0.005 250)" data-c="papel"></i><i style="background:oklch(22% 0.11 262)" data-c="azul"></i><i style="background:oklch(88% 0.18 98)" data-c="canarinho"></i><i style="background:oklch(48% 0.14 152)" data-c="verde"></i><i style="background:oklch(28% 0.10 262)" data-c="azul claro"></i></div>
+      <dl><dt>Tipografía</dt><dd>Saira Condensed 800 en mayúsculas para títulos, Albert Sans para el texto</dd></dl>
+      <p class="why">La camiseta de la selección: el próximo grupo en una franja azul, las 5 etapas como un fixture (hecha en verde, actual en amarillo) y líneas verdes.</p>
+      <a href="e2-selecao.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+  <article class="card">
+    <iframe class="frame" title="E3 · Gibi" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=1280&quot;&gt;
+&lt;title&gt;E3 · Gibi&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Propuesta E3 del concurso: tema Halftone de Hallmark, papel amarillo, tinta azul y un verde impreso sólido y en trama de puntos.&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Ultra&amp;family=Chivo:wght@400;500;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+--color-paper: oklch(95.5% 0.07 98); --color-paper-2: oklch(91.5% 0.09 97); --color-paper-3: oklch(86% 0.11 96);
+--color-ink: oklch(25% 0.10 262); --color-ink-2: oklch(31% 0.09 262); --color-muted: oklch(40% 0.07 262);
+--color-rule: oklch(80% 0.08 95);
+--color-accent: oklch(50% 0.15 150); --color-accent-deep: oklch(42% 0.13 150); --color-accent-ink: oklch(97% 0.03 98); --color-focus: oklch(42% 0.13 150);
+--color-dot: var(--color-accent); --halftone-size: 12px; --halftone-dot: 3px;
+--color-desk: oklch(90% 0.06 98); --color-mask: oklch(10% 0.01 262);
+--font-display: &quot;Ultra&quot;, ui-serif, Georgia, serif; --font-body: &quot;Chivo&quot;, ui-sans-serif, sans-serif;
+--radius-input: 3px; --radius-pill: 999px; --rule-hair: 1px; --rule-bar: 3px;
+--tracking-display: 0.005em;
+--dur-short: 200ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 17px/1.55 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: 400; letter-spacing: var(--tracking-display); line-height: 1.08; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 4rem; margin: 0 0 20px; }
+.side p { font-size: 18px; color: var(--color-ink-2); margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 16px; align-items: center; }
+.chip { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-ink); color: var(--color-paper); font-weight: 500; font-size: 14px; }
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 500; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-size: 19px; }
+.bar a { color: var(--color-ink); font-weight: 500; text-decoration-color: var(--color-accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bar a:hover { text-decoration-thickness: 4px; }
+.content { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 12px; }
+.greet { font-size: 1.9rem; margin: 4px 0 0; }
+.next { border-top: var(--rule-bar) solid var(--color-ink); padding-top: 8px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; }
+.figure { font-family: var(--font-display); font-size: 9rem; line-height: .9; letter-spacing: -0.02em; color: var(--color-accent); }
+.next .meta { margin: 0 0 2px; font-size: 14px; color: var(--color-muted); }
+.next h3 { font-size: 1.3rem; margin: 0 0 8px; }
+.next .st { margin: 0; font-weight: 700; font-size: 15px; line-height: 1.3; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: 0; border-radius: var(--radius-input); font: 700 17px/1 var(--font-body); background: var(--color-accent); color: var(--color-accent-ink); cursor: pointer; transition: background-color var(--dur-short) var(--ease-out); }
+.btn:hover { background: var(--color-accent-deep); }
+.btn:active { background: var(--color-ink); }
+.btn--line { background: transparent; color: var(--color-ink); min-height: 44px; padding: 0 4px; border-radius: 0; box-shadow: inset 0 calc(-1 * var(--rule-bar)) 0 var(--color-accent); }
+.btn--line:hover { background: var(--color-paper-2); }
+.btn--line:active { background: var(--color-paper-3); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; transition: none; }
+.block { width: 100%; }
+.well { position: relative; isolation: isolate; background: var(--color-paper-2); border: var(--rule-bar) solid var(--color-ink); padding: 12px 16px 36px; overflow: hidden; }
+.well::before { content: &quot;&quot;; position: absolute; right: 0; bottom: 0; width: 100%; height: 32px; z-index: -1; pointer-events: none;
+background-image: radial-gradient(circle, var(--color-dot) var(--halftone-dot), transparent calc(var(--halftone-dot) + 0.5px));
+background-size: var(--halftone-size) var(--halftone-size);
+-webkit-mask-image: linear-gradient(to left, var(--color-mask), transparent); mask-image: linear-gradient(to left, var(--color-mask), transparent); }
+.well h2 { font-size: 1.35rem; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+.well h2 small { font: 500 14px var(--font-body); color: var(--color-muted); }
+.r { display: flex; justify-content: space-between; align-items: center; min-height: 44px; border-top: var(--rule-hair) solid var(--color-rule); font-size: 15px; }
+.r b { font-weight: 700; }
+.r small { font-size: 13px; color: var(--color-muted); }
+.r.on b { color: var(--color-accent-deep); }
+.r.soon { color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;canvas&quot;&gt;
+&lt;section class=&quot;side&quot;&gt;
+&lt;h1 class=&quot;display&quot;&gt;Un gibi de domingo&lt;/h1&gt;
+&lt;p&gt;Papel amarillo de historieta, tinta azul y un verde impreso sólido y en trama de puntos. Letra gorda de tapa de revista.&lt;/p&gt;
+&lt;div class=&quot;spec&quot; lang=&quot;pt-BR&quot;&gt;
+&lt;span class=&quot;chip&quot;&gt;Etapa 2 de 5&lt;/span&gt;
+&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn&quot;&gt;Verificar&lt;/button&gt;&lt;button class=&quot;btn btn--line&quot;&gt;Continuar&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;div class=&quot;phone&quot; lang=&quot;pt-BR&quot; role=&quot;img&quot; aria-label=&quot;Tela inicial no iPhone&quot;&gt;
+&lt;div class=&quot;status&quot;&gt;21:40&lt;/div&gt;
+&lt;div class=&quot;bar&quot;&gt;&lt;span class=&quot;word&quot;&gt;Português&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;Ajustes&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;h2 class=&quot;display greet&quot;&gt;Boa noite, Matías&lt;/h2&gt;
+&lt;section class=&quot;next&quot;&gt;
+&lt;span class=&quot;figure&quot; aria-hidden=&quot;true&quot;&gt;2&lt;/span&gt;
+&lt;div&gt;
+&lt;p class=&quot;meta&quot;&gt;A1, Unidade 1 Chegando, Tema 1&lt;/p&gt;
+&lt;h3 class=&quot;display&quot;&gt;Pronomes, ser e estar&lt;/h3&gt;
+&lt;p class=&quot;st&quot;&gt;Etapa 2 de 5:&lt;br&gt;Reconhecer&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;button class=&quot;btn block&quot;&gt;Começar&lt;/button&gt;
+&lt;section class=&quot;well&quot;&gt;
+&lt;h2 class=&quot;display&quot;&gt;Mapa A1 &lt;small&gt;3 temas&lt;/small&gt;&lt;/h2&gt;
+&lt;div class=&quot;r on&quot;&gt;&lt;b&gt;Pronomes + ser/estar&lt;/b&gt;&lt;small&gt;Etapa 2 de 5&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;span&gt;Artigos e contrações&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r&quot;&gt;&lt;span&gt;Presente regular&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;r soon&quot;&gt;&lt;span&gt;Outros temas&lt;/span&gt;&lt;small&gt;em breve&lt;/small&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(&quot;.canvas&quot;).style.zoom=k}fit();addEventListener(&quot;resize&quot;,fit)&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+    <div class="body">
+      <h2>E3 · Gibi <span>tema Halftone</span></h2>
+      <div class="sw"><i style="background:oklch(95.5% 0.07 98)" data-c="papel amarillo"></i><i style="background:oklch(25% 0.10 262)" data-c="tinta azul"></i><i style="background:oklch(50% 0.15 150)" data-c="verde"></i><i style="background:oklch(42% 0.13 150)" data-c="verde oscuro"></i><i style="background:oklch(91.5% 0.09 97)" data-c="amarillo"></i></div>
+      <dl><dt>Tipografía</dt><dd>Ultra (serif muy gorda) para títulos, Chivo para el texto</dd></dl>
+      <p class="why">Una historieta de domingo: papel amarillo, tinta azul y la etapa como un "2" verde gigante. Una trama de puntos verdes cierra el mapa.</p>
+      <a href="e3-gibi.html" target="_blank">Abrir a tamaño real</a>
+    </div>
+  </article>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>E2 · Seleção</title>
+<meta name="description" content="Propuesta E2 del concurso: tema Sport de Hallmark, con tinta azul, amarillo canarinho y reglas verdes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@800&family=Albert+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · built: 2026-11-25 · genre: playful · scope: app · shape: app screen · theme: Sport (colourway by request: the volt is canary yellow, the bar rule and the deep accent are Brazilian green, the ink stays blue-black) · signature: the five stages as a course on one bar rule, the live stage on yellow, like a match fixture */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, no photographs exist, so the ink band and the course carry the screen */
+:root {
+  --color-paper: oklch(98% 0.005 250); --color-paper-2: oklch(95% 0.006 250); --color-paper-3: oklch(91.5% 0.007 250);
+  --color-ink: oklch(22% 0.11 262); --color-ink-2: oklch(28% 0.10 262); --color-muted: oklch(48% 0.03 255);
+  --color-rule: oklch(80% 0.008 250); --color-rule-2: oklch(48% 0.14 152);
+  --color-accent: oklch(88% 0.18 98); --color-accent-ink: oklch(22% 0.11 262); --color-accent-deep: oklch(48% 0.14 152);
+  --color-on-ink: oklch(98% 0.005 250); --color-on-ink-muted: oklch(82% 0.03 255); --color-focus: oklch(48% 0.14 152);
+  --color-desk: oklch(92% 0.008 250);
+  --font-display: "Saira Condensed", sans-serif; --font-body: "Albert Sans", ui-sans-serif, sans-serif;
+  --radius-card: 4px; --rule-hair: 1px; --rule-bar: 2px;
+  --tracking-display: -0.015em; --display-weight: 800;
+  --dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); line-height: 1.02; text-transform: uppercase; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 5rem; line-height: .95; margin: 0 0 20px; }
+.side p { font-size: 18px; margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 12px; }
+.chip { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: var(--radius-card); background: var(--color-ink); color: var(--color-on-ink); font-weight: 500; font-size: 14px; }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 500; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: var(--rule-bar) solid var(--color-rule-2); }
+.word { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 22px; }
+.bar a { color: var(--color-ink); font-weight: 500; text-decoration: none; background: linear-gradient(var(--color-accent-deep), var(--color-accent-deep)) 0 100% / 0 2px no-repeat; transition: background-size var(--dur-micro) var(--ease-out); }
+.bar a:hover { background-size: 100% 2px; }
+.content { display: flex; flex-direction: column; }
+.greet { font-size: 3rem; margin: 16px 20px 12px; }
+
+.band { background: var(--color-ink); color: var(--color-on-ink); padding: 16px 20px 20px; }
+.band .meta { margin: 0 0 2px; font-size: 14px; color: var(--color-on-ink-muted); }
+.band h3 { font-size: 2rem; margin: 0 0 16px; }
+.course { list-style: none; margin: 0 0 8px; padding: 12px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; border-top: var(--rule-bar) solid var(--color-rule-2); }
+.course li { height: 40px; border-radius: var(--radius-card); background: var(--color-ink-2); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--color-on-ink-muted); }
+.course li.done { background: var(--color-rule-2); color: var(--color-on-ink); }
+.course li.now { background: var(--color-accent); color: var(--color-accent-ink); }
+.stage { margin: 0 0 16px; font-weight: 500; }
+.stage b { font-family: var(--font-display); text-transform: uppercase; font-size: 1.3rem; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-bar) solid var(--color-ink); border-radius: var(--radius-card); font: 800 20px/1 var(--font-display); text-transform: uppercase; color: var(--color-ink); background: transparent; cursor: pointer; transition: background-color var(--dur-micro) var(--ease-out); }
+.btn:hover { background: var(--color-paper-2); }
+.btn--primary { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-accent-ink); }
+.btn--primary:hover { background: var(--color-on-ink); border-color: var(--color-on-ink); }
+.btn:active { background: var(--color-paper-3); }
+.btn--primary:active { background: var(--color-accent); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; transition: none; }
+.band .btn:focus-visible { outline-color: var(--color-accent); }
+.block { width: 100%; }
+
+.map { padding: 16px 20px; }
+.map h2 { font-size: 1.6rem; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 500 14px var(--font-body); text-transform: none; color: var(--color-muted); }
+.rows { border-top: var(--rule-bar) solid var(--color-rule-2); border-bottom: var(--rule-bar) solid var(--color-rule-2); }
+.r { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: center; min-height: 44px; font-weight: 500; }
+.r + .r { border-top: var(--rule-hair) solid var(--color-rule); }
+.r b { font-family: var(--font-display); font-size: 1.3rem; }
+.r.on { background: var(--color-paper-2); }
+.r small { font-size: 13px; color: var(--color-muted); }
+.r.soon { color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn, .bar a { transition: none; } }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <section class="side">
+    <h1 class="display">La camiseta de la Seleção</h1>
+    <p>Letra condensada de estadio, tinta azul, amarillo canarinho para empezar y verde para las líneas. Las 5 etapas se leen como un fixture.</p>
+    <div class="spec" lang="pt-BR">
+      <span class="chip">Etapa 2 de 5</span>
+      <div class="row"><button class="btn btn--primary">Verificar</button><button class="btn">Continuar</button></div>
+    </div>
+  </section>
+
+  <div class="phone" lang="pt-BR" role="img" aria-label="Tela inicial no iPhone">
+    <div class="status">21:40</div>
+    <div class="bar"><span class="word">Português</span><a href="#">Ajustes</a></div>
+    <div class="content">
+      <h2 class="display greet">Boa noite, Matías</h2>
+      <section class="band">
+        <p class="meta">A1, Unidade 1 Chegando, Tema 1</p>
+        <h3 class="display">Pronomes, ser e estar</h3>
+        <ol class="course" aria-label="Etapa 2 de 5"><li class="done">1</li><li class="now">2</li><li>3</li><li>4</li><li>5</li></ol>
+        <p class="stage">Etapa 2 de 5: <b>Reconhecer</b></p>
+        <button class="btn btn--primary block">Começar</button>
+      </section>
+      <section class="map">
+        <h2 class="display">Mapa A1 <small>3 temas</small></h2>
+        <div class="rows">
+          <div class="r on"><b>1</b>Pronomes + ser/estar<small>Etapa 2 de 5</small></div>
+          <div class="r"><b>2</b>Artigos e contrações<small></small></div>
+          <div class="r"><b>3</b>Presente regular<small></small></div>
+          <div class="r soon"><b></b>Outros temas<small>em breve</small></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(".canvas").style.zoom=k}fit();addEventListener("resize",fit)</script>
+</body>
+</html>

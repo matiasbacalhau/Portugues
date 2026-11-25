@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>E1 · Carnaval</title>
+<meta name="description" content="Propuesta E1 del concurso: tema Carnival de Hallmark, con campos amarillo y verde y tinta azul.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · built: 2026-11-25 · genre: playful · scope: app · shape: app screen · theme: Carnival (carnival: bandeira, a drop made by request: yellow and green accents under a deep blue ink) · signature: the greeting set poster-large in capitals, the next group as a yellow field on the hard shadow */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: E, no photographs exist, so the two competing fields carry the screen */
+:root {
+  --color-paper: oklch(95% 0.03 95); --color-paper-2: oklch(91% 0.035 95); --color-paper-3: oklch(85% 0.045 95);
+  --color-ink: oklch(22% 0.10 262); --color-ink-2: oklch(30% 0.09 262); --color-muted: oklch(42% 0.07 262);
+  --color-rule: oklch(46% 0.14 152); --color-accent: oklch(86% 0.18 95); --color-accent-2: oklch(46% 0.14 152);
+  --color-accent-ink: oklch(22% 0.10 262); --color-on-2: oklch(97% 0.02 95); --color-focus: oklch(46% 0.14 152);
+  --color-desk: oklch(88% 0.04 95);
+  --font-display: "Big Shoulders Display", Impact, sans-serif; --font-body: "Golos Text", system-ui, sans-serif;
+  --radius-card: 2px; --rule-bar: 2px; --shadow-card: 4px 4px 0 var(--color-ink); --shadow-press: 1px 1px 0 var(--color-ink);
+  --tracking-display: 0.015em; --display-weight: 800;
+  --dur-micro: 120ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; scrollbar-color: var(--color-ink) var(--color-paper); }
+body { background: var(--color-desk); color: var(--color-ink); font: 400 16px/1.5 var(--font-body); font-variant-numeric: tabular-nums; display: grid; place-items: center; min-height: 100vh; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+.canvas { width: 1280px; height: 800px; background: var(--color-paper); display: grid; grid-template-columns: minmax(0, 1fr) 560px; align-items: center; overflow: hidden; }
+.side { padding: 0 64px; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--tracking-display); line-height: 1; text-transform: uppercase; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.side h1 { font-size: 6rem; line-height: .9; margin: 0 0 20px; }
+.side p { font-size: 18px; margin: 0 0 32px; max-width: 32ch; }
+.spec { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.spec .row { display: flex; gap: 16px; }
+.chip { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; background: var(--color-accent-2); color: var(--color-on-2); font-weight: 500; font-size: 14px; border-radius: var(--radius-card); }
+
+.phone { width: 375px; height: 812px; transform: scale(.92); background: var(--color-paper); border-radius: 44px; overflow: hidden; outline: 10px solid var(--color-ink); justify-self: center; display: flex; flex-direction: column; }
+.status { height: 44px; display: flex; align-items: center; padding: 0 28px; font-weight: 500; font-size: 14px; }
+.bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.word { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 22px; }
+.bar a { color: var(--color-ink); font-weight: 500; text-decoration-color: var(--color-accent-2); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bar a:hover { text-decoration-thickness: 4px; }
+.content { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.greet { font-size: 4.2rem; line-height: .88; margin: 4px 0 4px; }
+
+.well { background: var(--color-accent-2); color: var(--color-on-2); border: var(--rule-bar) solid var(--color-ink); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 16px; }
+.well .meta { margin: 0 0 4px; font-weight: 500; font-size: 14px; }
+.well h3 { font-size: 2.1rem; margin: 0 0 12px; }
+.stage { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; padding-top: 12px; border-top: var(--rule-bar) solid var(--color-on-2); }
+.stage b { font-family: var(--font-display); font-weight: 800; font-size: 3.6rem; line-height: .85; }
+.stage span { font-weight: 500; line-height: 1.25; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: var(--rule-bar) solid var(--color-ink); border-radius: var(--radius-card); font: 800 20px/1 var(--font-display); text-transform: uppercase; color: var(--color-ink); background: var(--color-paper); box-shadow: var(--shadow-card); cursor: pointer; transition: background-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out), translate var(--dur-micro) var(--ease-out); }
+.btn:hover { background: var(--color-paper-2); }
+.btn--primary { background: var(--color-accent); }
+.btn--primary:hover { background: var(--color-paper-3); }
+.btn:active { translate: 3px 3px; box-shadow: var(--shadow-press); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; transition: none; }
+.block { width: 100%; }
+
+.map h2 { font-size: 1.8rem; margin: 4px 0 4px; display: flex; justify-content: space-between; align-items: baseline; }
+.map h2 small { font: 500 14px var(--font-body); text-transform: none; color: var(--color-muted); }
+.r { display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding: 0 8px; border-top: var(--rule-bar) solid var(--color-rule); font-weight: 500; }
+.r:last-child { border-bottom: var(--rule-bar) solid var(--color-rule); }
+.r.on { background: var(--color-ink); color: var(--color-paper); }
+.r small { font-size: 13px; }
+.r.soon { color: var(--color-muted); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <section class="side">
+    <h1 class="display">Cartel de carnaval</h1>
+    <p>Letras de cartel, angostas y enormes. Verde y amarillo compiten como campos llenos y la tinta es azul profundo, nunca negra.</p>
+    <div class="spec" lang="pt-BR">
+      <span class="chip">Etapa 2 de 5</span>
+      <div class="row"><button class="btn btn--primary">Verificar</button><button class="btn">Continuar</button></div>
+    </div>
+  </section>
+
+  <div class="phone" lang="pt-BR" role="img" aria-label="Tela inicial no iPhone">
+    <div class="status">21:40</div>
+    <div class="bar"><span class="word">Português</span><a href="#">Ajustes</a></div>
+    <div class="content">
+      <h2 class="display greet">Boa noite, Matías</h2>
+      <section class="well">
+        <p class="meta">A1, Unidade 1 Chegando, Tema 1</p>
+        <h3 class="display">Pronomes, ser e estar</h3>
+        <div class="stage"><b aria-hidden="true">2/5</b><span>Etapa 2 de 5:<br>Reconhecer</span></div>
+        <button class="btn btn--primary block">Começar</button>
+      </section>
+      <section class="map">
+        <h2 class="display">Mapa A1 <small>3 temas</small></h2>
+        <div class="r on"><span>Pronomes + ser/estar</span><small>Etapa 2 de 5</small></div>
+        <div class="r"><span>Artigos e contrações</span></div>
+        <div class="r"><span>Presente regular</span></div>
+        <div class="r soon"><span>Outros temas</span><small>em breve</small></div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>function fit(){var k=Math.min(1,innerWidth/1280,innerHeight/800);document.querySelector(".canvas").style.zoom=k}fit();addEventListener("resize",fit)</script>
+</body>
+</html>

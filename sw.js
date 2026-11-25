@@ -143,6 +143,8 @@ const SHELL = [
   'fonts/InstrumentSans-500.woff2',
   'fonts/InstrumentSans-600.woff2',
   'fonts/InstrumentSerif-Regular.woff2',
+  'fonts/BowlbyOneSC-400.woff2',
+  'fonts/SofiaSans-variable.woff2',
   'fonts/OFL.txt',
   'data/credits.json',
   'data/curriculum.json',
