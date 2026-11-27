@@ -14,6 +14,8 @@ const SHELL = [
   'js/core/checks/card.js',
   'js/core/checks/choice.js',
   'js/core/checks/common.js',
+  'js/core/classify.js',
+  'js/core/appeal.js',
   'js/core/checks/detective.js',
   'js/core/checks/dictation.js',
   'js/core/checks/gap.js',

@@ -363,25 +363,31 @@ steps:
         questions:
           - tag: a1.contr.de
             prompt: "De quem é o peixe?"
-            answers: ["Do Seu Jorge", "É do Seu Jorge", "O peixe é do Seu Jorge", "Seu Jorge", "Do Seu Jorge, na barraca azul"]
+            options:
+              - {text: "Do Seu Jorge.", correct: true}
+              - {text: "De o Seu Jorge.", rule: "La preposición y el artículo se juntan en una sola palabra."}
+              - {text: "Da Ana.", rule: "La Ana escribe la lista, pero el pescado es de otra persona: buscá la frase con *peixe*.", content: true}
             dims: {gender: m}
           - tag: a1.contr.em
             prompt: "Onde está o dinheiro?"
             options:
               - {text: "Na caixa da cozinha.", correct: true}
-              - {text: "Na barraca azul.", rule: "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*."}
-              - {text: "No fim da rua.", rule: "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*."}
+              - {text: "Na barraca azul.", rule: "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*.", content: true}
+              - {text: "No fim da rua.", rule: "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*.", content: true}
             dims: {gender: f}
           - tag: a1.genero.masc
             prompt: "O que eles compram no mercado?"
             options:
               - {text: "O leite, o sal e o arroz.", correct: true}
               - {text: "A leite, a sal e o arroz.", rule: "Dos de esas palabras cambian de género respecto del español: el artículo tiene que seguirlas."}
-              - {text: "As bananas e os tomates.", rule: "Esas cosas son de la feria, no del mercado: buscá la línea que empieza con *Do mercado*."}
+              - {text: "As bananas e os tomates.", rule: "Esas cosas son de la feria, no del mercado: buscá la línea que empieza con *Do mercado*.", content: true}
             dims: {gender: m}
           - tag: a1.contr.de
             prompt: "De quem é a sobremesa?"
-            answers: ["Da Lea", "É da Lea", "A sobremesa é da Lea", "Lea", "A Lea"]
+            options:
+              - {text: "Da Lea.", correct: true}
+              - {text: "Da Mia.", rule: "La Mia prepara otra cosa para la cena: buscá la frase con *sobremesa*.", content: true}
+              - {text: "Do Lea.", rule: "*Lea* es nombre de mujer: la contracción tiene que ser del mismo género."}
             dims: {gender: f}
         reviewed: true
 

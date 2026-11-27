@@ -20,7 +20,8 @@ import { buildExtras } from '../core/extras.js';
 import { dictationPool } from '../core/dictation.js';
 import * as tts from '../services/tts.js';
 import * as lt from '../services/languagetool.js';
-import { withGrammar } from '../services/grammar.js';
+import { withGrammar, judge } from '../services/grammar.js';
+import { appealContext, appealExpected, applyVerdict } from '../core/appeal.js';
 
 const WRITING = new Set(['writing-guided', 'writing-free']);
 const EMPTY_MASTERY = { tags: {}, pairs: {} };
@@ -298,7 +299,7 @@ export default async function grupo(el, { store, content, params }) {
         multi && info.label && h('p', { class: 'item-label', lang: 'pt-BR' }, rich(info.label)),
         r.ok ? h('span', { class: 'tag-ok' }, 'Certo') : h('span', { class: 'tag-bad' }, 'Errado'),
         // Lo que escribió el usuario: la frase con lo que difiere subrayado, o la palabra suelta (la situación ya la muestra).
-        r.wrong ? underlined(r.given, r.wrong, r.rule !== EVALUATED_OK)
+        r.wrong ? underlined(r.given, r.wrong, r.rule !== EVALUATED_OK && (!r.errorType || r.errorType === 'grammar-tag'))
           : !r.ok && r.given && ex.type !== 'situation' && h('p', { class: 'muted' }, 'Escribiste: ', h('em', { lang: 'pt-BR' }, r.given)),
         // El dictado es una tarea abierta: después de responder se muestra la frase original (regla 2).
         ex.type === 'dictation' && h('p', {}, 'La frase: ', h('em', { lang: 'pt-BR' }, ex.text)),
@@ -315,6 +316,7 @@ export default async function grupo(el, { store, content, params }) {
         ),
         example && h('p', { class: 'example' }, 'Por ejemplo: ', h('em', { lang: 'pt-BR' }, example.pt), ` (${example.es}) `, listenButton(example.pt)),
         r.notice && h('p', { class: 'muted' }, r.notice),
+        appealButton(ex, answer, results, r),
       );
     });
     const curiosity = curiosityFor(ex, results, C.curriculum, rng);
@@ -330,6 +332,36 @@ export default async function grupo(el, { store, content, params }) {
       !(allOk && multi) && listen,
       curiosity && h('p', { class: 'curiosity' }, rich(curiosity)),
     ];
+  }
+
+  // Revisión con IA a pedido (cascada, nivel 4): si la devolución no corresponde con el error, el juez decide el tipo de
+  // error (o que la respuesta estaba bien) y la devolución se rehace con ese tipo. Una por ítem; queda en los reportes.
+  function appealButton(ex, answer, results, r) {
+    if (r.ok || r.given == null || r.appealed || !settings.grammarToken || !navigator.onLine) return null;
+    const btn = h('button', { type: 'button', class: 'secondary small', onclick: async () => {
+      if (btn.disabled) return;
+      btn.disabled = true;
+      btn.textContent = 'Revisando…';
+      try {
+        const v = await judge({ context: appealContext(ex, r.key), expected: appealExpected(ex, r.key), answer: r.given }, { token: settings.grammarToken });
+        if (!v) throw new Error('sin token');
+        const revised = applyVerdict(ex, r, v, { curriculum: C.curriculum, lexicon: C.lexicon });
+        const at = group.results.map(x => x.key).lastIndexOf(r.key);
+        group = { ...group, results: group.results.map((x, i) => (i === at ? revised : x)) };
+        await save();
+        const reports = (await store.get('reports')) ?? [];
+        await store.set('reports', [...reports, { exerciseId: ex.id, key: r.key, answer: r.given, note: 'Revisión con IA', local: r.errorType ?? null, judge: v.verdict, quote: v.quote, src: v.src, at: Date.now() }]);
+        feedback(ex, answer, results.map(x => (x.key === r.key ? revised : x)));
+        announcer.textContent = revised.ok ? 'Certo' : 'Errado';
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Revisar com IA';
+        status.textContent = 'No se pudo revisar ahora. Probá de nuevo.';
+        announcer.textContent = status.textContent;
+      }
+    } }, 'Revisar com IA');
+    const status = h('span', { class: 'muted' });
+    return h('p', { class: 'appeal' }, btn, ' ', status);
   }
 
   // La frase del usuario con las palabras que no coinciden con ninguna respuesta válida, subrayadas sin corregirlas.

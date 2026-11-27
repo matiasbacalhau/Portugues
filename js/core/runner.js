@@ -89,6 +89,8 @@ const TRIES = 12;
 // del mismo ejercicio. null si acertó, si no hay ejemplo seguro, o en spot-error si tocó una palabra correcta (§5.5).
 export function exampleFor(ex, result, {results, answer, curriculum, rng}) {
   if (result.ok) return null;
+  // El ejemplo ilustra la regla del tema: solo tiene sentido si el error es de ese tema.
+  if (result.errorType && result.errorType !== 'grammar-tag') return null;
   if (ex.type === 'spot-error' && answer?.index !== ex.wrong) return null;
   const {tag, dims} = itemInfo(ex, result.key);
   if (!tag) return null;

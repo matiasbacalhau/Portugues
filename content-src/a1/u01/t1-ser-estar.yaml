@@ -372,28 +372,31 @@ steps:
         questions:
           - tag: a1.ser.presente
             prompt: "Quem é o Caju?"
-            answers: ["O cachorro da recepção", "É o cachorro da recepção", "O Caju é o cachorro da recepção", "Ele é o cachorro da recepção", "O cachorro", "É o cachorro", "Um cachorro", "É um cachorro", "O cachorro da pousada", "É o cachorro da pousada"]
+            options:
+              - {text: "É o cachorro da recepção.", correct: true}
+              - {text: "É o recepcionista da pousada.", rule: "Volvé a leer la frase que nombra al Caju: dice qué es y de dónde.", content: true}
+              - {text: "Está o cachorro da recepção.", rule: "Decir qué es alguien (un perro, una persona) es identidad, no un estado: va con el otro verbo."}
             dims: {person: ele}
           - tag: a1.ser.estar
             prompt: "Onde fica a recepção?"
             options:
               - {text: "No térreo.", correct: true}
-              - {text: "Na varanda.", rule: "La pregunta es dónde queda la recepción: la varanda es el lugar de otra regla de la casa."}
-              - {text: "No quarto 12.", rule: "El mail no habla de ese cuarto: buscá la frase con *fica*."}
+              - {text: "Na varanda.", rule: "La pregunta es dónde queda la recepción: la varanda es el lugar de otra regla de la casa.", content: true}
+              - {text: "No quarto 12.", rule: "El mail no habla de ese cuarto: buscá la frase con *fica*.", content: true}
             dims: {use: ficar}
           - tag: a1.ser.presente
             prompt: "Quando é o café da manhã?"
             options:
               - {text: "Das 7h às 10h.", correct: true}
-              - {text: "Das 22h às 7h.", rule: "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno."}
-              - {text: "Das 7h às 23h.", rule: "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno."}
+              - {text: "Das 22h às 7h.", rule: "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno.", content: true}
+              - {text: "Das 7h às 23h.", rule: "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno.", content: true}
             dims: {person: ele}
           - tag: a1.ser.estar
             prompt: "O Caju é um travesseiro?"
             options:
               - {text: "Não, ele é um cachorro.", correct: true}
               - {text: "Não, ele está um cachorro.", rule: "Lo que alguien es (un perro, una persona) no es un estado: va con el otro verbo."}
-              - {text: "Sim, ele é muito carinhoso.", rule: "Leé de nuevo la frase sobre el Caju y el travesseiro: tiene un *não*."}
+              - {text: "Sim, ele é muito carinhoso.", rule: "Leé de nuevo la frase sobre el Caju y el travesseiro: tiene un *não*.", content: true}
             dims: {use: ser}
         reviewed: true
 

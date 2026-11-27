@@ -8,6 +8,7 @@ import { buildPrompt } from '../proxy/prompt.js';
 import { makeClaude } from '../proxy/providers/claude.js';
 import { makeGemini } from '../proxy/providers/gemini.js';
 import { handle } from '../proxy/worker.js';
+import { buildJudgePrompt, judgeInput, judgeOutput, VERDICTS } from '../proxy/judge.js';
 
 const catalog = {
   ART_MASC: {tag: 'a1.genero.masc', es: 'Regla del artículo masculino.', hint: 'Masculine noun with a feminine article.'},
@@ -285,4 +286,52 @@ test('handler: cuando APP_TOKEN está configurado, rechaza con 401 sin token vá
 
   const ok = await req({text: TEXT, token: 'mi-secreto'});
   assert.equal(ok.status, 200);
+});
+
+// ── Modo juez (apelación desde la app)
+const JUDGE = {mode: 'judge', context: 'Pergunta: Onde o Leo mora?', expected: ['Em Rosario.'], answer: 'Leo mora em Rosario'};
+
+test('juez: el prompt lleva el ejercicio, las aceptadas y la respuesta; el esquema solo admite veredicto y cita', () => {
+  const p = buildJudgePrompt(JUDGE);
+  assert.match(p.user, /<exercise>\nPergunta: Onde o Leo mora\?\n<\/exercise>/);
+  assert.match(p.user, /<accepted>\nEm Rosario\.\n<\/accepted>/);
+  assert.match(p.user, /<answer>\nLeo mora em Rosario\n<\/answer>/);
+  assert.deepEqual(p.schema.properties.verdict.enum, VERDICTS);
+  assert.deepEqual(p.schema.required, ['verdict', 'quote']);
+  assert.match(p.system, /Never include a correction/);
+});
+
+test('juez: valida la forma del pedido y los topes', () => {
+  assert.equal(judgeInput({...JUDGE, expected: []}), null);
+  assert.equal(judgeInput({...JUDGE, answer: 3}), null);
+  assert.equal(judgeInput({...JUDGE, answer: 'x'.repeat(501)}), 'too_long');
+  assert.deepEqual(judgeInput(JUDGE), {context: JUDGE.context, expected: JUDGE.expected, answer: JUDGE.answer});
+});
+
+test('juez: un veredicto desconocido falla; una cita que no está en la respuesta se descarta; correct nunca cita', () => {
+  assert.equal(judgeOutput({verdict: 'great'}, 'x'), null);
+  assert.deepEqual(judgeOutput({verdict: 'grammar', quote: 'moram'}, 'Leo mora em Rosario'), {verdict: 'grammar', quote: ''});
+  assert.deepEqual(judgeOutput({verdict: 'grammar', quote: 'mora'}, 'Leo mora em Rosario'), {verdict: 'grammar', quote: 'mora'});
+  assert.deepEqual(judgeOutput({verdict: 'correct', quote: 'Leo'}, 'Leo mora em Rosario'), {verdict: 'correct', quote: ''});
+});
+
+test('handler juez: responde el veredicto validado, sin texto en los logs', async () => {
+  const {call, lines} = setup({correct: async (prompt) => ({model: 'fake-1', verdict: 'correct', quote: '', seen: prompt.user})});
+  const res = await call(JUDGE);
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), {provider: 'fake', model: 'fake-1', version: 'v1', traceId: 'ray-1', verdict: 'correct', quote: ''});
+  const line = lines.find(l => l.msg === 'answer judged');
+  assert.equal(line.verdict, 'correct');
+  assert.ok(!JSON.stringify(lines).includes('Rosario'));
+});
+
+test('handler juez: pedido mal formado, veredicto inválido y token', async () => {
+  const {call} = setup({correct: async () => ({model: 'fake-1', verdict: 'nope', quote: ''})});
+  assert.equal((await call({...JUDGE, expected: 'x'})).status, 400);
+  assert.equal((await call(JUDGE)).status, 502);
+  const tokenEnv = {...env, APP_TOKEN: 's'};
+  const deps = {catalog, nouns: nounIndex([]), providers: {fake: {key: 'FAKE_KEY', correct: async () => ({model: 'm', verdict: 'content', quote: ''})}}, log: () => {}, hits: new Map()};
+  const req = (body) => new Request('https://proxy.example/', {method: 'POST', headers: {origin: ORIGIN, 'content-type': 'application/json'}, body: JSON.stringify(body)});
+  assert.equal((await handle(req(JUDGE), tokenEnv, deps)).status, 401);
+  assert.equal((await handle(req({...JUDGE, token: 's'}), tokenEnv, deps)).status, 200);
 });

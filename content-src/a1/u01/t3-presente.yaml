@@ -342,7 +342,10 @@ steps:
         questions:
           - tag: a1.presente.regular
             prompt: "Onde a Mia trabalha?"
-            answers: ["Num café em Santa Teresa", "Num café", "Em um café", "Ela trabalha num café", "Ela trabalha num café em Santa Teresa", "Em um café em Santa Teresa", "Em Santa Teresa"]
+            options:
+              - {text: "Num café em Santa Teresa.", correct: true}
+              - {text: "Na varanda.", rule: "En la varanda la Mia estudia: buscá la frase con *trabalha*.", content: true}
+              - {text: "Ela trabalham num café.", rule: "El sujeto es una sola persona: el verbo va en singular."}
             dims: {person: ele}
           - tag: a1.presente.regular
             prompt: "Quantas línguas o Tom e a Lea falam?"
@@ -355,12 +358,15 @@ steps:
             prompt: "A que horas o Rafa e a Ana abrem a recepção?"
             options:
               - {text: "Às sete.", correct: true}
-              - {text: "Às onze.", rule: "A esa hora la cierran: buscá la frase con *abrimos*."}
-              - {text: "Às terças.", rule: "Ese es el día de la clase de portugués, no un horario de la recepción."}
+              - {text: "Às onze.", rule: "A esa hora la cierran: buscá la frase con *abrimos*.", content: true}
+              - {text: "Às terças.", rule: "Ese es el día de la clase de portugués, no un horario de la recepción.", content: true}
             dims: {person: eles}
           - tag: a1.presente.regular
             prompt: "Onde o Leo mora?"
-            answers: ["Em Rosario", "Ele mora em Rosario", "O Leo mora em Rosario", "Rosario", "Na Argentina, em Rosario", "Em Rosario, na Argentina"]
+            options:
+              - {text: "Em Rosario.", correct: true}
+              - {text: "Em Santa Teresa.", rule: "Ese es el barrio de la pousada: buscá la frase que habla del Leo.", content: true}
+              - {text: "Ele moram em Rosario.", rule: "El sujeto es una sola persona: el verbo va en singular."}
             dims: {person: ele}
         reviewed: true
 

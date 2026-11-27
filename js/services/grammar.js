@@ -21,6 +21,21 @@ export async function check(text, { url = API, token = '', timeout = 15000 } = {
   }
 }
 
+// Revisión con IA de una respuesta corta (modo juez del Worker): {verdict, quote, src}. Sin token no hay revisión (null).
+export async function judge({ context, expected, answer }, { url = API, token = '', timeout = 15000 } = {}) {
+  if (!url || !token) return null;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeout);
+  try {
+    const res = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ mode: 'judge', context, expected, answer, token }), signal: ctrl.signal });
+    if (!res.ok) throw Object.assign(new Error(`El corrector respondió ${res.status}.`), { status: res.status });
+    const { provider, model, traceId, verdict, quote } = await res.json();
+    return { verdict, quote, src: { provider, model, trace: traceId } };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 // LanguageTool más el corrector. Si cualquiera falla, falla todo: la escritura queda pendiente y no se corrige a medias.
 export const withGrammar = (ltCheck, grammarCheck = check, opts = {}) => async text => {
   const [lt, grammar] = await Promise.all([ltCheck(text), grammarCheck(text, opts)]);

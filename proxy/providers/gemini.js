@@ -17,7 +17,7 @@ export const makeGemini = fetch => ({
     });
     if (!res.ok) throw Object.assign(new Error(`Gemini respondió ${res.status}`), {status: res.status});
     const text = (await res.json()).candidates?.[0]?.content?.parts?.[0]?.text;
-    return {model, errors: JSON.parse(text).errors};
+    return {model, ...JSON.parse(text)};
   },
 });
 

@@ -20,17 +20,31 @@ LanguageTool deja pasar los errores de caso y de artículo del tema 3, como *Ich
    npx wrangler secret put ANTHROPIC_API_KEY
    ```
    Para Gemini, la clave es `GEMINI_API_KEY`.
+
+   Después, la clave de la app: la misma que pusiste en **Ajustes → Clave del Worker**. Sin ella, cualquiera que conozca la URL podría gastar tu saldo:
+   ```bash
+   npx wrangler secret put APP_TOKEN
+   ```
 5. Publicá el Worker:
    ```bash
    npm run deploy
    ```
    Wrangler imprime la URL, algo como `https://portugues-grammar.<tu-cuenta>.workers.dev`.
-6. Corré el bench desde la raíz del repo:
+6. Corré el bench desde la raíz del repo, con la misma clave de la app:
    ```bash
-   node tools/grammar_bench.mjs https://portugues-grammar.<tu-cuenta>.workers.dev
+   APP_TOKEN=<tu clave> node tools/grammar_bench.mjs https://portugues-grammar.<tu-cuenta>.workers.dev
    ```
    Para comparar con Gemini, agregá `gemini` al final.
 7. **Solo si el bench da 0 falsos positivos:** poné esa URL en `API` (`js/services/grammar.js`), commiteá y hacé push.
+
+## Modo juez: "Revisar com IA"
+
+Cuando la devolución de una respuesta escrita no corresponde con el error, la app ofrece **Revisar com IA** (una vez por ítem). Manda `{mode: 'judge', context, expected, answer, token}`: el ejercicio, las respuestas aceptadas y la del usuario.
+
+- El modelo elige un veredicto de una lista cerrada: `correct`, `content`, `grammar`, `spelling` o `accent`.
+- Además cita la parte equivocada de la respuesta (`quote`). Nunca devuelve una corrección ni una explicación.
+- `judge.js` descarta una cita que no esté en la respuesta, y un veredicto desconocido es un error 502.
+- La app elige su propia devolución según el veredicto (regla 3) y guarda la revisión en los reportes (⚑).
 
 ## Cambiar de proveedor o de modelo
 
@@ -58,6 +72,7 @@ Los logs nunca llevan el texto escrito ni la respuesta del modelo: solo ids, can
 |---|---|
 | `index.js` | Entrada del Worker: conecta proveedores y catálogo |
 | `worker.js` | Origen, rate limit, tope de texto, logs y respuesta |
+| `judge.js` | Modo juez: prompt, validación del pedido y del veredicto |
 | `prompt.js` | Prompt y esquema JSON, compartidos por todos los proveedores |
 | `validate.js` | Pasa citas a offsets y descarta lo que no cae en una palabra o en el catálogo |
 | `genders.js` | Para los sustantivos del léxico, el género lo decide `data/lexicon.json`, no el modelo |

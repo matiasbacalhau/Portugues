@@ -929,17 +929,20 @@
         {
          "tag": "a1.ser.presente",
          "prompt": "Quem é o Caju?",
-         "answers": [
-          "O cachorro da recepção",
-          "É o cachorro da recepção",
-          "O Caju é o cachorro da recepção",
-          "Ele é o cachorro da recepção",
-          "O cachorro",
-          "É o cachorro",
-          "Um cachorro",
-          "É um cachorro",
-          "O cachorro da pousada",
-          "É o cachorro da pousada"
+         "options": [
+          {
+           "text": "É o cachorro da recepção.",
+           "correct": true
+          },
+          {
+           "text": "É o recepcionista da pousada.",
+           "rule": "Volvé a leer la frase que nombra al Caju: dice qué es y de dónde.",
+           "content": true
+          },
+          {
+           "text": "Está o cachorro da recepção.",
+           "rule": "Decir qué es alguien (un perro, una persona) es identidad, no un estado: va con el otro verbo."
+          }
          ],
          "dims": {
           "person": "ele"
@@ -955,11 +958,13 @@
           },
           {
            "text": "Na varanda.",
-           "rule": "La pregunta es dónde queda la recepción: la varanda es el lugar de otra regla de la casa."
+           "rule": "La pregunta es dónde queda la recepción: la varanda es el lugar de otra regla de la casa.",
+           "content": true
           },
           {
            "text": "No quarto 12.",
-           "rule": "El mail no habla de ese cuarto: buscá la frase con *fica*."
+           "rule": "El mail no habla de ese cuarto: buscá la frase con *fica*.",
+           "content": true
           }
          ],
          "dims": {
@@ -976,11 +981,13 @@
           },
           {
            "text": "Das 22h às 7h.",
-           "rule": "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno."
+           "rule": "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno.",
+           "content": true
           },
           {
            "text": "Das 7h às 23h.",
-           "rule": "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno."
+           "rule": "Ese horario es de otra regla de la casa: fijate cuál va con el desayuno.",
+           "content": true
           }
          ],
          "dims": {
@@ -1001,7 +1008,8 @@
           },
           {
            "text": "Sim, ele é muito carinhoso.",
-           "rule": "Leé de nuevo la frase sobre el Caju y el travesseiro: tiene un *não*."
+           "rule": "Leé de nuevo la frase sobre el Caju y el travesseiro: tiene un *não*.",
+           "content": true
           }
          ],
          "dims": {
@@ -3044,12 +3052,20 @@
         {
          "tag": "a1.contr.de",
          "prompt": "De quem é o peixe?",
-         "answers": [
-          "Do Seu Jorge",
-          "É do Seu Jorge",
-          "O peixe é do Seu Jorge",
-          "Seu Jorge",
-          "Do Seu Jorge, na barraca azul"
+         "options": [
+          {
+           "text": "Do Seu Jorge.",
+           "correct": true
+          },
+          {
+           "text": "De o Seu Jorge.",
+           "rule": "La preposición y el artículo se juntan en una sola palabra."
+          },
+          {
+           "text": "Da Ana.",
+           "rule": "La Ana escribe la lista, pero el pescado es de otra persona: buscá la frase con *peixe*.",
+           "content": true
+          }
          ],
          "dims": {
           "gender": "m"
@@ -3065,11 +3081,13 @@
           },
           {
            "text": "Na barraca azul.",
-           "rule": "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*."
+           "rule": "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*.",
+           "content": true
           },
           {
            "text": "No fim da rua.",
-           "rule": "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*."
+           "rule": "Ese es el lugar de otra cosa de la lista: buscá la frase con *dinheiro*.",
+           "content": true
           }
          ],
          "dims": {
@@ -3090,7 +3108,8 @@
           },
           {
            "text": "As bananas e os tomates.",
-           "rule": "Esas cosas son de la feria, no del mercado: buscá la línea que empieza con *Do mercado*."
+           "rule": "Esas cosas son de la feria, no del mercado: buscá la línea que empieza con *Do mercado*.",
+           "content": true
           }
          ],
          "dims": {
@@ -3100,12 +3119,20 @@
         {
          "tag": "a1.contr.de",
          "prompt": "De quem é a sobremesa?",
-         "answers": [
-          "Da Lea",
-          "É da Lea",
-          "A sobremesa é da Lea",
-          "Lea",
-          "A Lea"
+         "options": [
+          {
+           "text": "Da Lea.",
+           "correct": true
+          },
+          {
+           "text": "Da Mia.",
+           "rule": "La Mia prepara otra cosa para la cena: buscá la frase con *sobremesa*.",
+           "content": true
+          },
+          {
+           "text": "Do Lea.",
+           "rule": "*Lea* es nombre de mujer: la contracción tiene que ser del mismo género."
+          }
          ],
          "dims": {
           "gender": "f"
@@ -4833,14 +4860,20 @@
         {
          "tag": "a1.presente.regular",
          "prompt": "Onde a Mia trabalha?",
-         "answers": [
-          "Num café em Santa Teresa",
-          "Num café",
-          "Em um café",
-          "Ela trabalha num café",
-          "Ela trabalha num café em Santa Teresa",
-          "Em um café em Santa Teresa",
-          "Em Santa Teresa"
+         "options": [
+          {
+           "text": "Num café em Santa Teresa.",
+           "correct": true
+          },
+          {
+           "text": "Na varanda.",
+           "rule": "En la varanda la Mia estudia: buscá la frase con *trabalha*.",
+           "content": true
+          },
+          {
+           "text": "Ela trabalham num café.",
+           "rule": "El sujeto es una sola persona: el verbo va en singular."
+          }
          ],
          "dims": {
           "person": "ele"
@@ -4877,11 +4910,13 @@
           },
           {
            "text": "Às onze.",
-           "rule": "A esa hora la cierran: buscá la frase con *abrimos*."
+           "rule": "A esa hora la cierran: buscá la frase con *abrimos*.",
+           "content": true
           },
           {
            "text": "Às terças.",
-           "rule": "Ese es el día de la clase de portugués, no un horario de la recepción."
+           "rule": "Ese es el día de la clase de portugués, no un horario de la recepción.",
+           "content": true
           }
          ],
          "dims": {
@@ -4891,13 +4926,20 @@
         {
          "tag": "a1.presente.regular",
          "prompt": "Onde o Leo mora?",
-         "answers": [
-          "Em Rosario",
-          "Ele mora em Rosario",
-          "O Leo mora em Rosario",
-          "Rosario",
-          "Na Argentina, em Rosario",
-          "Em Rosario, na Argentina"
+         "options": [
+          {
+           "text": "Em Rosario.",
+           "correct": true
+          },
+          {
+           "text": "Em Santa Teresa.",
+           "rule": "Ese es el barrio de la pousada: buscá la frase que habla del Leo.",
+           "content": true
+          },
+          {
+           "text": "Ele moram em Rosario.",
+           "rule": "El sujeto es una sola persona: el verbo va en singular."
+          }
          ],
          "dims": {
           "person": "ele"
@@ -4912,7 +4954,6 @@
         "casa",
         "varanda",
         "café",
-        "Argentina",
         "Chile"
        ]
       },

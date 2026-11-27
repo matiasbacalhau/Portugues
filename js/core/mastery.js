@@ -34,6 +34,8 @@ export function applyResult(state, result, {now, quarantine} = {}) {
     return s;
   }
   if (result.ok) return touch(s, result.tag, result.type, 1, 1, now);
+  // Ortografía, tilde, contenido, gramática de otro tema o tipo no determinado: no es evidencia sobre el tema del tag.
+  if (result.errorType && result.errorType !== 'grammar-tag') return s;
   if (result.prereq) {
     s = touch(s, result.prereq, result.type, 0, 1, now);
     return touch(s, result.tag, result.type, 0, 0.5, now);

@@ -3,6 +3,7 @@
 import { buildPrompt } from './prompt.js';
 import { validate } from './validate.js';
 import { recategorize } from './genders.js';
+import { buildJudgePrompt, judgeInput, judgeOutput } from './judge.js';
 
 const MAX_TEXT = 2000;
 const RATE = {max: 20, windowMs: 60_000};
@@ -28,13 +29,16 @@ export async function handle(request, env, {catalog, nouns, providers, log, hits
 
   let body;
   try { body = await request.json(); } catch { body = null; }
-  if (typeof body?.text !== 'string') return reject(400, 'bad_body');
+  const judging = body?.mode === 'judge';
+  const input = judging ? judgeInput(body) : null;
+  if (judging ? input === null : typeof body?.text !== 'string') return reject(400, 'bad_body');
   if (env.APP_TOKEN && (request.headers.get('x-app-token') ?? body.token) !== env.APP_TOKEN) return reject(401, 'unauthorized');
-  if (body.text.length > MAX_TEXT) return reject(413, 'too_long', {chars: body.text.length});
+  if (judging ? input === 'too_long' : body.text.length > MAX_TEXT) return reject(413, 'too_long', judging ? {} : {chars: body.text.length});
   const name = body.provider ?? env.PROVIDER ?? 'claude';
   const provider = Object.hasOwn(providers, name) ? providers[name] : null;
   if (!provider) return reject(400, 'unknown_provider');
   if (!env[provider.key]) return reject(503, 'provider_not_configured', {provider: name});
+  if (judging) return judge(input, {provider, name, env, traceId, log, reply});
 
   const started = Date.now();
   let out;
@@ -52,6 +56,26 @@ export async function handle(request, env, {catalog, nouns, providers, log, hits
   const version = env.CF_VERSION_METADATA?.id ?? 'dev';
   log('info', 'grammar corrected', {traceId, provider: name, model: out.model, version, chars: body.text.length, marks: marks.length, recategorized, ms: Date.now() - started});
   return reply(200, {provider: name, model: out.model, version, traceId, marks});
+}
+
+// Apelación desde la app: veredicto de una lista cerrada y la parte equivocada citada de la respuesta.
+async function judge(input, {provider, name, env, traceId, log, reply}) {
+  const started = Date.now();
+  let out;
+  try {
+    out = await provider.correct(buildJudgePrompt(input), env);
+  } catch (e) {
+    log('warn', 'provider failed', {traceId, provider: name, mode: 'judge', status: e.status ?? null, stopReason: e.stopReason ?? null, error: e.name, ms: Date.now() - started});
+    return reply(502, {error: 'provider_failed', traceId});
+  }
+  const verdict = judgeOutput(out, input.answer);
+  if (!verdict) {
+    log('warn', 'verdict dropped', {traceId, provider: name, model: out.model});
+    return reply(502, {error: 'bad_verdict', traceId});
+  }
+  const version = env.CF_VERSION_METADATA?.id ?? 'dev';
+  log('info', 'answer judged', {traceId, provider: name, model: out.model, version, verdict: verdict.verdict, quoted: !!verdict.quote, ms: Date.now() - started});
+  return reply(200, {provider: name, model: out.model, version, traceId, ...verdict});
 }
 
 // Ventana fija por IP, en memoria del isolate: alcanza para una app de un usuario. El tope de gasto real lo pone la consola del proveedor.

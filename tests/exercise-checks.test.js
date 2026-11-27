@@ -8,6 +8,7 @@ import { instances } from '../js/core/generators/artigo.js';
 const RULE = 'Regla del tag.';
 const RULE_DE = 'Regra do tag.';
 const ctx = {
+  lexicon: JSON.parse(readFileSync(new URL('../data/lexicon.json', import.meta.url))),
   curriculum: {tags: {
     t: {rule: RULE, rule_pt: RULE_DE, orthographic: false},
     o: {rule: RULE, rule_pt: RULE_DE, orthographic: true},

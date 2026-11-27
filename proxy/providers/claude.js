@@ -13,6 +13,6 @@ export const makeClaude = clientFor => ({
     }, {timeout: 12000, maxRetries: 0}); // sin reintentos acá: la cola de la app reintenta
     if (res.stop_reason !== 'end_turn') throw Object.assign(new Error(`stop_reason ${res.stop_reason}`), {stopReason: res.stop_reason});
     const text = res.content.find(b => b.type === 'text')?.text;
-    return {model: res.model ?? model, errors: JSON.parse(text).errors};
+    return {model: res.model ?? model, ...JSON.parse(text)};
   },
 });
