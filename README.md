@@ -7,7 +7,7 @@ Es una copia independiente de [DeutschLernen](https://github.com/matiasbacalhau/
 - la corrección nombra la regla y nunca muestra la solución;
 - el vocabulario se repasa con FSRS.
 
-La pedagogía está en [docs/PEDAGOGIA_ESCALONES.md](docs/PEDAGOGIA_ESCALONES.md) y la política de idioma de la interfaz en [docs/DESIGN_IMMERSION.md](docs/DESIGN_IMMERSION.md). El estado está en [PROGRESS.md](PROGRESS.md).
+La pedagogía está en [docs/PEDAGOGIA_ESCALONES.md](docs/PEDAGOGIA_ESCALONES.md) la política de idioma de la interfaz en [docs/DESIGN_IMMERSION.md](docs/DESIGN_IMMERSION.md) y cómo corrige la app en [docs/CORRECCION.md](docs/CORRECCION.md). El estado está en [PROGRESS.md](PROGRESS.md).
 
 ## Qué cambia respecto del alemán
 - Morfología de Brasil: artículos, contracciones (`no`, `da`, `pelo`…) y presente en 4 personas (`eu`, `você/ele/a gente`, `nós`, `vocês/eles`): `js/core/morph.js`.
