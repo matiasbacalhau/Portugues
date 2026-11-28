@@ -2,6 +2,7 @@
 // La que suena se sortea al mostrar el ejercicio. answer = {said, picked} (índices de ex.pair).
 // Nunca se muestra cuál sonó antes de responder; tras un error, solo la regla del sonido (grupo.js).
 import { h, rich, inSpanish } from '../ui/dom.js';
+import { speakerIcon } from '../ui/inputs.js';
 import * as tts from '../services/tts.js';
 
 export function render(ex, el, { submit, onNoAudio }) {
@@ -22,7 +23,7 @@ export function render(ex, el, { submit, onNoAudio }) {
     inSpanish(ex.prompt_es),
     canSpeak
       ? h('p', { class: 'listen-row' },
-        h('button', { type: 'button', class: 'listen', 'aria-label': 'Ouvir mais devagar', lang: 'pt-BR', onclick: play(0.8) }, '🔊'),
+        h('button', { type: 'button', class: 'listen', 'aria-label': 'Ouvir mais devagar', lang: 'pt-BR', onclick: play(0.8) }, speakerIcon()),
         h('button', { type: 'button', class: 'secondary small', 'aria-label': 'Velocidade normal', lang: 'pt-BR', onclick: play(1) }, '1×'),
       )
       : h('p', { class: 'muted' }, 'Este navegador no tiene síntesis de voz.'),

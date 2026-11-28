@@ -11,8 +11,8 @@ export function renderGlossary(el, words) {
     h('div', { class: 'gl-body' },
       h('span', { class: 'lemma', lang: 'pt-BR' }, w.article ? `${w.article} ${w.lemma}` : w.lemma),
       w.plural && h('span', { class: 'muted', lang: 'pt-BR' }, ` · pl. ${w.plural}`),
-      listenButton(w.article ? `${w.article} ${w.lemma}` : w.lemma),
       h('span', { class: 'es' }, w.es),
     ),
+    listenButton(w.article ? `${w.article} ${w.lemma}` : w.lemma),
   ))));
 }

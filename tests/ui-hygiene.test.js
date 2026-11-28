@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-function mockDom() {
+function mockDom(win = {}) {
   const mk = (tag) => {
     const node = {
       tag,
@@ -15,8 +15,12 @@ function mockDom() {
     };
     return node;
   };
-  globalThis.document = { createElement: mk, createDocumentFragment: () => mk('#fragment') };
-  globalThis.window = {};
+  globalThis.document = {
+    createElement: mk,
+    createElementNS: (_ns, tag) => mk(tag),
+    createDocumentFragment: () => mk('#fragment'),
+  };
+  globalThis.window = win;
   return { mk, restore() { delete globalThis.document; delete globalThis.window; } };
 }
 
@@ -34,6 +38,21 @@ test('answerInput: pone lang="pt-BR" en el campo y normaliza value() a NFC', asy
   }
 });
 
+test('listenButton: usa SVG accesible (aria-hidden) en vez de emoji 🔊', async () => {
+  const { restore } = mockDom({ speechSynthesis: {} });
+  try {
+    const { listenButton } = await import('../js/ui/inputs.js');
+    const btn = listenButton('Bom dia');
+    const flat = JSON.stringify(btn);
+    assert.ok(!flat.includes('🔊'), 'no debe usar emoji 🔊');
+    const svg = btn.children.find((c) => c?.tag === 'svg');
+    assert.ok(svg, 'debe contener un <svg>');
+    assert.equal(svg.attrs['aria-hidden'], 'true');
+  } finally {
+    restore();
+  }
+});
+
 test('pares UI: sin speechSynthesis no renderiza botones de audio rotos', async () => {
   const { mk, restore } = mockDom();
   try {
@@ -42,7 +61,7 @@ test('pares UI: sin speechSynthesis no renderiza botones de audio rotos', async 
     const ex = { id: 'p1', type: 'pares', tag: 'a1.som.nasal', pair: [{ pt: 'pão', es: 'pan' }, { pt: 'pau', es: 'palo' }] };
     render(ex, el, { submit() {} });
     const flat = JSON.stringify(el);
-    assert.ok(!flat.includes('🔊'), 'sin speechSynthesis no debe mostrar 🔊');
+    assert.ok(!flat.includes('"class":"listen"'), 'sin speechSynthesis no debe mostrar botón listen');
   } finally {
     restore();
   }

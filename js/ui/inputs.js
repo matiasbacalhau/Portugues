@@ -29,10 +29,31 @@ export function answerInput({ multiline = false, label, lang = 'pt-BR' } = {}) {
   return root;
 }
 
-// Botón 🔊 que lee `text` con la voz de portugués predeterminada (en iOS, forzar una voz de la lista falla).
+// Ícono SVG de parlante en currentColor (evita el emoji del sistema, gate 30a).
+export function speakerIcon() {
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs) => {
+    const n = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+    return n;
+  };
+  const svg = el('svg', {
+    viewBox: '0 0 24 24', width: '20', height: '20', fill: 'none',
+    stroke: 'currentColor', 'stroke-width': '2.2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+    'aria-hidden': 'true',
+  });
+  svg.append(
+    el('path', { d: 'M11 5L6 9H2v6h4l5 4V5z' }),
+    el('path', { d: 'M15.5 8.5a5 5 0 0 1 0 7' }),
+    el('path', { d: 'M18.5 5.5a9 9 0 0 1 0 13' }),
+  );
+  return svg;
+}
+
+// Botón de escucha que lee `text` con la voz de portugués predeterminada (en iOS, forzar una voz de la lista falla).
 // Sin síntesis de voz no se muestra. Con el iPhone en silencio no suena: no hay forma de detectarlo.
 export function listenButton(text) {
   if (!tts.supported()) return null;
   // speak() rechaza si otra frase la interrumpe: no es un error para el usuario.
-  return h('button', { type: 'button', class: 'listen', 'aria-label': 'Escuchar', lang: 'es', onclick: () => tts.speak(text, { rate: 0.9 }).catch(() => {}) }, '🔊');
+  return h('button', { type: 'button', class: 'listen', 'aria-label': 'Escuchar', lang: 'es', onclick: () => tts.speak(text, { rate: 0.9 }).catch(() => {}) }, speakerIcon());
 }

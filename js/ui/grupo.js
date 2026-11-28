@@ -88,11 +88,12 @@ export default async function grupo(el, { store, content, params }) {
   // Barra del grupo: ✕ (vuelve al inicio sin confirmar; el grupo queda guardado), título y, en el escalón 3, "Glosario".
   const glossaryBox = h('div', { class: 'card', hidden: true });
   if (group.glossary) renderGlossary(glossaryBox, group.glossary);
+  const glossaryBtn = group.glossary && h('button', { type: 'button', class: 'secondary small', onclick: () => { glossaryBox.hidden = !glossaryBox.hidden; } }, 'Vocabulário');
   const counter = h('span', { class: 'muted' });
   const bar = h('div', { class: 'group-bar' },
     h('a', { class: 'close', href: '#/', 'aria-label': 'Salir al inicio' }, '✕'),
     h('div', { class: 'group-title' }, h('strong', {}, `Etapa ${n} · ${stepDef.name}`), counter),
-    group.glossary && h('button', { type: 'button', class: 'secondary small', onclick: () => { glossaryBox.hidden = !glossaryBox.hidden; } }, 'Vocabulário'),
+    glossaryBtn,
   );
   const screen = h('div', { class: 'screen' });
   // Región viva: el resultado de cada ejercicio se anuncia sin releer toda la pantalla.
@@ -130,15 +131,19 @@ export default async function grupo(el, { store, content, params }) {
       return;
     }
     if (group.glossary && !group.glossaryShown && group.index === 0) {
-      const box = h('div', { class: 'card' }, h('h2', {}, 'Vocabulário'), h('p', { class: 'muted' }, 'Palabras para usar en este grupo. Después quedan en el botón "Vocabulário".'));
+      if (glossaryBtn) glossaryBtn.hidden = true;
+      glossaryBox.hidden = true;
+      const box = h('div', { class: 'card' }, h('h2', {}, 'Vocabulário'), h('p', { class: 'muted' }, 'Palabras para usar en este grupo. Después quedan en el botón «Vocabulário».'));
       renderGlossary(box, group.glossary);
       show(h('p', { class: 'scene', lang: 'pt-BR' }, rich(stepDef.scene.context)), inSpanish(stepDef.scene.context_es), box, h('button', { type: 'button', onclick: async () => {
         group = { ...group, glossaryShown: true };
+        if (glossaryBtn) glossaryBtn.hidden = false;
         await save();
         next();
       } }, 'Começar'));
       return;
     }
+    if (glossaryBtn) glossaryBtn.hidden = false;
     if (needsFicha(group, topic)) {
       show(h('div', { class: 'card' }, renderFicha(topic, titleOf(topicId))), h('button', { type: 'button', onclick: async () => {
         group = { ...group, fichaShown: true };

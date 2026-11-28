@@ -21,7 +21,7 @@ export default async function tema(el, { store, content, params }) {
     h('div', { class: 'card' }, def.steps.map(s => {
       const status = stepStatus(progress.steps[stepKey(id, s.n)]?.attempts.at(-1));
       return h('a', { class: 'map-step', 'data-status': status, href: `#/grupo/${encodeURIComponent(id)}/${s.n}` },
-        h('span', {}, `Etapa ${s.n} · ${s.name}`), h('span', { class: 'muted' }, TEXT[status]));
+        h('span', { class: 'step-name' }, h('strong', {}, `Etapa ${s.n}`), h('span', {}, s.name)), h('span', { class: 'muted' }, TEXT[status]));
     })),
     h('a', { class: 'button secondary', href: '#/mapa' }, 'Mapa de temas'),
   );
