@@ -1,4 +1,4 @@
-// translate: del español o del inglés al alemán. answer = string.
+// translate: del español o del inglés al portugués. answer = string.
 import { h, rich } from '../ui/dom.js';
 import { answerInput } from '../ui/inputs.js';
 import { onceButton, onEnter } from './common.js';

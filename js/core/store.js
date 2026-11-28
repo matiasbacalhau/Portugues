@@ -22,6 +22,7 @@ async function run(mode, fn) {
     const result = fn(tx.objectStore(STORE));
     tx.oncomplete = () => resolve(result?.result);
     tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error ?? new Error('Transacción cancelada'));
   });
 }
 
@@ -57,6 +58,7 @@ export async function update(keys, fn) {
     }
     tx.oncomplete = () => resolve(out);
     tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error ?? new Error('Transacción cancelada'));
   });
 }
 

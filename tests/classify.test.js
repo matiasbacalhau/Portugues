@@ -7,7 +7,7 @@ import { classifyMiss, nameArticleVariants, grammarScope } from '../js/core/clas
 import { checkWritten, TYPED, EVALUATED_OK } from '../js/core/checks/common.js';
 import { applyResult } from '../js/core/mastery.js';
 import { exampleFor } from '../js/core/runner.js';
-import { appealContext, appealExpected, applyVerdict } from '../js/core/appeal.js';
+import { appealContext, appealExpected, applyVerdict, canAppeal } from '../js/core/appeal.js';
 
 const lexicon = JSON.parse(readFileSync(new URL('../data/lexicon.json', import.meta.url)));
 const type = (answer, accepted, tag, reading = false) => classifyMiss(answer, accepted, {tag, reading, lexicon}).type;
@@ -80,4 +80,12 @@ test('revisión con IA: contexto del ítem, veredicto correcto acepta, gramátic
   assert.equal(grammarScope('no', 'a1.presente.regular', lexicon), 'grammar-other');
   const c = applyVerdict({...ex, type: 'reading'}, prev, {verdict: 'content', quote: 'Rosario'}, ctx);
   assert.deepEqual([c.errorType, c.rule], ['content', TYPED.reading.rule]);
+  // card y dictation no son apelables al juez (no tienen expected/context de juez).
+  assert.equal(canAppeal(ex, 'tf'), true);
+  assert.equal(canAppeal({id: 'card:chave:2:read', type: 'card', rung: 2}, 'card:chave:2:read'), false);
+  assert.equal(canAppeal({id: 'dict:0', type: 'dictation', text: 'Eu moro no Brasil.'}, 'dict:0'), false);
+  // NFD en given + NFC en quote: el subrayado igual encuentra la cita.
+  const nfdPrev = {...prev, given: 'Você esta\u0301 aqui.'};
+  const nfdRes = applyVerdict(ex, nfdPrev, {verdict: 'grammar', quote: 'está'}, ctx);
+  assert.deepEqual(nfdRes.wrong, [{offset: 5, length: 4}]);
 });

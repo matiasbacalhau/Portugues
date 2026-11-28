@@ -115,3 +115,24 @@ test('estado de escalón', () => {
   assert.equal(stepStatus({passed: false}), 'reforzar');
   assert.equal(stepStatus({passed: null}), 'pendiente');
 });
+
+test('C1: escritura resuelta en grupo abierto conserva su score gradual', () => {
+  const group = openGroup({
+    results: [
+      {key: 'w1', tag: null, ok: false, pending: true, at: 2},
+      {key: 'w2', tag: null, ok: false, score: 0.75, penalties: [], marks: [], at: 3},
+      {key: 'w3', tag: null, ok: false, score: 0.5, penalties: [], marks: [], at: 4},
+    ],
+  });
+  const text4 = 'Eu sou o Leo. Eu sou da Argentina. O viagem foi longa. Nós somos amigos.';
+  const out = applyResolved({
+    state: {...empty(), group},
+    entry: {...entry, group: group.id, text: text4, matches},
+    ltMap,
+    quarantine: [],
+    now: 9,
+  });
+  assert.equal(out.group.results[0].score, 0.75);
+  const a = recordAttempt(out.progress, out.group, 10).steps['t/5'].attempts[0];
+  assert.equal(a.passed, true);
+});

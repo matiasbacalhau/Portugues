@@ -47,6 +47,14 @@ test('DEFAULT_ACCEPTED_WORDS incluye nombres y lugares comunes (Matias, Madrid, 
   assert.equal(isAcceptedWord('cordoba', set), true);
   assert.equal(isAcceptedWord('Leo', set), true);
   assert.equal(isAcceptedWord('Anna', set), true);
+  // Frases compuestas (La Paz, São Paulo, La Plata) no deben aceptar artículos ni "sao" sin tilde sueltos.
+  assert.equal(isAcceptedWord('la', set), false);
+  assert.equal(isAcceptedWord('sao', set), false);
+  const custom = buildAcceptedWordsSet(['La Plata', 'São Paulo'], []);
+  assert.equal(isAcceptedWord('Plata', custom), true);
+  assert.equal(isAcceptedWord('Paulo', custom), true);
+  assert.equal(isAcceptedWord('la', custom), false);
+  assert.equal(isAcceptedWord('sao', custom), false);
 });
 
 test('relevant: filtra MORFOLOGIK_RULE_PT_BR en palabras aceptadas sin importar mayúsculas o tildes', () => {

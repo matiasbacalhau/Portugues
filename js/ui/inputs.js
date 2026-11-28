@@ -6,10 +6,10 @@ let seq = 0;
 const KEYS = ['ã', 'õ', 'á', 'é', 'ê', 'ó', 'ô', 'ç', 'à', 'í', 'ú', 'â'];
 
 // Campo de respuesta con fila de teclas con tildes y ç. Las teclas insertan en el cursor y no le sacan el foco al campo.
-export function answerInput({ multiline = false, label } = {}) {
+export function answerInput({ multiline = false, label, lang = 'pt-BR' } = {}) {
   const id = `answer-${++seq}`;
   const field = h(multiline ? 'textarea' : 'input', {
-    id, autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', autocomplete: 'off', type: multiline ? null : 'text',
+    id, lang, autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', autocomplete: 'off', type: multiline ? null : 'text',
   });
   const insert = ch => {
     const { selectionStart: a, selectionEnd: b } = field;
@@ -24,7 +24,7 @@ export function answerInput({ multiline = false, label } = {}) {
     onclick: () => insert(ch),
   }, ch));
   const root = h('div', { class: 'answer' }, label && h('label', { for: id }, label), field, h('div', { class: 'umlauts' }, keys));
-  root.value = () => field.value;
+  root.value = () => field.value.normalize('NFC');
   root.focus = () => field.focus();
   return root;
 }

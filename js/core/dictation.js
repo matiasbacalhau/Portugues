@@ -28,10 +28,17 @@ function sentencesOf(ex) {
 // Una instancia de generador con el hueco relleno con su primera respuesta.
 const filled = (e) => e.text.replace('___', e.answers[0]);
 
-// Los lemas del léxico cuya forma (lema, plural o presente verbal) aparece como palabra en `text` (sin distinguir mayúsculas).
+// Los lemas del léxico cuya forma (lema, plural o presente verbal) aparece como palabra (o frase compuesta) en `text`.
+const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 export function lemmasIn(text, lexicon) {
-  const set = new Set(words(text));
-  return [...new Set(lexicon.filter((w) => wordForms(w).some((f) => set.has(f.toLowerCase()))).map((w) => w.lemma))];
+  const raw = String(text).toLowerCase();
+  const set = new Set(words(raw));
+  const hasForm = (f) => {
+    const lo = f.toLowerCase();
+    if (!/[\s-]/.test(lo)) return set.has(lo);
+    return new RegExp(`(^|[^\\p{L}\\p{N}])${esc(lo)}(?![\\p{L}\\p{N}])`, 'u').test(raw);
+  };
+  return [...new Set(lexicon.filter((w) => wordForms(w).some(hasForm)).map((w) => w.lemma))];
 }
 
 // [{text, lemmas, cardOnly?}]: frases de hasta 8 palabras sin `___`, sin repetir: todas las respuestas aceptadas de

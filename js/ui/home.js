@@ -10,7 +10,7 @@ export default async function home(el, { store, content }) {
   const defs = units.flatMap(u => u.topics).filter(t => !t.draft && t.steps?.length);
   const titleOf = id => C.curriculum.topics.find(t => t.id === id)?.title ?? id;
   const m = mastery ?? { tags: {}, pairs: {} };
-  const next = units[0] && suggestNext(units[0], progress ?? { steps: {} }, Date.now(), m);
+  const next = units.length ? suggestNext(units, progress ?? { steps: {} }, Date.now(), m) : null;
   const stepOf = (topic, n) => defs.find(t => t.topic === topic)?.steps.find(s => s.n === n);
   // Con un grupo a medias, la tarjeta principal es ese grupo (Seguir); la sugerencia queda como secundaria (§5.1).
   const open = group && stepOf(group.topic, group.step) ? { topic: group.topic, step: group.step } : null;

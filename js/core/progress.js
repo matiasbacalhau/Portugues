@@ -100,8 +100,8 @@ const itemScore = r => r.score ?? (r.ok ? 1 : 0);
 export function activeTagsFor(units, progress, topicId) {
   const tags = new Set();
   const unitList = Array.isArray(units) ? units : Object.values(units ?? {});
+  let reachedCurrent = false;
   for (const u of unitList) {
-    let reachedCurrent = false;
     for (const t of u.topics ?? []) {
       const attempted = (t.steps ?? []).some(s => (progress?.steps?.[stepKey(t.topic, s.n)]?.attempts?.length ?? 0) > 0);
       if (t.topic === topicId || !reachedCurrent || attempted) {
@@ -113,7 +113,7 @@ export function activeTagsFor(units, progress, topicId) {
   return tags;
 }
 
-// {pct, passed, pending, failedRules, ok, bad}. Solo cuentan los ejercicios sin `review`.
+// {pct, passed, pending, failedRules, ok, bad, points}. Solo cuentan los ejercicios sin `review`.
 export function scoreGroup(group) {
   const byId = new Map(group.exercises.map(e => [e.id, e]));
   const counted = group.results.filter(r => byId.has(idOf(r.key)) && !byId.get(idOf(r.key)).review);
@@ -127,10 +127,10 @@ export function scoreGroup(group) {
     const total = group.exercises.filter(e => !e.review).length;
     const remaining = total - ok - bad;
     const passed = points >= 2 ? true : points + remaining >= 2 ? null : false;
-    return {pct: total ? points / total : 0, passed, pending, failedRules, ok, bad};
+    return {pct: total ? points / total : 0, passed, pending, failedRules, ok, bad, points};
   }
   const pct = done.length ? points / done.length : 0;
-  return {pct, passed: pct >= PASS, pending, failedRules, ok, bad};
+  return {pct, passed: pct >= PASS, pending, failedRules, ok, bad, points};
 }
 
 // Guarda el intento del grupo y marca como vistos sus ejercicios del tema (no el repaso).
@@ -140,13 +140,13 @@ export function recordAttempt(progress, group, now) {
   const prev = progress.steps[key] ?? {attempts: [], seen: {}};
   const seen = {...prev.seen};
   for (const e of group.exercises) if (!e.review) seen[e.id] = now;
-  const at = {at: now, pct: s.pct, passed: s.passed, pending: s.pending, ok: s.ok, bad: s.bad, group: group.id};
+  const at = {at: now, pct: s.pct, passed: s.passed, pending: s.pending, ok: s.ok, bad: s.bad, ...(group.step === 5 ? {points: s.points} : {}), group: group.id};
   return {...progress, steps: {...progress.steps, [key]: {attempts: [...prev.attempts, at], seen}}};
 }
 
 // Resuelve la escritura `key` (id del ejercicio) en el intento que la tenía pendiente y recalcula su `passed`.
 // groupId (opcional): el intento de ese grupo; los intentos sin `group` (datos viejos) siempre califican.
-export function resolvePending(progress, key, ok, groupId) {
+export function resolvePending(progress, key, ok, groupId, score = ok ? 1 : 0) {
   const mine = a => !groupId || !a.group || a.group === groupId;
   for (const [sk, st] of Object.entries(progress.steps)) {
     const i = st.attempts.findLastIndex(a => a.pending?.includes(key) && mine(a));
@@ -156,8 +156,9 @@ export function resolvePending(progress, key, ok, groupId) {
     const good = a.ok + (ok ? 1 : 0);
     const bad = a.bad + (ok ? 0 : 1);
     const total = good + bad + pending.length;
-    const passed = good >= 2 ? true : good + pending.length >= 2 ? null : false;
-    const attempts = st.attempts.map((x, j) => (j === i ? {...a, pending, ok: good, bad, pct: total ? good / total : 0, passed} : x));
+    const points = (a.points ?? a.ok) + score;
+    const passed = points >= 2 ? true : points + pending.length >= 2 ? null : false;
+    const attempts = st.attempts.map((x, j) => (j === i ? {...a, pending, ok: good, bad, points, pct: total ? points / total : 0, passed} : x));
     return {...progress, steps: {...progress.steps, [sk]: {...st, attempts}}};
   }
   return progress;
@@ -168,19 +169,20 @@ export const pendingInGroup = (group, key, groupId) =>
   !!group && (!groupId || group.id === groupId) && group.results.some(r => r.key === key && r.pending);
 
 // La escritura `key` corregida desde la cola con el grupo todavía abierto: su Result pasa de pendiente a ok/fallo
-// con marcas y penalizaciones. `applied` avisa a applyCommit que el mastery y el log ya se aplicaron.
-export function resolveInGroup(group, key, {ok, marks, penalties}) {
+// con puntaje gradual, marcas y penalizaciones. `applied` avisa a applyCommit que el mastery y el log ya se aplicaron.
+export function resolveInGroup(group, key, {ok, score, marks, penalties}) {
   const results = group.results.map(r => {
     if (r.key !== key || !r.pending) return r;
     const {pending, ...rest} = r;
-    return {...rest, ok, marks, penalties, applied: true};
+    return {...rest, ok, ...(score !== undefined ? {score} : {}), marks, penalties, applied: true};
   });
   return {...group, results};
 }
 
-// mastery: se usa solo cuando todo está superado (el tema con menor mastery mínimo). Devuelve null si la unidad no tiene contenido.
-export function suggestNext(unit, progress, now, mastery) {
-  const topics = unit.topics.filter(hasContent);
+// mastery: se usa solo cuando todo está superado (el tema con menor mastery mínimo). Devuelve null si no hay contenido.
+// Acepta una unidad o un arreglo de unidades en orden curricular.
+export function suggestNext(unitOrUnits, progress, now, mastery) {
+  const topics = (Array.isArray(unitOrUnits) ? unitOrUnits.flatMap(u => u?.topics ?? []) : unitOrUnits?.topics ?? []).filter(hasContent);
   if (!topics.length) return null;
   const all = topics.flatMap(t => t.steps.map(s => ({topic: t.topic, n: s.n, a: last(progress, t.topic, s.n)})));
   const weak = all.filter(x => x.a && x.a.passed === false).sort((x, y) => x.a.at - y.a.at)[0];

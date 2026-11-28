@@ -66,11 +66,12 @@
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; overscroll-behavior-y: contain; }
 
 body {
   margin: 0;
   overflow-x: clip;
+  overscroll-behavior-y: contain;
   background: var(--ground);
   color: var(--text);
   caret-color: var(--accent);
@@ -106,7 +107,7 @@ a { color: var(--text); text-decoration-color: var(--accent); text-decoration-th
 a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-.greeting { font: 400 2.1rem/1.02 var(--display); letter-spacing: 0.005em; margin: 8px 0 12px; text-wrap: balance; }
+.greeting { font: 400 2.1rem/1.02 var(--display); letter-spacing: 0.005em; margin: 8px 0 12px; text-wrap: balance; font-variant-numeric: tabular-nums; }
 .curiosity { font: 600 1.05rem/1.35 var(--sans); color: var(--accent-text); margin: 8px 0 0; }
 
 /* Troquel: borde blanco de 6px y sombra dura, sin desenfoque */
@@ -291,6 +292,7 @@ select { display: block; width: 100%; min-height: 48px; margin: 8px 0; padding: 
 .group-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .group-bar .close { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; color: var(--text); text-decoration: none; font-size: 1.2rem; }
 .group-title { flex: 1; display: flex; flex-direction: column; line-height: 1.25; }
+.group-title .muted { font-variant-numeric: tabular-nums; }
 button.listen { display: inline-flex; align-items: center; justify-content: center; width: 44px; min-height: 44px; margin: 0; padding: 0; vertical-align: middle; background: transparent; color: inherit; border: 1.5px solid var(--hair); box-shadow: none; font-size: 1.1rem; }
 button.small, .button.small { width: auto; min-height: 44px; padding: 8px 16px; margin: 0; font-size: 0.9rem; }
 .pill.small { min-height: 0; padding: 4px 12px; font-size: 0.85rem; margin-bottom: 8px; }

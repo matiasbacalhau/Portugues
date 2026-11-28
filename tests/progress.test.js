@@ -247,4 +247,28 @@ test('activeTagsFor: incluye tags hasta el tema actual y temas ya intentados', (
   assert.deepEqual([...tagsT2], ['a1.pron.personal', 'a1.genus']);
   const tagsT1WithAttemptT2 = activeTagsFor([unit], prog({'a1.u1.t2/1': [attempt(false)]}), 'a1.u1.t1');
   assert.deepEqual([...tagsT1WithAttemptT2], ['a1.pron.personal', 'a1.genus']);
+  // Con una segunda unidad, los tags de unidades futuras no se activan si no fueron intentados.
+  const unit2 = {id: 'a1.u02', topics: [{topic: 'a1.u2.t1', tags: ['a1.presente.irregular'], steps: [step(1, ['u2a'])]}]};
+  assert.deepEqual([...activeTagsFor([unit, unit2], empty, 'a1.u1.t1')], ['a1.pron.personal']);
+  assert.deepEqual([...activeTagsFor([unit, unit2], empty, 'a1.u2.t1')], ['a1.pron.personal', 'a1.genus', 'a1.akk.mask', 'a1.presente.irregular']);
+});
+
+test('resolvePending conserva puntaje gradual en escalón 5 (1 error en 4 oraciones = 0.75)', () => {
+  const results = [
+    {key: 'w1', tag: null, ok: false, score: 0.75, penalties: [], marks: [{offset: 0, length: 1, text: 'R', kind: 'error'}]},
+    {key: 'w2', tag: null, ok: false, score: 0.75, penalties: [], marks: [{offset: 0, length: 1, text: 'R', kind: 'error'}]},
+    {key: 'w3', tag: null, ok: false, pending: true, penalties: [], marks: []},
+  ];
+  const p = recordAttempt(empty, grp(w, results, {step: 5}), NOW);
+  assert.equal(p.steps['a1.u1.t1/5'].attempts[0].passed, null);
+  const resolved = resolvePending(p, 'w3', false, 'g', 0.5).steps['a1.u1.t1/5'].attempts[0];
+  assert.equal(resolved.passed, true);
+  assert.ok(Math.abs(resolved.pct - 2 / 3) < 1e-9);
+});
+
+test('suggestNext acepta un arreglo de unidades y avanza a la siguiente unidad', () => {
+  const t1 = Object.fromEntries([1, 2, 3, 4, 5].map(n => [`a1.u1.t1/${n}`, [attempt(true, n)]]));
+  const t2 = Object.fromEntries([1, 2, 3, 4, 5].map(n => [`a1.u1.t2/${n}`, [attempt(true, 10 + n)]]));
+  const unit2 = {id: 'a1.u02', topics: [{topic: 'a1.u2.t1', tags: ['a1.presente.irregular'], steps: [step(1, ['u2a'])]}]};
+  assert.deepEqual(suggestNext([unit, unit2], prog({...t1, ...t2}), NOW, noMastery), {topic: 'a1.u2.t1', step: 1});
 });

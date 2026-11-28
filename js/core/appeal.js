@@ -26,6 +26,8 @@ export function appealContext(ex, key) {
 
 export const appealExpected = (ex, key) => (itemInfo(ex, key).answers ?? []).filter((a) => typeof a === 'string');
 
+export const canAppeal = (ex, key) => appealExpected(ex, key).length > 0 && appealContext(ex, key) !== '';
+
 // prev: el resultado local; verdict: {verdict, quote}; ctx: {curriculum, lexicon}. Devuelve el resultado revisado.
 export function applyVerdict(ex, prev, {verdict, quote}, ctx) {
   const reading = ex.type === 'reading';
@@ -36,12 +38,15 @@ export function applyVerdict(ex, prev, {verdict, quote}, ctx) {
   }
   const type = verdict === 'grammar' ? grammarScope(quote, prev.tag, ctx.lexicon ?? []) : verdict;
   const info = ctx.curriculum.tags[prev.tag] ?? {};
-  const at = quote ? String(prev.given ?? '').indexOf(quote) : -1;
+  const givenNfc = String(prev.given ?? '').normalize('NFC');
+  const quoteNfc = quote ? String(quote).normalize('NFC') : '';
+  const at = quoteNfc ? givenNfc.indexOf(quoteNfc) : -1;
   return {
     ...base,
+    given: givenNfc,
     ok: false,
     ...feedbackFor(type, info, {reading}),
     errorType: type,
-    ...(at >= 0 ? {wrong: [{offset: at, length: quote.length}]} : {}),
+    ...(at >= 0 ? {wrong: [{offset: at, length: quoteNfc.length}]} : {}),
   };
 }

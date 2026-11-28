@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { dictationPool, pickDictation } from '../js/core/dictation.js';
+import { dictationPool, pickDictation, lemmasIn } from '../js/core/dictation.js';
 import { checkExercise } from '../js/core/checks/index.js';
 import { applyCommit } from '../js/core/runner.js';
 import { pickCards } from '../js/core/cards.js';
@@ -155,4 +155,9 @@ test('check dictation: una sola pista; con palabras subrayadas, sin la regla (la
   const [missing] = await checkExercise(dict, 'Nós estamos', ctx);
   assert.equal(missing.wrong, undefined);
   assert.equal(missing.rule, 'Compará tu frase con la original.');
+});
+
+test('lemmasIn detecta lemas compuestos y con guion (café da manhã, wi-fi)', () => {
+  assert.ok(lemmasIn('O café da manhã é às oito.', lexicon).includes('café da manhã'));
+  assert.ok(lemmasIn('Qual é a senha do wi-fi?', lexicon).includes('wi-fi'));
 });

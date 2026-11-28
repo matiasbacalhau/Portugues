@@ -33,8 +33,7 @@ export default async function fin(el, { store, content }) {
   }
   const mastery = await store.get('mastery');
 
-  const unit = Object.values(units).find(u => u.topics.some(t => t.topic === group.topic));
-  const next = suggestNext(unit, progress, now, mastery ?? { tags: {}, pairs: {} });
+  const next = suggestNext(Object.values(units), progress, now, mastery ?? { tags: {}, pairs: {} });
   el.append(
     h('div', { class: 'card' },
       h('p', { class: 'greeting' }, pctText(score.pct)),

@@ -28,6 +28,15 @@ test('sin tilde, si queda otra palabra, no se acepta nunca: é ≠ e, está ≠ 
   assert.equal(matchAnswer('avô', ['avó'], lax).ok, false);
   assert.equal(matchAnswer('nos', ['nós'], lax).ok, false);
   assert.equal(matchAnswer('a', ['à'], lax).ok, false);
+  // Sentido inverso: poner tilde donde no va cuando cambia la palabra tampoco se acepta.
+  assert.equal(matchAnswer('é', ['e'], lax).ok, false);
+  assert.equal(matchAnswer('está', ['esta'], lax).ok, false);
+  assert.equal(matchAnswer('à', ['a'], lax).ok, false);
+  assert.equal(matchAnswer('nós', ['nos'], lax).ok, false);
+  assert.equal(matchAnswer('dá', ['da'], lax).ok, false);
+});
+test('tilde sobrante en palabra no contrastiva: aviso de tilde, no de mayúscula', () => {
+  assert.deepEqual(matchAnswer('faló', ['falo'], lax), {ok: true, notice: 'ojo: sin tilde'});
 });
 test('tag ortográfico exige tilde, ç y mayúscula', () => {
   assert.equal(matchAnswer('recepcao', ['recepção'], strict).ok, false);

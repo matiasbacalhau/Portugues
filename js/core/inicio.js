@@ -39,8 +39,8 @@ export function applyResolved({state, entry, ltMap, quarantine, now, acceptedWor
     ...ltRulesOf(entry.matches, ltMap, {text: entry.text, acceptedWords}).map(lt => ltEntry({...lt, at: entry.at})),
   ];
   let {progress, group = null} = state;
-  if (pendingInGroup(group, entry.key, entry.group)) group = resolveInGroup(group, entry.key, {ok, marks, penalties});
-  else progress = resolvePending(progress, entry.key, ok, entry.group);
+  if (pendingInGroup(group, entry.key, entry.group)) group = resolveInGroup(group, entry.key, {ok, score, marks, penalties});
+  else progress = resolvePending(progress, entry.key, ok, entry.group, score);
   const notice = {key: entry.key, topic: entry.topic, step: entry.step, scene: entry.scene, text: entry.text, marks, ok, at: now};
   return {progress, mastery, log, group, notice};
 }

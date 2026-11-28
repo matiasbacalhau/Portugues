@@ -48,14 +48,19 @@ def textos_de(x, clave=None):
             yield from textos_de(v, k)
 
 
-def palabras(ex):
-    return {w.lower() for t in textos_de(ex) for w in re.findall(r'\w+', t)}
-
-
 def agregar_words(ex, lexico):
-    ws = palabras(ex)
+    textos = [t.lower() for t in textos_de(ex)]
+    ws = {w for t in textos for w in re.findall(r'\w+', t)}
+    unido = '\n'.join(textos)
+
+    def esta(forma):
+        f = forma.lower()
+        if ' ' not in f and '-' not in f:
+            return f in ws
+        return bool(re.search(rf'(?<!\w){re.escape(f)}(?!\w)', unido))
+
     ex['words'] = [w['lemma'] for w in lexico
-                   if w['lemma'].lower() in ws or (w.get('plural') and w['plural'].lower() in ws)]
+                   if esta(w['lemma']) or (w.get('plural') and esta(w['plural']))]
 
 
 def creditos(lexico):

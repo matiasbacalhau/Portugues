@@ -8,7 +8,8 @@ export default async function mapa(el, { store, content }) {
   const C = await content();
   const [progress, mastery] = await Promise.all([store.get('progress'), store.get('mastery')]);
   const units = Object.values(C.units);
-  const rows = C.curriculum.topics.filter(t => t.level === 'A1').map(t => {
+  const activeLevels = new Set(['A1', ...units.map(u => u.level).filter(Boolean)]);
+  const rows = C.curriculum.topics.filter(t => activeLevels.has(t.level)).map(t => {
     const status = topicStatus(t, progress ?? { steps: {} }, mastery ?? { tags: {}, pairs: {} }, C.curriculum, units);
     // La etiqueta visible sale del CSS (::after); aria-label la deja también en el árbol de accesibilidad.
     const props = { class: 'map-topic', 'data-status': status, 'aria-label': `${t.title}, ${LABEL[status]}` };

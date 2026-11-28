@@ -24,6 +24,12 @@ class WordsTest(unittest.TestCase):
         agregar_words(ex, LEX)
         self.assertEqual(ex['words'], ['Löffel'])
 
+    def test_lemas_compuestos_y_con_guion(self):
+        lex = [{'lemma': 'café da manhã'}, {'lemma': 'wi-fi'}, {'lemma': 'água de coco'}]
+        ex = {'type': 'gap', 'text': 'O café da manhã e o wi-fi são ótimos.', 'answers': ['o']}
+        agregar_words(ex, lex)
+        self.assertEqual(ex['words'], ['café da manhã', 'wi-fi'])
+
 
 class CreditosTest(unittest.TestCase):
     def test_una_entrada_por_svg_ordenada_y_sin_repetir(self):

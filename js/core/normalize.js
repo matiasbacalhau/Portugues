@@ -19,14 +19,21 @@ function fold(s) {
 const CONTRASTIVE = new Set(['é', 'está', 'estás', 'nós', 'à', 'às', 'dá', 'dás', 'dê', 'têm', 'vêm', 'pôr', 'pôde', 'avó', 'avô',
   'sé', 'pé', 'pás', 'nó', 'pôs']);
 const words = (s) => s.match(/[\p{L}\p{M}]+/gu) ?? [];
-const breaksMeaning = (answer, target) => words(lower(target)).some((w) => CONTRASTIVE.has(w) && !words(lower(answer)).includes(w));
+const breaksMeaning = (answer, target) => {
+  const aw = words(lower(answer));
+  const tw = words(lower(target));
+  return tw.some((w) => CONTRASTIVE.has(w) && !aw.includes(w))
+    || aw.some((w) => CONTRASTIVE.has(w) && !tw.includes(w));
+};
 
-// Primer rasgo que la respuesta no respetó: ç, luego la tilde, luego mayúscula.
+// Primer rasgo que la respuesta no respetó: ç, luego la tilde que falta o sobra, luego mayúscula.
 function notice(answer, target) {
   const a = lower(answer), t = lower(target);
   if (t.includes('ç') && !a.includes('ç')) return 'ojo: ç';
   const mark = [...t].find((c) => c !== strip(c) && c !== 'ç' && !a.includes(c));
   if (mark) return `ojo: ${mark}`;
+  const extra = [...a].find((c) => c !== strip(c) && !t.includes(c));
+  if (extra) return extra === 'ç' ? 'ojo: sin ç' : 'ojo: sin tilde';
   return 'ojo: mayúscula';
 }
 

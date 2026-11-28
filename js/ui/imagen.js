@@ -1,5 +1,5 @@
 // Imagen de una palabra (OpenMoji a color sobre una ficha clara, spec §7). null si la palabra no tiene `image`.
-// El alt es la traducción: nunca la palabra alemana, que es lo que se evalúa.
+// El alt es la traducción: nunca la palabra portuguesa, que es lo que se evalúa.
 import { h } from './dom.js';
 
 // size: 'card' (ficha de 112 px) o 'gl' (44 px, glosario).

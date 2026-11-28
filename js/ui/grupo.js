@@ -21,7 +21,7 @@ import { dictationPool } from '../core/dictation.js';
 import * as tts from '../services/tts.js';
 import * as lt from '../services/languagetool.js';
 import { withGrammar, judge } from '../services/grammar.js';
-import { appealContext, appealExpected, applyVerdict } from '../core/appeal.js';
+import { appealContext, appealExpected, applyVerdict, canAppeal } from '../core/appeal.js';
 
 const WRITING = new Set(['writing-guided', 'writing-free']);
 const EMPTY_MASTERY = { tags: {}, pairs: {} };
@@ -66,7 +66,7 @@ export default async function grupo(el, { store, content, params }) {
         now, rng: Math.random, templates: C.templates, lexicon: C.lexicon, otherExercises: candidates, curriculum: C.curriculum, preferLemmas,
       });
       if (stepDef.field) {
-        fresh.glossary = pickGlossary(C.lexicon, words, { field: stepDef.field, level: 'A1', hide: topic.hides ?? [], rng: Math.random });
+        fresh.glossary = pickGlossary(C.lexicon, words, { field: stepDef.field, level: unit.level ?? 'A1', hide: topic.hides ?? [], rng: Math.random });
       }
       // Las palabras del glosario entran a la SRS en nivel 1 (spec §5.1); las que ya están no se tocan.
       const srs = fresh.glossary ? addWords(state.srs, fresh.glossary.map(w => w.lemma), now) : undefined;
@@ -148,8 +148,8 @@ export default async function grupo(el, { store, content, params }) {
       return;
     }
     let ex = group.exercises[group.index];
-    // Sin audio (spec §6.3): lo que sigue en el grupo sale sin él; el dictado se saltea.
-    if (group.audioOff) {
+    // Sin audio (spec §6.3) o sin síntesis de voz: lo que sigue sale sin él; dictado y pares se saltean.
+    if (group.audioOff || !tts.supported()) {
       const plain = withoutAudio(ex, { lexicon: C.lexicon, rng: Math.random });
       if (plain === null) {
         const { group: skipped, entry } = skipExercise(group, { now: Date.now() });
@@ -195,7 +195,12 @@ export default async function grupo(el, { store, content, params }) {
   function runExercise(ex) {
     const watch = stopwatch(Date.now());
     const onVisibility = () => (document.hidden ? watch.pause(Date.now()) : watch.resume(Date.now()));
+    const cleanup = () => {
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('hashchange', cleanup);
+    };
     document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('hashchange', cleanup, { once: true });
     counter.textContent = `${group.index + 1} de ${group.exercises.length}`;
     const body = h('div', { class: 'exercise' });
     const ctx = {
@@ -218,8 +223,8 @@ export default async function grupo(el, { store, content, params }) {
     };
     const head = [
       ex.review && h('span', { class: 'pill small' }, 'Repaso'),
-      group.index === 0 && n !== 3 && h('p', { class: 'scene', lang: 'pt-BR' }, h('strong', {}, stepDef.scene.title), ' · ', rich(stepDef.scene.context)),
-      group.index === 0 && n !== 3 && inSpanish(stepDef.scene.context_es),
+      group.index === 0 && !group.glossary && h('p', { class: 'scene', lang: 'pt-BR' }, h('strong', {}, stepDef.scene.title), ' · ', rich(stepDef.scene.context)),
+      group.index === 0 && !group.glossary && inSpanish(stepDef.scene.context_es),
     ];
     // Una sola vez: con el iPhone en silencio el TTS no suena y no hay forma de detectarlo.
     const hasAudio = !group.audioOff && (ex.type === 'dictation' || ex.type === 'pares' || (ex.type === 'card' && ex.mode === 'listen') || (ex.type === 'situation' && ex.listen));
@@ -236,7 +241,7 @@ export default async function grupo(el, { store, content, params }) {
       onNoAudio: async () => {
         if (noAudio) return; // doble toque: una sola vez
         noAudio = true;
-        document.removeEventListener('visibilitychange', onVisibility);
+        cleanup();
         group = { ...group, audioOff: true };
         // La tarjeta pasa a lectura: el log lo anota acá. El dictado y la situación se saltean: lo anota skipExercise.
         if (ex.type === 'card') {
@@ -248,7 +253,7 @@ export default async function grupo(el, { store, content, params }) {
       },
       submit: async answer => {
         const ms = watch.elapsed(Date.now());
-        document.removeEventListener('visibilitychange', onVisibility);
+        cleanup();
         // El texto de una escritura se guarda antes de mandarlo a LanguageTool: si se cierra la app, se reenvía al volver.
         if (WRITING.has(ex.type)) {
           group = { ...group, draft: { id: ex.id, text: answer.text, ms } };
@@ -305,13 +310,19 @@ export default async function grupo(el, { store, content, params }) {
         ex.type === 'dictation' && h('p', {}, 'La frase: ', h('em', { lang: 'pt-BR' }, ex.text)),
         !r.ok && (r.rule || r.rule_pt) && (
           (r.rule_pt && r.rule && r.rule_pt !== r.rule)
-            ? [
+            ? (() => {
+              const tagRule = C.curriculum.tags[r.tag];
+              // Si `rule` es un diagnóstico específico sin traducción propia (rule_pt heredada del tag), el detalle abre visible.
+              const specificEsOnly = !!(tagRule?.rule_pt && r.rule !== tagRule.rule
+                && (r.rule_pt === tagRule.rule_pt || r.rule_pt === `Esta palavra está certa. ${tagRule.rule_pt}`));
+              return [
                 h('p', { class: 'rule-primary', lang: 'pt-BR' }, rich(r.rule_pt)),
-                h('details', { class: 'rule-accordion' },
+                h('details', { class: 'rule-accordion', open: specificEsOnly },
                   h('summary', { lang: 'pt-BR' }, 'Ver a explicação em espanhol'),
                   h('p', { class: 'rule-detailed', lang: 'es' }, rich(r.rule)),
                 ),
-              ]
+              ];
+            })()
             : h('p', { class: 'rule-primary', lang: 'es' }, rich(r.rule || r.rule_pt))
         ),
         example && h('p', { class: 'example' }, 'Por ejemplo: ', h('em', { lang: 'pt-BR' }, example.pt), ` (${example.es}) `, listenButton(example.pt)),
@@ -337,7 +348,7 @@ export default async function grupo(el, { store, content, params }) {
   // Revisión con IA a pedido (cascada, nivel 4): si la devolución no corresponde con el error, el juez decide el tipo de
   // error (o que la respuesta estaba bien) y la devolución se rehace con ese tipo. Una por ítem; queda en los reportes.
   function appealButton(ex, answer, results, r) {
-    if (r.ok || r.given == null || r.appealed || !settings.grammarToken || !navigator.onLine) return null;
+    if (r.ok || r.given == null || r.appealed || !canAppeal(ex, r.key) || !settings.grammarToken || !navigator.onLine) return null;
     const btn = h('button', { type: 'button', class: 'secondary small', onclick: async () => {
       if (btn.disabled) return;
       btn.disabled = true;

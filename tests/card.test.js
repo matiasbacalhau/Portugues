@@ -92,3 +92,17 @@ test('UI: sin síntesis de voz el modo listen no agrega nodos null', async () =>
   assert.ok(el.children.length > 0 && el.children.every((c) => c !== null && typeof c === 'object'));
   delete globalThis.document; delete globalThis.window;
 });
+
+test('UI: nivel 1 con sustantivo sin artículo (países) muestra solo el lema, nunca "null Portugal"', async () => {
+  const mk = (tag) => ({tag, children: [], append(...c) { this.children.push(...c); }, setAttribute() {}, addEventListener() {}, querySelectorAll: () => []});
+  globalThis.document = {createElement: mk};
+  globalThis.window = {};
+  const {render} = await import('../js/exercises/card.js');
+  const w = lexicon.find((x) => x.lemma === 'Portugal');
+  const el = mk('div');
+  render(makeCard(w, {rung: 1, mode: 'read', lexicon, rng: seeded()}), el, {submit() {}});
+  const text = JSON.stringify(el);
+  assert.ok(text.includes('Portugal'));
+  assert.ok(!text.includes('null Portugal'));
+  delete globalThis.document; delete globalThis.window;
+});

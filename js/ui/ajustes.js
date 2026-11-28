@@ -42,6 +42,7 @@ export default async function ajustes(el, { store }) {
     }
     try {
       await store.importAll(await file.text());
+      applyTheme((await store.get('settings'))?.theme);
       status.className = 'status ok';
       status.textContent = 'Backup importado.';
     } catch (err) {
@@ -131,7 +132,7 @@ export default async function ajustes(el, { store }) {
     h('div', { class: 'card' },
       h('h2', {}, 'Backup'),
       h('p', { class: 'muted' }, `Último backup: ${last}. El progreso vive solo en este dispositivo.`),
-      h('button', { onclick: exportar }, 'Exportar backup'),
+      h('button', { type: 'button', onclick: exportar }, 'Exportar backup'),
       h('label', { for: 'import' }, 'Importar backup (.json):'),
       h('input', { id: 'import', type: 'file', accept: 'application/json,.json', onchange: importar }),
       status,
@@ -139,7 +140,7 @@ export default async function ajustes(el, { store }) {
     h('div', { class: 'card' },
       h('h2', {}, 'Reportes'),
       h('p', { class: 'muted' }, 'Los ejercicios que marcaste con ⚑. El archivo no incluye tu progreso.'),
-      h('button', { onclick: exportarReportes }, 'Exportar reportes ⚑'),
+      h('button', { type: 'button', onclick: exportarReportes }, 'Exportar reportes ⚑'),
     ),
     h('a', { class: 'button secondary', href: '#/pruebas' }, 'Pruebas del iPhone'),
     h('p', { class: 'muted' }, 'Pictogramas: ', h('a', { href: 'https://openmoji.org', target: '_blank', rel: 'noopener' }, 'OpenMoji'), ' (CC BY-SA 4.0)'),

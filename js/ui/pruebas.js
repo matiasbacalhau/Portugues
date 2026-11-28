@@ -24,14 +24,14 @@ async function voiceCard() {
   voiceSelect.append(...voices.map((v, i) => h('option', { value: i }, `${v.name} (${v.lang})`)));
   voice.card.append(
     voiceSelect,
-    h('button', { onclick: async () => voice.set(await speakCheck(tts.speak, voices[voiceSelect.value])) }, 'Escuchar'),
+    h('button', { type: 'button', onclick: async () => voice.set(await speakCheck(tts.speak, voices[voiceSelect.value])) }, 'Escuchar'),
   );
   return voice.card;
 }
 
 function ltCard() {
   const ltRow = row('LanguageTool', 'Envía una frase de prueba con un error a los servidores de LanguageTool.');
-  ltRow.card.append(h('button', { onclick: async () => ltRow.set(await ltCheck(lt.check)) }, 'Probar LanguageTool'));
+  ltRow.card.append(h('button', { type: 'button', onclick: async () => ltRow.set(await ltCheck(lt.check)) }, 'Probar LanguageTool'));
   return ltRow.card;
 }
 
